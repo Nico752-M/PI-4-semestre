@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Registro de usuario en EventStage">
+  <title>Registrarse | EventStage</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <main class="auth-layout">
+    <aside class="auth-info">
+      <a class="auth-brand" href="index.html">
+        <span class="brand-dot"></span><span>EVENTSTAGE</span>
+      </a>
+
+      <div class="info-content">
+        <div class="decorative-squares" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <h1>Crea tu cuenta y<br>vive los eventos</h1>
+        <p>Regístrate como cliente para comprar entradas o como agente para publicar y gestionar tus propios eventos.</p>
+      </div>
+
+      <p class="copyright">© 2026 EventStage. Todos los derechos reservados.</p>
+    </aside>
+
+    <section class="auth-main register-main">
+      <div class="mobile-brand">
+        <a class="auth-brand" href="index.html">
+          <span class="brand-dot"></span><span>EVENTSTAGE</span>
+        </a>
+      </div>
+
+      <div class="auth-card register-card">
+        <nav class="auth-tabs" aria-label="Acceso">
+          <a class="tab" href="login.html">Iniciar sesión</a>
+          <a class="tab active" href="registro.html">Registrarse</a>
+        </nav>
+
+        <header class="form-heading">
+          <h2>Bienvenido a EventStage</h2>
+          <p>Cuéntanos qué tipo de cuenta quieres crear</p>
+        </header>
+
+        <form action="#" method="post" class="auth-form">
+          <fieldset class="account-type">
+            <legend class="sr-only">Tipo de cuenta</legend>
+
+            <label class="account-option">
+              <input type="radio" name="tipo-cuenta" value="cliente" checked>
+              <span><strong>Cliente</strong><small>Compra entradas a eventos</small></span>
+            </label>
+
+            <label class="account-option">
+              <input type="radio" name="tipo-cuenta" value="agente">
+              <span><strong>Agente</strong><small>Publica y gestiona eventos</small></span>
+            </label>
+          </fieldset>
+
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre"
+                   placeholder="Ej. Laura Gómez" autocomplete="name" required>
+          </div>
+
+          <div class="two-columns">
+            <div class="field">
+              <label for="identificacion">Número de identificación</label>
+              <input type="text" id="identificacion" name="identificacion"
+                     placeholder="Cédula o pasaporte" required>
+            </div>
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono"
+                     placeholder="300 000 0000" autocomplete="tel" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="registro-email">Correo electrónico</label>
+            <input type="email" id="registro-email" name="email"
+                   placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+          </div>
+
+          <div class="two-columns">
+            <div class="field">
+              <label for="ciudad">Ciudad</label>
+              <select id="ciudad" name="ciudad" required>
+                <option value="" selected disabled>Selecciona tu ciudad</option>
+                <option>Bogotá</option>
+                <option>Medellín</option>
+                <option>Cali</option>
+                <option>Barranquilla</option>
+                <option>Bucaramanga</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="direccion">Dirección</label>
+              <input type="text" id="direccion" name="direccion"
+                     placeholder="Calle 10 # 5-20" autocomplete="street-address" required>
+            </div>
+          </div>
+
+          <div class="two-columns">
+            <div class="field">
+              <label for="registro-password">Contraseña</label>
+              <input type="password" id="registro-password" name="password"
+                     placeholder="••••••••" autocomplete="new-password" required>
+            </div>
+            <div class="field">
+              <label for="confirmar-password">Confirmar contraseña</label>
+              <input type="password" id="confirmar-password" name="confirmar-password"
+                     placeholder="••••••••" autocomplete="new-password" required>
+            </div>
+          </div>
+
+          <label class="terms-option">
+            <input type="checkbox" name="terminos" required>
+            <span>Acepto los <a href="#">Términos y condiciones</a> y la
+              <a href="#">Política de privacidad</a> de EventStage.</span>
+          </label>
+
+          <button type="submit" class="primary-button">Crear cuenta</button>
+        </form>
+
+        <p class="switch-message">
+          ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

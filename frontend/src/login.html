@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Inicio de sesión de EventStage">
+  <title>Iniciar sesión | EventStage</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <main class="auth-layout">
+    <aside class="auth-info">
+      <a class="auth-brand" href="index.html">
+        <span class="brand-dot"></span><span>EVENTSTAGE</span>
+      </a>
+
+      <div class="info-content">
+        <div class="decorative-squares" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <h1>Vive los mejores<br>eventos de Colombia</h1>
+        <p>Conciertos, teatro, deportes y mucho más. Crea tu cuenta y no te pierdas ningún evento.</p>
+      </div>
+
+      <p class="copyright">© 2026 EventStage. Todos los derechos reservados.</p>
+    </aside>
+
+    <section class="auth-main">
+      <div class="mobile-brand">
+        <a class="auth-brand" href="index.html">
+          <span class="brand-dot"></span><span>EVENTSTAGE</span>
+        </a>
+      </div>
+
+      <div class="auth-card">
+        <nav class="auth-tabs" aria-label="Acceso">
+          <a class="tab active" href="login.html">Iniciar sesión</a>
+          <a class="tab" href="registro.html">Registrarse</a>
+        </nav>
+
+        <header class="form-heading">
+          <h2>Bienvenido de nuevo</h2>
+          <p>Ingresa a tu cuenta para gestionar tus entradas</p>
+        </header>
+
+        <form action="#" method="post" class="auth-form">
+          <div class="field">
+            <label for="login-email">Correo electrónico</label>
+            <input type="email" id="login-email" name="email"
+                   placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="login-password">Contraseña</label>
+            <input type="password" id="login-password" name="password"
+                   placeholder="••••••••" autocomplete="current-password" required>
+          </div>
+
+          <div class="form-options">
+            <label class="check-option">
+              <input type="checkbox" name="recordarme">
+              <span>Recordarme</span>
+            </label>
+            <a href="recuperar.html" class="accent-link">
+            ¿Olvidaste tu contraseña?
+            </a>
+          </div>
+
+          <button type="submit" class="primary-button">Iniciar sesión</button>
+        </form>
+
+        <div class="separator">
+          <span></span><p>O CONTINÚA CON</p><span></span>
+        </div>
+
+        <div class="social-buttons">
+          <a href="#" class="social-button">Google</a>
+          <a href="#" class="social-button">Facebook</a>
+        </div>
+
+        <p class="switch-message">
+          ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Recuperación de contraseña de EventStage">
+  <title>Recuperar contraseña | EventStage</title>
+  <link rel="stylesheet" href="recuperar.css">
+</head>
+
+<body>
+  <main class="recovery-layout">
+
+    <!-- PANEL IZQUIERDO -->
+    <section class="info-panel">
+      <header class="brand-row">
+        <a href="index.html" class="brand" aria-label="Ir al inicio de EventStage">
+          <span class="brand-icon">E</span>
+          <span class="brand-name">Event<span>Stage</span></span>
+        </a>
+      </header>
+
+      <div class="hero-copy">
+        <p class="security-label">
+          <span class="security-dot"></span>
+          SEGURIDAD DE TU CUENTA
+        </p>
+
+        <h1>
+          Vuelve a entrar a tu
+          <span>experiencia.</span>
+        </h1>
+
+        <p class="lead">
+          Recupera el acceso a tu cuenta de EventStage de forma rápida y segura.
+          Te enviaremos las instrucciones al correo electrónico asociado a tu cuenta.
+        </p>
+      </div>
+
+      <section class="benefits" aria-label="Beneficios del proceso de recuperación">
+        <article class="benefit-card">
+          <div class="benefit-icon">✦</div>
+          <h2>Proceso seguro</h2>
+          <p>Protegemos tus datos durante todo el proceso de recuperación.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">✓</div>
+          <h2>Enlace temporal</h2>
+          <p>El enlace de recuperación tendrá una duración limitada.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">⌁</div>
+          <h2>Sin perder tus reservas</h2>
+          <p>Tus entradas, favoritos y reservas permanecen asociados a tu cuenta.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">◇</div>
+          <h2>Soporte disponible</h2>
+          <p>Nuestro equipo puede ayudarte si tienes algún inconveniente.</p>
+        </article>
+      </section>
+
+      <footer class="info-footer">
+        <p>© 2026 EventStage</p>
+        <nav aria-label="Enlaces legales">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Ayuda</a>
+        </nav>
+      </footer>
+    </section>
+
+    <!-- PANEL DERECHO -->
+    <section class="form-panel">
+      <div class="top-login">
+        <span>¿Ya recuperaste tu cuenta?</span>
+        <a href="login.html">Volver al inicio de sesión</a>
+      </div>
+
+      <div class="recovery-card">
+        <div class="progress-area" aria-label="Paso 1 de 3">
+          <div class="progress-lines">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p>Paso 1 de 3</p>
+        </div>
+
+        <div class="mail-icon" aria-hidden="true">□</div>
+
+        <header class="card-heading">
+          <h2>Recupera tu contraseña</h2>
+          <p>
+            Ingresa el correo electrónico que utilizaste para crear tu cuenta.
+            Te enviaremos un enlace para establecer una nueva contraseña.
+          </p>
+        </header>
+
+        <form class="recovery-form" action="#" method="post">
+          <div class="field">
+            <div class="field-label-row">
+              <label for="email">Correo electrónico</label>
+              <span>Obligatorio</span>
+            </div>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              aria-describedby="email-help"
+            >
+          </div>
+
+          <div class="notice" id="email-help">
+            <span class="notice-icon">i</span>
+            <p>
+              Si encontramos una cuenta asociada a este correo, recibirás las
+              instrucciones de recuperación en unos minutos. Revisa también tu
+              carpeta de spam.
+            </p>
+          </div>
+
+          <button class="primary-button" type="submit">
+            <span>Enviar enlace de recuperación</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <div class="separator" aria-hidden="true">
+          <span></span>
+          <b>o</b>
+          <span></span>
+        </div>
+
+        <a href="login.html" class="back-button">
+          ← Regresar al inicio de sesión
+        </a>
+
+        <div class="support-box">
+          <span class="support-icon">?</span>
+          <div>
+            <strong>¿Necesitas ayuda?</strong>
+            <small>Estamos disponibles para ayudarte</small>
+          </div>
+          <a href="#">Centro de ayuda →</a>
+        </div>
+      </div>
+
+      <p class="secure-message">
+        <span>✓</span>
+        Conexión segura · Tus datos están protegidos por EventStage
+      </p>
+    </section>
+
+  </main>
+</body>
+</html>
