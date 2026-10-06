@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EventStage — Mi perfil</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#100e14;
+    --sidebar:#15131b;
+    --panel:#1b1820;
+    --input:#15131a;
+    --border:#302b36;
+
+    --gold:#d7b46a;
+    --gold-light:#e6ca8e;
+
+    --text:#f2edf4;
+    --text2:#c1bac7;
+    --muted:#817985;
+
+    --green:#67b58a;
+    --red:#a96c6c;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    background:#3d3b3e;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+}
+
+/* APP */
+
+.app{
+    width:min(1440px,100%);
+    min-height:100vh;
+    margin:0 auto;
+    background:var(--bg);
+    display:flex;
+    overflow:hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:250px;
+    min-width:250px;
+    min-height:100vh;
+    background:var(--sidebar);
+    border-right:1px solid #25212b;
+    display:flex;
+    flex-direction:column;
+    padding:28px 18px 20px;
+}
+
+.logo{
+    height:45px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 10px;
+    margin-bottom:34px;
+}
+
+.logo-mark{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:linear-gradient(145deg,#e8d29a,#ad8b51);
+    color:#201b20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:17px;
+    box-shadow:0 5px 18px rgba(215,180,106,.12);
+}
+
+.logo-text{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+.logo-text span{
+    color:var(--gold);
+}
+
+.section-title{
+    font-size:9px;
+    color:#69626e;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-weight:700;
+    padding:0 12px;
+    margin-bottom:9px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.menu-item{
+    height:39px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:0 12px;
+    color:#8e8793;
+    font-size:12px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.menu-item .icon{
+    width:16px;
+    text-align:center;
+    color:#77707c;
+    font-size:12px;
+}
+
+.menu-item.active{
+    color:#e9e2ec;
+    background:#2b2632;
+}
+
+.menu-item.active .icon{
+    color:var(--gold);
+}
+
+.menu-item:hover{
+    background:#211d27;
+    color:#eee7ef;
+}
+
+.account-section{
+    margin-top:24px;
+}
+
+.sidebar-user{
+    margin-top:auto;
+    padding:16px 12px 5px;
+    border-top:1px solid #28232d;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar-small,
+.avatar-top,
+.avatar-large{
+    background:linear-gradient(145deg,#82758a,#c7b79a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#27222a;
+    font-weight:800;
+}
+
+.avatar-small{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:10px;
+}
+
+.user-name{
+    font-size:10px;
+    color:#d6cfd9;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+.user-role{
+    font-size:8px;
+    color:#6e6873;
+}
+
+/* MAIN */
+
+.main{
+    flex:1;
+    min-width:0;
+    padding:31px 32px 22px;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(104,77,125,.035),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+/* HEADER */
+
+.topbar{
+    min-height:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.breadcrumb{
+    color:#665f6b;
+    font-size:9px;
+    margin-bottom:5px;
+}
+
+.breadcrumb span{
+    color:#817985;
+}
+
+.page-title{
+    font-size:21px;
+    line-height:1;
+    font-weight:750;
+    letter-spacing:-.6px;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.top-icon{
+    width:31px;
+    height:31px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8d8592;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.top-icon:hover{
+    border-color:#625644;
+    color:var(--gold);
+}
+
+.top-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.avatar-top{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    font-size:9px;
+}
+
+.top-user-text strong{
+    display:block;
+    font-size:9px;
+    color:#ddd6df;
+    margin-bottom:2px;
+}
+
+.top-user-text span{
+    display:block;
+    font-size:7px;
+    color:#68616d;
+}
+
+/* PROFILE HERO */
+
+.profile-hero{
+    min-height:103px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    background:
+        linear-gradient(
+            110deg,
+            rgba(104,77,125,.12),
+            rgba(255,255,255,.008)
+        ),
+        var(--panel);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    margin-bottom:15px;
+}
+
+.profile-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar-large{
+    width:61px;
+    height:61px;
+    border-radius:50%;
+    font-size:17px;
+    box-shadow:0 7px 20px rgba(0,0,0,.18);
+}
+
+.profile-name{
+    font-size:16px;
+    font-weight:750;
+    margin-bottom:5px;
+}
+
+.profile-email{
+    color:#766e7a;
+    font-size:9px;
+    margin-bottom:7px;
+}
+
+.profile-badge{
+    color:var(--gold);
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    font-weight:700;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+.edit-button{
+    height:32px;
+    padding:0 13px;
+    border-radius:7px;
+    border:1px solid #51473b;
+    background:transparent;
+    color:#cbbd9d;
+    font-size:9px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.edit-button:hover{
+    background:#29231d;
+    border-color:var(--gold);
+}
+
+/* CONTENT */
+
+.content-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.72fr) minmax(300px,.88fr);
+    gap:15px;
+}
+
+.left-column,
+.right-column{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* CARDS */
+
+.card{
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    overflow:hidden;
+}
+
+.card-header{
+    min-height:49px;
+    padding:13px 18px;
+    border-bottom:1px solid #2a2630;
+}
+
+.card-title{
+    font-size:11px;
+    font-weight:750;
+    color:#e3dce6;
+    margin-bottom:4px;
+}
+
+.card-subtitle{
+    font-size:8px;
+    color:#716a76;
+}
+
+/* PERSONAL */
+
+.personal-card{
+    min-height:276px;
+}
+
+.personal-body{
+    padding:15px 18px 13px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-label{
+    font-size:7px;
+    text-transform:uppercase;
+    letter-spacing:.65px;
+    color:#77707c;
+    font-weight:700;
+}
+
+.form-input{
+    height:31px;
+    width:100%;
+    border-radius:6px;
+    border:1px solid #2d2832;
+    background:var(--input);
+    color:#aaa2ae;
+    padding:0 10px;
+    font-size:8px;
+    outline:none;
+    transition:.2s;
+}
+
+.form-input:focus{
+    border-color:#8c754c;
+    color:#eee8ef;
+}
+
+.personal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    padding-top:12px;
+    margin-top:12px;
+    border-top:1px solid #2a2630;
+}
+
+.cancel-btn,
+.save-btn{
+    height:30px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:8px;
+    font-weight:650;
+}
+
+.cancel-btn{
+    color:#77707c;
+    background:transparent;
+    border:1px solid #302b34;
+}
+
+.cancel-btn:hover{
+    background:#242029;
+    color:#aaa2ae;
+}
+
+.save-btn{
+    color:#29221a;
+    background:var(--gold);
+    border:1px solid var(--gold);
+}
+
+.save-btn:hover{
+    background:var(--gold-light);
+}
+
+/* SECURITY */
+
+.security-card{
+    min-height:182px;
+}
+
+.security-body{
+    padding:7px 18px;
+}
+
+.security-row{
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #29252e;
+}
+
+.security-row:last-child{
+    border-bottom:none;
+}
+
+.security-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.security-symbol{
+    width:25px;
+    height:25px;
+    border-radius:7px;
+    background:#25212b;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+}
+
+.security-name{
+    font-size:8px;
+    font-weight:700;
+    color:#d2cad5;
+    margin-bottom:3px;
+}
+
+.security-desc{
+    font-size:7px;
+    color:#6d6671;
+}
+
+.security-action{
+    color:#a89770;
+    font-size:7px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.security-action:hover{
+    color:var(--gold-light);
+}
+
+/* PREFERENCES */
+
+.preferences-card{
+    min-height:219px;
+}
+
+.preference-list{
+    padding:5px 18px 9px;
+}
+
+.preference{
+    min-height:43px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #29252e;
+}
+
+.preference:last-child{
+    border-bottom:none;
+}
+
+.preference-title{
+    font-size:8px;
+    font-weight:700;
+    color:#d1cad5;
+    margin-bottom:3px;
+}
+
+.preference-desc{
+    color:#706975;
+    font-size:7px;
+}
+
+.toggle{
+    width:28px;
+    height:15px;
+    border-radius:20px;
+    background:#3d3447;
+    position:relative;
+    cursor:pointer;
+    transition:.2s;
+    flex-shrink:0;
+}
+
+.toggle::after{
+    content:"";
+    width:11px;
+    height:11px;
+    position:absolute;
+    top:2px;
+    right:2px;
+    border-radius:50%;
+    background:#ddd4df;
+    transition:.2s;
+}
+
+.toggle.off{
+    background:#29252d;
+}
+
+.toggle.off::after{
+    left:2px;
+    right:auto;
+    background:#6f6873;
+}
+
+/* ACCOUNT */
+
+.account-card{
+    min-height:164px;
+}
+
+.account-body{
+    padding:9px 18px 12px;
+}
+
+.account-row{
+    min-height:31px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #29252e;
+}
+
+.account-row:last-child{
+    border-bottom:none;
+}
+
+.account-label{
+    font-size:7px;
+    text-transform:uppercase;
+    color:#6e6772;
+    letter-spacing:.45px;
+}
+
+.account-value{
+    font-size:8px;
+    color:#a8a0ac;
+}
+
+.account-value.green{
+    color:var(--green);
+}
+
+/* DANGER */
+
+.danger-card{
+    min-height:91px;
+    border-color:#3a2c34;
+}
+
+.danger-header{
+    padding:12px 18px 7px;
+}
+
+.danger-title{
+    font-size:10px;
+    font-weight:750;
+    color:#ddd4dc;
+    margin-bottom:3px;
+}
+
+.danger-subtitle{
+    font-size:7px;
+    color:#706770;
+}
+
+.danger-body{
+    padding:5px 18px 12px;
+}
+
+.delete-btn{
+    width:100%;
+    height:27px;
+    border-radius:6px;
+    border:1px solid #4b3038;
+    background:transparent;
+    color:#a97981;
+    font-size:7px;
+    font-weight:650;
+}
+
+.delete-btn:hover{
+    background:#2b1d22;
+    border-color:#74404d;
+}
+
+/* FOOTER */
+
+.main-footer{
+    min-height:28px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color:#514b55;
+    font-size:7px;
+    margin-top:8px;
+}
+
+/* MENSAJE */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25212b;
+    border:1px solid #49404f;
+    color:#ddd5df;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:11px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:.25s;
+    z-index:999;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:360px;
+    background:#1b1820;
+    border:1px solid #393340;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.modal-title{
+    font-size:15px;
+    font-weight:750;
+    margin-bottom:8px;
+}
+
+.modal-text{
+    color:#8c8490;
+    font-size:10px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+.modal-cancel,
+.modal-confirm{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:9px;
+}
+
+.modal-cancel{
+    background:transparent;
+    border:1px solid #393340;
+    color:#9b929f;
+}
+
+.modal-confirm{
+    background:#6d424b;
+    border:1px solid #84505b;
+    color:#f0dfe2;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .sidebar{
+        width:210px;
+        min-width:210px;
+    }
+
+    .main{
+        padding:25px 20px;
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:760px){
+
+    .app{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+        min-width:0;
+        min-height:auto;
+        padding:15px;
+    }
+
+    .logo{
+        margin-bottom:15px;
+    }
+
+    .menu{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .sidebar-user{
+        margin-top:15px;
+    }
+
+    .main{
+        padding:20px 15px;
+    }
+
+    .top-user-text{
+        display:none;
+    }
+
+    .profile-hero{
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-mark">E</div>
+
+        <div class="logo-text">
+            Event<span>Stage</span>
+        </div>
+    </div>
+
+    <div class="section-title">
+        Principal
+    </div>
+
+    <nav class="menu">
+
+        <div class="menu-item">
+            <span class="icon">⌂</span>
+            <span>Inicio</span>
+        </div>
+
+        <div class="menu-item">
+            <span class="icon">▣</span>
+            <span>Mis reservas</span>
+        </div>
+
+        <div class="menu-item">
+            <span class="icon">♡</span>
+            <span>Eventos favoritos</span>
+        </div>
+
+        <div class="menu-item">
+            <span class="icon">◷</span>
+            <span>Historial</span>
+        </div>
+
+    </nav>
+
+    <div class="account-section">
+
+        <div class="section-title">
+            Cuenta
+        </div>
+
+        <nav class="menu">
+
+            <div class="menu-item active">
+                <span class="icon">●</span>
+                <span>Mi perfil</span>
+            </div>
+
+            <div class="menu-item">
+                <span class="icon">⚙</span>
+                <span>Configuración</span>
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div class="sidebar-user">
+
+        <div class="avatar-small">
+            JD
+        </div>
+
+        <div>
+            <div class="user-name">
+                Juan David
+            </div>
+
+            <div class="user-role">
+                Cliente
+            </div>
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="breadcrumb">
+                Inicio / Cuenta / <span>Mi perfil</span>
+            </div>
+
+            <h1 class="page-title">
+                Mi perfil
+            </h1>
+
+        </div>
+
+        <div class="top-actions">
+
+            <div class="top-icon" onclick="mostrarMensaje('No tienes nuevas notificaciones')">
+                ♧
+            </div>
+
+            <div class="top-user">
+
+                <div class="avatar-top">
+                    JD
+                </div>
+
+                <div class="top-user-text">
+                    <strong>Juan David</strong>
+                    <span>Cuenta personal</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- PROFILE -->
+
+    <section class="profile-hero">
+
+        <div class="profile-info">
+
+            <div class="avatar-large">
+                JD
+            </div>
+
+            <div>
+
+                <div class="profile-name">
+                    Juan David Martínez
+                </div>
+
+                <div class="profile-email">
+                    juandavid@gmail.com
+                </div>
+
+                <div class="profile-badge">
+                    ● CLIENTE DESDE SEPTIEMBRE DE 2026
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+            class="edit-button"
+            onclick="activarEdicion()">
+            Editar información
+        </button>
+
+    </section>
+
+
+    <!-- CONTENT -->
+
+    <div class="content-grid">
+
+        <!-- LEFT -->
+
+        <div class="left-column">
+
+            <!-- PERSONAL -->
+
+            <section class="card personal-card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Información personal
+                    </div>
+
+                    <div class="card-subtitle">
+                        Administra tus datos personales y de contacto.
+                    </div>
+
+                </div>
+
+                <div class="personal-body">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label class="form-label">
+                                Nombre
+                            </label>
+
+                            <input
+                                id="nombre"
+                                class="form-input"
+                                value="Juan David"
+                                disabled>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label">
+                                Apellido
+                            </label>
+
+                            <input
+                                id="apellido"
+                                class="form-input"
+                                value="Martínez"
+                                disabled>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                id="correo"
+                                class="form-input"
+                                value="juandavid@gmail.com"
+                                disabled>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label">
+                                Teléfono
+                            </label>
+
+                            <input
+                                id="telefono"
+                                class="form-input"
+                                value="+57 300 000 0000"
+                                disabled>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label">
+                                Ciudad
+                            </label>
+
+                            <input
+                                id="ciudad"
+                                class="form-input"
+                                value="Tuluá"
+                                disabled>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label">
+                                País
+                            </label>
+
+                            <input
+                                id="pais"
+                                class="form-input"
+                                value="Colombia"
+                                disabled>
+
+                        </div>
+
+                        <div class="form-group full">
+
+                            <label class="form-label">
+                                Dirección
+                            </label>
+
+                            <input
+                                id="direccion"
+                                class="form-input"
+                                value="Carrera 00 #00-00"
+                                disabled>
+
+                        </div>
+
+                    </div>
+
+                    <div class="personal-actions">
+
+                        <button
+                            class="cancel-btn"
+                            onclick="cancelarCambios()">
+                            Cancelar
+                        </button>
+
+                        <button
+                            class="save-btn"
+                            onclick="guardarCambios()">
+                            Guardar cambios
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SECURITY -->
+
+            <section class="card security-card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Seguridad de la cuenta
+                    </div>
+
+                    <div class="card-subtitle">
+                        Protege tu información y controla el acceso.
+                    </div>
+
+                </div>
+
+                <div class="security-body">
+
+                    <div class="security-row">
+
+                        <div class="security-left">
+
+                            <div class="security-symbol">
+                                ●
+                            </div>
+
+                            <div>
+
+                                <div class="security-name">
+                                    Contraseña
+                                </div>
+
+                                <div class="security-desc">
+                                    Última actualización hace 24 días
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="security-action"
+                            onclick="mostrarMensaje('Aquí se abriría el cambio de contraseña')">
+                            Cambiar
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-row">
+
+                        <div class="security-left">
+
+                            <div class="security-symbol">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <div class="security-name">
+                                    Verificación en dos pasos
+                                </div>
+
+                                <div class="security-desc">
+                                    Protege tu cuenta mediante autenticación adicional
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="security-action"
+                            onclick="mostrarMensaje('La verificación en dos pasos está activada')">
+                            Activado
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-row">
+
+                        <div class="security-left">
+
+                            <div class="security-symbol">
+                                ●
+                            </div>
+
+                            <div>
+
+                                <div class="security-name">
+                                    Sesiones activas
+                                </div>
+
+                                <div class="security-desc">
+                                    1 dispositivo conectado actualmente
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="security-action"
+                            onclick="mostrarMensaje('Tienes 1 sesión activa')">
+                            Administrar
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="right-column">
+
+            <!-- PREFERENCES -->
+
+            <section class="card preferences-card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Preferencias
+                    </div>
+
+                    <div class="card-subtitle">
+                        Personaliza tu experiencia en EventStage.
+                    </div>
+
+                </div>
+
+                <div class="preference-list">
+
+                    <div class="preference">
+
+                        <div>
+
+                            <div class="preference-title">
+                                Notificaciones de eventos
+                            </div>
+
+                            <div class="preference-desc">
+                                Recibe alertas sobre nuevos eventos y cambios.
+                            </div>
+
+                        </div>
+
+                        <div class="toggle"></div>
+
+                    </div>
+
+
+                    <div class="preference">
+
+                        <div>
+
+                            <div class="preference-title">
+                                Recordatorios de reservas
+                            </div>
+
+                            <div class="preference-desc">
+                                Recibe recordatorios antes de tus eventos.
+                            </div>
+
+                        </div>
+
+                        <div class="toggle"></div>
+
+                    </div>
+
+
+                    <div class="preference">
+
+                        <div>
+
+                            <div class="preference-title">
+                                Promociones
+                            </div>
+
+                            <div class="preference-desc">
+                                Información sobre descuentos y beneficios.
+                            </div>
+
+                        </div>
+
+                        <div class="toggle"></div>
+
+                    </div>
+
+
+                    <div class="preference">
+
+                        <div>
+
+                            <div class="preference-title">
+                                Noticias de EventStage
+                            </div>
+
+                            <div class="preference-desc">
+                                Actualizaciones y novedades de la plataforma.
+                            </div>
+
+                        </div>
+
+                        <div class="toggle"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACCOUNT -->
+
+            <section class="card account-card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Información de cuenta
+                    </div>
+
+                    <div class="card-subtitle">
+                        Datos generales de tu cuenta.
+                    </div>
+
+                </div>
+
+                <div class="account-body">
+
+                    <div class="account-row">
+
+                        <span class="account-label">
+                            ID de usuario
+                        </span>
+
+                        <span class="account-value">
+                            EVT-CL-00482
+                        </span>
+
+                    </div>
+
+                    <div class="account-row">
+
+                        <span class="account-label">
+                            Tipo de cuenta
+                        </span>
+
+                        <span class="account-value">
+                            Cliente
+                        </span>
+
+                    </div>
+
+                    <div class="account-row">
+
+                        <span class="account-label">
+                            Fecha de registro
+                        </span>
+
+                        <span class="account-value">
+                            02 Sep 2026
+                        </span>
+
+                    </div>
+
+                    <div class="account-row">
+
+                        <span class="account-label">
+                            Estado
+                        </span>
+
+                        <span class="account-value green">
+                            Activo
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DANGER -->
+
+            <section class="card danger-card">
+
+                <div class="danger-header">
+
+                    <div class="danger-title">
+                        Zona de cuenta
+                    </div>
+
+                    <div class="danger-subtitle">
+                        Acciones que afectan permanentemente tu cuenta.
+                    </div>
+
+                </div>
+
+                <div class="danger-body">
+
+                    <button
+                        class="delete-btn"
+                        onclick="abrirModal()">
+                        Solicitar eliminación de cuenta
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <footer class="main-footer">
+        EventStage · Plataforma de gestión y reserva de eventos · 2026
+    </footer>
+
+</main>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast"></div>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            ¿Eliminar cuenta?
+        </div>
+
+        <div class="modal-text">
+            Esta acción solicitaría la eliminación permanente de tu cuenta.
+            En esta versión de prueba no se realizará ninguna eliminación real.
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                class="modal-cancel"
+                onclick="cerrarModal()">
+                Cancelar
+            </button>
+
+            <button
+                class="modal-confirm"
+                onclick="confirmarEliminacion()">
+                Confirmar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const campos = [
+    "nombre",
+    "apellido",
+    "correo",
+    "telefono",
+    "ciudad",
+    "pais",
+    "direccion"
+];
+
+let valoresOriginales = {};
+
+function activarEdicion(){
+
+    campos.forEach(id => {
+
+        const input = document.getElementById(id);
+
+        valoresOriginales[id] = input.value;
+
+        input.disabled = false;
+
+    });
+
+    document.getElementById("nombre").focus();
+
+    mostrarMensaje("Modo edición activado");
+
+}
+
+function guardarCambios(){
+
+    campos.forEach(id => {
+
+        document.getElementById(id).disabled = true;
+
+    });
+
+    const nombre =
+        document.getElementById("nombre").value;
+
+    const apellido =
+        document.getElementById("apellido").value;
+
+    document.querySelector(".profile-name").textContent =
+        nombre + " " + apellido;
+
+    mostrarMensaje("Cambios guardados correctamente");
+
+}
+
+function cancelarCambios(){
+
+    campos.forEach(id => {
+
+        const input = document.getElementById(id);
+
+        if(valoresOriginales[id] !== undefined){
+            input.value = valoresOriginales[id];
+        }
+
+        input.disabled = true;
+
+    });
+
+    mostrarMensaje("Cambios cancelados");
+
+}
+
+document.querySelectorAll(".toggle").forEach(toggle => {
+
+    toggle.addEventListener("click", function(){
+
+        this.classList.toggle("off");
+
+        if(this.classList.contains("off")){
+            mostrarMensaje("Preferencia desactivada");
+        }else{
+            mostrarMensaje("Preferencia activada");
+        }
+
+    });
+
+});
+
+
+function mostrarMensaje(texto){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = texto;
+
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer =
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 2200);
+
+}
+
+
+function abrirModal(){
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+function cerrarModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+function confirmarEliminacion(){
+
+    cerrarModal();
+
+    mostrarMensaje(
+        "Solicitud registrada. No se eliminó ninguna cuenta."
+    );
+
+}
+
+
+document
+    .getElementById("modal")
+    .addEventListener("click", function(e){
+
+        if(e.target === this){
+            cerrarModal();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
