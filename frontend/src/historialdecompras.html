@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EventStage — Historial de compras</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#100e14;
+    --sidebar:#15131b;
+    --panel:#1b1820;
+    --panel2:#201c26;
+    --input:#15131a;
+    --border:#302b36;
+
+    --gold:#d7b46a;
+    --gold-light:#e6ca8e;
+
+    --text:#f2edf4;
+    --text2:#c1bac7;
+    --muted:#817985;
+
+    --green:#67b58a;
+    --red:#a96c6c;
+    --blue:#7893b5;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    background:#3d3b3e;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+    width:min(1440px,100%);
+    min-height:100vh;
+    margin:0 auto;
+    background:var(--bg);
+    display:flex;
+    overflow:hidden;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+    width:250px;
+    min-width:250px;
+    min-height:100vh;
+    background:var(--sidebar);
+    border-right:1px solid #25212b;
+    display:flex;
+    flex-direction:column;
+    padding:28px 18px 20px;
+}
+
+.logo{
+    height:45px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 10px;
+    margin-bottom:34px;
+}
+
+.logo-mark{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:linear-gradient(145deg,#e8d29a,#ad8b51);
+    color:#201b20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:17px;
+}
+
+.logo-text{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+.logo-text span{
+    color:var(--gold);
+}
+
+.section-title{
+    font-size:9px;
+    color:#69626e;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-weight:700;
+    padding:0 12px;
+    margin-bottom:9px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.menu-item{
+    height:39px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:0 12px;
+    color:#8e8793;
+    font-size:12px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.menu-item .icon{
+    width:16px;
+    text-align:center;
+    color:#77707c;
+    font-size:12px;
+}
+
+.menu-item.active{
+    color:#e9e2ec;
+    background:#2b2632;
+}
+
+.menu-item.active .icon{
+    color:var(--gold);
+}
+
+.menu-item:hover{
+    background:#211d27;
+    color:#eee7ef;
+}
+
+.account-section{
+    margin-top:24px;
+}
+
+.sidebar-user{
+    margin-top:auto;
+    padding:16px 12px 5px;
+    border-top:1px solid #28232d;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar-small,
+.avatar-top{
+    background:linear-gradient(145deg,#82758a,#c7b79a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#27222a;
+    font-weight:800;
+}
+
+.avatar-small{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:10px;
+}
+
+.user-name{
+    font-size:10px;
+    color:#d6cfd9;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+.user-role{
+    font-size:8px;
+    color:#6e6873;
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+    flex:1;
+    min-width:0;
+    padding:31px 32px 22px;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(104,77,125,.035),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.topbar{
+    min-height:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.breadcrumb{
+    color:#665f6b;
+    font-size:9px;
+    margin-bottom:5px;
+}
+
+.breadcrumb span{
+    color:#817985;
+}
+
+.page-title{
+    font-size:21px;
+    line-height:1;
+    font-weight:750;
+    letter-spacing:-.6px;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.top-icon{
+    width:31px;
+    height:31px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8d8592;
+    font-size:12px;
+}
+
+.top-icon:hover{
+    border-color:#625644;
+    color:var(--gold);
+}
+
+.top-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.avatar-top{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    font-size:9px;
+}
+
+.top-user-text strong{
+    display:block;
+    font-size:9px;
+    color:#ddd6df;
+    margin-bottom:2px;
+}
+
+.top-user-text span{
+    display:block;
+    font-size:7px;
+    color:#68616d;
+}
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.summary-card{
+    min-height:86px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    padding:14px 16px;
+    position:relative;
+    overflow:hidden;
+}
+
+.summary-card::after{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    right:-25px;
+    top:-25px;
+    border-radius:50%;
+    background:rgba(215,180,106,.035);
+}
+
+.summary-label{
+    font-size:8px;
+    color:#77707c;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    margin-bottom:9px;
+}
+
+.summary-value{
+    font-size:19px;
+    font-weight:750;
+    color:#e9e2eb;
+}
+
+.summary-extra{
+    font-size:7px;
+    color:#625b67;
+    margin-top:3px;
+}
+
+.summary-value.gold{
+    color:var(--gold);
+}
+
+.summary-value.green{
+    color:var(--green);
+}
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar{
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    min-height:61px;
+    padding:11px 13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.filters{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+}
+
+.filter-btn{
+    height:28px;
+    padding:0 11px;
+    border-radius:6px;
+    border:1px solid transparent;
+    background:transparent;
+    color:#756e7b;
+    font-size:8px;
+    font-weight:650;
+    transition:.2s;
+}
+
+.filter-btn:hover{
+    background:#25212b;
+    color:#d0c8d4;
+}
+
+.filter-btn.active{
+    background:#2d2732;
+    border-color:#453b4c;
+    color:var(--gold);
+}
+
+.search-box{
+    width:190px;
+    height:30px;
+    border:1px solid #302b36;
+    border-radius:6px;
+    background:var(--input);
+    display:flex;
+    align-items:center;
+    padding:0 9px;
+    gap:7px;
+}
+
+.search-icon{
+    color:#665f6c;
+    font-size:10px;
+}
+
+.search-box input{
+    border:0;
+    outline:0;
+    width:100%;
+    background:transparent;
+    color:#cfc7d3;
+    font-size:8px;
+}
+
+.search-box input::placeholder{
+    color:#5e5764;
+}
+
+/* =====================================================
+   PURCHASES
+===================================================== */
+
+.purchases-card{
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    overflow:hidden;
+}
+
+.purchases-header{
+    min-height:51px;
+    padding:13px 18px;
+    border-bottom:1px solid #2a2630;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.card-title{
+    font-size:11px;
+    font-weight:750;
+    color:#e3dce6;
+    margin-bottom:4px;
+}
+
+.card-subtitle{
+    font-size:8px;
+    color:#716a76;
+}
+
+.purchase-count{
+    color:#655e69;
+    font-size:8px;
+}
+
+.purchase-list{
+    width:100%;
+}
+
+/* =====================================================
+   PURCHASE ROW
+===================================================== */
+
+.purchase{
+    min-height:82px;
+    padding:13px 18px;
+    display:grid;
+    grid-template-columns:42px minmax(180px,1.4fr) 100px 115px 115px 85px;
+    align-items:center;
+    gap:13px;
+    border-bottom:1px solid #29252e;
+    transition:.2s;
+}
+
+.purchase:last-child{
+    border-bottom:none;
+}
+
+.purchase:hover{
+    background:#1f1b24;
+}
+
+.event-icon{
+    width:39px;
+    height:39px;
+    border-radius:8px;
+    background:
+        linear-gradient(
+            145deg,
+            #342d3b,
+            #211d27
+        );
+    border:1px solid #403747;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold);
+    font-size:14px;
+}
+
+.event-name{
+    font-size:9px;
+    font-weight:750;
+    color:#ddd6e0;
+    margin-bottom:4px;
+}
+
+.event-location{
+    font-size:7px;
+    color:#6e6773;
+}
+
+.purchase-label{
+    font-size:6px;
+    color:#615a66;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:4px;
+}
+
+.purchase-data{
+    font-size:8px;
+    color:#aaa2ae;
+}
+
+.purchase-data.price{
+    color:#d7c28e;
+    font-weight:700;
+}
+
+.purchase-data.method{
+    color:#908794;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:20px;
+    padding:0 8px;
+    border-radius:20px;
+    font-size:6px;
+    font-weight:700;
+    width:max-content;
+}
+
+.status.completed{
+    background:rgba(103,181,138,.10);
+    border:1px solid rgba(103,181,138,.22);
+    color:#75bb93;
+}
+
+.status.refunded{
+    background:rgba(169,108,108,.10);
+    border:1px solid rgba(169,108,108,.22);
+    color:#bb7f87;
+}
+
+.status.pending{
+    background:rgba(215,180,106,.08);
+    border:1px solid rgba(215,180,106,.20);
+    color:#c8aa68;
+}
+
+.details-btn{
+    height:27px;
+    border-radius:6px;
+    border:1px solid #3a3441;
+    background:transparent;
+    color:#958b9c;
+    font-size:7px;
+    font-weight:650;
+    transition:.2s;
+}
+
+.details-btn:hover{
+    border-color:#655743;
+    color:var(--gold);
+    background:#25211b;
+}
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:55px 20px;
+}
+
+.empty-icon{
+    font-size:27px;
+    color:#4c4552;
+    margin-bottom:12px;
+}
+
+.empty-title{
+    font-size:11px;
+    color:#aaa2ae;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.empty-text{
+    font-size:8px;
+    color:#655e69;
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.68);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:410px;
+    max-width:calc(100% - 30px);
+    background:#1b1820;
+    border:1px solid #393340;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.modal-title{
+    font-size:15px;
+    font-weight:750;
+    margin-bottom:7px;
+}
+
+.modal-subtitle{
+    font-size:8px;
+    color:#716a76;
+    margin-bottom:18px;
+}
+
+.modal-detail{
+    border:1px solid #302b36;
+    border-radius:8px;
+    background:#16131a;
+    overflow:hidden;
+    margin-bottom:17px;
+}
+
+.detail-row{
+    min-height:35px;
+    padding:0 11px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #29252e;
+}
+
+.detail-row:last-child{
+    border-bottom:none;
+}
+
+.detail-label{
+    color:#6f6874;
+    font-size:7px;
+}
+
+.detail-value{
+    color:#b9b0bd;
+    font-size:8px;
+    font-weight:600;
+}
+
+.detail-value.gold{
+    color:var(--gold);
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+.modal-btn{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:8px;
+    font-weight:650;
+}
+
+.modal-close{
+    background:transparent;
+    border:1px solid #393340;
+    color:#958c9a;
+}
+
+.modal-download{
+    background:var(--gold);
+    border:1px solid var(--gold);
+    color:#29221a;
+}
+
+.modal-download:hover{
+    background:var(--gold-light);
+}
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25212b;
+    border:1px solid #49404f;
+    color:#ddd5df;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:11px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:.25s;
+    z-index:2000;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.main-footer{
+    min-height:31px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color:#514b55;
+    font-size:7px;
+    margin-top:8px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1200px){
+
+    .purchase{
+        grid-template-columns:42px minmax(160px,1fr) 90px 100px 90px;
+    }
+
+    .purchase .method-column{
+        display:none;
+    }
+}
+
+@media(max-width:1050px){
+
+    .sidebar{
+        width:210px;
+        min-width:210px;
+    }
+
+    .main{
+        padding:25px 20px;
+    }
+
+    .summary-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .purchase{
+        grid-template-columns:42px minmax(170px,1fr) 100px 90px;
+    }
+
+    .purchase .date-column{
+        display:none;
+    }
+}
+
+@media(max-width:760px){
+
+    .app{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+        min-width:0;
+        min-height:auto;
+        padding:15px;
+    }
+
+    .logo{
+        margin-bottom:15px;
+    }
+
+    .menu{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .sidebar-user{
+        margin-top:15px;
+    }
+
+    .main{
+        padding:20px 15px;
+    }
+
+    .top-user-text{
+        display:none;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .toolbar{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .purchase{
+        grid-template-columns:42px 1fr auto;
+        gap:10px;
+    }
+
+    .purchase .date-column,
+    .purchase .method-column,
+    .purchase .status-column{
+        display:none;
+    }
+
+    .details-btn{
+        width:65px;
+    }
+}
+
+@media(max-width:500px){
+
+    .summary-grid{
+        grid-template-columns:1fr;
+    }
+
+    .purchase{
+        padding:12px;
+    }
+
+    .event-icon{
+        width:34px;
+        height:34px;
+    }
+
+    .event-name{
+        font-size:8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-mark">
+            E
+        </div>
+
+        <div class="logo-text">
+            Event<span>Stage</span>
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        Principal
+    </div>
+
+
+    <nav class="menu">
+
+        <div
+            class="menu-item"
+            onclick="mostrarMensaje('Inicio')">
+
+            <span class="icon">⌂</span>
+            <span>Inicio</span>
+
+        </div>
+
+
+        <div
+            class="menu-item"
+            onclick="mostrarMensaje('Mis reservas')">
+
+            <span class="icon">▣</span>
+            <span>Mis reservas</span>
+
+        </div>
+
+
+        <div
+            class="menu-item"
+            onclick="mostrarMensaje('Eventos favoritos')">
+
+            <span class="icon">♡</span>
+            <span>Eventos favoritos</span>
+
+        </div>
+
+
+        <div class="menu-item active">
+
+            <span class="icon">◷</span>
+            <span>Historial</span>
+
+        </div>
+
+    </nav>
+
+
+    <div class="account-section">
+
+        <div class="section-title">
+            Cuenta
+        </div>
+
+
+        <nav class="menu">
+
+            <div
+                class="menu-item"
+                onclick="mostrarMensaje('Mi perfil')">
+
+                <span class="icon">●</span>
+                <span>Mi perfil</span>
+
+            </div>
+
+
+            <div
+                class="menu-item"
+                onclick="mostrarMensaje('Configuración')">
+
+                <span class="icon">⚙</span>
+                <span>Configuración</span>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+
+    <div class="sidebar-user">
+
+        <div class="avatar-small">
+            JD
+        </div>
+
+        <div>
+
+            <div class="user-name">
+                Juan David
+            </div>
+
+            <div class="user-role">
+                Cliente
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main class="main">
+
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="breadcrumb">
+                Inicio / Historial / <span>Compras</span>
+            </div>
+
+            <h1 class="page-title">
+                Historial de compras
+            </h1>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <div
+                class="top-icon"
+                onclick="mostrarMensaje('No tienes nuevas notificaciones')">
+                ♧
+            </div>
+
+
+            <div class="top-user">
+
+                <div class="avatar-top">
+                    JD
+                </div>
+
+                <div class="top-user-text">
+
+                    <strong>
+                        Juan David
+                    </strong>
+
+                    <span>
+                        Cuenta personal
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         SUMMARY
+    ================================================== -->
+
+    <section class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Compras realizadas
+            </div>
+
+            <div
+                class="summary-value"
+                id="totalCompras">
+                8
+            </div>
+
+            <div class="summary-extra">
+                Todas tus compras
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Total gastado
+            </div>
+
+            <div class="summary-value gold">
+                $1.245.000
+            </div>
+
+            <div class="summary-extra">
+                En entradas y reservas
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Compras completadas
+            </div>
+
+            <div
+                class="summary-value green"
+                id="completadas">
+                6
+            </div>
+
+            <div class="summary-extra">
+                Pagos confirmados
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Última compra
+            </div>
+
+            <div class="summary-value">
+                28 Sep
+            </div>
+
+            <div class="summary-extra">
+                Festival Sonidos 2026
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         TOOLBAR
+    ================================================== -->
+
+    <section class="toolbar">
+
+
+        <div class="filters">
+
+            <button
+                class="filter-btn active"
+                data-filter="all"
+                onclick="filtrar('all',this)">
+                Todas
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="completed"
+                onclick="filtrar('completed',this)">
+                Completadas
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="pending"
+                onclick="filtrar('pending',this)">
+                Pendientes
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="refunded"
+                onclick="filtrar('refunded',this)">
+                Reembolsadas
+            </button>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            <input
+                id="search"
+                type="text"
+                placeholder="Buscar compra..."
+                oninput="buscar()">
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PURCHASES
+    ================================================== -->
+
+    <section class="purchases-card">
+
+
+        <div class="purchases-header">
+
+            <div>
+
+                <div class="card-title">
+                    Mis compras
+                </div>
+
+                <div class="card-subtitle">
+                    Consulta el detalle de tus pagos y entradas adquiridas.
+                </div>
+
+            </div>
+
+
+            <div
+                class="purchase-count"
+                id="purchaseCount">
+                8 compras
+            </div>
+
+        </div>
+
+
+        <div class="purchase-list" id="purchaseList">
+
+
+            <!-- COMPRA 1 -->
+
+            <div
+                class="purchase"
+                data-status="completed"
+                data-search="festival sonidos 2026 bogota">
+
+                <div class="event-icon">
+                    ♪
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        Festival Sonidos 2026
+                    </div>
+
+                    <div class="event-location">
+                        Bogotá · 18 Oct 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        28 Sep 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $280.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        Tarjeta
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status completed">
+                        Completada
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'Festival Sonidos 2026',
+                        '28 Sep 2026',
+                        '$280.000',
+                        'Tarjeta',
+                        'Completada',
+                        'Bogotá · 18 Oct 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPRA 2 -->
+
+            <div
+                class="purchase"
+                data-status="completed"
+                data-search="concierto bajo las estrellas medellin">
+
+                <div class="event-icon">
+                    ♫
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        Concierto Bajo las Estrellas
+                    </div>
+
+                    <div class="event-location">
+                        Medellín · 05 Nov 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        21 Sep 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $175.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        PSE
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status completed">
+                        Completada
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'Concierto Bajo las Estrellas',
+                        '21 Sep 2026',
+                        '$175.000',
+                        'PSE',
+                        'Completada',
+                        'Medellín · 05 Nov 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPRA 3 -->
+
+            <div
+                class="purchase"
+                data-status="completed"
+                data-search="obra teatro luces escenario cali">
+
+                <div class="event-icon">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        Luces del Escenario
+                    </div>
+
+                    <div class="event-location">
+                        Cali · 22 Oct 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        15 Sep 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $120.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        Tarjeta
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status completed">
+                        Completada
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'Luces del Escenario',
+                        '15 Sep 2026',
+                        '$120.000',
+                        'Tarjeta',
+                        'Completada',
+                        'Cali · 22 Oct 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPRA 4 -->
+
+            <div
+                class="purchase"
+                data-status="pending"
+                data-search="noche de jazz tulua">
+
+                <div class="event-icon">
+                    ♬
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        Noche de Jazz
+                    </div>
+
+                    <div class="event-location">
+                        Tuluá · 12 Nov 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        02 Oct 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $95.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        PSE
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status pending">
+                        Pendiente
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'Noche de Jazz',
+                        '02 Oct 2026',
+                        '$95.000',
+                        'PSE',
+                        'Pendiente',
+                        'Tuluá · 12 Nov 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPRA 5 -->
+
+            <div
+                class="purchase"
+                data-status="refunded"
+                data-search="comedia en vivo risas cali">
+
+                <div class="event-icon">
+                    ★
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        Comedia en Vivo
+                    </div>
+
+                    <div class="event-location">
+                        Cali · 14 Sep 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        28 Ago 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $85.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        Tarjeta
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status refunded">
+                        Reembolsada
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'Comedia en Vivo',
+                        '28 Ago 2026',
+                        '$85.000',
+                        'Tarjeta',
+                        'Reembolsada',
+                        'Cali · 14 Sep 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPRA 6 -->
+
+            <div
+                class="purchase"
+                data-status="completed"
+                data-search="arte contemporaneo museo bogota">
+
+                <div class="event-icon">
+                    ◈
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        Arte Contemporáneo
+                    </div>
+
+                    <div class="event-location">
+                        Bogotá · 30 Oct 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        12 Ago 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $110.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        Tarjeta
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status completed">
+                        Completada
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'Arte Contemporáneo',
+                        '12 Ago 2026',
+                        '$110.000',
+                        'Tarjeta',
+                        'Completada',
+                        'Bogotá · 30 Oct 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPRA 7 -->
+
+            <div
+                class="purchase"
+                data-status="completed"
+                data-search="festival urbano ritmo pereira">
+
+                <div class="event-icon">
+                    ♪
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        Festival Urbano Ritmo
+                    </div>
+
+                    <div class="event-location">
+                        Pereira · 08 Oct 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        05 Ago 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $210.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        PSE
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status completed">
+                        Completada
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'Festival Urbano Ritmo',
+                        '05 Ago 2026',
+                        '$210.000',
+                        'PSE',
+                        'Completada',
+                        'Pereira · 08 Oct 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPRA 8 -->
+
+            <div
+                class="purchase"
+                data-status="completed"
+                data-search="teatro clasico escenario dorado armenia">
+
+                <div class="event-icon">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <div class="event-name">
+                        El Escenario Dorado
+                    </div>
+
+                    <div class="event-location">
+                        Armenia · 25 Sep 2026
+                    </div>
+
+                </div>
+
+
+                <div class="date-column">
+
+                    <div class="purchase-label">
+                        Fecha compra
+                    </div>
+
+                    <div class="purchase-data">
+                        29 Jul 2026
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="purchase-label">
+                        Total
+                    </div>
+
+                    <div class="purchase-data price">
+                        $170.000
+                    </div>
+
+                </div>
+
+
+                <div class="method-column">
+
+                    <div class="purchase-label">
+                        Método
+                    </div>
+
+                    <div class="purchase-data method">
+                        Tarjeta
+                    </div>
+
+                </div>
+
+
+                <div class="status-column">
+
+                    <span class="status completed">
+                        Completada
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="verDetalle(
+                        'El Escenario Dorado',
+                        '29 Jul 2026',
+                        '$170.000',
+                        'Tarjeta',
+                        'Completada',
+                        'Armenia · 25 Sep 2026'
+                    )">
+
+                    Detalles
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div
+            class="empty"
+            id="empty">
+
+            <div class="empty-icon">
+                ◷
+            </div>
+
+            <div class="empty-title">
+                No encontramos compras
+            </div>
+
+            <div class="empty-text">
+                Prueba con otro filtro o término de búsqueda.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="main-footer">
+        EventStage · Plataforma de gestión y reserva de eventos · 2026
+    </footer>
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL DETALLE
+====================================================== -->
+
+<div
+    class="modal"
+    id="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            Detalle de compra
+        </div>
+
+        <div class="modal-subtitle">
+            Información de la transacción seleccionada.
+        </div>
+
+
+        <div class="modal-detail">
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Evento
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailEvent">
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Fecha de compra
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailDate">
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Evento
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailLocation">
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Método de pago
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailMethod">
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Estado
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailStatus">
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Total pagado
+                </span>
+
+                <span
+                    class="detail-value gold"
+                    id="detailPrice">
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="modal-btn modal-close"
+                onclick="cerrarModal()">
+
+                Cerrar
+
+            </button>
+
+
+            <button
+                class="modal-btn modal-download"
+                onclick="descargarComprobante()">
+
+                Descargar comprobante
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+====================================================== -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   FILTRADO
+===================================================== */
+
+let filtroActual = "all";
+
+
+function filtrar(filtro, boton){
+
+    filtroActual = filtro;
+
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+    boton.classList.add("active");
+
+    aplicarFiltros();
+
+}
+
+
+/* =====================================================
+   BÚSQUEDA
+===================================================== */
+
+function buscar(){
+
+    aplicarFiltros();
+
+}
+
+
+/* =====================================================
+   APLICAR FILTROS
+===================================================== */
+
+function aplicarFiltros(){
+
+    const busqueda =
+        document
+            .getElementById("search")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const compras =
+        document.querySelectorAll(".purchase");
+
+    let visibles = 0;
+
+
+    compras.forEach(function(compra){
+
+        const estado =
+            compra.dataset.status;
+
+        const texto =
+            compra.dataset.search;
+
+        const coincideEstado =
+            filtroActual === "all" ||
+            estado === filtroActual;
+
+        const coincideBusqueda =
+            texto.includes(busqueda);
+
+        if(
+            coincideEstado &&
+            coincideBusqueda
+        ){
+
+            compra.style.display = "grid";
+
+            visibles++;
+
+        }else{
+
+            compra.style.display = "none";
+
+        }
+
+    });
+
+
+    document
+        .getElementById("purchaseCount")
+        .textContent =
+        visibles +
+        (visibles === 1 ? " compra" : " compras");
+
+
+    document
+        .getElementById("empty")
+        .style.display =
+        visibles === 0
+            ? "block"
+            : "none";
+
+}
+
+
+/* =====================================================
+   DETALLE
+===================================================== */
+
+function verDetalle(
+    evento,
+    fecha,
+    precio,
+    metodo,
+    estado,
+    ubicacion
+){
+
+    document
+        .getElementById("detailEvent")
+        .textContent = evento;
+
+    document
+        .getElementById("detailDate")
+        .textContent = fecha;
+
+    document
+        .getElementById("detailPrice")
+        .textContent = precio;
+
+    document
+        .getElementById("detailMethod")
+        .textContent = metodo;
+
+    document
+        .getElementById("detailStatus")
+        .textContent = estado;
+
+    document
+        .getElementById("detailLocation")
+        .textContent = ubicacion;
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
+function cerrarModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   DESCARGAR
+===================================================== */
+
+function descargarComprobante(){
+
+    cerrarModal();
+
+    mostrarMensaje(
+        "Comprobante preparado correctamente"
+    );
+
+}
+
+
+/* =====================================================
+   CLICK FUERA DEL MODAL
+===================================================== */
+
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+
+                cerrarModal();
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function mostrarMensaje(texto){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent =
+        texto;
+
+    toast.classList.add("show");
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+    window.toastTimer =
+        setTimeout(function(){
+
+            toast.classList.remove("show");
+
+        },2200);
+
+}
+
+</script>
+
+</body>
+</html>
