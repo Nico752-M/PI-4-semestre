@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EventStage — Mis reservas</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#100e14;
+    --sidebar:#15131b;
+    --panel:#1b1820;
+    --panel2:#201c26;
+    --input:#15131a;
+    --border:#302b36;
+    --border2:#393340;
+
+    --gold:#d7b46a;
+    --gold-light:#e6ca8e;
+
+    --purple:#806895;
+    --purple-dark:#30283a;
+
+    --text:#f2edf4;
+    --text2:#c1bac7;
+    --muted:#817985;
+
+    --green:#67b58a;
+    --red:#a96c6c;
+    --orange:#b89560;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    background:#3d3b3e;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+    width:min(1440px,100%);
+    min-height:100vh;
+    margin:0 auto;
+    background:var(--bg);
+    display:flex;
+    overflow:hidden;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+    width:250px;
+    min-width:250px;
+    min-height:100vh;
+    background:var(--sidebar);
+    border-right:1px solid #25212b;
+    display:flex;
+    flex-direction:column;
+    padding:28px 18px 20px;
+}
+
+.logo{
+    height:45px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 10px;
+    margin-bottom:34px;
+}
+
+.logo-mark{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:linear-gradient(145deg,#e8d29a,#ad8b51);
+    color:#201b20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:17px;
+    box-shadow:0 5px 18px rgba(215,180,106,.12);
+}
+
+.logo-text{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+.logo-text span{
+    color:var(--gold);
+}
+
+.section-title{
+    font-size:9px;
+    color:#69626e;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-weight:700;
+    padding:0 12px;
+    margin-bottom:9px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.menu-item{
+    height:39px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:0 12px;
+    color:#8e8793;
+    font-size:12px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.menu-item .icon{
+    width:16px;
+    text-align:center;
+    color:#77707c;
+    font-size:12px;
+}
+
+.menu-item.active{
+    color:#e9e2ec;
+    background:#2b2632;
+}
+
+.menu-item.active .icon{
+    color:var(--gold);
+}
+
+.menu-item:hover{
+    background:#211d27;
+    color:#eee7ef;
+}
+
+.account-section{
+    margin-top:24px;
+}
+
+.sidebar-user{
+    margin-top:auto;
+    padding:16px 12px 5px;
+    border-top:1px solid #28232d;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar-small,
+.avatar-top{
+    background:linear-gradient(145deg,#82758a,#c7b79a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#27222a;
+    font-weight:800;
+}
+
+.avatar-small{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:10px;
+}
+
+.user-name{
+    font-size:10px;
+    color:#d6cfd9;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+.user-role{
+    font-size:8px;
+    color:#6e6873;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main{
+    flex:1;
+    min-width:0;
+    padding:31px 32px 22px;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(104,77,125,.035),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.topbar{
+    min-height:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.breadcrumb{
+    color:#665f6b;
+    font-size:9px;
+    margin-bottom:5px;
+}
+
+.breadcrumb span{
+    color:#817985;
+}
+
+.page-title{
+    font-size:21px;
+    line-height:1;
+    font-weight:750;
+    letter-spacing:-.6px;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.top-icon{
+    width:31px;
+    height:31px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8d8592;
+    font-size:12px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.top-icon:hover{
+    border-color:#625644;
+    color:var(--gold);
+}
+
+.top-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.avatar-top{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    font-size:9px;
+}
+
+.top-user-text strong{
+    display:block;
+    font-size:9px;
+    color:#ddd6df;
+    margin-bottom:2px;
+}
+
+.top-user-text span{
+    display:block;
+    font-size:7px;
+    color:#68616d;
+}
+
+/* =========================================================
+   PAGE INTRO
+========================================================= */
+
+.page-intro{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:18px;
+}
+
+.intro-title{
+    font-size:13px;
+    font-weight:700;
+    color:#ddd6df;
+    margin-bottom:5px;
+}
+
+.intro-text{
+    font-size:8px;
+    color:#716a76;
+}
+
+.new-reservation{
+    height:31px;
+    padding:0 14px;
+    border-radius:7px;
+    border:1px solid var(--gold);
+    background:var(--gold);
+    color:#29221a;
+    font-size:8px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.new-reservation:hover{
+    background:var(--gold-light);
+}
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.summary-card{
+    min-height:73px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:13px 15px;
+}
+
+.summary-label{
+    color:#706975;
+    font-size:7px;
+    text-transform:uppercase;
+    letter-spacing:.65px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.summary-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.summary-number{
+    font-size:18px;
+    font-weight:750;
+    color:#e7dfe9;
+}
+
+.summary-status{
+    font-size:7px;
+    color:#6e6772;
+}
+
+.summary-status.green{
+    color:var(--green);
+}
+
+.summary-status.gold{
+    color:var(--gold);
+}
+
+.summary-status.red{
+    color:var(--red);
+}
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.filter-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    min-height:54px;
+    padding:10px 13px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.filter-label{
+    color:#69626e;
+    font-size:7px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    font-weight:700;
+    margin-right:3px;
+}
+
+.filter-button{
+    height:28px;
+    padding:0 11px;
+    border-radius:6px;
+    border:1px solid #302b35;
+    background:transparent;
+    color:#807883;
+    font-size:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.filter-button:hover{
+    background:#25212b;
+    color:#d9d1dc;
+}
+
+.filter-button.active{
+    background:#30283a;
+    border-color:#4a3d57;
+    color:var(--gold-light);
+}
+
+/* =========================================================
+   RESERVATIONS
+========================================================= */
+
+.reservations-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.reservations-header{
+    min-height:50px;
+    padding:13px 18px;
+    border-bottom:1px solid #2a2630;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.card-title{
+    font-size:11px;
+    font-weight:750;
+    color:#e3dce6;
+    margin-bottom:4px;
+}
+
+.card-subtitle{
+    font-size:8px;
+    color:#716a76;
+}
+
+.results-count{
+    font-size:7px;
+    color:#68616d;
+}
+
+/* RESERVATION ITEM */
+
+.reservation-list{
+    display:flex;
+    flex-direction:column;
+}
+
+.reservation{
+    min-height:112px;
+    padding:14px 18px;
+    display:grid;
+    grid-template-columns:74px minmax(0,1fr) 155px 115px;
+    gap:15px;
+    align-items:center;
+    border-bottom:1px solid #29252e;
+    transition:.2s;
+}
+
+.reservation:last-child{
+    border-bottom:none;
+}
+
+.reservation:hover{
+    background:#1e1a23;
+}
+
+/* EVENT IMAGE */
+
+.event-image{
+    width:74px;
+    height:74px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            145deg,
+            #3a3042,
+            #18151c
+        );
+    border:1px solid #403747;
+}
+
+.event-image::before{
+    content:"";
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:rgba(215,180,106,.12);
+    top:-18px;
+    right:-15px;
+}
+
+.event-image span{
+    position:relative;
+    font-size:22px;
+    color:var(--gold);
+}
+
+.event-image.concert{
+    background:
+        linear-gradient(
+            145deg,
+            #3c2e43,
+            #17131d
+        );
+}
+
+.event-image.theater{
+    background:
+        linear-gradient(
+            145deg,
+            #3a292e,
+            #171317
+        );
+}
+
+.event-image.festival{
+    background:
+        linear-gradient(
+            145deg,
+            #40362a,
+            #171511
+        );
+}
+
+.event-image.sport{
+    background:
+        linear-gradient(
+            145deg,
+            #28372f,
+            #131915
+        );
+}
+
+.event-category{
+    position:absolute;
+    left:7px;
+    bottom:6px;
+    font-size:6px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    color:#c6bdca;
+    font-weight:700;
+}
+
+/* EVENT INFO */
+
+.event-info{
+    min-width:0;
+}
+
+.event-name{
+    color:#e5dee8;
+    font-size:11px;
+    font-weight:750;
+    margin-bottom:6px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.event-location{
+    color:#756e7a;
+    font-size:7px;
+    margin-bottom:7px;
+}
+
+.event-meta{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.event-meta span{
+    color:#9a929e;
+    font-size:7px;
+}
+
+.event-meta strong{
+    color:#d0c8d3;
+    font-weight:600;
+}
+
+/* DATE */
+
+.event-date{
+    border-left:1px solid #302b35;
+    padding-left:15px;
+}
+
+.date-label{
+    color:#67606c;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    font-size:6px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.date-main{
+    color:#d9d1dc;
+    font-size:9px;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+.date-time{
+    color:#7d7581;
+    font-size:7px;
+}
+
+/* STATUS / ACTION */
+
+.reservation-right{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:9px;
+}
+
+.status{
+    height:21px;
+    padding:0 8px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    font-size:6px;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:800;
+}
+
+.status.confirmed{
+    color:#75c49a;
+    background:rgba(103,181,138,.09);
+    border:1px solid rgba(103,181,138,.18);
+}
+
+.status.reserved{
+    color:#d5b36b;
+    background:rgba(215,180,106,.08);
+    border:1px solid rgba(215,180,106,.16);
+}
+
+.status.cancelled{
+    color:#bb7b83;
+    background:rgba(169,108,108,.08);
+    border:1px solid rgba(169,108,108,.16);
+}
+
+.detail-button{
+    height:27px;
+    padding:0 11px;
+    border-radius:6px;
+    border:1px solid #39323f;
+    background:transparent;
+    color:#9e96a2;
+    font-size:7px;
+    font-weight:650;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.detail-button:hover{
+    color:var(--gold-light);
+    border-color:#5a4b3b;
+    background:#25211d;
+}
+
+/* EMPTY */
+
+.empty-state{
+    display:none;
+    padding:45px 20px;
+    text-align:center;
+}
+
+.empty-icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    margin:0 auto 12px;
+    background:#25212b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#6f6875;
+    font-size:17px;
+}
+
+.empty-title{
+    color:#c8c0cc;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.empty-text{
+    color:#6f6875;
+    font-size:8px;
+}
+
+/* FOOTER */
+
+.main-footer{
+    min-height:30px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color:#514b55;
+    font-size:7px;
+    margin-top:8px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25212b;
+    border:1px solid #49404f;
+    color:#ddd5df;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:11px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:.25s;
+    z-index:999;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:390px;
+    background:#1b1820;
+    border:1px solid #393340;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.modal-title{
+    font-size:15px;
+    font-weight:750;
+    margin-bottom:8px;
+}
+
+.modal-text{
+    color:#8c8490;
+    font-size:10px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+.modal-info{
+    border:1px solid #302b36;
+    background:#15131a;
+    border-radius:7px;
+    padding:11px;
+    margin-bottom:18px;
+}
+
+.modal-info-title{
+    color:#ddd5df;
+    font-size:10px;
+    font-weight:700;
+    margin-bottom:4px;
+}
+
+.modal-info-text{
+    color:#756d79;
+    font-size:8px;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+.modal-close{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:9px;
+    background:transparent;
+    border:1px solid #393340;
+    color:#9b929f;
+}
+
+.modal-primary{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:9px;
+    background:var(--gold);
+    border:1px solid var(--gold);
+    color:#29221a;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .sidebar{
+        width:210px;
+        min-width:210px;
+    }
+
+    .main{
+        padding:25px 20px;
+    }
+
+    .reservation{
+        grid-template-columns:65px minmax(0,1fr) 130px;
+    }
+
+    .reservation-right{
+        grid-column:3;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .app{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+        min-width:0;
+        min-height:auto;
+        padding:15px;
+    }
+
+    .logo{
+        margin-bottom:15px;
+    }
+
+    .menu{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .sidebar-user{
+        margin-top:15px;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .reservation{
+        grid-template-columns:65px 1fr;
+        gap:12px;
+    }
+
+    .event-date{
+        border-left:none;
+        border-top:1px solid #302b35;
+        padding-left:0;
+        padding-top:10px;
+        grid-column:2;
+    }
+
+    .reservation-right{
+        grid-column:2;
+        align-items:flex-start;
+    }
+
+    .page-intro{
+        align-items:flex-start;
+        gap:12px;
+    }
+
+}
+
+@media(max-width:550px){
+
+    .main{
+        padding:20px 12px;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .filter-card{
+        flex-wrap:wrap;
+    }
+
+    .top-user-text{
+        display:none;
+    }
+
+    .page-intro{
+        display:block;
+    }
+
+    .new-reservation{
+        margin-top:12px;
+    }
+
+    .reservation{
+        grid-template-columns:55px 1fr;
+    }
+
+    .event-image{
+        width:55px;
+        height:65px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-mark">E</div>
+
+        <div class="logo-text">
+            Event<span>Stage</span>
+        </div>
+    </div>
+
+    <div class="section-title">
+        Principal
+    </div>
+
+    <nav class="menu">
+
+        <div class="menu-item"
+             onclick="mostrarMensaje('Inicio')">
+
+            <span class="icon">⌂</span>
+            <span>Inicio</span>
+
+        </div>
+
+        <div class="menu-item active">
+
+            <span class="icon">▣</span>
+            <span>Mis reservas</span>
+
+        </div>
+
+        <div class="menu-item"
+             onclick="mostrarMensaje('Eventos favoritos')">
+
+            <span class="icon">♡</span>
+            <span>Eventos favoritos</span>
+
+        </div>
+
+        <div class="menu-item"
+             onclick="mostrarMensaje('Historial')">
+
+            <span class="icon">◷</span>
+            <span>Historial</span>
+
+        </div>
+
+    </nav>
+
+    <div class="account-section">
+
+        <div class="section-title">
+            Cuenta
+        </div>
+
+        <nav class="menu">
+
+            <div class="menu-item"
+                 onclick="mostrarMensaje('Mi perfil')">
+
+                <span class="icon">●</span>
+                <span>Mi perfil</span>
+
+            </div>
+
+            <div class="menu-item"
+                 onclick="mostrarMensaje('Configuración')">
+
+                <span class="icon">⚙</span>
+                <span>Configuración</span>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div class="sidebar-user">
+
+        <div class="avatar-small">
+            JD
+        </div>
+
+        <div>
+
+            <div class="user-name">
+                Juan David
+            </div>
+
+            <div class="user-role">
+                Cliente
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main class="main">
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="breadcrumb">
+                Inicio / <span>Mis reservas</span>
+            </div>
+
+            <h1 class="page-title">
+                Mis reservas
+            </h1>
+
+        </div>
+
+        <div class="top-actions">
+
+            <div
+                class="top-icon"
+                onclick="mostrarMensaje('No tienes nuevas notificaciones')">
+                ♧
+            </div>
+
+            <div class="top-user">
+
+                <div class="avatar-top">
+                    JD
+                </div>
+
+                <div class="top-user-text">
+
+                    <strong>
+                        Juan David
+                    </strong>
+
+                    <span>
+                        Cuenta personal
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- INTRO -->
+
+    <section class="page-intro">
+
+        <div>
+
+            <div class="intro-title">
+                Tus reservas
+            </div>
+
+            <div class="intro-text">
+                Consulta y administra todos los eventos que has reservado.
+            </div>
+
+        </div>
+
+        <button
+            class="new-reservation"
+            onclick="mostrarMensaje('Aquí podrías explorar nuevos eventos')">
+
+            + Explorar eventos
+
+        </button>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Total de reservas
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    4
+                </div>
+
+                <div class="summary-status">
+                    Reservas
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Confirmadas
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    2
+                </div>
+
+                <div class="summary-status green">
+                    Activas
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Próximo evento
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    18
+                </div>
+
+                <div class="summary-status gold">
+                    Oct 2026
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Canceladas
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    1
+                </div>
+
+                <div class="summary-status red">
+                    Histórico
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FILTERS -->
+
+    <section class="filter-card">
+
+        <span class="filter-label">
+            Filtrar
+        </span>
+
+        <button
+            class="filter-button active"
+            data-filter="all"
+            onclick="filtrarReservas('all',this)">
+            Todas
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="confirmed"
+            onclick="filtrarReservas('confirmed',this)">
+            Confirmadas
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="reserved"
+            onclick="filtrarReservas('reserved',this)">
+            Reservadas
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="cancelled"
+            onclick="filtrarReservas('cancelled',this)">
+            Canceladas
+        </button>
+
+    </section>
+
+
+    <!-- RESERVATIONS -->
+
+    <section class="reservations-card">
+
+        <div class="reservations-header">
+
+            <div>
+
+                <div class="card-title">
+                    Historial de reservas
+                </div>
+
+                <div class="card-subtitle">
+                    Eventos asociados a tu cuenta.
+                </div>
+
+            </div>
+
+            <div
+                id="resultsCount"
+                class="results-count">
+                4 reservas
+            </div>
+
+        </div>
+
+
+        <div id="reservationList" class="reservation-list">
+
+
+            <!-- RESERVA 1 -->
+
+            <article
+                class="reservation"
+                data-status="confirmed">
+
+                <div class="event-image concert">
+
+                    <span>♫</span>
+
+                    <div class="event-category">
+                        Concierto
+                    </div>
+
+                </div>
+
+                <div class="event-info">
+
+                    <div class="event-name">
+                        Festival Música Real
+                    </div>
+
+                    <div class="event-location">
+                        ● Auditorio Municipal · Tuluá, Colombia
+                    </div>
+
+                    <div class="event-meta">
+
+                        <span>
+                            Entradas:
+                            <strong>2</strong>
+                        </span>
+
+                        <span>
+                            Reserva:
+                            <strong>#EVT-4821</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="event-date">
+
+                    <div class="date-label">
+                        Fecha del evento
+                    </div>
+
+                    <div class="date-main">
+                        18 Oct 2026
+                    </div>
+
+                    <div class="date-time">
+                        7:30 PM
+                    </div>
+
+                </div>
+
+                <div class="reservation-right">
+
+                    <div class="status confirmed">
+                        ● Confirmada
+                    </div>
+
+                    <button
+                        class="detail-button"
+                        onclick="verDetalle('Festival Música Real')">
+
+                        Ver detalles
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- RESERVA 2 -->
+
+            <article
+                class="reservation"
+                data-status="confirmed">
+
+                <div class="event-image theater">
+
+                    <span>✦</span>
+
+                    <div class="event-category">
+                        Teatro
+                    </div>
+
+                </div>
+
+                <div class="event-info">
+
+                    <div class="event-name">
+                        Noche de Teatro
+                    </div>
+
+                    <div class="event-location">
+                        ● Teatro Municipal · Cali, Colombia
+                    </div>
+
+                    <div class="event-meta">
+
+                        <span>
+                            Entradas:
+                            <strong>3</strong>
+                        </span>
+
+                        <span>
+                            Reserva:
+                            <strong>#EVT-4752</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="event-date">
+
+                    <div class="date-label">
+                        Fecha del evento
+                    </div>
+
+                    <div class="date-main">
+                        25 Oct 2026
+                    </div>
+
+                    <div class="date-time">
+                        6:00 PM
+                    </div>
+
+                </div>
+
+                <div class="reservation-right">
+
+                    <div class="status confirmed">
+                        ● Confirmada
+                    </div>
+
+                    <button
+                        class="detail-button"
+                        onclick="verDetalle('Noche de Teatro')">
+
+                        Ver detalles
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- RESERVA 3 -->
+
+            <article
+                class="reservation"
+                data-status="reserved">
+
+                <div class="event-image festival">
+
+                    <span>✧</span>
+
+                    <div class="event-category">
+                        Festival
+                    </div>
+
+                </div>
+
+                <div class="event-info">
+
+                    <div class="event-name">
+                        Experiencia Café & Arte
+                    </div>
+
+                    <div class="event-location">
+                        ● Centro Cultural · Tuluá, Colombia
+                    </div>
+
+                    <div class="event-meta">
+
+                        <span>
+                            Entradas:
+                            <strong>2</strong>
+                        </span>
+
+                        <span>
+                            Reserva:
+                            <strong>#EVT-4698</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="event-date">
+
+                    <div class="date-label">
+                        Fecha del evento
+                    </div>
+
+                    <div class="date-main">
+                        07 Nov 2026
+                    </div>
+
+                    <div class="date-time">
+                        4:00 PM
+                    </div>
+
+                </div>
+
+                <div class="reservation-right">
+
+                    <div class="status reserved">
+                        ● Reservada
+                    </div>
+
+                    <button
+                        class="detail-button"
+                        onclick="verDetalle('Experiencia Café & Arte')">
+
+                        Ver detalles
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- RESERVA 4 -->
+
+            <article
+                class="reservation"
+                data-status="cancelled">
+
+                <div class="event-image sport">
+
+                    <span>◆</span>
+
+                    <div class="event-category">
+                        Deporte
+                    </div>
+
+                </div>
+
+                <div class="event-info">
+
+                    <div class="event-name">
+                        Gran Final Regional
+                    </div>
+
+                    <div class="event-location">
+                        ● Coliseo Deportivo · Buga, Colombia
+                    </div>
+
+                    <div class="event-meta">
+
+                        <span>
+                            Entradas:
+                            <strong>2</strong>
+                        </span>
+
+                        <span>
+                            Reserva:
+                            <strong>#EVT-4517</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="event-date">
+
+                    <div class="date-label">
+                        Fecha del evento
+                    </div>
+
+                    <div class="date-main">
+                        29 Ago 2026
+                    </div>
+
+                    <div class="date-time">
+                        5:30 PM
+                    </div>
+
+                </div>
+
+                <div class="reservation-right">
+
+                    <div class="status cancelled">
+                        ● Cancelada
+                    </div>
+
+                    <button
+                        class="detail-button"
+                        onclick="verDetalle('Gran Final Regional')">
+
+                        Ver detalles
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div id="emptyState" class="empty-state">
+
+            <div class="empty-icon">
+                ◷
+            </div>
+
+            <div class="empty-title">
+                No hay reservas
+            </div>
+
+            <div class="empty-text">
+                No encontramos reservas con este filtro.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="main-footer">
+        EventStage · Plataforma de gestión y reserva de eventos · 2026
+    </footer>
+
+</main>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast"></div>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            Detalles de la reserva
+        </div>
+
+        <div class="modal-text">
+            Esta es una vista previa de la información asociada a tu reserva.
+        </div>
+
+        <div class="modal-info">
+
+            <div
+                id="modalEvent"
+                class="modal-info-title">
+                Evento
+            </div>
+
+            <div class="modal-info-text">
+                Reserva registrada correctamente en EventStage.
+            </div>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                class="modal-close"
+                onclick="cerrarModal()">
+                Cerrar
+            </button>
+
+            <button
+                class="modal-primary"
+                onclick="mostrarMensaje('Código de reserva copiado')">
+                Copiar reserva
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+function mostrarMensaje(texto){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = texto;
+
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer =
+        setTimeout(function(){
+
+            toast.classList.remove("show");
+
+        },2200);
+
+}
+
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+function filtrarReservas(filtro, boton){
+
+    document
+        .querySelectorAll(".filter-button")
+        .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+    boton.classList.add("active");
+
+    const reservas =
+        document.querySelectorAll(".reservation");
+
+    let visibles = 0;
+
+    reservas.forEach(function(reserva){
+
+        const estado =
+            reserva.dataset.status;
+
+        if(
+            filtro === "all" ||
+            estado === filtro
+        ){
+
+            reserva.style.display = "grid";
+
+            visibles++;
+
+        }else{
+
+            reserva.style.display = "none";
+
+        }
+
+    });
+
+    document
+        .getElementById("resultsCount")
+        .textContent =
+        visibles + (visibles === 1 ? " reserva" : " reservas");
+
+    const empty =
+        document.getElementById("emptyState");
+
+    if(visibles === 0){
+
+        empty.style.display = "block";
+
+    }else{
+
+        empty.style.display = "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   DETALLES
+========================================================= */
+
+function verDetalle(evento){
+
+    document
+        .getElementById("modalEvent")
+        .textContent = evento;
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================================
+   CERRAR MODAL
+========================================================= */
+
+function cerrarModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   CLICK FUERA DEL MODAL
+========================================================= */
+
+document
+    .getElementById("modal")
+    .addEventListener("click",function(e){
+
+        if(e.target === this){
+
+            cerrarModal();
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
