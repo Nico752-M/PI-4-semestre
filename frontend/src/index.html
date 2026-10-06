@@ -416,5 +416,16 @@
     document.getElementById('btn-perfil').href = 'mis-eventos.html';
   }
   </script>
+
+  <script>
+  document.querySelector('.auth-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const tipo = document.querySelector('input[name="tipo-cuenta"]:checked').value;
+    localStorage.setItem('tipoCuenta', tipo);
+    location.href = tipo === 'agente' ? 'mis-eventos.html' : 'index.html';
+  });
+  </script>
+
+  <script src="cambiar-cuenta.js"></script>
 </body>
 </html>
