@@ -84,5 +84,13 @@
       </div>
     </section>
   </main>
+
+<script>
+document.querySelector('.auth-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const tipo = localStorage.getItem('tipoCuenta') || 'cliente';
+  location.href = tipo === 'agente' ? 'mis-eventos.html' : 'index.html';
+});
+</script>
 </body>
 </html>

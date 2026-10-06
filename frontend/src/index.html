@@ -30,7 +30,7 @@
         <a href="#" class="link-muted">Visita: Invitado</a>
         <a href="login.html" class="btn btn-outline">Iniciar sesión</a>
         <a href="registro.html" class="btn btn-gold">Regístrate</a>
-        <a href="perfil.html" class="profile-pill">
+        <a href="perfil.html" id="btn-perfil" class="profile-pill">
           <span class="avatar">MJ</span>
           <span>María José</span>
         </a>
@@ -410,5 +410,11 @@
       <p>Hecho en Colombia</p>
     </div>
   </footer>
+
+  <script>
+  if (localStorage.getItem('tipoCuenta') === 'agente') {
+    document.getElementById('btn-perfil').href = 'mis-eventos.html';
+  }
+  </script>
 </body>
 </html>
