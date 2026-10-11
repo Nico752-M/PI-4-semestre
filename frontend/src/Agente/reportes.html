@@ -6,9 +6,40 @@
     <title>EventStage - Reportes y estadísticas</title>
     <link rel="stylesheet" href="agente.css">
 </head>
-<body class="dark-theme">
-    <div class="app-container">
-        <!-- Main Content -->
+<body class="dark-theme agent-analytics">
+    <div class="app-container agent-app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">E</div>
+                <div>
+                    <h2>Event<span>Stage</span></h2>
+                    <p>GESTIÓN DE EVENTOS</p>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="avatar">AP</div>
+                <div>
+                    <strong>Aurora<br>Producciones</strong>
+                    <small>Agente /<br>Organizador</small>
+                </div>
+            </div>
+
+            <nav aria-label="Navegación del agente">
+                <p class="nav-title">ADMINISTRACIÓN</p>
+                <a href="#">⌂ <span>Dashboard</span></a>
+                <a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
+                <a href="crear-evento.html">＋ <span>Crear evento</span></a>
+                <a href="reservas.html">▣ <span>Reservas</span></a>
+                <a href="#">♙ <span>Asistentes</span></a>
+                <a href="reportes.html" class="active">◒ <span>Reportes</span></a>
+                <a href="#">▥ <span>Estadísticas</span></a>
+                <a href="#">⚙ <span>Configuración</span></a>
+                <p class="nav-title">SOPORTE</p>
+                <a href="#">? <span>Centro de ayuda</span></a>
+            </nav>
+        </aside>
+
         <main class="main-content">
             <header class="top-header">
                 <span class="breadcrumb">Panel / <strong>Reportes y estadísticas</strong></span>
@@ -26,9 +57,31 @@
 
                 <!-- Filters Bar -->
                 <div class="filters-bar">
-                    <div class="filter-input"></div>
-                    <div class="filter-input"></div>
-                    <div class="filter-input"></div>
+                    <label class="filter-input">
+                        <span>Evento</span>
+                        <select aria-label="Filtrar por evento">
+                            <option>Todos los eventos</option>
+                            <option>Festival Aurora 2026</option>
+                            <option>ExpoArte Colombia</option>
+                        </select>
+                    </label>
+                    <label class="filter-input">
+                        <span>Período</span>
+                        <select aria-label="Filtrar por período">
+                            <option>Últimos 30 días</option>
+                            <option>Este mes</option>
+                            <option>Este año</option>
+                        </select>
+                    </label>
+                    <label class="filter-input">
+                        <span>Categoría</span>
+                        <select aria-label="Filtrar por categoría">
+                            <option>Todas las categorías</option>
+                            <option>Música</option>
+                            <option>Cultura</option>
+                            <option>Entretenimiento</option>
+                        </select>
+                    </label>
                     <button class="btn-filter">Aplicar filtros</button>
                 </div>
 
@@ -101,36 +154,38 @@
                             <span class="card-sub">Comparación de ventas y capacidad.</span>
                             <button class="btn-secondary sm">Ver todos</button>
                         </div>
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>EVENTO</th>
-                                    <th>VENDIDAS</th>
-                                    <th>CAPACIDAD</th>
-                                    <th>INGRESOS</th>
-                                    <th>OCUPACIÓN</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>01</td>
-                                    <td><strong>Festival Aurora 2026</strong><br><small>Tuluá - Música</small></td>
-                                    <td>2.643</td>
-                                    <td>3.750</td>
-                                    <td>$216,4M</td>
-                                    <td><div class="progress-bar"><span style="width: 87%"></span></div> 87%</td>
-                                </tr>
-                                <tr>
-                                    <td>02</td>
-                                    <td><strong>ExpoArte Colombia</strong><br><small>Navalís - Arte</small></td>
-                                    <td>1.120</td>
-                                    <td>1.500</td>
-                                    <td>$94,8M</td>
-                                    <td><div class="progress-bar"><span style="width: 75%"></span></div> 75%</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-scroll">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>EVENTO</th>
+                                        <th>VENDIDAS</th>
+                                        <th>CAPACIDAD</th>
+                                        <th>INGRESOS</th>
+                                        <th>OCUPACIÓN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td><strong>Festival Aurora 2026</strong><br><small>Tuluá - Música</small></td>
+                                        <td>2.643</td>
+                                        <td>3.750</td>
+                                        <td>$216,4M</td>
+                                        <td><div class="progress-bar"><span style="width: 87%"></span></div> 87%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td><strong>ExpoArte Colombia</strong><br><small>Navalís - Arte</small></td>
+                                        <td>1.120</td>
+                                        <td>1.500</td>
+                                        <td>$94,8M</td>
+                                        <td><div class="progress-bar"><span style="width: 75%"></span></div> 75%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="card indicators-card">
