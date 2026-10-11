@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventStage - Reservas y asistentes</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <span class="breadcrumb">Panel / <strong>Reservas y asistentes</strong></span>
+                <div class="header-actions">
+                    <button class="btn-secondary">Importar</button>
+                    <button class="btn-secondary">Exportar CSV</button>
+                    <button class="btn-primary accent">+ Registrar asistente</button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="section-tag">CONTROL DE ASISTENTES</div>
+                <h1>Reservas y asistentes</h1>
+                <p class="subtitle">Consulta reservas, pagos, entradas y registros de asistencia de todos tus eventos.</p>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid four-cols">
+                    <div class="card metric-card">
+                        <span class="metric-label">Reservas totales</span>
+                        <h2 class="metric-value">5.284</h2>
+                        <span class="metric-trend positive">↑ 14,2% frente al mes anterior</span>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="metric-label">Confirmados</span>
+                        <h2 class="metric-value">4.716</h2>
+                        <span class="metric-trend muted">89,2% del total</span>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="metric-label">Pendientes</span>
+                        <h2 class="metric-value">442</h2>
+                        <span class="metric-trend warning">8,4% requieren acción</span>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="metric-label">Check-ins</span>
+                        <h2 class="metric-value">2.984</h2>
+                        <span class="metric-trend muted">64,4% de asistencia registrada</span>
+                    </div>
+                </div>
+
+                <!-- Table Section -->
+                <div class="card table-container-card">
+                    <div class="table-header-bar">
+                        <h3>Reservas registradas <small>5.284 resultados</small></h3>
+                        <button class="btn-secondary sm">Seleccionar columnas</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ASISTENTE</th>
+                                <th>EVENTO</th>
+                                <th>ENTRADA</th>
+                                <th>CANT.</th>
+                                <th>VALOR</th>
+                                <th>PAGO</th>
+                                <th>RESERVA</th>
+                                <th>CHECK-IN</th>
+                                <th>FECHA</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <span class="avatar-badge">JD</span>
+                                        <div><strong>Juan David López</strong><br><small>juan.d@email.com</small></div>
+                                    </div>
+                                </td>
+                                <td>Festival Aurora</td>
+                                <td>VIP</td>
+                                <td>2</td>
+                                <td>$180.000</td>
+                                <td><span class="badge success">Pagado</span></td>
+                                <td><span class="badge confirmed">Confirmada</span></td>
+                                <td><span class="badge checkin-btn">CHECK-IN</span></td>
+                                <td>17 Sep</td>
+                                <td><button class="icon-btn">...</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">...</button>
+                        <button class="page-btn">›</button>
+                    </div>
+                </div>
+
+                <!-- Bottom Grid -->
+                <div class="analytics-row">
+                    <div class="card detail-card">
+                        <h3>Detalle del asistente seleccionado</h3>
+                        <p class="card-sub">Información completa de la reserva más reciente.</p>
+                        <div class="detail-grid">
+                            <div class="input-box-mock"><span>NOMBRE</span><strong>Juan David López</strong></div>
+                            <div class="input-box-mock"><span>CORREO</span><strong>juan.d@email.com</strong></div>
+                        </div>
+                        <div class="detail-actions">
+                            <button class="btn-secondary">Ver reserva completa</button>
+                            <button class="btn-secondary">Enviar comprobante</button>
+                            <button class="btn-danger-outline">Cancelar reserva</button>
+                        </div>
+                    </div>
+
+                    <div class="card checkin-control-card">
+                        <h3>Control de check-in</h3>
+                        <p class="card-sub">Valida rápidamente una entrada antes del acceso.</p>
+                        <div class="scanner-box">
+                            <span class="scanner-sub">ÚLTIMO CÓDIGO ESCANEADO</span>
+                            <h2 class="scanner-code">EVT-AU7-2948</h2>
+                            <p><small>Juan David López - 2 entradas VIP<br>✓ Entrada válida - Acceso aprobado</small></p>
+                            <button class="btn-primary full">Escanear QR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
