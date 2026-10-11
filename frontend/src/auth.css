@@ -204,6 +204,66 @@ body.auth-page .primary-button:hover{
   background: var(--gold-hover);
 }
 
+body.auth-page .demo-login{
+  margin-top:22px;
+  padding:16px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:rgba(43,33,72,.55);
+}
+
+body.auth-page .demo-login h3{
+  margin:0 0 4px;
+  font-size:.95rem;
+}
+
+body.auth-page .demo-login>p{
+  margin:0 0 12px;
+  color:var(--muted);
+  font-size:.78rem;
+}
+
+body.auth-page .demo-login-options{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+
+body.auth-page .demo-login-options button{
+  min-height:60px;
+  display:grid;
+  align-content:center;
+  gap:3px;
+  padding:8px 5px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--bg);
+  color:var(--text);
+  font:inherit;
+  cursor:pointer;
+}
+
+body.auth-page .demo-login-options button:hover,
+body.auth-page .demo-login-options button:focus-visible{
+  border-color:var(--gold);
+  background:var(--surface);
+}
+
+body.auth-page .demo-login-options strong{
+  font-size:.8rem;
+}
+
+body.auth-page .demo-login-options small,
+body.auth-page .demo-login-note{
+  color:var(--muted);
+  font-size:.65rem;
+}
+
+body.auth-page .demo-login-note{
+  display:block;
+  margin-top:10px;
+}
+
 body.auth-page .separator{
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -332,6 +392,10 @@ body.auth-page .sr-only{
 
   body.auth-page .social-buttons, body.auth-page .account-type, body.auth-page .two-columns{
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  body.auth-page .demo-login-options{
+    grid-template-columns:repeat(3,minmax(0,1fr));
   }
 }
 
