@@ -1,5 +1,7 @@
 (function () {
   const tipo = localStorage.getItem('tipoCuenta') || 'cliente';
+  if (tipo === 'admin') return;
+
   const nuevo = tipo === 'agente' ? 'cliente' : 'agente';
 
   const btn = document.createElement('button');

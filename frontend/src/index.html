@@ -412,7 +412,10 @@
   </footer>
 
   <script>
-  if (localStorage.getItem('tipoCuenta') === 'agente') {
+  const tipoCuenta = localStorage.getItem('tipoCuenta');
+  if (tipoCuenta === 'admin') {
+    document.getElementById('btn-perfil').href = 'admin/dashboard.html';
+  } else if (tipoCuenta === 'agente') {
     document.getElementById('btn-perfil').href = 'Agente/dashboard.html';
   }
   </script>
