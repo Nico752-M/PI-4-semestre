@@ -1,0 +1,71 @@
+.demo-account-switcher{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  max-width:calc(100vw - 32px);
+  padding:10px 12px;
+  border:1px solid #55445f;
+  border-radius:12px;
+  background:#17111f;
+  box-shadow:0 8px 28px #0006;
+  color:#f5eff8;
+  font:600 13px/1.3 Inter,"Segoe UI",Arial,sans-serif;
+}
+
+.demo-account-switcher label{
+  color:#d8cedd;
+}
+
+.demo-account-switcher select{
+  min-height:36px;
+  max-width:190px;
+  padding:6px 28px 6px 9px;
+  border:1px solid #51415b;
+  border-radius:7px;
+  background:#241b2d;
+  color:#f5eff8;
+  font:inherit;
+}
+
+.demo-account-switcher button{
+  min-height:36px;
+  padding:7px 12px;
+  border:1px solid #e2ad57;
+  border-radius:7px;
+  background:#e2ad57;
+  color:#201821;
+  font:700 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
+  cursor:pointer;
+}
+
+.demo-account-switcher :focus-visible{
+  outline:3px solid #f3d186;
+  outline-offset:2px;
+}
+
+@media(max-width:480px){
+  .demo-account-switcher{
+    right:10px;
+    bottom:10px;
+    left:10px;
+    justify-content:space-between;
+    max-width:none;
+    gap:6px;
+    padding:8px;
+  }
+
+  .demo-account-switcher label{
+    width:100%;
+  }
+
+  .demo-account-switcher select{
+    flex:1;
+    min-width:0;
+    max-width:none;
+  }
+}

@@ -6,8 +6,9 @@
   <meta name="description" content="Inicio de sesión de EventStage">
   <title>Iniciar sesión | EventStage</title>
   <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="cambiar-cuenta.css">
 </head>
-<body class="auth-page">
+<body class="auth-page login-page">
   <main class="auth-layout">
     <aside class="auth-info">
       <a class="auth-brand" href="index.html">
@@ -69,6 +70,17 @@
           <button type="submit" class="primary-button">Iniciar sesión</button>
         </form>
 
+        <section class="demo-login" aria-labelledby="demo-login-title">
+          <h3 id="demo-login-title">Acceso rápido de demostración</h3>
+          <p>Entra a cada perfil sin ingresar credenciales.</p>
+          <div class="demo-login-options">
+            <button type="button" data-demo-account="cliente"><strong>Cliente</strong><small>Explorar eventos</small></button>
+            <button type="button" data-demo-account="agente"><strong>Agente</strong><small>Gestionar eventos</small></button>
+            <button type="button" data-demo-account="admin"><strong>Admin</strong><small>Administrar plataforma</small></button>
+          </div>
+          <small class="demo-login-note">Modo de demostración; no valida una cuenta real.</small>
+        </section>
+
         <div class="separator">
           <span></span><p>O CONTINÚA CON</p><span></span>
         </div>
@@ -85,17 +97,6 @@
     </section>
   </main>
 
-<script>
-document.querySelector('.auth-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const tipo = localStorage.getItem('tipoCuenta') || 'cliente';
-  const destinos = {
-    admin: 'admin/dashboard.html',
-    agente: 'Agente/dashboard.html',
-    cliente: 'index.html'
-  };
-  location.href = destinos[tipo] || destinos.cliente;
-});
-</script>
+<script src="cambiar-cuenta.js"></script>
 </body>
 </html>
