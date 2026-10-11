@@ -1095,13 +1095,13 @@ body.perfil-page, body.perfil-page{
 }
 
 body.perfil-page{
-    background:#3d3b3e;
+    background:var(--bg);
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
     color:var(--text);
 }
 
 /* APP */body.perfil-page .app{
-    width:min(1440px,100%);
+    width:100%;
     min-height:100vh;
     margin:0 auto;
     background:var(--bg);
@@ -1933,7 +1933,7 @@ body.misreservas-page, body.misreservas-page{
 }
 
 body.misreservas-page{
-    background:#3d3b3e;
+    background:var(--bg);
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
     color:var(--text);
 }
@@ -1941,7 +1941,7 @@ body.misreservas-page{
 /* =========================================================
    APP
 ========================================================= */body.misreservas-page .app{
-    width:min(1440px,100%);
+    width:100%;
     min-height:100vh;
     margin:0 auto;
     background:var(--bg);
@@ -2872,7 +2872,7 @@ body.historialdecompras-page, body.historialdecompras-page{
 }
 
 body.historialdecompras-page{
-    background:#3d3b3e;
+    background:var(--bg);
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
     color:var(--text);
 }
@@ -2888,7 +2888,7 @@ body.historialdecompras-page button{
 /* =====================================================
    APP
 ===================================================== */body.historialdecompras-page .app{
-    width:min(1440px,100%);
+    width:100%;
     min-height:100vh;
     margin:0 auto;
     background:var(--bg);
@@ -3937,4 +3937,420 @@ body.historialdecompras-page .details-btn,
 body.historialdecompras-page .search-box,
 body.historialdecompras-page .modal-close{
     border:0 !important;
+}
+
+body.perfil-page,
+body.misreservas-page,
+body.historialdecompras-page{
+    --bg:#100d16;
+    --sidebar:#15101f;
+    --panel:#191420;
+    --input:#15101f;
+    --border:#30283d;
+}
+
+body.perfil-page .main,
+body.misreservas-page .main{
+    background:var(--bg);
+}
+
+body.perfil-page .profile-hero{
+    background:var(--panel);
+}
+
+body.perfil-page .menu-item.active,
+body.misreservas-page .menu-item.active,
+body.historialdecompras-page .menu-item.active{
+    background:#2b2435;
+}
+
+body.perfil-page .menu-item:hover,
+body.misreservas-page .menu-item:hover,
+body.historialdecompras-page .menu-item:hover{
+    background:#211a2b;
+}
+
+body.historialdecompras-page .purchase:hover{
+    background:#211a2b;
+}
+
+body.perfil-page .sidebar,
+body.misreservas-page .sidebar,
+body.historialdecompras-page .sidebar{
+    position:sticky;
+    top:0;
+    width:250px;
+    min-width:250px;
+    height:100vh;
+    min-height:100vh;
+    flex:0 0 250px;
+    align-self:flex-start;
+    padding:26px 18px 20px;
+    border-right:1px solid transparent !important;
+}
+
+body.perfil-page .app,
+body.misreservas-page .app,
+body.historialdecompras-page .app{
+    overflow:visible;
+}
+
+body.perfil-page .logo,
+body.misreservas-page .logo,
+body.historialdecompras-page .logo{
+    height:auto;
+    margin-bottom:0;
+    padding:0 8px 23px;
+}
+
+body.perfil-page .logo-mark,
+body.misreservas-page .logo-mark,
+body.historialdecompras-page .logo-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+}
+
+body.perfil-page .logo-text,
+body.misreservas-page .logo-text,
+body.historialdecompras-page .logo-text{
+    font-size:19px;
+}
+
+body.perfil-page .section-title,
+body.misreservas-page .section-title,
+body.historialdecompras-page .section-title{
+    margin:23px 12px 9px;
+    font-size:13px;
+    letter-spacing:1.3px;
+}
+
+body.perfil-page .menu-item,
+body.misreservas-page .menu-item,
+body.historialdecompras-page .menu-item{
+    height:auto;
+    min-height:44px;
+    font-size:16px;
+    line-height:normal;
+}
+
+body.perfil-page .menu-item .icon,
+body.misreservas-page .menu-item .icon,
+body.historialdecompras-page .menu-item .icon{
+    width:17px;
+}
+
+body.perfil-page .account-section,
+body.misreservas-page .account-section,
+body.historialdecompras-page .account-section{
+    margin-top:0;
+}
+
+body.perfil-page .sidebar-user,
+body.misreservas-page .sidebar-user,
+body.historialdecompras-page .sidebar-user{
+    padding:16px 8px 0;
+    border-top:0;
+}
+
+body.perfil-page .avatar-small,
+body.misreservas-page .avatar-small,
+body.historialdecompras-page .avatar-small{
+    width:36px;
+    height:36px;
+}
+
+body.perfil-page .main,
+body.misreservas-page .main,
+body.historialdecompras-page .main{
+    flex:1;
+    min-width:0;
+    padding:0 42px 64px;
+}
+
+body.perfil-page .topbar,
+body.misreservas-page .topbar,
+body.historialdecompras-page .topbar{
+    height:76px;
+    min-height:76px;
+    margin:0 -42px 40px;
+    padding:0 42px;
+}
+
+body.perfil-page .page-title,
+body.misreservas-page .page-title,
+body.historialdecompras-page .page-title{
+    font-size:34px;
+    line-height:1.2;
+    letter-spacing:0;
+}
+
+body.perfil-page .topbar,
+body.misreservas-page .topbar,
+body.historialdecompras-page .topbar,
+body.perfil-page .main,
+body.misreservas-page .main,
+body.historialdecompras-page .main{
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
+body.perfil-page .profile-hero,
+body.perfil-page .card,
+body.misreservas-page .summary-card,
+body.misreservas-page .filter-card,
+body.misreservas-page .reservations-card,
+body.historialdecompras-page .summary-card,
+body.historialdecompras-page .toolbar,
+body.historialdecompras-page .purchases-card{
+    border-radius:14px;
+}
+
+body.perfil-page .profile-hero{
+    min-height:112px;
+    padding:20px 24px;
+    margin-bottom:18px;
+}
+
+body.perfil-page .card-header,
+body.misreservas-page .reservations-header,
+body.historialdecompras-page .purchases-header{
+    padding:20px 24px;
+}
+
+body.perfil-page .personal-body,
+body.perfil-page .security-body,
+body.perfil-page .preference-list,
+body.perfil-page .account-body,
+body.perfil-page .danger-header,
+body.perfil-page .danger-body{
+    padding-right:24px;
+    padding-left:24px;
+}
+
+body.perfil-page .card-title,
+body.misreservas-page .card-title,
+body.historialdecompras-page .card-title{
+    font-size:20px;
+    line-height:1.3;
+}
+
+body.perfil-page .card-subtitle,
+body.misreservas-page .card-subtitle,
+body.historialdecompras-page .card-subtitle{
+    font-size:15px;
+    line-height:1.5;
+}
+
+body.perfil-page .profile-name{
+    font-size:18px;
+}
+
+body.perfil-page .profile-email,
+body.perfil-page .profile-badge,
+body.perfil-page .security-desc,
+body.perfil-page .preference-desc,
+body.perfil-page .account-value,
+body.perfil-page .danger-subtitle,
+body.misreservas-page .intro-text,
+body.misreservas-page .event-location,
+body.misreservas-page .event-meta span,
+body.misreservas-page .date-time,
+body.historialdecompras-page .summary-extra,
+body.historialdecompras-page .event-location,
+body.historialdecompras-page .purchase-data{
+    font-size:14px;
+    line-height:1.5;
+}
+
+body.perfil-page .security-name,
+body.perfil-page .preference-title,
+body.perfil-page .danger-title,
+body.misreservas-page .intro-title,
+body.misreservas-page .event-name,
+body.misreservas-page .date-main,
+body.historialdecompras-page .event-name{
+    font-size:16px;
+    line-height:1.4;
+}
+
+body.perfil-page .account-label,
+body.misreservas-page .summary-label,
+body.misreservas-page .filter-label,
+body.misreservas-page .date-label,
+body.misreservas-page .event-category,
+body.historialdecompras-page .summary-label,
+body.historialdecompras-page .purchase-label{
+    font-size:12px;
+}
+
+body.perfil-page .security-row,
+body.perfil-page .preference,
+body.perfil-page .account-row{
+    min-height:52px;
+    height:auto;
+}
+
+body.misreservas-page .summary-card,
+body.historialdecompras-page .summary-card{
+    min-height:86px;
+    padding:16px;
+}
+
+body.misreservas-page .summary-number,
+body.historialdecompras-page .summary-value{
+    font-size:20px;
+}
+
+body.misreservas-page .reservation{
+    min-height:120px;
+    padding:16px 24px;
+}
+
+body.historialdecompras-page .purchase{
+    min-height:92px;
+    padding:16px 24px;
+}
+
+body.perfil-page .top-icon,
+body.misreservas-page .top-icon,
+body.historialdecompras-page .top-icon{
+    width:36px;
+    height:36px;
+}
+
+body.perfil-page .edit-button,
+body.perfil-page .cancel-btn,
+body.perfil-page .save-btn,
+body.perfil-page .delete-btn,
+body.misreservas-page .new-reservation,
+body.misreservas-page .filter-button,
+body.misreservas-page .detail-button,
+body.historialdecompras-page .filter-btn,
+body.historialdecompras-page .details-btn{
+    min-height:44px;
+    height:auto;
+    padding:10px 16px;
+    border-radius:9px;
+    font-size:15px;
+    line-height:1.2;
+}
+
+body.perfil-page .edit-button,
+body.perfil-page .cancel-btn,
+body.perfil-page .save-btn,
+body.perfil-page .delete-btn,
+body.misreservas-page .new-reservation,
+body.misreservas-page .filter-button,
+body.misreservas-page .detail-button,
+body.historialdecompras-page .filter-btn,
+body.historialdecompras-page .details-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+body.misreservas-page .filter-button,
+body.historialdecompras-page .filter-btn{
+    min-height:40px;
+    padding:8px 14px;
+}
+
+body.historialdecompras-page .search-box{
+    height:44px;
+    font-size:14px;
+}
+
+body.historialdecompras-page .search-box input{
+    font-size:14px;
+}
+
+body.historialdecompras-page .purchase-label{
+    letter-spacing:.4px;
+}
+
+body.historialdecompras-page .status,
+body.misreservas-page .status{
+    min-height:26px;
+    height:auto;
+    padding:4px 10px;
+    font-size:12px;
+}
+
+@media(max-width:760px){
+    body.perfil-page .main,
+    body.misreservas-page .main,
+    body.historialdecompras-page .main{
+        padding:68px 22px 48px;
+    }
+
+    body.perfil-page .topbar,
+    body.misreservas-page .topbar,
+    body.historialdecompras-page .topbar{
+        display:grid;
+        grid-template-columns:minmax(0,1fr) auto;
+        grid-template-rows:auto auto;
+        align-content:center;
+        height:66px;
+        min-height:66px;
+        margin:0 0 28px;
+        padding:0;
+    }
+
+    body.perfil-page .topbar > div:first-child,
+    body.misreservas-page .topbar > div:first-child,
+    body.historialdecompras-page .topbar > div:first-child{
+        display:contents;
+    }
+
+    body.perfil-page .breadcrumb,
+    body.misreservas-page .breadcrumb,
+    body.historialdecompras-page .breadcrumb{
+        grid-column:1;
+        grid-row:1;
+    }
+
+    body.perfil-page .page-title,
+    body.misreservas-page .page-title,
+    body.historialdecompras-page .page-title{
+        grid-column:1;
+        grid-row:2;
+        font-size:30px;
+    }
+
+    body.perfil-page .top-actions,
+    body.misreservas-page .top-actions,
+    body.historialdecompras-page .top-actions{
+        grid-column:2;
+        grid-row:1 / span 2;
+        align-self:start;
+    }
+
+    body.perfil-page .top-icon,
+    body.misreservas-page .top-icon,
+    body.historialdecompras-page .top-icon{
+        display:none;
+    }
+}
+
+@media(max-width:520px){
+    body.perfil-page .main,
+    body.misreservas-page .main,
+    body.historialdecompras-page .main{
+        padding:68px 16px 40px;
+    }
+
+    body.perfil-page .profile-hero{
+        padding:18px;
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    body.perfil-page .edit-button{
+        align-self:flex-start;
+    }
+
+    body.misreservas-page .reservation,
+    body.historialdecompras-page .purchase{
+        padding:14px 16px;
+    }
 }
