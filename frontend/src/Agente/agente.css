@@ -1152,8 +1152,8 @@ body.agent-analytics .btn-primary.full{width:100%}
 body.agent-page{
     color:#f6f1f8;
     font-family:Inter,"Segoe UI",Arial,sans-serif;
-    font-size:15px;
-    line-height:1.5;
+    font-size:16px;
+    line-height:1.55;
 }
 
 body.agent-page,
@@ -2190,4 +2190,120 @@ body.agent-page .btn-filter{
     body.agent-page .workspace-content{
         padding:24px 16px 40px;
     }
+}
+
+body.agent-page .sidebar nav a{font-size:16px}
+body.agent-page a{
+    color:#f6f1f8;
+    text-decoration:none;
+}
+body.agent-page .sidebar .brand p,
+body.agent-page .sidebar .nav-title{font-size:13px}
+body.agent-create .profile-card strong,
+body.agent-events .profile-card strong{font-size:16px}
+body.agent-create .profile-card small,
+body.agent-events .profile-card small{font-size:14px}
+body.agent-events tbody td,
+body.agent-events .stat-card>div,
+body.agent-events .metric-trend,
+body.agent-events .panel p{font-size:15px}
+body.agent-events .panel-head small{font-size:14px}
+body.agent-page .stat-card>span,
+body.agent-page .metric-card .metric-label,
+body.agent-page .stat-card>div,
+body.agent-page .metric-trend,
+body.agent-page .section-help,
+body.agent-page .panel p{font-size:15px}
+body.agent-page .btn,
+body.agent-page .btn-primary,
+body.agent-page .btn-secondary,
+body.agent-page .btn-filter{font-size:15px}
+
+body.workspace-page{
+    font-size:16px;
+    line-height:1.55;
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+body.workspace-page .sidebar .brand h2{font-size:23px}
+body.workspace-page .sidebar .brand p{font-size:13px}
+body.workspace-page .sidebar .profile-card strong{font-size:16px}
+body.workspace-page .sidebar .profile-card small{font-size:14px}
+body.workspace-page .sidebar nav .nav-title{font-size:13px}
+body.workspace-page .sidebar nav a{font-size:16px}
+body.workspace-page .workspace-topbar p,
+body.workspace-page .workspace-heading p,
+body.workspace-page .workspace-card-heading p,
+body.workspace-page .workspace-list small,
+body.workspace-page .workspace-quick-links small,
+body.workspace-page .workspace-footnote{font-size:15px}
+body.workspace-page .workspace-card-heading h2,
+body.workspace-page .help-contact h2{font-size:20px}
+body.workspace-page .metric>span,
+body.workspace-page .metric>small,
+body.workspace-page .workspace-list strong,
+body.workspace-page .workspace-quick-links strong{font-size:16px}
+body.workspace-page .workspace-table th{font-size:14px}
+body.workspace-page .workspace-table td{font-size:15px}
+body.workspace-page .workspace-table td small,
+body.workspace-page .workspace-preferences small{font-size:14px}
+body.workspace-page .workspace-main a{
+    color:#f6f1f8;
+    text-decoration:none;
+}
+body.workspace-page .workspace-card,
+body.workspace-page .workspace-quick-links a{
+    border-color:transparent;
+}
+body.workspace-page .workspace-quick-links a:hover{
+    border-color:transparent;
+    background:#211a2c;
+}
+body.workspace-page .workspace-topbar,
+body.workspace-page .brand{
+    border-bottom-color:transparent;
+}
+
+body.workspace-page .sidebar{
+    border-right-color:transparent;
+    border-bottom-color:transparent;
+}
+body.workspace-page .workspace-list article,
+body.workspace-page .workspace-table th,
+body.workspace-page .workspace-table td,
+body.workspace-page .workspace-preferences label,
+body.workspace-page .workspace-faq details{
+    border-color:transparent;
+}
+
+body.agent-create .sidebar,
+body.agent-events .sidebar,
+body.agent-analytics .sidebar,
+body.agent-create .brand,
+body.agent-events .brand,
+body.agent-analytics .brand,
+body.agent-create .profile-card,
+body.agent-events .profile-card,
+body.agent-analytics .profile-card,
+body.agent-create .topbar,
+body.agent-events .topbar,
+body.agent-analytics .top-header,
+body.agent-create .steps,
+body.agent-create .card,
+body.agent-create .ticket-row,
+body.agent-create .program-row,
+body.agent-create .switch-row,
+body.agent-create .upload,
+body.agent-events .stat-card,
+body.agent-events .filters,
+body.agent-events .panel,
+body.agent-events .panel-head,
+body.agent-events thead th,
+body.agent-events tbody td,
+body.agent-analytics .filters-bar,
+body.agent-analytics .card,
+body.agent-analytics .data-table th,
+body.agent-analytics .data-table td,
+body.agent-analytics .indicator-item,
+body.agent-analytics .report-row{
+    border-color:transparent;
 }

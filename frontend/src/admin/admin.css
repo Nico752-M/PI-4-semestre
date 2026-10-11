@@ -23,7 +23,8 @@ body.admin-page .nav-title,
 body.admin-page nav a.active:first-letter,
 body.admin-page .workspace-eyebrow,
 body.admin-page .workspace-card-heading>a{
-    color:#e9a3c1;
+    color:#f6f1f8;
+    text-decoration:none;
 }
 
 body.admin-page .avatar{
@@ -71,6 +72,13 @@ body.admin-page .admin-toolbar label{
     min-width:0;
     color:#c7bfce;
     font-size:14px;
+}
+
+body.admin-page .workspace-quick-links a,
+body.admin-page .workspace-quick-links strong,
+body.admin-page .workspace-card-heading>a{
+    color:#f6f1f8;
+    text-decoration:none;
 }
 
 body.admin-page .admin-toolbar input,
@@ -288,4 +296,8 @@ body.admin-page .admin-toolbar select:focus{
     body.admin-page .workspace-card:not(.admin-table-card){
         padding:15px;
     }
+}
+
+body.admin-page .admin-review-list article{
+    border-color:transparent;
 }

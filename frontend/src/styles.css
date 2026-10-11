@@ -1170,6 +1170,7 @@ body.perfil-page .menu{
 }
 
 body.perfil-page .menu-item{
+    text-decoration:none;
     height:39px;
     border-radius:8px;
     display:flex;
@@ -2011,6 +2012,7 @@ body.misreservas-page .menu{
 }
 
 body.misreservas-page .menu-item{
+    text-decoration:none;
     height:39px;
     border-radius:8px;
     display:flex;
@@ -2956,6 +2958,7 @@ body.historialdecompras-page .menu{
 }
 
 body.historialdecompras-page .menu-item{
+    text-decoration:none;
     height:39px;
     border-radius:8px;
     display:flex;
@@ -3773,8 +3776,165 @@ body.historialdecompras-page .toast.show{
     body.historialdecompras-page .main{
         padding:18px 12px 28px;
     }
+}
 
+body.perfil-page,
+body.misreservas-page,
+body.historialdecompras-page{
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    --border:#29252e;
+}
+
+body.perfil-page a,
+body.misreservas-page a,
+body.historialdecompras-page a{
+    color:#f2edf4;
+    text-decoration:none;
+}
+
+body.perfil-page .main a,
+body.misreservas-page .main a,
+body.historialdecompras-page .main a{
+    text-decoration:none;
+}
+
+body.perfil-page .menu-item,
+body.misreservas-page .menu-item,
+body.historialdecompras-page .menu-item{font-size:16px}
+
+body.perfil-page .breadcrumb,
+body.misreservas-page .breadcrumb,
+body.historialdecompras-page .breadcrumb{font-size:14px}
+
+body.perfil-page .section-title,
+body.misreservas-page .section-title,
+body.historialdecompras-page .section-title{font-size:13px}
+
+body.perfil-page .page-title,
+body.misreservas-page .page-title,
+body.historialdecompras-page .page-title{font-size:34px}
+
+body.perfil-page .card-title,
+body.misreservas-page .card-title,
+body.historialdecompras-page .card-title{font-size:20px}
+
+body.perfil-page .card-subtitle,
+body.misreservas-page .card-subtitle,
+body.historialdecompras-page .card-subtitle,
+body.perfil-page .profile-email,
+body.perfil-page .account-label,
+body.perfil-page .account-value,
+body.perfil-page .security-action,
+body.perfil-page .profile-badge,
+body.misreservas-page .results-count,
+body.historialdecompras-page .detail-label,
+body.historialdecompras-page .detail-value{font-size:14px}
+
+@media(max-width:760px){
+    body.perfil-page .page-title,
+    body.misreservas-page .page-title,
+    body.historialdecompras-page .page-title{font-size:29px}
+}
+
+body.perfil-page .profile-name{font-size:18px}
+body.perfil-page .security-name,
+body.perfil-page .preference-title{font-size:15px}
+body.perfil-page .security-desc,
+body.perfil-page .preference-desc{font-size:14px}
+
+body.perfil-page .main small,
+body.misreservas-page .main small,
+body.historialdecompras-page .main small{font-size:14px}
+
+@media(max-width:600px){
     body.historialdecompras-page .summary-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
     }
+}
+
+body.perfil-page .profile-hero,
+body.perfil-page .card,
+body.misreservas-page .summary-card,
+body.misreservas-page .filter-card,
+body.misreservas-page .reservations-card,
+body.historialdecompras-page .summary-card,
+body.historialdecompras-page .toolbar,
+body.historialdecompras-page .purchases-card{
+    border-color:transparent;
+}
+
+body.perfil-page .sidebar,
+body.misreservas-page .sidebar,
+body.historialdecompras-page .sidebar,
+body.perfil-page .sidebar-user,
+body.misreservas-page .sidebar-user,
+body.historialdecompras-page .sidebar-user,
+body.perfil-page .card-header,
+body.misreservas-page .reservations-header,
+body.historialdecompras-page .purchases-header,
+body.perfil-page .security-row,
+body.perfil-page .preference,
+body.perfil-page .account-row,
+body.misreservas-page .reservation,
+body.misreservas-page .event-date,
+body.historialdecompras-page .purchase,
+body.historialdecompras-page .detail-row,
+body.historialdecompras-page .modal-detail{
+    border-color:transparent;
+}
+
+body.misreservas-page .modal-box,
+body.historialdecompras-page .modal-box{
+    border-color:transparent;
+}
+
+body.perfil-page .sidebar,
+body.misreservas-page .sidebar,
+body.historialdecompras-page .sidebar,
+body.perfil-page .sidebar-user,
+body.misreservas-page .sidebar-user,
+body.historialdecompras-page .sidebar-user,
+body.perfil-page .profile-hero,
+body.perfil-page .card,
+body.perfil-page .card-header,
+body.perfil-page .personal-actions,
+body.perfil-page .security-row,
+body.perfil-page .preference,
+body.perfil-page .account-row,
+body.perfil-page .modal-box,
+body.misreservas-page .summary-card,
+body.misreservas-page .filter-card,
+body.misreservas-page .reservations-card,
+body.misreservas-page .reservations-header,
+body.misreservas-page .reservation,
+body.misreservas-page .event-date,
+body.misreservas-page .modal-box,
+body.misreservas-page .modal-info,
+body.historialdecompras-page .summary-card,
+body.historialdecompras-page .toolbar,
+body.historialdecompras-page .purchases-card,
+body.historialdecompras-page .purchases-header,
+body.historialdecompras-page .purchase,
+body.historialdecompras-page .modal-box,
+body.historialdecompras-page .modal-detail,
+body.historialdecompras-page .detail-row{
+    border:0 !important;
+}
+
+body.perfil-page .top-icon,
+body.perfil-page .edit-button,
+body.perfil-page .cancel-btn,
+body.perfil-page .modal-cancel,
+body.misreservas-page .top-icon,
+body.misreservas-page .event-image,
+body.misreservas-page .detail-button,
+body.misreservas-page .modal-close,
+body.historialdecompras-page .top-icon,
+body.historialdecompras-page .event-icon,
+body.historialdecompras-page .details-btn,
+body.historialdecompras-page .search-box,
+body.historialdecompras-page .modal-close{
+    border:0 !important;
 }
