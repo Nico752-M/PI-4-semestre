@@ -1,7 +1,13 @@
 /* =========================================================
    EVENTSTAGE - MOBILE FIRST
    HTML5 + CSS3
-   ========================================================= */body.cliente-home{
+   ========================================================= */
+
+html{
+    touch-action:manipulation;
+}
+
+body.cliente-home{
   --bg: #100b1d;
   --bg-2: #151025;
   --card: #1d1532;
@@ -468,7 +474,7 @@ body.cliente-home .carousel-toggle{
 body.cliente-home .category-carousel-viewport{
   overflow: hidden;
   border-radius: var(--radius);
-  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
   cursor: grab;
 }
 
@@ -3691,5 +3697,84 @@ body.historialdecompras-page .toast.show{
 
     body.historialdecompras-page .event-name{
         font-size:12px;
+    }
+}
+
+@media(max-width:600px){
+    body.cliente-home .section{
+        padding:28px 0;
+    }
+
+    body.cliente-home .section h2{
+        margin-bottom:16px;
+    }
+
+    body.cliente-home .hero{
+        padding:54px 0 38px;
+    }
+
+    body.cliente-home .search-box{
+        margin-top:24px;
+    }
+
+    body.cliente-home .reservation-bar{
+        margin-top:14px;
+    }
+
+    body.cliente-home .category-card{
+        min-height:205px;
+    }
+
+    body.perfil-page .sidebar,
+    body.misreservas-page .sidebar,
+    body.historialdecompras-page .sidebar{
+        padding:12px;
+    }
+
+    body.perfil-page .logo,
+    body.misreservas-page .logo,
+    body.historialdecompras-page .logo{
+        margin-bottom:10px;
+    }
+
+    body.perfil-page .section-title,
+    body.misreservas-page .section-title,
+    body.historialdecompras-page .section-title{
+        display:none;
+    }
+
+    body.perfil-page .menu,
+    body.misreservas-page .menu,
+    body.historialdecompras-page .menu{
+        display:flex;
+        width:100%;
+        gap:6px;
+        overflow-x:auto;
+        padding-bottom:4px;
+        scrollbar-width:thin;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    body.perfil-page .menu-item,
+    body.misreservas-page .menu-item,
+    body.historialdecompras-page .menu-item{
+        flex:0 0 auto;
+        white-space:nowrap;
+    }
+
+    body.perfil-page .account-section,
+    body.misreservas-page .account-section,
+    body.historialdecompras-page .account-section{
+        margin-top:8px;
+    }
+
+    body.perfil-page .main,
+    body.misreservas-page .main,
+    body.historialdecompras-page .main{
+        padding:18px 12px 28px;
+    }
+
+    body.historialdecompras-page .summary-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
     }
 }
