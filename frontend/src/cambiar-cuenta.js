@@ -11,7 +11,7 @@
 
   btn.onclick = function () {
     localStorage.setItem('tipoCuenta', nuevo);
-    location.href = nuevo === 'agente' ? 'Agente/mis-eventos.html' : 'index.html';
+    location.href = nuevo === 'agente' ? 'Agente/dashboard.html' : 'index.html';
   };
 
   document.body.appendChild(btn);

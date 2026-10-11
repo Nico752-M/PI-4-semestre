@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración | EventStage</title>
+  <link rel="stylesheet" href="agente.css">
+</head>
+<body class="agent-page workspace-page">
+  <div class="agent-app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div></div>
+      <div class="profile-card"><div class="avatar">AP</div><div><strong>Aurora<br>Producciones</strong><small>Agente /<br>Organizador</small></div></div>
+      <nav aria-label="Navegación del agente">
+        <p class="nav-title">ADMINISTRACIÓN</p>
+        <a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
+        <a href="crear-evento.html">＋ <span>Crear evento</span></a><a href="reservas.html">▣ <span>Reservas</span></a>
+        <a href="asistentes.html">♙ <span>Asistentes</span></a><a href="reportes.html">◒ <span>Reportes</span></a>
+        <a href="estadisticas.html">▥ <span>Estadísticas</span></a><a href="configuracion.html" class="active">⚙ <span>Configuración</span></a>
+        <p class="nav-title">SOPORTE</p><a href="ayuda.html">? <span>Centro de ayuda</span></a>
+      </nav>
+    </aside>
+    <main class="workspace-main">
+      <header class="workspace-topbar"><p>Panel / <strong>Configuración</strong></p></header>
+      <section class="workspace-content">
+        <div class="workspace-heading"><div><span class="workspace-eyebrow">PREFERENCIAS DE CUENTA</span><h1>Configuración</h1><p>Administra la información de tu organización y las preferencias de notificación.</p></div></div>
+        <div class="workspace-columns">
+          <section class="workspace-card">
+            <div class="workspace-card-heading"><div><h2>Datos de la organización</h2><p>Información que verán los asistentes en tus eventos.</p></div></div>
+            <form class="workspace-form">
+              <label>Nombre de la organización<input type="text" value="Aurora Producciones"></label>
+              <div class="workspace-form-grid">
+                <label>Correo de contacto<input type="email" value="contacto@auroraproducciones.co"></label>
+                <label>Teléfono<input type="tel" value="+57 300 000 0000"></label>
+              </div>
+              <label>Descripción<textarea rows="4">Organización y producción de experiencias culturales y musicales.</textarea></label>
+              <div class="workspace-form-actions"><button class="workspace-button primary" type="button">Guardar cambios</button></div>
+            </form>
+          </section>
+          <section class="workspace-card">
+            <div class="workspace-card-heading"><div><h2>Notificaciones</h2><p>Elige qué novedades quieres recibir.</p></div></div>
+            <div class="workspace-preferences">
+              <label><span><strong>Actividad de reservas</strong><small>Pagos, compras y cancelaciones.</small></span><input type="checkbox" checked></label>
+              <label><span><strong>Rendimiento de eventos</strong><small>Resúmenes de ventas y asistencia.</small></span><input type="checkbox" checked></label>
+              <label><span><strong>Novedades de EventStage</strong><small>Actualizaciones y consejos para organizadores.</small></span><input type="checkbox"></label>
+            </div>
+            <button class="workspace-button primary" type="button">Guardar preferencias</button>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
