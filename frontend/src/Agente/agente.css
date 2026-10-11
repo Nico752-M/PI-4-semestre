@@ -1815,6 +1815,74 @@ body.agent-page .sidebar nav a{
     font-size:15px;
 }
 
+body.agent-page .sidebar,
+body.agent-page .sidebar *{
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+
+body.agent-page .sidebar .brand{
+    min-height:81px;
+    align-items:center;
+    padding:0 10px 24px;
+}
+
+body.agent-page .sidebar .brand-icon{
+    width:52px;
+    height:52px;
+    flex:0 0 52px;
+    font-size:23px;
+}
+
+body.agent-page .sidebar .profile-card{
+    min-height:120px;
+    margin:28px 4px;
+    padding:16px;
+}
+
+body.agent-page .sidebar .profile-card .avatar{
+    width:42px;
+    height:42px;
+    flex:0 0 42px;
+}
+
+body.agent-page .sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+}
+
+body.agent-page .sidebar nav .nav-title{
+    min-height:18px;
+    margin:18px 12px 10px;
+    font-size:12px;
+    line-height:18px;
+    letter-spacing:1.5px;
+}
+
+body.agent-page .sidebar nav a{
+    height:46px;
+    min-height:46px;
+    margin:2px 0;
+    padding:11px 14px;
+    border:1px solid transparent;
+    border-radius:9px;
+    font-size:15px;
+    line-height:22px;
+    font-weight:500;
+}
+
+body.agent-page .sidebar nav a.active{
+    border-color:#41344e;
+    background:#2a2236;
+    color:#fff;
+    font-weight:600;
+}
+
+body.agent-page .sidebar nav a>span{
+    font-size:inherit;
+    line-height:inherit;
+}
+
 body.agent-page .stat-card,
 body.agent-page .card{
     padding:22px;
@@ -1935,5 +2003,71 @@ body.agent-page .btn-filter{
     body.agent-page .stats-grid,
     body.agent-page .metrics-grid{
         grid-template-columns:minmax(0,1fr);
+    }
+}
+
+@media(max-width:1100px){
+    body.agent-page .app,
+    body.agent-page .app-container,
+    body.agent-page .agent-app{
+        grid-template-columns:minmax(0,1fr);
+    }
+
+    body.agent-page .sidebar{
+        position:relative;
+        inset:auto;
+        width:100%;
+        min-height:0;
+        overflow:visible;
+        border-right:0;
+        border-bottom:1px solid #2b2435;
+    }
+
+    body.agent-page .main,
+    body.agent-page .main-content,
+    body.agent-page .workspace-main{
+        grid-column:1;
+    }
+
+    body.agent-page .sidebar nav{
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:4px;
+    }
+
+    body.agent-page .sidebar nav .nav-title{
+        grid-column:1/-1;
+    }
+}
+
+@media(max-width:760px){
+    body.agent-page .topbar,
+    body.agent-page .top-header,
+    body.agent-page .workspace-topbar{
+        align-items:flex-start;
+        flex-direction:column;
+        padding:18px 20px;
+    }
+
+    body.agent-page .content,
+    body.agent-page .content-body,
+    body.agent-page .workspace-content{
+        padding:28px 20px 48px;
+    }
+}
+
+@media(max-width:520px){
+    body.agent-page .sidebar{
+        padding:22px 16px;
+    }
+
+    body.agent-page .sidebar nav{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    body.agent-page .content,
+    body.agent-page .content-body,
+    body.agent-page .workspace-content{
+        padding:24px 16px 40px;
     }
 }
