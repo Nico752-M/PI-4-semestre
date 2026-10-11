@@ -413,7 +413,7 @@
 
   <script>
   if (localStorage.getItem('tipoCuenta') === 'agente') {
-    document.getElementById('btn-perfil').href = 'mis-eventos.html';
+    document.getElementById('btn-perfil').href = 'Agente/mis-eventos.html';
   }
   </script>
 
@@ -422,7 +422,7 @@
     e.preventDefault();
     const tipo = document.querySelector('input[name="tipo-cuenta"]:checked').value;
     localStorage.setItem('tipoCuenta', tipo);
-    location.href = tipo === 'agente' ? 'mis-eventos.html' : 'index.html';
+    location.href = tipo === 'agente' ? 'Agente/mis-eventos.html' : 'index.html';
   });
   </script>
 

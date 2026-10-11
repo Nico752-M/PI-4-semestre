@@ -136,7 +136,7 @@ document.querySelector('.auth-form').addEventListener('submit', e => {
   e.preventDefault();
   const tipo = document.querySelector('input[name="tipo-cuenta"]:checked').value;
   localStorage.setItem('tipoCuenta', tipo);
-  location.href = tipo === 'agente' ? 'mis-eventos.html' : 'index.html';
+  location.href = tipo === 'agente' ? 'Agente/mis-eventos.html' : 'index.html';
 });
 </script>
 
