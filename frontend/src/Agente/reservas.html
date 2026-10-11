@@ -6,9 +6,40 @@
     <title>EventStage - Reservas y asistentes</title>
     <link rel="stylesheet" href="agente.css">
 </head>
-<body class="dark-theme">
-    <div class="app-container">
-        <!-- Main Content -->
+<body class="dark-theme agent-analytics">
+    <div class="app-container agent-app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">E</div>
+                <div>
+                    <h2>Event<span>Stage</span></h2>
+                    <p>GESTIÓN DE EVENTOS</p>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="avatar">AP</div>
+                <div>
+                    <strong>Aurora<br>Producciones</strong>
+                    <small>Agente /<br>Organizador</small>
+                </div>
+            </div>
+
+            <nav aria-label="Navegación del agente">
+                <p class="nav-title">ADMINISTRACIÓN</p>
+                <a href="#">⌂ <span>Dashboard</span></a>
+                <a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
+                <a href="crear-evento.html">＋ <span>Crear evento</span></a>
+                <a href="reservas.html" class="active">▣ <span>Reservas</span></a>
+                <a href="#">♙ <span>Asistentes</span></a>
+                <a href="reportes.html">◒ <span>Reportes</span></a>
+                <a href="#">▥ <span>Estadísticas</span></a>
+                <a href="#">⚙ <span>Configuración</span></a>
+                <p class="nav-title">SOPORTE</p>
+                <a href="#">? <span>Centro de ayuda</span></a>
+            </nav>
+        </aside>
+
         <main class="main-content">
             <header class="top-header">
                 <span class="breadcrumb">Panel / <strong>Reservas y asistentes</strong></span>
@@ -54,41 +85,43 @@
                         <h3>Reservas registradas <small>5.284 resultados</small></h3>
                         <button class="btn-secondary sm">Seleccionar columnas</button>
                     </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>ASISTENTE</th>
-                                <th>EVENTO</th>
-                                <th>ENTRADA</th>
-                                <th>CANT.</th>
-                                <th>VALOR</th>
-                                <th>PAGO</th>
-                                <th>RESERVA</th>
-                                <th>CHECK-IN</th>
-                                <th>FECHA</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="user-cell">
-                                        <span class="avatar-badge">JD</span>
-                                        <div><strong>Juan David López</strong><br><small>juan.d@email.com</small></div>
-                                    </div>
-                                </td>
-                                <td>Festival Aurora</td>
-                                <td>VIP</td>
-                                <td>2</td>
-                                <td>$180.000</td>
-                                <td><span class="badge success">Pagado</span></td>
-                                <td><span class="badge confirmed">Confirmada</span></td>
-                                <td><span class="badge checkin-btn">CHECK-IN</span></td>
-                                <td>17 Sep</td>
-                                <td><button class="icon-btn">...</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-scroll">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ASISTENTE</th>
+                                    <th>EVENTO</th>
+                                    <th>ENTRADA</th>
+                                    <th>CANT.</th>
+                                    <th>VALOR</th>
+                                    <th>PAGO</th>
+                                    <th>RESERVA</th>
+                                    <th>CHECK-IN</th>
+                                    <th>FECHA</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="avatar-badge">JD</span>
+                                            <div><strong>Juan David López</strong><br><small>juan.d@email.com</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Festival Aurora</td>
+                                    <td>VIP</td>
+                                    <td>2</td>
+                                    <td>$180.000</td>
+                                    <td><span class="badge success">Pagado</span></td>
+                                    <td><span class="badge confirmed">Confirmada</span></td>
+                                    <td><span class="badge checkin-btn">CHECK-IN</span></td>
+                                    <td>17 Sep</td>
+                                    <td><button class="icon-btn">...</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="pagination">
                         <button class="page-btn active">1</button>
                         <button class="page-btn">2</button>
