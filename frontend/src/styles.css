@@ -17,6 +17,7 @@
   --green: #82c5a6;
   --radius: 14px;
   --container: 1180px;
+  --bg-alt: #1a1330;
 }
 
 *,
@@ -358,12 +359,19 @@ main:focus {
 /* ---------- SECTIONS ---------- */
 
 .section {
-  padding: 56px 0;
+  padding: 36px 0;
 }
 
 .section h2 {
   margin: 0 0 22px;
   font-size: clamp(1.45rem, 6vw, 2rem);
+}
+
+/* Alterna el fondo: Cómo funciona, Eventos disponibles y Testimonios */
+main > .section:nth-of-type(odd) {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .categories-grid {
@@ -399,7 +407,7 @@ main:focus {
 }
 
 .step-card {
-  min-height: 190px;
+  min-height: 0;
   padding: 22px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -718,7 +726,7 @@ blockquote {
   }
 
   .hero {
-    padding: 92px 0 68px;
+    padding: 64px 0 48px;
   }
 
   .search-box {
@@ -819,7 +827,7 @@ blockquote {
   }
 
   .section {
-    padding: 72px 0;
+    padding: 48px 0;
   }
 
   .categories-grid {
