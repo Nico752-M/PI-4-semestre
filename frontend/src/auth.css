@@ -21,6 +21,10 @@ body.auth-page, body.auth-page *, body.auth-page, body.auth-page *::before, body
   box-sizing: border-box;
 }
 
+html{
+  touch-action: manipulation;
+}
+
 body.auth-page{
   color-scheme: dark;
 }
@@ -405,6 +409,28 @@ body.auth-page .sr-only{
   body.auth-page .auth-layout{
     display: grid;
     grid-template-columns: minmax(330px, 31.3%) 1fr;
+  }
+
+  @media (max-width: 520px) {
+    body.auth-page .auth-main{
+      padding:20px 16px 28px;
+    }
+
+    body.auth-page .mobile-brand{
+      margin-bottom:24px;
+    }
+
+    body.auth-page .auth-tabs{
+      margin-bottom:22px;
+    }
+
+    body.auth-page .form-heading{
+      margin-bottom:18px;
+    }
+
+    body.auth-page .auth-form{
+      gap:14px;
+    }
   }
 
   body.auth-page .auth-info{

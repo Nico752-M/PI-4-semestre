@@ -1671,6 +1671,10 @@ body.workspace-page .help-contact small{color:#a49aac;font-size:13px;line-height
 }
 
 /* Keep the shell and reading scale stable across every agent section. */
+html{
+    touch-action:manipulation;
+}
+
 html.panel-shell{
     scrollbar-color:#493b56 #15101f;
     scrollbar-width:thin;
@@ -1818,6 +1822,122 @@ body.agent-page .sidebar nav a{
 body.agent-page .sidebar,
 body.agent-page .sidebar *{
     font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+
+@media(max-width:520px){
+    body.agent-page .sidebar,
+    body.workspace-page .sidebar{
+        padding:14px 12px;
+    }
+
+    body.agent-page .sidebar .brand,
+    body.workspace-page .sidebar .brand{
+        padding-bottom:14px;
+    }
+
+    body.agent-page .profile-card,
+    body.workspace-page .profile-card{
+        margin:14px 4px;
+        padding:11px 12px;
+    }
+
+    body.agent-page .sidebar nav,
+    body.workspace-page .sidebar nav{
+        display:flex;
+        align-items:center;
+        gap:6px;
+        overflow-x:auto;
+        padding-bottom:5px;
+        scrollbar-width:thin;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    body.agent-page .sidebar nav .nav-title,
+    body.workspace-page .sidebar nav .nav-title{
+        display:none;
+    }
+
+    body.agent-page .sidebar nav a,
+    body.workspace-page .sidebar nav a{
+        flex:0 0 auto;
+        min-height:40px;
+        margin:0;
+        padding:9px 12px;
+        white-space:nowrap;
+    }
+
+    body.agent-page .workspace-topbar,
+    body.workspace-page .workspace-topbar{
+        min-height:0;
+        gap:10px;
+        padding:14px 14px;
+    }
+
+    body.agent-page .content,
+    body.agent-page .content-body,
+    body.agent-page .workspace-content,
+    body.workspace-page .workspace-content{
+        padding:20px 14px 32px;
+    }
+
+    body.agent-page .workspace-heading,
+    body.workspace-page .workspace-heading{
+        gap:12px;
+        margin-bottom:18px;
+    }
+
+    body.agent-page .workspace-heading h1,
+    body.workspace-page .workspace-heading h1{
+        font-size:26px;
+    }
+
+    body.agent-page .workspace-metrics,
+    body.agent-page .workspace-metrics.compact,
+    body.workspace-page .workspace-metrics,
+    body.workspace-page .workspace-metrics.compact,
+    body.agent-page .stats-grid,
+    body.agent-page .metrics-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+        margin-bottom:16px;
+    }
+
+    body.agent-page .workspace-card,
+    body.workspace-page .workspace-card{
+        padding:15px;
+    }
+
+    body.agent-page .admin-table-card,
+    body.workspace-page .admin-table-card{
+        padding:0;
+    }
+
+    body.agent-page .workspace-card.metric,
+    body.workspace-page .workspace-card.metric{
+        gap:6px;
+    }
+
+    body.agent-page .metric>strong,
+    body.workspace-page .metric>strong{
+        font-size:24px;
+    }
+
+    body.agent-page .workspace-columns,
+    body.workspace-page .workspace-columns{
+        gap:14px;
+        margin-top:14px;
+    }
+}
+
+@media(max-width:359px){
+    body.agent-page .workspace-metrics,
+    body.agent-page .workspace-metrics.compact,
+    body.workspace-page .workspace-metrics,
+    body.workspace-page .workspace-metrics.compact,
+    body.agent-page .stats-grid,
+    body.agent-page .metrics-grid{
+        grid-template-columns:minmax(0,1fr);
+    }
 }
 
 body.agent-page .sidebar .brand{

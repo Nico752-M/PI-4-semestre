@@ -22,8 +22,7 @@ body.admin-page .brand h2 span,
 body.admin-page .nav-title,
 body.admin-page nav a.active:first-letter,
 body.admin-page .workspace-eyebrow,
-body.admin-page .workspace-card-heading>a,
-body.admin-page .workspace-footnote a{
+body.admin-page .workspace-card-heading>a{
     color:#e9a3c1;
 }
 
@@ -58,23 +57,26 @@ body.admin-page .workspace-badge.info{
 }
 
 body.admin-page .admin-toolbar{
-    display:flex;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(190px,.72fr);
     align-items:end;
-    flex-wrap:wrap;
-    gap:12px;
+    gap:14px;
     margin:0 0 18px;
+    padding:0 22px;
 }
 
 body.admin-page .admin-toolbar label{
     display:grid;
     gap:6px;
+    min-width:0;
     color:#c7bfce;
     font-size:14px;
 }
 
 body.admin-page .admin-toolbar input,
 body.admin-page .admin-toolbar select{
-    min-width:190px;
+    width:100%;
+    min-width:0;
     min-height:44px;
     padding:9px 12px;
     border:1px solid #3a3047;
@@ -90,11 +92,27 @@ body.admin-page .admin-table-card{
 }
 
 body.admin-page .admin-table-card .workspace-card-heading{
-    padding:22px 22px 0;
+    min-width:0;
+    margin:0;
+    padding:22px 22px 18px;
 }
 
 body.admin-page .admin-table-card .workspace-table-wrap{
     padding:0 22px 12px;
+}
+
+body.admin-page .workspace-card,
+body.admin-page .workspace-columns,
+body.admin-page .workspace-metrics{
+    min-width:0;
+}
+
+body.admin-page .workspace-columns{
+    grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+}
+
+body.admin-page .workspace-card-heading>div{
+    min-width:0;
 }
 
 body.admin-page .workspace-table td{
@@ -149,19 +167,6 @@ body.admin-page .admin-actions button:hover{
     border-color:#a75a7d;
     background:#302033;
 }
-
-body.admin-page .admin-notice{
-    margin:0 0 18px;
-    padding:14px 16px;
-    border:1px solid #493041;
-    border-radius:10px;
-    background:#211722;
-    color:#d8cbd9;
-    font-size:14px;
-    line-height:1.5;
-}
-
-body.admin-page .admin-notice strong{color:#f0b1c9}
 
 body.admin-page .admin-review-list{
     display:grid;
@@ -246,9 +251,18 @@ body.admin-page .admin-toolbar select:focus{
         align-items:flex-start;
         flex-direction:column;
     }
+
+    body.admin-page .workspace-columns{
+        grid-template-columns:1fr;
+    }
 }
 
 @media(max-width:520px){
+    body.admin-page .admin-toolbar{
+        grid-template-columns:minmax(0,1fr);
+        padding:0 16px;
+    }
+
     body.admin-page .admin-toolbar,
     body.admin-page .admin-toolbar label,
     body.admin-page .admin-toolbar input,
@@ -262,10 +276,16 @@ body.admin-page .admin-toolbar select:focus{
     }
 
     body.admin-page .admin-table-card .workspace-card-heading{
-        padding:18px 16px 0;
+        padding:18px 16px;
     }
 
     body.admin-page .admin-table-card .workspace-table-wrap{
         padding:0 16px 10px;
+    }
+}
+
+@media(max-width:520px){
+    body.admin-page .workspace-card:not(.admin-table-card){
+        padding:15px;
     }
 }

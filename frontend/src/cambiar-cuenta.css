@@ -53,18 +53,20 @@
     right:10px;
     bottom:10px;
     left:10px;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    align-items:center;
     max-width:none;
     gap:6px;
     padding:8px;
   }
 
   .demo-account-switcher label{
-    width:100%;
+    width:auto;
   }
 
   .demo-account-switcher select{
-    flex:1;
+    width:100%;
     min-width:0;
     max-width:none;
   }
