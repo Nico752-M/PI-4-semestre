@@ -89,15 +89,12 @@
 document.querySelector('.auth-form').addEventListener('submit', e => {
   e.preventDefault();
   const tipo = localStorage.getItem('tipoCuenta') || 'cliente';
-  location.href = tipo === 'agente' ? 'Agente/dashboard.html' : 'index.html';
-});
-</script>
-
-<script>
-document.querySelector('.auth-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const tipo = localStorage.getItem('tipoCuenta') || 'cliente';
-  location.href = tipo === 'agente' ? 'Agente/dashboard.html' : 'index.html';
+  const destinos = {
+    admin: 'admin/dashboard.html',
+    agente: 'Agente/dashboard.html',
+    cliente: 'index.html'
+  };
+  location.href = destinos[tipo] || destinos.cliente;
 });
 </script>
 </body>
