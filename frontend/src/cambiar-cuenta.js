@@ -1,4 +1,8 @@
 (function () {
+  if (document.body.classList.contains('agent-page') || document.body.classList.contains('workspace-page')) {
+    document.documentElement.classList.add('panel-shell');
+  }
+
   const destinations = {
     cliente: 'index.html',
     agente: 'Agente/dashboard.html',

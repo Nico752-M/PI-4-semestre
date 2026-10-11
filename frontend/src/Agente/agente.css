@@ -1669,3 +1669,271 @@ body.workspace-page .help-contact small{color:#a49aac;font-size:13px;line-height
     body.workspace-page .workspace-list article{align-items:flex-start;flex-wrap:wrap}
     body.workspace-page .workspace-list b{margin-left:55px}
 }
+
+/* Keep the shell and reading scale stable across every agent section. */
+html.panel-shell{
+    scrollbar-color:#493b56 #15101f;
+    scrollbar-width:thin;
+}
+
+html.panel-shell::-webkit-scrollbar{
+    width:10px;
+    height:10px;
+}
+
+html.panel-shell::-webkit-scrollbar-track{
+    background:#15101f;
+}
+
+html.panel-shell::-webkit-scrollbar-thumb{
+    border:2px solid #15101f;
+    border-radius:10px;
+    background:#493b56;
+}
+
+body.agent-page,
+body.workspace-page{
+    margin:0;
+    min-height:100vh;
+    overflow-x:hidden;
+    scrollbar-color:#493b56 #15101f;
+    scrollbar-width:thin;
+}
+
+body.agent-page *,
+body.workspace-page *{
+    scrollbar-color:#493b56 #15101f;
+    scrollbar-width:thin;
+}
+
+body.agent-page::-webkit-scrollbar,
+body.workspace-page::-webkit-scrollbar,
+body.agent-page *::-webkit-scrollbar,
+body.workspace-page *::-webkit-scrollbar{
+    width:10px;
+    height:10px;
+}
+
+body.agent-page::-webkit-scrollbar-track,
+body.workspace-page::-webkit-scrollbar-track,
+body.agent-page *::-webkit-scrollbar-track,
+body.workspace-page *::-webkit-scrollbar-track{
+    background:#15101f;
+}
+
+body.agent-page::-webkit-scrollbar-thumb,
+body.workspace-page::-webkit-scrollbar-thumb,
+body.agent-page *::-webkit-scrollbar-thumb,
+body.workspace-page *::-webkit-scrollbar-thumb{
+    border:2px solid #15101f;
+    border-radius:10px;
+    background:#493b56;
+}
+
+body.agent-page .app,
+body.agent-page .app-container,
+body.agent-page .agent-app{
+    display:grid;
+    grid-template-columns:300px minmax(0,1fr);
+    gap:0;
+    min-height:100vh;
+}
+
+body.agent-page .main,
+body.agent-page .main-content,
+body.agent-page .workspace-main{
+    grid-column:2;
+    min-width:0;
+    margin:0;
+    padding:0;
+}
+
+body.agent-page .sidebar{
+    position:fixed;
+    inset:0 auto 0 0;
+    z-index:2;
+    width:300px;
+    min-height:100vh;
+    overflow-y:auto;
+    padding:28px 22px;
+    border-right:1px solid #2b2435;
+    border-bottom:0;
+    background:#15101f;
+}
+
+body.agent-page .topbar,
+body.agent-page .top-header,
+body.agent-page .workspace-topbar{
+    min-height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin:0;
+    padding:16px 38px;
+    border-bottom:1px solid #2a2334;
+    font-size:16px;
+}
+
+body.agent-page .content,
+body.agent-page .content-body,
+body.agent-page .workspace-content{
+    width:min(100%,1440px);
+    max-width:1440px;
+    margin:0 auto;
+    padding:36px 38px 64px;
+}
+
+body.agent-page .page-heading h2,
+body.agent-page .content>h2,
+body.agent-page .content-body>h1,
+body.agent-page .workspace-heading h1{
+    font-size:34px;
+    line-height:1.2;
+}
+
+body.agent-page .subtitle,
+body.agent-page .page-heading>div>p,
+body.agent-page .workspace-heading p{
+    font-size:16px;
+    line-height:1.5;
+}
+
+body.agent-page .sidebar .brand h1,
+body.agent-page .sidebar .brand h2{
+    font-size:22px;
+}
+
+body.agent-page .sidebar .brand p,
+body.agent-page .sidebar .nav-title{
+    font-size:12px;
+}
+
+body.agent-page .sidebar nav a{
+    min-height:46px;
+    align-items:center;
+    font-size:15px;
+}
+
+body.agent-page .stat-card,
+body.agent-page .card{
+    padding:22px;
+}
+
+body.agent-page .stat-card>span,
+body.agent-page .metric-card .metric-label{
+    font-size:14px;
+}
+
+body.agent-page .stat-card>strong,
+body.agent-page .metric-card .metric-value,
+body.agent-page .metric>strong{
+    font-size:29px;
+}
+
+body.agent-page .stat-card>div,
+body.agent-page .metric-trend{
+    font-size:14px;
+}
+
+body.agent-page .card h3,
+body.agent-page .panel h3,
+body.agent-page .workspace-card-heading h2{
+    font-size:19px;
+}
+
+body.agent-page .section-help,
+body.agent-page .panel p{
+    font-size:14px;
+    line-height:1.5;
+}
+
+body.agent-page .btn,
+body.agent-page .btn-primary,
+body.agent-page .btn-secondary,
+body.agent-page .btn-filter{
+    font-size:14px;
+}
+
+@media(max-width:1100px){
+    body.agent-page .app,
+    body.agent-page .app-container,
+    body.agent-page .agent-app{
+        grid-template-columns:minmax(0,1fr);
+    }
+
+    body.agent-page .sidebar{
+        position:relative;
+        inset:auto;
+        width:100%;
+        min-height:0;
+        overflow:visible;
+        border-right:0;
+        border-bottom:1px solid #2b2435;
+    }
+
+    body.agent-page .main,
+    body.agent-page .main-content,
+    body.agent-page .workspace-main{
+        grid-column:1;
+    }
+
+    body.agent-page nav{
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:4px;
+    }
+
+    body.agent-page .nav-title{
+        grid-column:1/-1;
+    }
+}
+
+@media(max-width:760px){
+    body.agent-page .topbar,
+    body.agent-page .top-header,
+    body.agent-page .workspace-topbar{
+        align-items:flex-start;
+        flex-direction:column;
+        padding:18px 20px;
+    }
+
+    body.agent-page .content,
+    body.agent-page .content-body,
+    body.agent-page .workspace-content{
+        padding:28px 20px 48px;
+    }
+
+    body.agent-page .stats-grid,
+    body.agent-page .metrics-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+@media(max-width:520px){
+    body.agent-page .sidebar{
+        padding:22px 16px;
+    }
+
+    body.agent-page nav{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    body.agent-page .content,
+    body.agent-page .content-body,
+    body.agent-page .workspace-content{
+        padding:24px 16px 40px;
+    }
+
+    body.agent-page .page-heading h2,
+    body.agent-page .content>h2,
+    body.agent-page .content-body>h1,
+    body.agent-page .workspace-heading h1{
+        font-size:29px;
+    }
+
+    body.agent-page .stats-grid,
+    body.agent-page .metrics-grid{
+        grid-template-columns:minmax(0,1fr);
+    }
+}
