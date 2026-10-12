@@ -3,10 +3,11 @@
     document.documentElement.classList.add('panel-shell');
   }
 
+  const siteRoot = new URL('../', document.currentScript.src);
   const destinations = {
-    cliente: 'index.html',
-    agente: 'Agente/dashboard.html',
-    admin: 'admin/dashboard.html'
+    cliente: 'views/clientes/index.html',
+    agente: 'views/agentes/dashboard.html',
+    admin: 'views/admins/dashboard.html'
   };
   const labels = {
     cliente: 'Cliente',
@@ -16,11 +17,9 @@
 
   function goToAccount(type) {
     if (!Object.prototype.hasOwnProperty.call(destinations, type)) return;
-
     localStorage.setItem('tipoCuenta', type);
-    const inRoleFolder = /\/(?:Agente|admin)\//i.test(location.pathname);
-    const root = inRoleFolder ? '../' : '';
-    location.href = root + destinations[type];
+    localStorage.setItem('tipoCuenta', type);
+    location.href = new URL(destinations[type], siteRoot).href;
   }
 
   document.querySelectorAll('[data-demo-account]').forEach(button => {
