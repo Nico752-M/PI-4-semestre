@@ -27,7 +27,9 @@
     const isJson = response.headers.get('content-type')?.includes('application/json');
     const data = isJson ? await response.json() : null;
     if (!response.ok) {
-      throw new Error(data.error || 'No se pudo completar la solicitud.');
+      const error = new Error(data?.error || 'No se pudo completar la solicitud.');
+      error.status = response.status;
+      throw error;
     }
     if (!isJson) {
       throw new Error('El servidor devolvió una respuesta no válida.');
