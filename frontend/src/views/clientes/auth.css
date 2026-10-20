@@ -139,6 +139,13 @@ body.auth-page .auth-form{
   gap: 17px;
 }
 
+body.auth-page .auth-status{
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--coral);
+  font-size: 0.82rem;
+}
+
 body.auth-page .field{
   display: grid;
   gap: 6px;

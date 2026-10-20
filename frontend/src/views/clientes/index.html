@@ -28,13 +28,9 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="link-muted">Visita: Invitado</a>
+        <span class="link-muted">Visita: Invitado</span>
         <a href="login.html" class="btn btn-outline">Iniciar sesión</a>
         <a href="registro.html" class="btn btn-gold">Regístrate</a>
-        <a href="perfil.html" id="btn-perfil" class="profile-pill">
-          <span class="avatar">MJ</span>
-          <span>María José</span>
-        </a>
       </div>
     </div>
   </header>
@@ -50,7 +46,7 @@
           para los mejores eventos del país, todo en un solo lugar.
         </p>
 
-        <form class="search-box" action="#" method="get" role="search" aria-label="Buscar eventos">
+        <form class="search-box" id="event-search" role="search" aria-label="Buscar eventos">
           <label>
             <span>Nombre del evento</span>
             <input type="text" name="evento" placeholder="Buscar evento...">
@@ -59,7 +55,7 @@
           <label>
             <span>Ciudad</span>
             <select name="ciudad">
-              <option>Todas las ciudades</option>
+              <option value="">Todas las ciudades</option>
               <option>Bogotá</option>
               <option>Medellín</option>
               <option>Cali</option>
@@ -67,24 +63,12 @@
             </select>
           </label>
 
-          <label>
-            <span>Categoría</span>
-            <select name="categoria">
-              <option>Todas las categorías</option>
-              <option>Música</option>
-              <option>Teatro</option>
-              <option>Deportes</option>
-              <option>Tecnología</option>
-              <option>Gastronomía</option>
-            </select>
-          </label>
-
           <button class="btn btn-gold search-btn" type="submit">Buscar</button>
         </form>
 
         <div class="reservation-bar">
-          <p>Hola <strong>María José</strong> — tienes <strong>2 reservas activas</strong> este mes.</p>
-          <a href="#" class="btn btn-small btn-outline">Ver mis reservas</a>
+          <p>Inicia sesión para consultar tus reservas y guardar tus eventos favoritos.</p>
+          <a href="login.html" class="btn btn-small btn-outline">Iniciar sesión</a>
         </div>
       </div>
     </section>
@@ -210,7 +194,7 @@
         <p class="section-kicker">MUY PRONTO</p>
         <h2 id="titulo-destacados">Eventos destacados</h2>
 
-        <div class="featured-grid">
+        <div class="featured-grid" data-featured-events>
           <article class="featured-card">
             <div class="event-image image-yellow" aria-hidden="true">
               <img class="event-art" src="../../assets/img/eventos/estereo-picnic.svg" alt="" loading="lazy" decoding="async">
@@ -268,7 +252,8 @@
         <p class="section-kicker">COMPRA TU BOLETA</p>
         <h2 id="titulo-disponibles">Eventos disponibles</h2>
 
-        <div class="events-grid">
+        <p id="events-status" role="status" aria-live="polite"></p>
+        <div class="events-grid" data-events-grid>
           <article class="event-card">
             <div class="event-photo photo-blue" aria-hidden="true">
               <img class="event-art" src="../../assets/img/eventos/world-tour.svg" alt="" loading="lazy" decoding="async">
@@ -342,7 +327,7 @@
         <p class="section-kicker">NO TE LO PIERDAS</p>
         <h2 id="titulo-proximos">Próximos eventos</h2>
 
-        <div class="upcoming-list">
+        <div class="upcoming-list" data-upcoming-events>
           <article class="upcoming-row">
             <div class="date-box"><strong>22</strong><span>oct</span></div>
             <div class="upcoming-info">
@@ -505,5 +490,7 @@
 
   <script src="../../components/cambiar-cuenta.js"></script>
   <script src="categorias-carousel.js"></script>
+  <script src="../../api.js"></script>
+  <script src="catalogo.js"></script>
 </body>
 </html>

@@ -59,54 +59,50 @@
         <div class="stats-grid">
           <article class="stat-card">
             <span>Eventos totales</span>
-            <strong>14</strong>
-            <div><small class="positive">+2 este mes</small><small>Histórico</small></div>
+            <strong data-total-events>0</strong>
+            <div><small>Eventos en la base de datos</small></div>
           </article>
           <article class="stat-card">
             <span>Eventos publicados</span>
-            <strong>8</strong>
-            <div><small class="positive">57%</small><small>del total</small></div>
+            <strong data-published-events>0</strong>
+            <div><small>Disponibles al público</small></div>
           </article>
           <article class="stat-card">
             <span>Borradores</span>
-            <strong>3</strong>
-            <div><small>En preparación</small><small>21%</small></div>
+            <strong data-draft-events>0</strong>
+            <div><small>El esquema no incluye borradores</small></div>
           </article>
           <article class="stat-card">
             <span>Finalizados</span>
-            <strong>3</strong>
-            <div><small>Este año</small><small>22%</small></div>
+            <strong data-finished-events>0</strong>
+            <div><small>Fecha de finalización vencida</small></div>
           </article>
         </div>
 
         <div class="filters">
-          <input type="text" placeholder="Buscar evento">
-          <select><option>Estado</option><option>Publicado</option><option>Borrador</option><option>Finalizado</option></select>
-          <select><option>Categoría</option><option>Música</option><option>Entretenimiento</option><option>Arte</option></select>
-          <select><option>Ciudad</option></select>
-          <select><option>Fecha</option></select>
+          <input type="search" data-event-search placeholder="Buscar evento">
+          <select data-event-city><option value="">Todas las ciudades</option></select>
         </div>
 
         <section class="panel events-panel">
           <div class="panel-head">
-            <div><strong>Listado de eventos</strong> <small>· 14 registros encontrados</small></div>
-            <button class="mini-btn">Columnas ◉</button>
+            <div><strong>Listado de eventos</strong> <small data-event-count>· Cargando...</small></div>
           </div>
 
           <div class="table-wrap">
+            <p data-agent-events-status role="status" aria-live="polite"></p>
             <table>
               <thead>
                 <tr>
                   <th>EVENTO</th>
                   <th>FECHA</th>
-                  <th>ENTRADAS VENDIDAS</th>
-                  <th>INGRESOS</th>
                   <th>CAPACIDAD</th>
+                  <th>PRECIO</th>
                   <th>ESTADO</th>
                   <th>ACCIONES</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-agent-events>
                 <tr>
                   <td>
                     <div class="event-cell">
@@ -218,46 +214,10 @@
             </table>
           </div>
 
-          <div class="table-footer">
-            <small>Mostrando 1–6 de 14 eventos</small>
-            <div class="pagination">
-              <button class="active">1</button><button>2</button><button>3</button><button>›</button>
-            </div>
-          </div>
+          <div class="table-footer"><small data-event-footer></small></div>
         </section>
 
-        <div class="lower-grid">
-          <section class="panel performance">
-            <h3>Rendimiento general</h3>
-            <p>Resumen de ventas de tus eventos publicados.</p>
-
-            <div class="perf-item">
-              <div><strong>Festival Aurora 2026</strong><span>88%</span></div>
-              <div class="perf-bar"><i style="width:87%"></i></div>
-            </div>
-            <div class="perf-item">
-              <div><strong>Noche de Comedia</strong><span>76%</span></div>
-              <div class="perf-bar"><i style="width:76%"></i></div>
-            </div>
-            <div class="perf-item">
-              <div><strong>ExpoArte Colombia</strong><span>75%</span></div>
-              <div class="perf-bar"><i style="width:75%"></i></div>
-            </div>
-            <div class="perf-item">
-              <div><strong>Festival Sabores del Valle</strong><span>45%</span></div>
-              <div class="perf-bar"><i style="width:45%"></i></div>
-            </div>
-          </section>
-
-          <section class="panel upcoming">
-            <h3>Próximos eventos</h3>
-            <p>Eventos con actividad programada.</p>
-
-            <article><div><strong>Festival Aurora 2026</strong><small>Centro de Eventos Aurora</small></div><b>12 NOV</b></article>
-            <article><div><strong>Noche de Comedia</strong><small>Teatro Municipal</small></div><b>21 OCT</b></article>
-            <article><div><strong>ExpoArte Colombia</strong><small>Centro Cultural</small></div><b>03 DIC</b></article>
-          </section>
-        </div>
+        <p data-agent-events-empty hidden>No has publicado eventos todavía.</p>
 
         <section class="panel quick-actions">
           <h3>Acciones rápidas</h3>
@@ -276,6 +236,7 @@
     </main>
   </div>
 
-  <script src="../../components/cambiar-cuenta.js"></script>
+  <script src="../../api.js"></script>
+  <script src="mis-eventos.js"></script>
 </body>
 </html>
