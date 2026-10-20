@@ -11,7 +11,7 @@ El endpoint `http://localhost:3000/api/health` verifica la conexión con Neon. P
 
 ## Desplegar en Vercel
 
-El proyecto está preparado para desplegar el frontend y la API bajo el mismo dominio. En Vercel, configura **Root Directory** como la raíz del repositorio (`.`), usa `npm run build` como Build Command y `public` como Output Directory. Define `DATABASE_URL` con la conexión de Neon, `SESSION_SECRET` con un secreto aleatorio de al menos 32 caracteres y `FRONTEND_ORIGIN` con el dominio de producción, por ejemplo `https://eventstage.vercel.app`. Configura estas variables para el entorno Production y vuelve a desplegar después de guardarlas. No subas el archivo `.env` a GitHub.
+El proyecto está preparado para desplegar el frontend y la API bajo el mismo dominio usando la detección de Express de Vercel. Configura **Root Directory** como la raíz del repositorio (`.`), deja **Output Directory** sin definir y usa `npm run build` como Build Command para copiar las páginas a `public`. Define `DATABASE_URL` con la conexión de Neon, `SESSION_SECRET` con un secreto aleatorio de al menos 32 caracteres y `FRONTEND_ORIGIN` con el dominio de producción, por ejemplo `https://eventstage.vercel.app`. Configura estas variables para el entorno Production y vuelve a desplegar después de guardarlas. No subas el archivo `.env` a GitHub.
 
 ## Integraciones
 
