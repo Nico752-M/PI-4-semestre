@@ -4,6 +4,7 @@
   const accountLink = document.querySelector('[data-nav-account]');
   const logoutButton = document.querySelector('[data-nav-logout]');
   const status = document.querySelector('[data-nav-status]');
+  const guestReservationBar = document.querySelector('[data-guest-reservation-bar]');
 
   function showNavigationError(error) {
     status.textContent = error.message;
@@ -26,6 +27,7 @@
       }
       accountLink.hidden = false;
       logoutButton.hidden = false;
+      guestReservationBar.hidden = true;
     })
     .catch(error => {
       if (error.status !== 401) showNavigationError(error);
