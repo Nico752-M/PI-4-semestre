@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Centro de soporte administrativo de EventStage">
+  <title>Soporte | Administración EventStage</title>
+  <link rel="stylesheet" href="../agentes/agente.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="admin.js" defer></script>
+</head>
+<body class="workspace-page admin-page">
+  <div class="agent-app"><aside class="sidebar"><div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>ADMINISTRACIÓN</p></div></div><div class="profile-card"><div class="avatar">AD</div><div><strong>Administrador</strong><small>Control de plataforma</small></div></div>
+    <nav aria-label="Navegación de administración"><p class="nav-title">PLATAFORMA</p><a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="eventos.html">◉ <span>Eventos</span></a><a href="agentes.html">♙ <span>Agentes</span></a><a href="usuarios.html">◎ <span>Usuarios</span></a><a href="finanzas.html">＄ <span>Finanzas</span></a><a href="reportes.html">▥ <span>Reportes</span></a><a href="configuracion.html">⚙ <span>Configuración</span></a><p class="nav-title">ATENCIÓN</p><a class="active" href="soporte.html">? <span>Soporte</span></a><a href="../clientes/index.html">↗ <span>Ir al sitio</span></a></nav>
+  </aside><main class="workspace-main"><header class="workspace-topbar"><p>Admin / <strong>Soporte</strong></p><a class="workspace-button" href="dashboard.html">Volver al panel</a></header>
+    <section class="workspace-content"><div class="workspace-heading"><div><span class="workspace-eyebrow">ATENCIÓN DE LA PLATAFORMA</span><h1>Soporte</h1><p>Da seguimiento a solicitudes de agentes y clientes.</p></div></div>
+      <div class="workspace-metrics compact"><article class="workspace-card metric"><span>Casos abiertos</span><strong>12</strong><small>Requieren respuesta</small></article><article class="workspace-card metric"><span>En seguimiento</span><strong>8</strong><small>En proceso de revisión</small></article><article class="workspace-card metric"><span>Resueltos este mes</span><strong>146</strong><small>Octubre de 2026</small></article></div>
+      <section class="workspace-card admin-table-card" data-admin-table><div class="workspace-card-heading"><div><h2>Solicitudes recientes</h2><p>Solicitudes de clientes y organizadores.</p></div></div>
+        <div class="admin-toolbar"><label>Buscar solicitud<input type="search" placeholder="Caso, usuario o asunto" data-admin-search></label><label>Estado<select data-admin-status><option value="">Todos los estados</option><option value="abierto">Abierto</option><option value="proceso">En proceso</option><option value="resuelto">Resuelto</option></select></label></div>
+        <div class="workspace-table-wrap"><table class="workspace-table"><thead><tr><th>CASO</th><th>SOLICITANTE</th><th>ASUNTO</th><th>ACTUALIZACIÓN</th><th>ESTADO</th></tr></thead><tbody>
+          <tr data-admin-row data-status="abierto"><td>ES-2481</td><td>Aurora Producciones</td><td>Validación de evento</td><td>Hace 18 min</td><td><span class="workspace-badge pending">Abierto</span></td></tr>
+          <tr data-admin-row data-status="proceso"><td>ES-2478</td><td>María López</td><td>Reembolso de reserva</td><td>Hace 1 h</td><td><span class="workspace-badge info">En proceso</span></td></tr>
+          <tr data-admin-row data-status="abierto"><td>ES-2472</td><td>Colectivo Prisma</td><td>Verificación de organizador</td><td>Hace 3 h</td><td><span class="workspace-badge pending">Abierto</span></td></tr>
+          <tr data-admin-row data-status="resuelto"><td>ES-2466</td><td>Juan Camilo Ruiz</td><td>Acceso a entradas</td><td>Ayer</td><td><span class="workspace-badge success">Resuelto</span></td></tr>
+        </tbody></table></div>
+      </section>
+    </section>
+  </main></div>
+  <script src="../../components/cambiar-cuenta.js"></script>
+</body>
+</html>

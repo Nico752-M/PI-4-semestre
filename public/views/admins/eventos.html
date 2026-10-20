@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Supervisión de eventos de EventStage">
+  <title>Eventos | Administración EventStage</title>
+  <link rel="stylesheet" href="../agentes/agente.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="admin.js" defer></script>
+</head>
+<body class="workspace-page admin-page">
+  <div class="agent-app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>ADMINISTRACIÓN</p></div></div>
+      <div class="profile-card"><div class="avatar">AD</div><div><strong>Administrador</strong><small>Control de plataforma</small></div></div>
+      <nav aria-label="Navegación de administración"><p class="nav-title">PLATAFORMA</p><a href="dashboard.html">⌂ <span>Dashboard</span></a><a class="active" href="eventos.html">◉ <span>Eventos</span></a><a href="agentes.html">♙ <span>Agentes</span></a><a href="usuarios.html">◎ <span>Usuarios</span></a><a href="finanzas.html">＄ <span>Finanzas</span></a><a href="reportes.html">▥ <span>Reportes</span></a><a href="configuracion.html">⚙ <span>Configuración</span></a><p class="nav-title">ATENCIÓN</p><a href="soporte.html">? <span>Soporte</span></a><a href="../clientes/index.html">↗ <span>Ir al sitio</span></a></nav>
+    </aside>
+    <main class="workspace-main">
+      <header class="workspace-topbar"><p>Admin / <strong>Eventos</strong></p><a class="workspace-button" href="reportes.html">Ver reportes</a></header>
+      <section class="workspace-content">
+        <div class="workspace-heading"><div><span class="workspace-eyebrow">SUPERVISIÓN DE CONTENIDO</span><h1>Eventos</h1><p>Consulta y modera los eventos publicados por los organizadores.</p></div></div>
+        <section class="workspace-card admin-table-card" data-admin-table>
+          <div class="workspace-card-heading"><div><h2>Listado de eventos</h2><p>Eventos publicados y pendientes de moderación.</p></div><span class="workspace-badge pending">18 por revisar</span></div>
+          <div class="admin-toolbar"><label>Buscar evento<input type="search" placeholder="Nombre o ciudad" data-admin-search></label><label>Estado<select data-admin-status><option value="">Todos los estados</option><option value="revision">En revisión</option><option value="publicado">Publicado</option><option value="rechazado">Rechazado</option></select></label></div>
+          <div class="workspace-table-wrap"><table class="workspace-table"><thead><tr><th>EVENTO</th><th>ORGANIZADOR</th><th>FECHA</th><th>ESTADO</th><th>ACCIÓN</th></tr></thead><tbody>
+            <tr data-admin-row data-status="revision"><td><span class="admin-event-mark">✦</span><strong>Festival Aurora</strong><small>Tuluá · Música</small></td><td>Aurora Producciones</td><td>12 nov 2026</td><td><span class="workspace-badge pending">En revisión</span></td><td><a class="workspace-button" href="soporte.html">Revisar</a></td></tr>
+            <tr data-admin-row data-status="publicado"><td><span class="admin-event-mark">◉</span><strong>Noche de Comedia</strong><small>Cali · Entretenimiento</small></td><td>Risa Viva SAS</td><td>21 oct 2026</td><td><span class="workspace-badge success">Publicado</span></td><td><a class="workspace-button" href="agentes.html">Organizador</a></td></tr>
+            <tr data-admin-row data-status="revision"><td><span class="admin-event-mark">◇</span><strong>ExpoArte Colombia</strong><small>Medellín · Arte</small></td><td>Colectivo Prisma</td><td>03 dic 2026</td><td><span class="workspace-badge pending">En revisión</span></td><td><a class="workspace-button" href="soporte.html">Revisar</a></td></tr>
+            <tr data-admin-row data-status="rechazado"><td><span class="admin-event-mark">♫</span><strong>Sesión Urbana</strong><small>Bogotá · Música</small></td><td>Distrito Sonoro</td><td>19 dic 2026</td><td><span class="workspace-badge alert">Rechazado</span></td><td><a class="workspace-button" href="soporte.html">Ver detalle</a></td></tr>
+          </tbody></table></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="../../components/cambiar-cuenta.js"></script>
+</body>
+</html>

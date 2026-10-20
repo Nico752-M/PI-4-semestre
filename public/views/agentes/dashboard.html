@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel del organizador | EventStage</title>
+  <link rel="stylesheet" href="agente.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+</head>
+<body class="agent-page workspace-page">
+  <div class="agent-app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">E</div>
+        <div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div>
+      </div>
+      <div class="profile-card">
+        <div class="avatar">AP</div>
+        <div><strong>Aurora<br>Producciones</strong><small>Agente /<br>Organizador</small></div>
+      </div>
+      <nav aria-label="Navegación del agente">
+        <p class="nav-title">ADMINISTRACIÓN</p>
+        <a href="dashboard.html" class="active">⌂ <span>Dashboard</span></a>
+        <a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
+        <a href="crear-evento.html">＋ <span>Crear evento</span></a>
+        <a href="reservas.html">▣ <span>Reservas</span></a>
+        <a href="asistentes.html">♙ <span>Asistentes</span></a>
+        <a href="reportes.html">◒ <span>Reportes</span></a>
+        <a href="estadisticas.html">▥ <span>Estadísticas</span></a>
+        <a href="configuracion.html">⚙ <span>Configuración</span></a>
+        <p class="nav-title">SOPORTE</p>
+        <a href="ayuda.html">? <span>Centro de ayuda</span></a>
+      </nav>
+    </aside>
+
+    <main class="workspace-main">
+      <header class="workspace-topbar">
+        <p>Panel / <strong>Dashboard</strong></p>
+        <a class="workspace-button primary" href="crear-evento.html">＋ Crear evento</a>
+      </header>
+
+      <section class="workspace-content">
+        <div class="workspace-heading">
+          <div>
+            <span class="workspace-eyebrow">RESUMEN GENERAL</span>
+            <h1>Panel del organizador</h1>
+            <p>Consulta el estado de tus eventos, ventas y asistentes desde un solo lugar.</p>
+          </div>
+          <span class="workspace-date">Actualizado hoy</span>
+        </div>
+
+        <div class="workspace-metrics">
+          <article class="workspace-card metric">
+            <span>Eventos activos</span><strong>8</strong><small>3 próximos este mes</small>
+          </article>
+          <article class="workspace-card metric">
+            <span>Entradas vendidas</span><strong>12.486</strong><small class="trend">↑ 12,8% este mes</small>
+          </article>
+          <article class="workspace-card metric">
+            <span>Ingresos del período</span><strong>$486,2M</strong><small class="trend">↑ 18,8% frente al período anterior</small>
+          </article>
+          <article class="workspace-card metric">
+            <span>Reservas pendientes</span><strong>442</strong><small>Requieren seguimiento</small>
+          </article>
+        </div>
+
+        <div class="workspace-columns">
+          <section class="workspace-card">
+            <div class="workspace-card-heading">
+              <div><h2>Próximos eventos</h2><p>Los eventos con fecha más cercana.</p></div>
+              <a href="mis-eventos.html">Ver todos</a>
+            </div>
+            <div class="workspace-list">
+              <article><span class="workspace-event-icon">✦</span><div><strong>Festival Aurora 2026</strong><small>12–14 Nov · Tuluá</small></div><b>87% vendido</b></article>
+              <article><span class="workspace-event-icon">◉</span><div><strong>Noche de Comedia</strong><small>21 Oct · Cali</small></div><b>76% vendido</b></article>
+              <article><span class="workspace-event-icon">◇</span><div><strong>ExpoArte Colombia</strong><small>03 Dic · Medellín</small></div><b>75% vendido</b></article>
+            </div>
+          </section>
+
+          <section class="workspace-card">
+            <div class="workspace-card-heading"><div><h2>Accesos rápidos</h2><p>Continúa con tareas frecuentes.</p></div></div>
+            <div class="workspace-quick-links">
+              <a href="crear-evento.html"><strong>＋ Crear un evento</strong><small>Publica una nueva experiencia.</small></a>
+              <a href="reservas.html"><strong>▣ Revisar reservas</strong><small>Consulta pagos y estados.</small></a>
+              <a href="reportes.html"><strong>◒ Abrir reportes</strong><small>Revisa ventas y rendimiento.</small></a>
+              <a href="asistentes.html"><strong>♙ Gestionar asistentes</strong><small>Busca registros y check-ins.</small></a>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../../components/cambiar-cuenta.js"></script>
+</body>
+</html>
