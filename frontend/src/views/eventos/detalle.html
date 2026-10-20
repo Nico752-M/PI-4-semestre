@@ -86,10 +86,10 @@
               <span>Subtotal</span>
               <strong id="ticket-subtotal"></strong>
             </div>
-            <p class="ticket-message">Precios de referencia para la maqueta; aún no hay inventario conectado.</p>
+            <p class="ticket-message">La capacidad se valida al crear la reserva.</p>
             <button class="btn btn-pink ticket-submit" type="submit">Continuar con la compra</button>
             <p id="ticket-message" class="ticket-message" role="status" aria-live="polite">
-              La compra y el pago estarán disponibles cuando se conecte la pasarela de pagos.
+              La reserva queda pendiente; todavía no se procesan pagos.
             </p>
           </form>
         </aside>
@@ -136,6 +136,7 @@
     </div>
   </footer>
 
+  <script src="../../api.js"></script>
   <script src="eventos.js"></script>
   <script src="detalle.js"></script>
 </body>
