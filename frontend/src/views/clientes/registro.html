@@ -43,7 +43,7 @@
           <p>Cuéntanos qué tipo de cuenta quieres crear</p>
         </header>
 
-        <form action="#" method="post" class="auth-form">
+        <form class="auth-form" id="register-form">
           <fieldset class="account-type">
             <legend class="sr-only">Tipo de cuenta</legend>
 
@@ -58,60 +58,80 @@
             </label>
           </fieldset>
 
-          <div class="field">
-            <label for="nombre">Nombre completo</label>
-            <input type="text" id="nombre" name="nombre"
-                   placeholder="Ej. Laura Gómez" autocomplete="name" required>
+          <div class="two-columns">
+            <div class="field">
+              <label for="primer-nombre">Primer nombre</label>
+              <input type="text" id="primer-nombre" name="primerNombre"
+                     autocomplete="given-name" maxlength="50" required>
+            </div>
+            <div class="field">
+              <label for="segundo-nombre">Segundo nombre</label>
+              <input type="text" id="segundo-nombre" name="segundoNombre" maxlength="50">
+            </div>
+          </div>
+
+          <div class="two-columns">
+            <div class="field">
+              <label for="primer-apellido">Primer apellido</label>
+              <input type="text" id="primer-apellido" name="primerApellido"
+                     autocomplete="family-name" maxlength="50" required>
+            </div>
+            <div class="field">
+              <label for="segundo-apellido">Segundo apellido</label>
+              <input type="text" id="segundo-apellido" name="segundoApellido" maxlength="50">
+            </div>
           </div>
 
           <div class="two-columns">
             <div class="field">
               <label for="identificacion">Número de identificación</label>
-              <input type="text" id="identificacion" name="identificacion"
-                     placeholder="Cédula o pasaporte" required>
+              <input type="text" id="identificacion" name="identificacion" maxlength="20" required>
             </div>
             <div class="field">
               <label for="telefono">Teléfono</label>
               <input type="tel" id="telefono" name="telefono"
-                     placeholder="300 000 0000" autocomplete="tel" required>
+                     autocomplete="tel" maxlength="20">
             </div>
           </div>
 
           <div class="field">
             <label for="registro-email">Correo electrónico</label>
-            <input type="email" id="registro-email" name="email"
-                   placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+            <input type="email" id="registro-email" name="correo"
+                   autocomplete="email" maxlength="100" required>
           </div>
 
           <div class="two-columns">
             <div class="field">
-              <label for="ciudad">Ciudad</label>
-              <select id="ciudad" name="ciudad" required>
-                <option value="" selected disabled>Selecciona tu ciudad</option>
-                <option>Bogotá</option>
-                <option>Medellín</option>
-                <option>Cali</option>
-                <option>Barranquilla</option>
-                <option>Bucaramanga</option>
+              <label for="pais">País</label>
+              <select id="pais" required>
+                <option value="">Cargando países...</option>
               </select>
             </div>
             <div class="field">
-              <label for="direccion">Dirección</label>
-              <input type="text" id="direccion" name="direccion"
-                     placeholder="Calle 10 # 5-20" autocomplete="street-address" required>
+              <label for="departamento">Departamento</label>
+              <select id="departamento" required disabled>
+                <option value="">Selecciona un departamento</option>
+              </select>
             </div>
+          </div>
+
+          <div class="field">
+            <label for="ciudad">Ciudad</label>
+            <select id="ciudad" name="idCiudad" required disabled>
+              <option value="">Selecciona una ciudad</option>
+            </select>
           </div>
 
           <div class="two-columns">
             <div class="field">
               <label for="registro-password">Contraseña</label>
               <input type="password" id="registro-password" name="password"
-                     placeholder="••••••••" autocomplete="new-password" required>
+                     autocomplete="new-password" minlength="8" maxlength="128" required>
             </div>
             <div class="field">
               <label for="confirmar-password">Confirmar contraseña</label>
               <input type="password" id="confirmar-password" name="confirmar-password"
-                     placeholder="••••••••" autocomplete="new-password" required>
+                     autocomplete="new-password" minlength="8" maxlength="128" required>
             </div>
           </div>
 
@@ -121,6 +141,7 @@
               <a href="#">Política de privacidad</a> de EventStage.</span>
           </label>
 
+          <p id="auth-status" class="auth-status" role="status" aria-live="polite"></p>
           <button type="submit" class="primary-button">Crear cuenta</button>
         </form>
 
@@ -131,14 +152,8 @@
     </section>
   </main>
 
-<script>
-document.querySelector('.auth-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const tipo = document.querySelector('input[name="tipo-cuenta"]:checked').value;
-  localStorage.setItem('tipoCuenta', tipo);
-  location.href = tipo === 'agente' ? '../agentes/dashboard.html' : 'index.html';
-});
-</script>
+<script src="../../api.js"></script>
+<script src="auth.js"></script>
 
 </body>
 </html>
