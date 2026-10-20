@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <defs><linearGradient id="hall" x2="1" y2="1"><stop stop-color="#24335b"/><stop offset=".56" stop-color="#65518b"/><stop offset="1" stop-color="#ca766f"/></linearGradient><linearGradient id="screen" x2="1" y2="1"><stop stop-color="#8ad8df"/><stop offset="1" stop-color="#b9a2ed"/></linearGradient></defs>
+  <path fill="url(#hall)" d="M0 0h800v520H0z"/><path fill="#25203b" d="M78 74h644v273H78z"/><path fill="url(#screen)" d="M105 99h590v223H105z"/>
+  <path fill="#45517d" d="M0 350h800v170H0z"/><path fill="#352a4b" d="M0 420h800v100H0z"/>
+  <path fill="#493954" d="M151 355h106v106H151zm196-16h106v122H347zm196 16h106v106H543z"/>
+  <circle cx="205" cy="346" r="34" fill="#edbb99"/><path fill="#332b4b" d="M170 380h72v87h-72z"/>
+  <circle cx="400" cy="327" r="39" fill="#efc19d"/><path fill="#34294a" d="M358 366h84v102h-84z"/>
+  <circle cx="595" cy="346" r="34" fill="#dfa987"/><path fill="#382b4d" d="M559 380h72v87h-72z"/>
+  <path fill="#f6df9c" d="M456 133h213v13H456zm0 27h161v9H456zm0 21h192v9H456z"/>
+  <path fill="#fff0b0" d="m389 145 29 18-29 18z"/>
+</svg>

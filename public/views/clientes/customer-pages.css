@@ -1,0 +1,110 @@
+*{box-sizing:border-box}
+html{touch-action:manipulation}
+body.customer-page{
+  margin:0;
+  min-height:100vh;
+  background:#100d16;
+  color:#f2edf4;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+body.customer-page a{color:inherit;text-decoration:none}
+body.customer-page .customer-shell{min-height:100vh;display:grid;grid-template-columns:250px minmax(0,1fr)}
+body.customer-page .customer-sidebar{
+  position:sticky;
+  top:0;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+  padding:26px 18px 20px;
+  background:#15101f;
+  border-right:1px solid #2b2435;
+}
+body.customer-page .customer-brand{display:flex;align-items:center;gap:11px;padding:0 8px 23px;border-bottom:0;font-size:19px;font-weight:800}
+body.customer-page .customer-brand strong{color:#d7b46a}
+body.customer-page .customer-brand small{display:block;margin-top:4px;color:#817985;font-size:10px;letter-spacing:1px}
+body.customer-page .brand-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(145deg,#e8d29a,#ad8b51);color:#201b20}
+body.customer-page .customer-nav-title{margin:23px 12px 9px;color:#a49bab;font-size:13px;font-weight:700;letter-spacing:1.3px}
+body.customer-page .customer-sidebar .menu{display:flex;flex-direction:column;gap:4px}
+body.customer-page .customer-sidebar .menu-item{min-height:44px;display:flex;align-items:center;gap:11px;padding:0 12px;border-radius:8px;color:#c9c2cf;font-size:16px}
+body.customer-page .customer-sidebar .menu-item .icon{width:17px;color:#8a8091;text-align:center}
+body.customer-page .customer-sidebar .menu-item:hover,
+body.customer-page .customer-sidebar .menu-item.active{background:#2b2435;color:#f4eff7}
+body.customer-page .customer-sidebar .menu-item.active .icon{color:#d7b46a}
+body.customer-page .customer-sidebar-user{display:flex;align-items:center;gap:10px;margin-top:auto;padding:16px 8px 0;border-top:0}
+body.customer-page .customer-sidebar-user>span,
+body.customer-page .customer-avatar{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#82758a,#c7b79a);color:#27222a;font-size:12px;font-weight:800}
+body.customer-page .customer-sidebar-user strong,
+body.customer-page .customer-sidebar-user small{display:block}
+body.customer-page .customer-sidebar-user strong{font-size:13px}
+body.customer-page .customer-sidebar-user small{margin-top:3px;color:#817985;font-size:12px}
+body.customer-page .customer-main{min-width:0}
+body.customer-page .customer-topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 42px;border-bottom:0}
+body.customer-page .customer-topbar p{margin:0;color:#c9c2cf;font-size:16px}
+body.customer-page .customer-topbar strong{color:#e4dce8}
+body.customer-page .customer-content{width:min(100%,1240px);margin:auto;padding:40px 42px 64px}
+body.customer-page .customer-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+body.customer-page .customer-eyebrow{color:#d7b46a;font-size:11px;font-weight:700;letter-spacing:1.4px}
+body.customer-page .customer-heading h1{margin:8px 0;font-size:34px;line-height:1.2}
+body.customer-page .customer-heading p{margin:0;color:#c0b8c8;font-size:16px;line-height:1.6}
+body.customer-page .customer-button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:1px solid #493b56;border-radius:9px;background:#211a2b;color:#eee7f2;font:600 15px/1.2 Inter,"Segoe UI",Arial,sans-serif;cursor:pointer}
+body.customer-page .customer-button.primary{border-color:#d9ae59;background:linear-gradient(180deg,#e9c86c,#d9ae59);color:#211a20}
+body.customer-page .favorite-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+body.customer-page .favorite-card{position:relative;overflow:hidden;border:1px solid #30283d;border-radius:14px;background:#191420}
+body.customer-page .favorite-card>img{width:100%;height:168px;display:block;object-fit:cover;background:#261d31}
+body.customer-page .favorite-card-content{position:relative;padding:18px}
+body.customer-page .favorite-tag{color:#e4c36e;font-size:13px;font-weight:800;letter-spacing:1.1px}
+body.customer-page .favorite-card h2{margin:9px 30px 6px 0;font-size:19px;line-height:1.35}
+body.customer-page .favorite-card p{margin:0;color:#c0b8c8;font-size:15px}
+body.customer-page .favorite-card-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid #30283d}
+body.customer-page .favorite-card-footer strong{font-size:14px}
+body.customer-page .favorite-card-footer a{color:#f2edf4;font-size:14px;font-weight:700}
+body.customer-page .favorite-remove{position:absolute;top:14px;right:14px;width:34px;height:34px;border:1px solid #ffffff45;border-radius:50%;background:#100d16b8;color:#efc96b;font-size:19px;cursor:pointer}
+body.customer-page .customer-empty-state{padding:50px 24px;text-align:center;border:1px dashed #493b56;border-radius:14px;background:#17131f}
+body.customer-page .customer-empty-state[hidden]{display:none}
+body.customer-page .customer-empty-state>span{color:#d7b46a;font-size:34px}
+body.customer-page .customer-empty-state h2{margin:12px 0 8px;font-size:21px}
+body.customer-page .customer-empty-state p{max-width:440px;margin:0 auto 20px;color:#a49bab;line-height:1.6}
+body.customer-page .customer-status{min-height:20px;margin:0;color:#bde2c9;font-size:13px}
+body.customer-page .settings-card{max-width:860px;padding:0 24px;border:1px solid #30283d;border-radius:14px;background:#191420}
+body.customer-page .settings-section{display:grid;gap:0;padding:24px 0;border-bottom:0}
+body.customer-page .settings-section>div{margin-bottom:12px}
+body.customer-page .settings-section h2{margin:0 0 6px;font-size:20px}
+body.customer-page .settings-section>div p{margin:0;color:#c0b8c8;font-size:15px;line-height:1.5}
+body.customer-page .settings-option{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 0}
+body.customer-page .settings-option span{display:grid;gap:5px}
+body.customer-page .settings-option strong{font-size:16px}
+body.customer-page .settings-option small{color:#c0b8c8;font-size:14px;line-height:1.45}
+body.customer-page .settings-option input{width:20px;height:20px;flex:0 0 auto;accent-color:#d7b46a}
+body.customer-page .settings-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+body.customer-page .settings-help{max-width:860px;display:flex;align-items:flex-start;gap:12px;margin-top:16px;padding:15px 17px;border:1px solid #30283d;border-radius:10px;background:#17131f}
+body.customer-page .settings-help>span{width:21px;height:21px;display:grid;flex:0 0 21px;place-items:center;border-radius:50%;background:#30283d;color:#e4c36e;font-weight:800}
+body.customer-page .settings-help p{margin:0;color:#c0b8c8;font-size:14px;line-height:1.5}
+@media(max-width:1050px){body.customer-page .favorite-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+  body.customer-page .customer-shell{display:block}
+  body.customer-page .customer-sidebar{position:fixed}
+  body.customer-page .customer-content{padding:30px 22px 48px}
+  body.customer-page .customer-topbar{height:66px;padding:0 20px 0 68px}
+}
+@media(max-width:520px){
+  body.customer-page .customer-content{padding:26px 16px 40px}
+  body.customer-page .customer-heading{align-items:flex-start;flex-direction:column;gap:16px}
+  body.customer-page .customer-heading h1{font-size:30px}
+  body.customer-page .favorite-grid{grid-template-columns:1fr}
+  body.customer-page .favorite-card>img{height:190px}
+  body.customer-page .settings-card{padding:0 16px}
+  body.customer-page .settings-option{gap:10px}
+  body.customer-page .settings-option small{font-size:14px}
+  body.customer-page .settings-actions{align-items:stretch;flex-direction:column}
+}
+
+body.customer-page .customer-sidebar{border-right-color:transparent}
+body.customer-page .favorite-card,
+body.customer-page .settings-card,
+body.customer-page .settings-help,
+body.customer-page .customer-empty-state{
+  border-color:transparent;
+}
+body.customer-page .favorite-card-footer{
+  border-top-color:transparent;
+}
