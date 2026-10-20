@@ -28,9 +28,12 @@
       </nav>
 
       <div class="nav-actions">
-        <span class="link-muted">Visita: Invitado</span>
-        <a href="login.html" class="btn btn-outline">Iniciar sesión</a>
-        <a href="registro.html" class="btn btn-gold">Regístrate</a>
+        <span class="link-muted" data-nav-greeting>Visita: Invitado</span>
+        <a href="login.html" class="btn btn-outline" data-nav-guest>Iniciar sesión</a>
+        <a href="registro.html" class="btn btn-gold" data-nav-guest>Regístrate</a>
+        <a href="misreservas.html" class="btn btn-outline" data-nav-account hidden>Mi cuenta</a>
+        <button type="button" class="btn btn-gold" data-nav-logout hidden>Cerrar sesión</button>
+        <span class="link-muted" data-nav-status role="status" aria-live="polite" hidden></span>
       </div>
     </div>
   </header>
@@ -491,6 +494,7 @@
   <script src="../../components/cambiar-cuenta.js"></script>
   <script src="categorias-carousel.js"></script>
   <script src="../../api.js"></script>
+  <script src="account-nav.js"></script>
   <script src="catalogo.js"></script>
 </body>
 </html>
