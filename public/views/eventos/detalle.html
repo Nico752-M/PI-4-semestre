@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce el evento, elige tus boletas y prepárate para vivirlo con EventStage.">
+  <title>Evento | EventStage</title>
+  <link rel="stylesheet" href="../clientes/styles.css">
+</head>
+<body class="cliente-home event-page">
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="../clientes/index.html" class="brand" aria-label="EventStage inicio">
+        <span class="brand-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+        <strong>EventStage</strong>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="../clientes/index.html#eventos">Eventos</a>
+        <a href="../clientes/index.html#categorias">Categorías</a>
+        <a href="../clientes/index.html#ciudades">Ciudades</a>
+      </nav>
+      <a class="btn btn-outline" href="../clientes/login.html">Iniciar sesión</a>
+    </div>
+  </header>
+
+  <main id="contenido" class="container event-main" tabindex="-1">
+    <div class="event-navigation-row">
+      <a class="btn btn-outline event-home-link" href="../clientes/index.html">
+        <span aria-hidden="true">←</span> Volver al inicio
+      </a>
+      <nav class="event-breadcrumb" aria-label="Ruta de navegación">
+        <a href="../clientes/index.html#eventos">Eventos</a><span aria-hidden="true">/</span>
+        <span id="event-breadcrumb-name" aria-current="page">Detalle</span>
+      </nav>
+    </div>
+
+    <div id="event-not-found" class="event-not-found" role="status" hidden>
+      <p class="section-kicker">EVENTSTAGE</p>
+      <h1>No encontramos este evento</h1>
+      <p>Puede que el enlace haya cambiado. Explora los eventos disponibles para encontrar tu próximo plan.</p>
+      <a class="btn btn-gold" href="../clientes/index.html#eventos">Explorar eventos</a>
+    </div>
+
+    <div id="event-content" hidden>
+      <section class="event-hero" aria-labelledby="event-title">
+        <div class="event-hero-copy">
+          <span id="event-category" class="tag"></span>
+          <h1 id="event-title"></h1>
+          <p id="event-meta" class="event-meta"></p>
+          <p id="event-time" class="event-time"></p>
+        </div>
+        <img id="event-cover" class="event-cover" src="" alt="">
+      </section>
+
+      <div class="event-layout">
+        <div class="event-information">
+          <section class="event-description" aria-labelledby="description-title">
+            <h2 id="description-title">Sobre el evento</h2>
+            <p id="event-description"></p>
+          </section>
+
+          <section class="event-gallery-section" aria-labelledby="gallery-title">
+            <h2 id="gallery-title">Galería</h2>
+            <div id="event-gallery" class="event-gallery"></div>
+          </section>
+
+        </div>
+
+        <aside class="event-ticket-card" aria-labelledby="ticket-title">
+          <h2 id="ticket-title">Elige tu boleta</h2>
+          <form id="ticket-form">
+            <fieldset id="ticket-options" class="ticket-options">
+              <legend class="sr-only">Selecciona una localidad</legend>
+            </fieldset>
+            <div class="ticket-quantity">
+              <label for="ticket-quantity">Cantidad <span>(máximo 6)</span></label>
+              <div class="quantity-control">
+                <button type="button" id="quantity-decrease" aria-label="Quitar una boleta">−</button>
+                <input id="ticket-quantity" type="number" min="1" max="6" value="1" inputmode="numeric">
+                <button type="button" id="quantity-increase" aria-label="Agregar una boleta">+</button>
+              </div>
+            </div>
+            <div class="ticket-subtotal">
+              <span>Subtotal</span>
+              <strong id="ticket-subtotal"></strong>
+            </div>
+            <p class="ticket-message">La capacidad se valida al crear la reserva.</p>
+            <button class="btn btn-pink ticket-submit" type="submit">Continuar con la compra</button>
+            <p id="ticket-message" class="ticket-message" role="status" aria-live="polite">
+              La reserva queda pendiente; todavía no se procesan pagos.
+            </p>
+          </form>
+        </aside>
+      </div>
+
+      <section class="related-events-section" aria-labelledby="related-title">
+        <h2 id="related-title">También te puede interesar</h2>
+        <div id="related-events" class="related-events"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="../clientes/index.html" class="brand footer-brand" aria-label="EventStage inicio">
+          <span class="brand-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          <strong>EventStage</strong>
+        </a>
+        <p>Tu plataforma de eventos en Colombia. Encuentra tu próximo plan en un solo lugar.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Contacto</h2>
+        <p>soporte@eventstage.co</p>
+        <p>+57 300 000 0000</p>
+        <p>Bogotá, Colombia</p>
+      </div>
+      <nav class="footer-col" aria-label="Explorar EventStage">
+        <h2>Explorar</h2>
+        <a href="../clientes/index.html#eventos">Eventos</a>
+        <a href="../clientes/index.html#categorias">Categorías</a>
+        <a href="../clientes/index.html#ciudades">Ciudades</a>
+      </nav>
+      <nav class="footer-col" aria-label="Tu cuenta">
+        <h2>Tu cuenta</h2>
+        <a href="../clientes/login.html">Iniciar sesión</a>
+        <a href="../clientes/registro.html">Crear una cuenta</a>
+        <a href="../clientes/misreservas.html">Mis reservas</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 EventStage. Todos los derechos reservados.</p>
+      <p>Hecho en Colombia</p>
+    </div>
+  </footer>
+
+  <script src="../../api.js"></script>
+  <script src="eventos.js"></script>
+  <script src="detalle.js"></script>
+</body>
+</html>

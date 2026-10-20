@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <linearGradient id="room" x2="1" y2="1"><stop stop-color="#c68d56"/><stop offset=".55" stop-color="#e9c18a"/><stop offset="1" stop-color="#f5dfa9"/></linearGradient>
+  </defs>
+  <path fill="url(#room)" d="M0 0h800v420H0z"/>
+  <path fill="#fae7bd" fill-opacity=".4" d="M85 0h255L198 288H0zm444 0h271L523 288H267z"/>
+  <path fill="#533653" d="M0 311h800v109H0z"/>
+  <path fill="#75503f" d="M70 118h160v193H70z"/><path fill="#f4d9a6" d="M86 135h128v153H86z"/>
+  <path fill="#c94f58" d="M99 155h93v13H99zm0 28h75v9H99zm0 21h87v9H99z"/>
+  <path fill="#355f69" d="M570 118h160v193H570z"/><path fill="#f3d7a3" d="M586 135h128v153H586z"/>
+  <path fill="#537d71" d="M600 155h92v13h-92zm0 28h76v9h-76zm0 21h87v9h-87z"/>
+  <path fill="#d9684d" d="m320 292 19-119 39-19 39 19 19 119z"/><path fill="#f8d986" d="M340 206h77v8h-77zm-8 22h92v7h-92zm-4 21h101v7H328z"/>
+  <path fill="#503b3e" d="M270 311h266v30H270z"/>
+  <path fill="#a95649" d="M366 96h74v17h-74z"/><path fill="#fff0c7" d="M378 72h50v24h-50z"/>
+  <circle cx="401" cy="84" r="8" fill="#d99b59"/>
+</svg>

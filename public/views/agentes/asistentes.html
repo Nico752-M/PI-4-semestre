@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistentes | EventStage</title>
+  <link rel="stylesheet" href="agente.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+</head>
+<body class="agent-page workspace-page">
+  <div class="agent-app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div></div>
+      <div class="profile-card"><div class="avatar">AP</div><div><strong>Aurora<br>Producciones</strong><small>Agente /<br>Organizador</small></div></div>
+      <nav aria-label="Navegación del agente">
+        <p class="nav-title">ADMINISTRACIÓN</p>
+        <a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
+        <a href="crear-evento.html">＋ <span>Crear evento</span></a><a href="reservas.html">▣ <span>Reservas</span></a>
+        <a href="asistentes.html" class="active">♙ <span>Asistentes</span></a><a href="reportes.html">◒ <span>Reportes</span></a>
+        <a href="estadisticas.html">▥ <span>Estadísticas</span></a><a href="configuracion.html">⚙ <span>Configuración</span></a>
+        <p class="nav-title">SOPORTE</p><a href="ayuda.html">? <span>Centro de ayuda</span></a>
+      </nav>
+    </aside>
+    <main class="workspace-main">
+      <header class="workspace-topbar"><p>Panel / <strong>Asistentes</strong></p><a class="workspace-button" href="reservas.html">Ver reservas</a></header>
+      <section class="workspace-content">
+        <div class="workspace-heading"><div><span class="workspace-eyebrow">GESTIÓN DE PÚBLICO</span><h1>Asistentes</h1><p>Consulta los asistentes registrados y el estado de sus entradas.</p></div></div>
+        <div class="workspace-metrics compact">
+          <article class="workspace-card metric"><span>Asistentes registrados</span><strong>5.284</strong><small>En todos tus eventos</small></article>
+          <article class="workspace-card metric"><span>Entradas confirmadas</span><strong>4.716</strong><small>89,2% del total</small></article>
+          <article class="workspace-card metric"><span>Check-ins realizados</span><strong>2.984</strong><small>64,4% de asistencia</small></article>
+        </div>
+        <section class="workspace-card">
+          <div class="workspace-card-heading"><div><h2>Listado de asistentes</h2><p>Registros recientes de tus eventos.</p></div><button class="workspace-button">＋ Registrar asistente</button></div>
+          <div class="workspace-table-wrap">
+            <table class="workspace-table">
+              <thead><tr><th>ASISTENTE</th><th>EVENTO</th><th>ENTRADA</th><th>RESERVA</th><th>CHECK-IN</th><th>FECHA</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><strong>Juan David López</strong><small>juan.d@email.com</small></td><td>Festival Aurora 2026</td><td>VIP · 2 entradas</td><td><span class="workspace-badge success">Confirmada</span></td><td><span class="workspace-badge success">Registrado</span></td><td>17 Sep 2026</td><td><button class="workspace-icon-button" aria-label="Ver asistente">•••</button></td></tr>
+                <tr><td><strong>Mariana Torres</strong><small>mariana.t@email.com</small></td><td>Noche de Comedia</td><td>General · 1 entrada</td><td><span class="workspace-badge success">Confirmada</span></td><td><span class="workspace-badge pending">Pendiente</span></td><td>16 Sep 2026</td><td><button class="workspace-icon-button" aria-label="Ver asistente">•••</button></td></tr>
+                <tr><td><strong>Santiago Rojas</strong><small>s.rojas@email.com</small></td><td>ExpoArte Colombia</td><td>General · 2 entradas</td><td><span class="workspace-badge pending">Pendiente</span></td><td><span class="workspace-badge neutral">Sin registro</span></td><td>15 Sep 2026</td><td><button class="workspace-icon-button" aria-label="Ver asistente">•••</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="../../components/cambiar-cuenta.js"></script>
+</body>
+</html>

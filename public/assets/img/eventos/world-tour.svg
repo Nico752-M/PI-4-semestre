@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <linearGradient id="stage" x2="1" y2="1"><stop stop-color="#14164e"/><stop offset=".55" stop-color="#2949ae"/><stop offset="1" stop-color="#a84191"/></linearGradient>
+    <linearGradient id="laser" x2="0" y2="1"><stop stop-color="#85d8ff" stop-opacity=".72"/><stop offset="1" stop-color="#85d8ff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <path fill="url(#stage)" d="M0 0h800v420H0z"/>
+  <circle cx="407" cy="120" r="73" fill="#fa7cb5" fill-opacity=".56"/>
+  <path d="m184 0 154 312h-70L128 0m483 0L458 312h70L670 0" fill="url(#laser)"/>
+  <path stroke="#88dfff" stroke-opacity=".65" stroke-width="4" d="M0 80 400 288 800 65"/>
+  <path stroke="#f989ca" stroke-opacity=".5" stroke-width="3" d="m0 136 400 151L800 132"/>
+  <path fill="#17162f" d="M0 320h800v100H0z"/>
+  <path fill="#101329" d="M0 366q31-56 62 0 30-48 60 0 32-62 64 0 31-46 62 0 34-68 67 0 32-48 64 0 32-59 65 0 35-57 70 0 33-63 67 0 32-46 63 0 39-64 78 0 37-52 74 0v54H0z"/>
+  <path fill="#f4d66b" d="M112 160h10v10h-10zm573 43h11v11h-11zM238 83h8v8h-8zm304 64h9v9h-9z"/>
+  <circle cx="403" cy="205" r="19" fill="#19152d"/><path fill="#19152d" d="m386 225 17-9 18 9 15 53h-65zm5 52-14 33m48-33 16 33"/>
+</svg>

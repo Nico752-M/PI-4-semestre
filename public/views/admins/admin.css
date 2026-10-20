@@ -1,0 +1,303 @@
+body.admin-page,
+body.admin-page *{
+    box-sizing:border-box;
+}
+
+body.admin-page{
+    margin:0;
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+
+body.admin-page .sidebar{
+    border-right-color:#34243c;
+    background:#180f20;
+}
+
+body.admin-page .brand-icon{
+    background:linear-gradient(145deg,#edb2c9,#b65a87);
+    color:#24111d;
+}
+
+body.admin-page .brand h2 span,
+body.admin-page .nav-title,
+body.admin-page nav a.active:first-letter,
+body.admin-page .workspace-eyebrow,
+body.admin-page .workspace-card-heading>a{
+    color:#f6f1f8;
+    text-decoration:none;
+}
+
+body.admin-page .avatar{
+    background:linear-gradient(145deg,#944d78,#cf7ca3);
+}
+
+body.admin-page nav a.active{
+    border-color:#563247;
+    background:#302033;
+}
+
+body.admin-page .workspace-button.primary{
+    border-color:#d179a1;
+    background:linear-gradient(180deg,#efb3ca,#d179a1);
+    color:#24111d;
+}
+
+body.admin-page .workspace-icon-button:hover,
+body.admin-page .workspace-button:hover{
+    border-color:#a75a7d;
+}
+
+body.admin-page .workspace-badge.alert{
+    background:#4a1f31;
+    color:#ff9bb7;
+}
+
+body.admin-page .workspace-badge.info{
+    background:#29213d;
+    color:#c9a8ef;
+}
+
+body.admin-page .admin-toolbar{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(190px,.72fr);
+    align-items:end;
+    gap:14px;
+    margin:0 0 18px;
+    padding:0 22px;
+}
+
+body.admin-page .admin-toolbar label{
+    display:grid;
+    gap:6px;
+    min-width:0;
+    color:#c7bfce;
+    font-size:14px;
+}
+
+body.admin-page .workspace-quick-links a,
+body.admin-page .workspace-quick-links strong,
+body.admin-page .workspace-card-heading>a{
+    color:#f6f1f8;
+    text-decoration:none;
+}
+
+body.admin-page .admin-toolbar input,
+body.admin-page .admin-toolbar select{
+    width:100%;
+    min-width:0;
+    min-height:44px;
+    padding:9px 12px;
+    border:1px solid #3a3047;
+    border-radius:8px;
+    background:#110e18;
+    color:#f6f1f8;
+    font:inherit;
+}
+
+body.admin-page .admin-table-card{
+    padding:0;
+    overflow:hidden;
+}
+
+body.admin-page .admin-table-card .workspace-card-heading{
+    min-width:0;
+    margin:0;
+    padding:22px 22px 18px;
+}
+
+body.admin-page .admin-table-card .workspace-table-wrap{
+    padding:0 22px 12px;
+}
+
+body.admin-page .workspace-card,
+body.admin-page .workspace-columns,
+body.admin-page .workspace-metrics{
+    min-width:0;
+}
+
+body.admin-page .workspace-columns{
+    grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+}
+
+body.admin-page .workspace-card-heading>div{
+    min-width:0;
+}
+
+body.admin-page .workspace-table td{
+    white-space:normal;
+}
+
+body.admin-page .admin-person{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:190px;
+}
+
+body.admin-page .admin-person .avatar{
+    width:36px;
+    height:36px;
+    flex:0 0 36px;
+    border-radius:50%;
+    font-size:12px;
+}
+
+body.admin-page .admin-person span:last-child{
+    display:grid;
+    gap:2px;
+}
+
+body.admin-page .admin-person small{
+    color:#a49aac;
+}
+
+body.admin-page .admin-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+body.admin-page .admin-actions a,
+body.admin-page .admin-actions button{
+    min-height:34px;
+    padding:7px 10px;
+    border:1px solid #3a3048;
+    border-radius:7px;
+    background:#231c2d;
+    color:#e4deea;
+    font:600 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+body.admin-page .admin-actions a:hover,
+body.admin-page .admin-actions button:hover{
+    border-color:#a75a7d;
+    background:#302033;
+}
+
+body.admin-page .admin-review-list{
+    display:grid;
+    gap:12px;
+}
+
+body.admin-page .admin-review-list article{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:14px;
+    border:1px solid #30283d;
+    border-radius:10px;
+    background:#14101d;
+}
+
+body.admin-page .admin-review-list article>div:first-child{
+    display:grid;
+    gap:4px;
+}
+
+body.admin-page .admin-review-list small{
+    color:#a49aac;
+}
+
+body.admin-page .admin-bars{
+    display:grid;
+    gap:18px;
+    margin-top:18px;
+}
+
+body.admin-page .admin-bars>div{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:7px 12px;
+    color:#c7bfce;
+    font-size:14px;
+}
+
+body.admin-page .admin-bars i{
+    grid-column:1/-1;
+    height:9px;
+    overflow:hidden;
+    border-radius:10px;
+    background:#30283d;
+}
+
+body.admin-page .admin-bars i b{
+    display:block;
+    height:100%;
+    border-radius:inherit;
+    background:linear-gradient(90deg,#9c5578,#e9a3c1);
+}
+
+body.admin-page .admin-event-mark{
+    display:inline-grid;
+    width:38px;
+    height:38px;
+    margin-right:9px;
+    place-items:center;
+    border-radius:9px;
+    background:#38243a;
+    color:#efb3ca;
+    vertical-align:middle;
+}
+
+body.admin-page .workspace-preferences input{
+    accent-color:#e9a3c1;
+}
+
+body.admin-page .workspace-form input:focus,
+body.admin-page .workspace-form textarea:focus,
+body.admin-page .admin-toolbar input:focus,
+body.admin-page .admin-toolbar select:focus{
+    outline:2px solid #e9a3c1;
+    outline-offset:2px;
+}
+
+@media(max-width:760px){
+    body.admin-page .admin-review-list article{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    body.admin-page .workspace-columns{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:520px){
+    body.admin-page .admin-toolbar{
+        grid-template-columns:minmax(0,1fr);
+        padding:0 16px;
+    }
+
+    body.admin-page .admin-toolbar,
+    body.admin-page .admin-toolbar label,
+    body.admin-page .admin-toolbar input,
+    body.admin-page .admin-toolbar select{
+        width:100%;
+        min-width:0;
+    }
+
+    body.admin-page .workspace-topbar .workspace-button{
+        width:100%;
+    }
+
+    body.admin-page .admin-table-card .workspace-card-heading{
+        padding:18px 16px;
+    }
+
+    body.admin-page .admin-table-card .workspace-table-wrap{
+        padding:0 16px 10px;
+    }
+}
+
+@media(max-width:520px){
+    body.admin-page .workspace-card:not(.admin-table-card){
+        padding:15px;
+    }
+}
+
+body.admin-page .admin-review-list article{
+    border-color:transparent;
+}

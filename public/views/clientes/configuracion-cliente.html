@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administra tus preferencias de EventStage.">
+  <title>EventStage — Configuración</title>
+  <link rel="stylesheet" href="customer-pages.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+</head>
+<body class="customer-page">
+  <div class="customer-shell">
+    <aside class="sidebar customer-sidebar" aria-label="Navegación del cliente">
+      <a class="customer-brand" href="index.html"><span class="brand-mark">E</span><span>Event<strong>Stage</strong><small>EXPERIENCIAS EN VIVO</small></span></a>
+      <p class="customer-nav-title">PRINCIPAL</p>
+      <nav class="menu">
+        <a class="menu-item" href="index.html"><span class="icon">⌂</span>Inicio</a>
+        <a class="menu-item" href="misreservas.html"><span class="icon">▣</span>Mis reservas</a>
+        <a class="menu-item" href="favoritos.html"><span class="icon">♡</span>Eventos favoritos</a>
+        <a class="menu-item" href="historialdecompras.html"><span class="icon">◷</span>Historial</a>
+      </nav>
+      <p class="customer-nav-title">CUENTA</p>
+      <nav class="menu">
+        <a class="menu-item" href="perfil.html"><span class="icon">●</span>Mi perfil</a>
+        <a class="menu-item active" href="configuracion-cliente.html" aria-current="page"><span class="icon">⚙</span>Configuración</a>
+      </nav>
+      <div class="customer-sidebar-user"><span>JD</span><div><strong>Juan David</strong><small>Cliente</small></div></div>
+    </aside>
+
+    <main class="customer-main">
+      <header class="customer-topbar"><p>Panel / <strong>Configuración</strong></p><a class="customer-avatar" href="perfil.html" aria-label="Ir a mi perfil">JD</a></header>
+      <section class="customer-content">
+        <div class="customer-heading"><div><span class="customer-eyebrow">PREFERENCIAS DE CUENTA</span><h1>Configuración</h1><p>Personaliza cómo te enteras de los eventos y novedades.</p></div></div>
+        <form class="settings-card" id="customer-settings">
+          <section class="settings-section">
+            <div><h2>Notificaciones</h2><p>Elige qué novedades quieres recibir en tu correo.</p></div>
+            <label class="settings-option"><span><strong>Nuevos eventos</strong><small>Recibe recomendaciones y anuncios de eventos.</small></span><input type="checkbox" name="newEvents"></label>
+            <label class="settings-option"><span><strong>Reservas y compras</strong><small>Recibe confirmaciones y actualizaciones de tus entradas.</small></span><input type="checkbox" name="bookingUpdates"></label>
+            <label class="settings-option"><span><strong>Promociones</strong><small>Entérate de preventas, beneficios y ofertas especiales.</small></span><input type="checkbox" name="offers"></label>
+          </section>
+          <section class="settings-section">
+            <div><h2>Privacidad</h2><p>Controla el uso de tus preferencias dentro de la plataforma.</p></div>
+            <label class="settings-option"><span><strong>Recomendaciones personalizadas</strong><small>Usa tus intereses para sugerirte eventos relacionados.</small></span><input type="checkbox" name="recommendations"></label>
+          </section>
+          <div class="settings-actions"><p class="customer-status" id="settings-status" role="status" aria-live="polite"></p><button class="customer-button primary" type="submit">Guardar preferencias</button></div>
+        </form>
+        <section class="settings-help"><span>i</span><p>Estas preferencias se guardan en este navegador para esta demostración. Puedes cambiarlas cuando quieras.</p></section>
+      </section>
+    </main>
+  </div>
+  <script src="cliente-cuenta.js"></script>
+  <script src="../../components/cambiar-cuenta.js"></script>
+</body>
+</html>

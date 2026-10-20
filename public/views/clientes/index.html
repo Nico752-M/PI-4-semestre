@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EventStage - Plataforma de eventos en Colombia">
+  <title>EventStage | Tu próximo plan empieza aquí</title>
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="cliente-home">
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="EventStage inicio">
+        <span class="brand-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <strong>EventStage</strong>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#eventos">Eventos</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#ciudades">Ciudades</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span class="link-muted">Visita: Invitado</span>
+        <a href="login.html" class="btn btn-outline">Iniciar sesión</a>
+        <a href="registro.html" class="btn btn-gold">Regístrate</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div class="container hero-content">
+        <p class="eyebrow">TU PLATAFORMA DE EVENTOS EN COLOMBIA</p>
+        <h1 id="titulo-hero">Tu próximo plan<br>empieza aquí</h1>
+        <p class="hero-copy">
+          Conciertos, teatro, deportes y mucho más. Descubre y compra entradas
+          para los mejores eventos del país, todo en un solo lugar.
+        </p>
+
+        <form class="search-box" id="event-search" role="search" aria-label="Buscar eventos">
+          <label>
+            <span>Nombre del evento</span>
+            <input type="text" name="evento" placeholder="Buscar evento...">
+          </label>
+
+          <label>
+            <span>Ciudad</span>
+            <select name="ciudad">
+              <option value="">Todas las ciudades</option>
+              <option>Bogotá</option>
+              <option>Medellín</option>
+              <option>Cali</option>
+              <option>Barranquilla</option>
+            </select>
+          </label>
+
+          <button class="btn btn-gold search-btn" type="submit">Buscar</button>
+        </form>
+
+        <div class="reservation-bar">
+          <p>Inicia sesión para consultar tus reservas y guardar tus eventos favoritos.</p>
+          <a href="login.html" class="btn btn-small btn-outline">Iniciar sesión</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <section class="section" id="categorias" aria-labelledby="titulo-categorias">
+      <div class="container">
+        <p class="section-kicker">EXPLORA</p>
+        <h2 id="titulo-categorias">Categorías</h2>
+
+        <div class="category-carousel" data-category-carousel role="region" aria-roledescription="carrusel" aria-label="Categorías de eventos">
+          <div class="category-carousel-controls">
+            <p class="category-carousel-hint">Desliza para explorar</p>
+            <div class="category-carousel-buttons">
+              <button class="carousel-control" type="button" data-carousel-previous aria-label="Ver categoría anterior">←</button>
+              <button class="carousel-control carousel-toggle" type="button" data-carousel-toggle aria-label="Pausar movimiento" aria-pressed="false">Pausar</button>
+              <button class="carousel-control" type="button" data-carousel-next aria-label="Ver categoría siguiente">→</button>
+            </div>
+          </div>
+          <div class="category-carousel-viewport" data-carousel-viewport tabindex="0" aria-label="Usa las flechas izquierda y derecha para explorar categorías">
+            <div class="category-carousel-track" data-carousel-track>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/musica.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">EN VIVO</span>
+                  <h3>Música</h3>
+                  <p>Conciertos y festivales para cantar cada momento.</p>
+                </div>
+              </article>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/teatro.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">EN ESCENA</span>
+                  <h3>Teatro</h3>
+                  <p>Historias, comedia y espectáculos en vivo.</p>
+                </div>
+              </article>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/deportes.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">LA EMOCIÓN</span>
+                  <h3>Deportes</h3>
+                  <p>Vive desde la tribuna los encuentros que te mueven.</p>
+                </div>
+              </article>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/tecnologia.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">NUEVAS IDEAS</span>
+                  <h3>Tecnología</h3>
+                  <p>Descubre innovación, ciencia y experiencias digitales.</p>
+                </div>
+              </article>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/infantil.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">EN FAMILIA</span>
+                  <h3>Infantil</h3>
+                  <p>Planes para compartir y crear recuerdos juntos.</p>
+                </div>
+              </article>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/gastronomia.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">BUEN SABOR</span>
+                  <h3>Gastronomía</h3>
+                  <p>Sabores, encuentros y experiencias para disfrutar.</p>
+                </div>
+              </article>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/cultura.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">EXPRESIONES</span>
+                  <h3>Cultura</h3>
+                  <p>Arte y tradiciones que conectan nuestras ciudades.</p>
+                </div>
+              </article>
+              <article class="category-card">
+                <img class="category-card-image" src="../../assets/img/categorias/conferencias.svg" alt="" loading="lazy" decoding="async">
+                <div class="category-card-content">
+                  <span class="category-card-kicker">NUEVAS VOCES</span>
+                  <h3>Conferencias</h3>
+                  <p>Ideas y conversaciones para inspirar lo que sigue.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="section how-it-works-section" aria-labelledby="titulo-como-funciona">
+      <div class="container">
+        <p class="section-kicker">SIMPLE Y RÁPIDO</p>
+        <h2 id="titulo-como-funciona">Cómo funciona</h2>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number" aria-hidden="true">1</span>
+            <h3>1. Busca tu evento</h3>
+            <p>Filtra por ciudad, categoría y fecha o encuentra entre miles de eventos buscando entre ellos.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number" aria-hidden="true">2</span>
+            <h3>2. Compra seguro</h3>
+            <p>Elige tu localidad y paga con PSE, tarjeta, Nequi o Daviplata. Recibe tu entrada al instante.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number" aria-hidden="true">3</span>
+            <h3>3. Disfruta el evento</h3>
+            <p>Presenta tu entrada digital en la entrada y vive tu experiencia sin filas ni complicaciones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTACADOS -->
+    <section class="section" id="eventos" aria-labelledby="titulo-destacados">
+      <div class="container">
+        <p class="section-kicker">MUY PRONTO</p>
+        <h2 id="titulo-destacados">Eventos destacados</h2>
+
+        <div class="featured-grid" data-featured-events>
+          <article class="featured-card">
+            <div class="event-image image-yellow" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/estereo-picnic.svg" alt="" loading="lazy" decoding="async">
+              <span>ESTÉREO PICNIC</span>
+            </div>
+            <div class="featured-body">
+              <h3>Festival Estéreo Picnic</h3>
+              <p>28 mar 2027 · Bogotá</p>
+              <a href="../eventos/detalle.html?id=festival-estereo-picnic" class="btn btn-small btn-outline">Ver evento <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <div class="event-image image-orange" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/feria-de-cali.svg" alt="" loading="lazy" decoding="async">
+              <span>FERIA DE CALI</span>
+            </div>
+            <div class="featured-body">
+              <h3>Feria de Cali</h3>
+              <p>25 dic 2026 · Cali</p>
+              <a href="../eventos/detalle.html?id=feria-de-cali" class="btn btn-small btn-outline">Ver evento <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <div class="event-image image-white" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/comic-con.svg" alt="" loading="lazy" decoding="async">
+              <span>COMIC CON 26</span>
+            </div>
+            <div class="featured-body">
+              <h3>Comic Con Colombia</h3>
+              <p>19 oct 2026 · Bogotá</p>
+              <a href="../eventos/detalle.html?id=comic-con-colombia" class="btn btn-small btn-outline">Ver evento <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <div class="event-image image-sunset" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/conciertos.svg" alt="" loading="lazy" decoding="async">
+              <span>MÚSICA EN VIVO</span>
+            </div>
+            <div class="featured-body">
+              <h3>Conciertos internacionales</h3>
+              <p>Varias fechas</p>
+              <a href="../eventos/detalle.html?id=conciertos-internacionales" class="btn btn-small btn-outline">Ver evento <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISPONIBLES -->
+    <section class="section" aria-labelledby="titulo-disponibles">
+      <div class="container">
+        <p class="section-kicker">COMPRA TU BOLETA</p>
+        <h2 id="titulo-disponibles">Eventos disponibles</h2>
+
+        <p id="events-status" role="status" aria-live="polite"></p>
+        <div class="events-grid" data-events-grid>
+          <article class="event-card">
+            <div class="event-photo photo-blue" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/world-tour.svg" alt="" loading="lazy" decoding="async">
+              <span>WORLD TOUR</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Bad Bunny World Tour</h3>
+              <p>Estadio El Campín · Bogotá</p>
+              <p>16 mar 2026</p>
+              <div class="event-card-footer">
+                <strong>$185.000</strong>
+                <a href="../eventos/detalle.html?id=bad-bunny-world-tour" class="btn btn-pink" aria-label="Ver boletas para Bad Bunny World Tour">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-photo photo-market" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/feria-del-libro.svg" alt="" loading="lazy" decoding="async">
+              <span>FERIA DEL LIBRO</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Feria del Libro de Bogotá</h3>
+              <p>Corferias · Bogotá</p>
+              <p>22 abr 2027</p>
+              <div class="event-card-footer">
+                <strong>$25.000</strong>
+                <a href="../eventos/detalle.html?id=feria-del-libro-bogota" class="btn btn-pink" aria-label="Ver boletas para la Feria del Libro de Bogotá">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-photo photo-sport" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/liga-betplay.svg" alt="" loading="lazy" decoding="async">
+              <span>LIGA BETPLAY</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Final Liga BetPlay</h3>
+              <p>Estadio Atanasio Girardot · Medellín</p>
+              <p>28 dic 2026</p>
+              <div class="event-card-footer">
+                <strong>$60.000</strong>
+                <a href="../eventos/detalle.html?id=final-liga-betplay" class="btn btn-pink" aria-label="Ver boletas para la Final Liga BetPlay">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-photo photo-park" aria-hidden="true">
+              <img class="event-art" src="../../assets/img/eventos/salsa-al-parque.svg" alt="" loading="lazy" decoding="async">
+              <span>SALSA AL PARQUE</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Salsa al Parque 25</h3>
+              <p>Parque Simón Bolívar · Bogotá</p>
+              <p>16 oct 2026</p>
+              <div class="event-card-footer">
+                <strong>Gratis</strong>
+                <a href="../eventos/detalle.html?id=salsa-al-parque-25" class="btn btn-pink" aria-label="Ver boletas para Salsa al Parque 25">Comprar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRÓXIMOS -->
+    <section class="section upcoming-events-section" id="proximos" aria-labelledby="titulo-proximos">
+      <div class="container">
+        <p class="section-kicker">NO TE LO PIERDAS</p>
+        <h2 id="titulo-proximos">Próximos eventos</h2>
+
+        <div class="upcoming-list" data-upcoming-events>
+          <article class="upcoming-row">
+            <div class="date-box"><strong>22</strong><span>oct</span></div>
+            <div class="upcoming-info">
+              <h3>Rock al Parque Preview</h3>
+              <p>Simón Bolívar · Bogotá</p>
+            </div>
+            <span class="tag">Música</span>
+            <a href="../eventos/detalle.html?id=rock-al-parque-preview" class="btn btn-small btn-outline" aria-label="Ver evento: Rock al Parque Preview">Ver evento <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="upcoming-row">
+            <div class="date-box"><strong>05</strong><span>nov</span></div>
+            <div class="upcoming-info">
+              <h3>Vuelta a Colombia - Etapa Final</h3>
+              <p>Nacional</p>
+            </div>
+            <span class="tag">Deportes</span>
+            <a href="../eventos/detalle.html?id=vuelta-a-colombia-etapa-final" class="btn btn-small btn-outline" aria-label="Ver evento: Vuelta a Colombia, Etapa Final">Ver evento <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="upcoming-row">
+            <div class="date-box"><strong>14</strong><span>nov</span></div>
+            <div class="upcoming-info">
+              <h3>Ópera de Otoño</h3>
+              <p>Teatro Colón · Bogotá</p>
+            </div>
+            <span class="tag">Cultura</span>
+            <a href="../eventos/detalle.html?id=opera-de-otono" class="btn btn-small btn-outline" aria-label="Ver evento: Ópera de Otoño">Ver evento <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="upcoming-row">
+            <div class="date-box"><strong>03</strong><span>dic</span></div>
+            <div class="upcoming-info">
+              <h3>Startup Summit LATAM</h3>
+              <p>Plaza Mayor · Medellín</p>
+            </div>
+            <span class="tag">Tecnología</span>
+            <a href="../eventos/detalle.html?id=startup-summit-latam" class="btn btn-small btn-outline" aria-label="Ver evento: Startup Summit LATAM">Ver evento <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="upcoming-row">
+            <div class="date-box"><strong>19</strong><span>dic</span></div>
+            <div class="upcoming-info">
+              <h3>Festival Gastronómico</h3>
+              <p>Parque Boyacá · Tunja</p>
+            </div>
+            <span class="tag">Gastronomía</span>
+            <a href="../eventos/detalle.html?id=festival-gastronomico" class="btn btn-small btn-outline" aria-label="Ver evento: Festival Gastronómico">Ver evento <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section" aria-labelledby="titulo-testimonios">
+      <div class="container">
+        <div class="testimonials-heading">
+          <p class="section-kicker">LO QUE DICEN</p>
+          <h2 id="titulo-testimonios">Miles de colombianos ya confían en nosotros</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <p class="stars" role="img" aria-label="Calificación: 5 de 5 estrellas">★★★★★</p>
+            <blockquote>“Compré las entradas para el concierto en 2 minutos, todo claro y el pago fue súper rápido con Nequi.”</blockquote>
+            <p class="author">María P. — Bogotá</p>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="stars" role="img" aria-label="Calificación: 5 de 5 estrellas">★★★★★</p>
+            <blockquote>“Me encanta que puedo ver todos los eventos de mi ciudad en un solo lugar. Ya es mi app de cabecera.”</blockquote>
+            <p class="author">Andrés R. — Medellín</p>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="stars" role="img" aria-label="Calificación: 5 de 5 estrellas">★★★★★</p>
+            <blockquote>“Excelente atención cuando tuve un problema con mi compra; me respondieron rapidísimo por soporte.”</blockquote>
+            <p class="author">Laura T. — Cali</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section" aria-labelledby="titulo-newsletter">
+      <div class="container">
+        <div class="newsletter">
+          <div>
+            <h2 id="titulo-newsletter">No te pierdas ningún evento</h2>
+            <p>Recibe recomendaciones de eventos cerca de ti y descuentos especiales.</p>
+          </div>
+
+          <form class="newsletter-form" action="#" aria-label="Suscripción al boletín">
+            <label class="sr-only" for="email">Correo electrónico</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com">
+            <button class="btn btn-dark" type="submit">Suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="ciudades">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="brand footer-brand" aria-label="EventStage inicio">
+          <span class="brand-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <strong>EventStage</strong>
+        </a>
+        <p>Tu plataforma de eventos en Colombia. Conciertos, teatro, deportes y mucho más, todo en un solo lugar.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <p>soporte@eventstage.co</p>
+        <p>+57 300 000 0000</p>
+        <p>Bogotá, Colombia</p>
+      </div>
+
+      <nav class="footer-col" aria-labelledby="footer-enlaces">
+        <h3 id="footer-enlaces">Enlaces</h3>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Políticas de privacidad</a>
+        <a href="#">Política de cookies</a>
+      </nav>
+
+      <nav class="footer-col" aria-labelledby="footer-nosotros">
+        <h3 id="footer-nosotros">Sobre nosotros</h3>
+        <a href="#">Trabaja con nosotros</a>
+        <a href="#">Prensa</a>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 EventStage. Todos los derechos reservados.</p>
+      <p>Hecho en Colombia</p>
+    </div>
+  </footer>
+
+  <script>
+  const tipoCuenta = localStorage.getItem('tipoCuenta');
+  if (tipoCuenta === 'admin') {
+    document.getElementById('btn-perfil').href = '../admins/dashboard.html';
+  } else if (tipoCuenta === 'agente') {
+    document.getElementById('btn-perfil').href = '../agentes/dashboard.html';
+  }
+  </script>
+
+  <script>
+  const accountForm = document.querySelector('.auth-form');
+  if (accountForm) accountForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const tipo = document.querySelector('input[name="tipo-cuenta"]:checked').value;
+    localStorage.setItem('tipoCuenta', tipo);
+    location.href = tipo === 'agente' ? '../agentes/dashboard.html' : 'index.html';
+  });
+  </script>
+
+  <script src="../../components/cambiar-cuenta.js"></script>
+  <script src="categorias-carousel.js"></script>
+  <script src="../../api.js"></script>
+  <script src="catalogo.js"></script>
+</body>
+</html>
