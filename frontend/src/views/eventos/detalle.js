@@ -31,7 +31,7 @@
   document.getElementById('event-description').textContent = event.descripcion;
   const cover = document.getElementById('event-cover');
   cover.src = event.portada;
-  cover.alt = `Imagen de ${event.nombre}`;
+  cover.alt = `Ilustración genérica para ${event.nombre}`;
 
   const gallery = document.getElementById('event-gallery');
   event.galeria.forEach((image, index) => {

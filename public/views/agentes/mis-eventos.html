@@ -19,10 +19,10 @@
       </div>
 
       <div class="profile-card">
-        <div class="avatar">AP</div>
+        <div class="avatar">—</div>
         <div>
-          <strong>Aurora<br>Producciones</strong>
-          <small>Agente /<br>Organizador</small>
+          <strong>Cuenta autenticada</strong>
+          <small>Agente / Organizador</small>
         </div>
       </div>
 
@@ -46,7 +46,6 @@
       <header class="topbar">
         <div>Panel / <strong>Mis eventos</strong></div>
         <div class="top-actions">
-          <button class="btn secondary">Exportar</button>
           <a class="btn primary" href="crear-evento.html">＋ Crear evento</a>
         </div>
       </header>
@@ -54,7 +53,7 @@
       <section class="content">
         <span class="eyebrow">ADMINISTRACIÓN</span>
         <h2>Mis eventos</h2>
-        <p class="subtitle">Gestiona todos tus eventos, ventas, reservas y publicaciones desde un solo lugar.</p>
+        <p class="subtitle">Consulta tus eventos y su capacidad registrada.</p>
 
         <div class="stats-grid">
           <article class="stat-card">
@@ -63,14 +62,14 @@
             <div><small>Eventos en la base de datos</small></div>
           </article>
           <article class="stat-card">
-            <span>Eventos publicados</span>
+            <span>Eventos no finalizados</span>
             <strong data-published-events>0</strong>
             <div><small>Disponibles al público</small></div>
           </article>
           <article class="stat-card">
-            <span>Borradores</span>
-            <strong data-draft-events>0</strong>
-            <div><small>El esquema no incluye borradores</small></div>
+            <span>Capacidad total</span>
+            <strong data-total-capacity>0</strong>
+            <div><small>Entradas definidas en tus eventos</small></div>
           </article>
           <article class="stat-card">
             <span>Finalizados</span>
@@ -102,115 +101,7 @@
                   <th>ACCIONES</th>
                 </tr>
               </thead>
-              <tbody data-agent-events>
-                <tr>
-                  <td>
-                    <div class="event-cell">
-                      <div class="event-icon">✦</div>
-                      <div><strong>Festival Aurora 2026</strong><small>Tuluá · Música</small></div>
-                    </div>
-                  </td>
-                  <td>12–14 Nov 2026</td>
-                  <td>
-                    <span>2.840 / 3.750</span>
-                    <div class="progress"><i style="width:87%"></i></div>
-                  </td>
-                  <td>$218,4M</td>
-                  <td>87%</td>
-                  <td><span class="status published">PUBLICADO</span></td>
-                  <td><div class="actions"><button>Editar</button><button>Ver</button><button>•••</button></div></td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="event-cell">
-                      <div class="event-icon">◉</div>
-                      <div><strong>Noche de Comedia</strong><small>Cali · Entretenimiento</small></div>
-                    </div>
-                  </td>
-                  <td>21 Oct 2026</td>
-                  <td>
-                    <span>684 / 900</span>
-                    <div class="progress"><i style="width:76%"></i></div>
-                  </td>
-                  <td>$61,8M</td>
-                  <td>76%</td>
-                  <td><span class="status published">PUBLICADO</span></td>
-                  <td><div class="actions"><button>Editar</button><button>Ver</button><button>•••</button></div></td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="event-cell">
-                      <div class="event-icon">◇</div>
-                      <div><strong>ExpoArte Colombia</strong><small>Medellín · Arte</small></div>
-                    </div>
-                  </td>
-                  <td>03 Dic 2026</td>
-                  <td>
-                    <span>1.120 / 1.500</span>
-                    <div class="progress"><i style="width:75%"></i></div>
-                  </td>
-                  <td>$94,6M</td>
-                  <td>75%</td>
-                  <td><span class="status published">PUBLICADO</span></td>
-                  <td><div class="actions"><button>Editar</button><button>Ver</button><button>•••</button></div></td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="event-cell">
-                      <div class="event-icon">◆</div>
-                      <div><strong>Festival Sabores del Valle</strong><small>Tuluá · Gastronomía</small></div>
-                    </div>
-                  </td>
-                  <td>17 Ene 2027</td>
-                  <td>
-                    <span>540 / 1.200</span>
-                    <div class="progress"><i style="width:45%"></i></div>
-                  </td>
-                  <td>$38,7M</td>
-                  <td>45%</td>
-                  <td><span class="status published">PUBLICADO</span></td>
-                  <td><div class="actions"><button>Editar</button><button>Ver</button><button>•••</button></div></td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="event-cell">
-                      <div class="event-icon">♫</div>
-                      <div><strong>Concierto Horizonte</strong><small>Armenia · Música</small></div>
-                    </div>
-                  </td>
-                  <td>28 Feb 2027</td>
-                  <td>
-                    <span>0 / 2.500</span>
-                    <div class="progress"><i style="width:0%"></i></div>
-                  </td>
-                  <td>$0</td>
-                  <td>0%</td>
-                  <td><span class="status draft">BORRADOR</span></td>
-                  <td><div class="actions"><button>Editar</button><button>Ver</button><button>•••</button></div></td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="event-cell">
-                      <div class="event-icon">✧</div>
-                      <div><strong>Feria Creativa 2026</strong><small>Pereira · Diseño</small></div>
-                    </div>
-                  </td>
-                  <td>05 Sep 2026</td>
-                  <td>
-                    <span>1.890 / 1.900</span>
-                    <div class="progress"><i style="width:99%"></i></div>
-                  </td>
-                  <td>$142,3M</td>
-                  <td>99%</td>
-                  <td><span class="status ended">FINALIZADO</span></td>
-                  <td><div class="actions"><button>Informe</button><button>Ver</button><button>•••</button></div></td>
-                </tr>
-              </tbody>
+              <tbody data-agent-events></tbody>
             </table>
           </div>
 
@@ -226,8 +117,8 @@
           <div class="quick-grid">
             <a href="crear-evento.html"><strong>＋ Crear nuevo evento</strong><small>Comienza desde cero y configura fecha, ubicación, entradas y publicación.</small></a>
             <a href="reservas.html"><strong>▣ Revisar reservas</strong><small>Consulta las últimas compras, reservas pendientes y cancelaciones.</small></a>
-            <a href="reportes.html"><strong>◒ Generar reporte</strong><small>Obtén un resumen de ventas y asistencia por evento.</small></a>
-            <a href="asistentes.html"><strong>♙ Gestionar asistentes</strong><small>Busca asistentes, valida entradas y registra check-ins.</small></a>
+            <a href="reportes.html"><strong>◒ Consultar reportes</strong><small>Obtén un resumen de eventos y reservas registradas.</small></a>
+            <a href="asistentes.html"><strong>♙ Consultar asistentes</strong><small>Busca personas asociadas a las reservas.</small></a>
           </div>
         </section>
 

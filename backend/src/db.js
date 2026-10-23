@@ -2,19 +2,18 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
+if (!process.env.DATABASE_URL) {
+  throw new Error('Configura DATABASE_URL con la cadena de conexión de Neon.');
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  max: 1,
+  idleTimeoutMillis: 10000,
+  connectionTimeoutMillis: 10000,
   ssl: {
     rejectUnauthorized: false // Requerido para la conexión SSL de Neon
   }
-});
-
-pool.connect((err, client, release) => {
-  if (err) {
-    return console.error('Error conectando a la base de datos Neon:', err.stack);
-  }
-  console.log('Conexión exitosa a la base de datos Neon en PostgreSQL');
-  release();
 });
 
 module.exports = pool;

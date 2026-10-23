@@ -55,8 +55,21 @@
     return row;
   }
 
-  window.EventStageApi.request('/reservas/agente')
-    .then(reservations => {
+  Promise.all([
+    window.EventStageApi.request('/auth/me'),
+    window.EventStageApi.request('/reservas/agente')
+  ])
+    .then(([{ user }, reservations]) => {
+      if (user.rol !== 'agente') throw new Error('Esta página solo está disponible para agentes.');
+      const accountName = [
+        user.primerNombre,
+        user.segundoNombre,
+        user.primerApellido,
+        user.segundoApellido
+      ].filter(Boolean).join(' ');
+      document.querySelector('.profile-card strong').textContent = accountName;
+      document.querySelector('.profile-card .avatar').textContent =
+        accountName.split(/\s+/).slice(0, 2).map(part => part[0]).join('').toUpperCase();
       body.replaceChildren(...reservations.map(renderReservation));
       document.querySelector('[data-reservations-total]').textContent = String(reservations.length);
       document.querySelector('[data-reservations-confirmed]').textContent =

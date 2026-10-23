@@ -83,6 +83,15 @@
       status.textContent = 'Esta página solo está disponible para agentes.';
       return;
     }
+    const accountName = [
+      user.primerNombre,
+      user.segundoNombre,
+      user.primerApellido,
+      user.segundoApellido
+    ].filter(Boolean).join(' ');
+    document.querySelector('.profile-card strong').textContent = accountName;
+    document.querySelector('.profile-card .avatar').textContent =
+      accountName.split(/\s+/).slice(0, 2).map(part => part[0]).join('').toUpperCase();
     events = result;
     const cities = [...new Set(events.map(event => event.ciudad))].sort((a, b) => a.localeCompare(b));
     cities.forEach(city => cityFilter.add(new Option(city, city)));
@@ -90,7 +99,8 @@
     const finished = events.filter(event => new Date(`${event.fecha_fin}-05:00`).getTime() < now).length;
     document.querySelector('[data-total-events]').textContent = String(events.length);
     document.querySelector('[data-published-events]').textContent = String(events.length - finished);
-    document.querySelector('[data-draft-events]').textContent = '0';
+    document.querySelector('[data-total-capacity]').textContent =
+      String(events.reduce((total, event) => total + Number(event.capacidad), 0));
     document.querySelector('[data-finished-events]').textContent = String(finished);
     filterEvents();
     status.textContent = '';

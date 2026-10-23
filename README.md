@@ -19,5 +19,8 @@ El proyecto está preparado para desplegar el frontend y la API bajo el mismo do
 - Lectura de países, departamentos, ciudades y eventos.
 - Creación de eventos por agentes autenticados.
 - Creación de reservas pendientes y consulta de las reservas del cliente autenticado.
+- Los paneles administrativos consultan cuentas, agentes, eventos y reservas desde Neon. Los paneles de agente muestran sus eventos y reservas desde las mismas tablas.
 
 El esquema actual guarda una fila en `reserva` por cada entrada. Las reservas quedan como `PENDIENTE`; el esquema no incluye pagos, categorías, imágenes ni localidades con precios independientes.
+
+Las vistas de pagos, soporte, favoritos, check-in y preferencias no se presentan como información real porque el esquema no tiene entidades para persistir esos datos. Las preferencias del cliente que aún ofrece la interfaz se guardan solo en el navegador. Los importes de reservas son referenciales y no equivalen a pagos procesados.
