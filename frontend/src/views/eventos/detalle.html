@@ -18,10 +18,16 @@
       </a>
       <nav class="main-nav" aria-label="Navegación principal">
         <a href="../clientes/index.html#eventos">Eventos</a>
-        <a href="../clientes/index.html#categorias">Categorías</a>
-        <a href="../clientes/index.html#ciudades">Ciudades</a>
       </nav>
-      <a class="btn btn-outline" href="../clientes/login.html">Iniciar sesión</a>
+      <div class="nav-actions">
+        <span class="link-muted" data-nav-greeting>Visita: Invitado</span>
+        <a class="btn btn-outline" href="../clientes/login.html" data-nav-guest>Iniciar sesión</a>
+        <a class="btn btn-gold" href="../clientes/registro.html" data-nav-guest>Regístrate</a>
+        <a class="btn btn-outline" href="../clientes/misreservas.html" data-nav-account hidden>Mi cuenta</a>
+        <button type="button" class="btn btn-gold" data-nav-logout hidden>Cerrar sesión</button>
+        <a class="btn btn-outline" href="../admins/login.html" data-nav-guest>Acceso administrador</a>
+        <span class="link-muted" data-nav-status role="status" aria-live="polite" hidden></span>
+      </div>
     </div>
   </header>
 
@@ -69,7 +75,7 @@
         </div>
 
         <aside class="event-ticket-card" aria-labelledby="ticket-title">
-          <h2 id="ticket-title">Crear reserva</h2>
+          <h2 id="ticket-title">Comprar entradas</h2>
           <form id="ticket-form">
             <fieldset id="ticket-options" class="ticket-options">
               <legend class="sr-only">Precio único del evento</legend>
@@ -86,11 +92,9 @@
               <span>Subtotal</span>
               <strong id="ticket-subtotal"></strong>
             </div>
-            <p class="ticket-message">La capacidad se valida al crear la reserva.</p>
-            <button class="btn btn-pink ticket-submit" type="submit">Crear reserva</button>
-            <p id="ticket-message" class="ticket-message" role="status" aria-live="polite">
-              La reserva queda pendiente; todavía no se procesan pagos.
-            </p>
+            <p class="ticket-message">Tus entradas se confirman después de completar la compra.</p>
+            <button class="btn btn-pink ticket-submit" type="submit">Continuar al pago</button>
+            <p id="ticket-message" class="ticket-message" role="status" aria-live="polite"></p>
           </form>
         </aside>
       </div>
@@ -100,6 +104,37 @@
         <div id="related-events" class="related-events"></div>
       </section>
     </div>
+
+    <dialog id="payment-dialog" class="payment-dialog" aria-labelledby="payment-title">
+      <form id="payment-form" class="payment-panel">
+        <button type="button" class="payment-close" data-payment-close aria-label="Cerrar pago">×</button>
+        <span class="payment-eyebrow">PAGO DE PRUEBA</span>
+        <h2 id="payment-title">Finaliza tu compra</h2>
+        <p id="payment-event-name" class="payment-event-name"></p>
+        <div class="payment-total"><span>Total a pagar</span><strong id="payment-total"></strong></div>
+        <div class="payment-simulation-note">
+          Simulación únicamente: no se realizará ningún cargo ni guardaremos datos bancarios.
+          No ingreses datos de una tarjeta real. Usa la tarjeta de prueba indicada abajo.
+        </div>
+        <div id="payment-card-fields">
+          <label for="payment-cardholder">Nombre del titular</label>
+          <input id="payment-cardholder" name="cardholder" autocomplete="off" required>
+          <label for="payment-card-number">Tarjeta de prueba</label>
+          <input id="payment-card-number" name="cardNumber" inputmode="numeric" autocomplete="off"
+            maxlength="19" placeholder="4242 4242 4242 4242" required>
+          <p class="payment-hint">Tarjeta aprobada de prueba: 4242 4242 4242 4242 · cualquier fecha futura · CVC 123</p>
+          <div class="payment-card-row">
+            <div><label for="payment-expiry">Vencimiento</label><input id="payment-expiry" name="expiry" type="month" required></div>
+            <div><label for="payment-cvc">CVC de prueba</label><input id="payment-cvc" name="cvc" inputmode="numeric"
+              autocomplete="off" maxlength="3" pattern="[0-9]{3}" required></div>
+          </div>
+        </div>
+        <p id="payment-status" class="payment-status" role="status" aria-live="polite"></p>
+        <button class="btn btn-pink payment-submit" type="submit">Pagar y confirmar entradas</button>
+        <a class="payment-complete-link" href="../clientes/misreservas.html" hidden>Ver mis entradas</a>
+        <button class="payment-cancel" type="button" data-payment-close>Cancelar</button>
+      </form>
+    </dialog>
   </main>
 
   <footer class="site-footer">
@@ -120,14 +155,13 @@
       <nav class="footer-col" aria-label="Explorar EventStage">
         <h2>Explorar</h2>
         <a href="../clientes/index.html#eventos">Eventos</a>
-        <a href="../clientes/index.html#categorias">Categorías</a>
-        <a href="../clientes/index.html#ciudades">Ciudades</a>
       </nav>
       <nav class="footer-col" aria-label="Tu cuenta">
         <h2>Tu cuenta</h2>
-        <a href="../clientes/login.html">Iniciar sesión</a>
-        <a href="../clientes/registro.html">Crear una cuenta</a>
-        <a href="../clientes/misreservas.html">Mis reservas</a>
+        <a href="../clientes/login.html" data-nav-guest>Iniciar sesión</a>
+        <a href="../clientes/registro.html" data-nav-guest>Crear una cuenta</a>
+        <a href="../clientes/misreservas.html" data-nav-account hidden>Mi cuenta</a>
+        <a href="../admins/login.html" data-nav-guest>Acceso administrador</a>
       </nav>
     </div>
     <div class="container footer-bottom">
@@ -138,6 +172,7 @@
 
   <script src="../../api.js"></script>
   <script src="eventos.js"></script>
+  <script src="../clientes/account-nav.js"></script>
   <script src="detalle.js"></script>
 </body>
 </html>

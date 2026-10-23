@@ -47,13 +47,6 @@
 
         </a>
 
-        <a class="menu-item" href="favoritos.html">
-
-            <span class="icon">♡</span>
-            <span>Eventos favoritos</span>
-
-        </a>
-
         <a class="menu-item" href="historialdecompras.html">
 
             <span class="icon">◷</span>
@@ -75,13 +68,6 @@
 
                 <span class="icon">●</span>
                 <span>Mi perfil</span>
-
-            </a>
-
-            <a class="menu-item" href="configuracion-cliente.html">
-
-                <span class="icon">⚙</span>
-                <span>Configuración</span>
 
             </a>
 
@@ -183,13 +169,11 @@
 
         </div>
 
-        <button
-            class="new-reservation"
-            onclick="mostrarMensaje('Aquí podrías explorar nuevos eventos')">
+        <a class="new-reservation" href="index.html#eventos">
 
             + Explorar eventos
 
-        </button>
+        </a>
 
     </section>
 
@@ -207,7 +191,7 @@
             <div class="summary-bottom">
 
                 <div class="summary-number">
-                    4
+                    —
                 </div>
 
                 <div class="summary-status">
@@ -228,7 +212,7 @@
             <div class="summary-bottom">
 
                 <div class="summary-number">
-                    2
+                    —
                 </div>
 
                 <div class="summary-status green">
@@ -249,11 +233,11 @@
             <div class="summary-bottom">
 
                 <div class="summary-number">
-                    18
+                    —
                 </div>
 
                 <div class="summary-status gold">
-                    Oct 2026
+                    —
                 </div>
 
             </div>
@@ -270,7 +254,7 @@
             <div class="summary-bottom">
 
                 <div class="summary-number">
-                    1
+                    —
                 </div>
 
                 <div class="summary-status red">
@@ -344,325 +328,14 @@
             <div
                 id="resultsCount"
                 class="results-count">
-                4 reservas
+                    Cargando...
             </div>
 
         </div>
 
 
         <p id="reservation-status" role="status" aria-live="polite"></p>
-        <div id="reservationList" class="reservation-list">
-
-
-            <!-- RESERVA 1 -->
-
-            <article
-                class="reservation"
-                data-status="confirmed">
-
-                <div class="event-image concert">
-
-                    <span>♫</span>
-
-                    <div class="event-category">
-                        Concierto
-                    </div>
-
-                </div>
-
-                <div class="event-info">
-
-                    <div class="event-name">
-                        Festival Música Real
-                    </div>
-
-                    <div class="event-location">
-                        ● Auditorio Municipal · Tuluá, Colombia
-                    </div>
-
-                    <div class="event-meta">
-
-                        <span>
-                            Entradas:
-                            <strong>2</strong>
-                        </span>
-
-                        <span>
-                            Reserva:
-                            <strong>#EVT-4821</strong>
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="event-date">
-
-                    <div class="date-label">
-                        Fecha del evento
-                    </div>
-
-                    <div class="date-main">
-                        18 Oct 2026
-                    </div>
-
-                    <div class="date-time">
-                        7:30 PM
-                    </div>
-
-                </div>
-
-                <div class="reservation-right">
-
-                    <div class="status confirmed">
-                        ● Confirmada
-                    </div>
-
-                    <button
-                        class="detail-button"
-                        onclick="verDetalle('Festival Música Real')">
-
-                        Ver detalles
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- RESERVA 2 -->
-
-            <article
-                class="reservation"
-                data-status="confirmed">
-
-                <div class="event-image theater">
-
-                    <span>✦</span>
-
-                    <div class="event-category">
-                        Teatro
-                    </div>
-
-                </div>
-
-                <div class="event-info">
-
-                    <div class="event-name">
-                        Noche de Teatro
-                    </div>
-
-                    <div class="event-location">
-                        ● Teatro Municipal · Cali, Colombia
-                    </div>
-
-                    <div class="event-meta">
-
-                        <span>
-                            Entradas:
-                            <strong>3</strong>
-                        </span>
-
-                        <span>
-                            Reserva:
-                            <strong>#EVT-4752</strong>
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="event-date">
-
-                    <div class="date-label">
-                        Fecha del evento
-                    </div>
-
-                    <div class="date-main">
-                        25 Oct 2026
-                    </div>
-
-                    <div class="date-time">
-                        6:00 PM
-                    </div>
-
-                </div>
-
-                <div class="reservation-right">
-
-                    <div class="status confirmed">
-                        ● Confirmada
-                    </div>
-
-                    <button
-                        class="detail-button"
-                        onclick="verDetalle('Noche de Teatro')">
-
-                        Ver detalles
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- RESERVA 3 -->
-
-            <article
-                class="reservation"
-                data-status="reserved">
-
-                <div class="event-image festival">
-
-                    <span>✧</span>
-
-                    <div class="event-category">
-                        Festival
-                    </div>
-
-                </div>
-
-                <div class="event-info">
-
-                    <div class="event-name">
-                        Experiencia Café & Arte
-                    </div>
-
-                    <div class="event-location">
-                        ● Centro Cultural · Tuluá, Colombia
-                    </div>
-
-                    <div class="event-meta">
-
-                        <span>
-                            Entradas:
-                            <strong>2</strong>
-                        </span>
-
-                        <span>
-                            Reserva:
-                            <strong>#EVT-4698</strong>
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="event-date">
-
-                    <div class="date-label">
-                        Fecha del evento
-                    </div>
-
-                    <div class="date-main">
-                        07 Nov 2026
-                    </div>
-
-                    <div class="date-time">
-                        4:00 PM
-                    </div>
-
-                </div>
-
-                <div class="reservation-right">
-
-                    <div class="status reserved">
-                        ● Reservada
-                    </div>
-
-                    <button
-                        class="detail-button"
-                        onclick="verDetalle('Experiencia Café & Arte')">
-
-                        Ver detalles
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- RESERVA 4 -->
-
-            <article
-                class="reservation"
-                data-status="cancelled">
-
-                <div class="event-image sport">
-
-                    <span>◆</span>
-
-                    <div class="event-category">
-                        Deporte
-                    </div>
-
-                </div>
-
-                <div class="event-info">
-
-                    <div class="event-name">
-                        Gran Final Regional
-                    </div>
-
-                    <div class="event-location">
-                        ● Coliseo Deportivo · Buga, Colombia
-                    </div>
-
-                    <div class="event-meta">
-
-                        <span>
-                            Entradas:
-                            <strong>2</strong>
-                        </span>
-
-                        <span>
-                            Reserva:
-                            <strong>#EVT-4517</strong>
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="event-date">
-
-                    <div class="date-label">
-                        Fecha del evento
-                    </div>
-
-                    <div class="date-main">
-                        29 Ago 2026
-                    </div>
-
-                    <div class="date-time">
-                        5:30 PM
-                    </div>
-
-                </div>
-
-                <div class="reservation-right">
-
-                    <div class="status cancelled">
-                        ● Cancelada
-                    </div>
-
-                    <button
-                        class="detail-button"
-                        onclick="verDetalle('Gran Final Regional')">
-
-                        Ver detalles
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-        </div>
+        <div id="reservationList" class="reservation-list"></div>
 
 
         <!-- EMPTY -->
@@ -695,91 +368,7 @@
 </div>
 
 
-<!-- TOAST -->
-
-<div id="toast" class="toast"></div>
-
-
-<!-- MODAL -->
-
-<div id="modal" class="modal">
-
-    <div class="modal-box">
-
-        <div class="modal-title">
-            Detalles de la reserva
-        </div>
-
-        <div class="modal-text">
-            Esta es una vista previa de la información asociada a tu reserva.
-        </div>
-
-        <div class="modal-info">
-
-            <div
-                id="modalEvent"
-                class="modal-info-title">
-                Evento
-            </div>
-
-            <div class="modal-info-text">
-                Reserva registrada correctamente en EventStage.
-            </div>
-
-        </div>
-
-        <div class="modal-actions">
-
-            <button
-                class="modal-close"
-                onclick="cerrarModal()">
-                Cerrar
-            </button>
-
-            <button
-                class="modal-primary"
-                onclick="mostrarMensaje('Código de reserva copiado')">
-                Copiar reserva
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
 <script>
-
-/* =========================================================
-   MENSAJE
-========================================================= */
-
-function mostrarMensaje(texto){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent = texto;
-
-    toast.classList.add("show");
-
-    clearTimeout(window.toastTimer);
-
-    window.toastTimer =
-        setTimeout(function(){
-
-            toast.classList.remove("show");
-
-        },2200);
-
-}
-
-
-/* =========================================================
-   FILTROS
-========================================================= */
-
 function filtrarReservas(filtro, boton){
 
     document
@@ -838,53 +427,6 @@ function filtrarReservas(filtro, boton){
     }
 
 }
-
-
-/* =========================================================
-   DETALLES
-========================================================= */
-
-function verDetalle(evento){
-
-    document
-        .getElementById("modalEvent")
-        .textContent = evento;
-
-    document
-        .getElementById("modal")
-        .classList.add("show");
-
-}
-
-
-/* =========================================================
-   CERRAR MODAL
-========================================================= */
-
-function cerrarModal(){
-
-    document
-        .getElementById("modal")
-        .classList.remove("show");
-
-}
-
-
-/* =========================================================
-   CLICK FUERA DEL MODAL
-========================================================= */
-
-document
-    .getElementById("modal")
-    .addEventListener("click",function(e){
-
-        if(e.target === this){
-
-            cerrarModal();
-
-        }
-
-    });
 
 </script>
 <script src="../../api.js"></script>

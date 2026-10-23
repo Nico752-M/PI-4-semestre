@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="agente.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
 </head>
-<body class="agent-events agent-page">
+<body class="agent-events agent-page" data-required-role="agente">
   <div class="app">
     <aside class="sidebar">
       <div class="brand">
@@ -33,7 +33,6 @@
         <a href="crear-evento.html">＋ <span>Crear evento</span></a>
         <a href="reservas.html">▣ <span>Reservas</span></a>
         <a href="asistentes.html">♙ <span>Asistentes</span></a>
-        <a href="reportes.html">◒ <span>Reportes</span></a>
         <a href="estadisticas.html">▥ <span>Estadísticas</span></a>
         <a href="configuracion.html">⚙ <span>Configuración</span></a>
 
@@ -116,8 +115,8 @@
 
           <div class="quick-grid">
             <a href="crear-evento.html"><strong>＋ Crear nuevo evento</strong><small>Comienza desde cero y configura fecha, ubicación, entradas y publicación.</small></a>
-            <a href="reservas.html"><strong>▣ Revisar reservas</strong><small>Consulta las últimas compras, reservas pendientes y cancelaciones.</small></a>
-            <a href="reportes.html"><strong>◒ Consultar reportes</strong><small>Obtén un resumen de eventos y reservas registradas.</small></a>
+            <a href="reservas.html"><strong>▣ Revisar entradas</strong><small>Consulta las entradas confirmadas de tus eventos.</small></a>
+            <a href="estadisticas.html"><strong>▥ Consultar estadísticas</strong><small>Obtén un resumen de eventos y reservas registradas.</small></a>
             <a href="asistentes.html"><strong>♙ Consultar asistentes</strong><small>Busca personas asociadas a las reservas.</small></a>
           </div>
         </section>
@@ -128,6 +127,7 @@
   </div>
 
   <script src="../../api.js"></script>
+  <script src="../../components/role-guard.js"></script>
   <script src="mis-eventos.js"></script>
 </body>
 </html>
