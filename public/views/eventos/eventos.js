@@ -24,12 +24,12 @@
         lugar: `${row.ciudad}, ${row.departamento}`,
         ciudad: row.ciudad,
         direccion: `${row.departamento}, ${row.pais} · Capacidad: ${row.capacidad}`,
-        descripcion: row.descripcion || 'Consulta los detalles de este evento.',
+        descripcion: row.descripcion || 'El organizador no agregó una descripción.',
         portada: cover,
-        galeria: [{ src: cover, alt: `Imagen de ${row.nombre}` }],
+        galeria: [{ src: cover, alt: `Ilustración genérica para ${row.nombre}` }],
         localidades: [{
-          nombre: 'Entrada general',
-          detalle: `${row.disponibles} entradas disponibles`,
+          nombre: 'Entrada',
+          detalle: `Precio único · ${row.disponibles} disponibles`,
           precio: Number(row.precio)
         }],
         fechaInicio: row.fecha_inicio,

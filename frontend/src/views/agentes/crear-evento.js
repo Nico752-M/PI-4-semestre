@@ -15,6 +15,15 @@
         submitButtons.forEach(button => { button.disabled = true; });
         return;
       }
+      const accountName = [
+        user.primerNombre,
+        user.segundoNombre,
+        user.primerApellido,
+        user.segundoApellido
+      ].filter(Boolean).join(' ');
+      document.querySelector('.profile-card strong').textContent = accountName;
+      document.querySelector('.profile-card .avatar').textContent =
+        accountName.split(/\s+/).slice(0, 2).map(part => part[0]).join('').toUpperCase();
       window.EventStageApi.setupLocationSelects(country, department, city, status);
     })
     .catch(error => {

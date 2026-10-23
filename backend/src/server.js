@@ -6,7 +6,7 @@ require('dotenv').config();
 const db = require('./db');
 
 const app = express();
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = Number(process.env.PORT) || 3000;
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const SESSION_DURATION_SECONDS = 60 * 60 * 24;
 const REMEMBERED_SESSION_DURATION_SECONDS = 60 * 60 * 24 * 30;
@@ -141,15 +141,26 @@ async function authenticate(req, res, next) {
     const result = await db.query(
       `SELECT p.id_persona AS "idPersona",
               p.primer_nombre AS "primerNombre",
-              p.primer_apellido AS "primerApellido",
-              p.correo,
-              CASE
-                WHEN ag.id_agente IS NOT NULL THEN 'agente'
-                WHEN cl.id_cliente IS NOT NULL THEN 'cliente'
-                WHEN ad.id_administrador IS NOT NULL THEN 'administrador'
-              END AS rol
-       FROM sesion s
-       JOIN persona p ON p.id_persona = s.id_persona
+             p.segundo_nombre AS "segundoNombre",
+             p.primer_apellido AS "primerApellido",
+             p.segundo_apellido AS "segundoApellido",
+             p.correo,
+             p.telefono,
+             p.num_identificacion AS identificacion,
+             ag.codigo_agente AS "codigoAgente",
+             ci.nombre AS ciudad,
+             d.nombre AS departamento,
+             pa.nombre AS pais,
+             CASE
+               WHEN ag.id_agente IS NOT NULL THEN 'agente'
+               WHEN cl.id_cliente IS NOT NULL THEN 'cliente'
+               WHEN ad.id_administrador IS NOT NULL THEN 'administrador'
+             END AS rol
+      FROM sesion s
+      JOIN persona p ON p.id_persona = s.id_persona
+      JOIN ciudad ci ON ci.id_ciudad = p.id_ciudad
+      JOIN departamento d ON d.id_departamento = ci.id_departamento
+      JOIN pais pa ON pa.id_pais = d.id_pais
        LEFT JOIN agente ag ON ag.id_agente = p.id_persona
        LEFT JOIN cliente cl ON cl.id_cliente = p.id_persona
        LEFT JOIN administrador ad ON ad.id_administrador = p.id_persona
@@ -215,8 +226,16 @@ function publicUser(row) {
   return {
     idPersona: row.idPersona,
     primerNombre: row.primerNombre,
+    segundoNombre: row.segundoNombre,
     primerApellido: row.primerApellido,
+    segundoApellido: row.segundoApellido,
     correo: row.correo,
+    telefono: row.telefono,
+    identificacion: row.identificacion,
+    codigoAgente: row.codigoAgente,
+    ciudad: row.ciudad,
+    departamento: row.departamento,
+    pais: row.pais,
     rol: row.rol
   };
 }
@@ -333,6 +352,101 @@ app.get('/api/eventos/:id', async (req, res, next) => {
   }
 });
 
+app.get('/api/admin/resumen', authenticate, requireRole('administrador'), async (req, res, next) => {
+  try {
+    const result = await db.query(
+      `SELECT
+         (SELECT count(*)::int FROM evento) AS eventos,
+         (SELECT count(*)::int FROM agente) AS agentes,
+         (SELECT count(*)::int FROM cliente) AS clientes,
+         (SELECT count(*)::int FROM reserva) AS reservas,
+         (SELECT count(*)::int FROM reserva WHERE upper(estado) = 'PENDIENTE') AS pendientes,
+         (SELECT count(*)::int FROM reserva WHERE upper(estado) = 'CONFIRMADA') AS confirmadas`
+    );
+    res.json(result.rows[0]);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/admin/usuarios', authenticate, requireRole('administrador'), async (req, res, next) => {
+  try {
+    const result = await db.query(
+      `SELECT p.id_persona AS id,
+              p.primer_nombre AS "primerNombre",
+              p.segundo_nombre AS "segundoNombre",
+              p.primer_apellido AS "primerApellido",
+              p.segundo_apellido AS "segundoApellido",
+              p.correo,
+              p.telefono,
+              ci.nombre AS ciudad,
+              d.nombre AS departamento,
+              count(r.id_reserva)::int AS reservas
+       FROM cliente cl
+       JOIN persona p ON p.id_persona = cl.id_cliente
+       JOIN ciudad ci ON ci.id_ciudad = p.id_ciudad
+       JOIN departamento d ON d.id_departamento = ci.id_departamento
+       LEFT JOIN reserva r ON r.id_cliente = cl.id_cliente
+       GROUP BY p.id_persona, ci.nombre, d.nombre
+       ORDER BY p.primer_apellido, p.primer_nombre`
+    );
+    res.json(result.rows);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/admin/agentes', authenticate, requireRole('administrador'), async (req, res, next) => {
+  try {
+    const result = await db.query(
+      `SELECT p.id_persona AS id,
+              p.primer_nombre AS "primerNombre",
+              p.segundo_nombre AS "segundoNombre",
+              p.primer_apellido AS "primerApellido",
+              p.segundo_apellido AS "segundoApellido",
+              p.correo,
+              ag.codigo_agente AS "codigoAgente",
+              count(e.id_evento)::int AS eventos
+       FROM agente ag
+       JOIN persona p ON p.id_persona = ag.id_agente
+       LEFT JOIN evento e ON e.id_agente = ag.id_agente
+       GROUP BY p.id_persona, ag.codigo_agente
+       ORDER BY p.primer_apellido, p.primer_nombre`
+    );
+    res.json(result.rows);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/admin/eventos', authenticate, requireRole('administrador'), async (req, res, next) => {
+  try {
+    const result = await db.query(
+      `SELECT events.*,
+              p.primer_nombre AS "primerNombreAgente",
+              p.segundo_nombre AS "segundoNombreAgente",
+              p.primer_apellido AS "primerApellidoAgente",
+              p.segundo_apellido AS "segundoApellidoAgente",
+              p.correo AS "correoAgente"
+       FROM (${eventSelect}) events
+       JOIN persona p ON p.id_persona = events."idAgente"
+       ORDER BY events.fecha_inicio`
+    );
+    res.json(result.rows.map(row => ({
+      ...row,
+      agente: [
+        row.primerNombreAgente,
+        row.segundoNombreAgente,
+        row.primerApellidoAgente,
+        row.segundoApellidoAgente
+      ].filter(Boolean).join(' '),
+      correoAgente: row.correoAgente
+    })));
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.post('/api/auth/register', async (req, res, next) => {
   let client;
   try {
@@ -408,8 +522,16 @@ app.post('/api/auth/login', async (req, res, next) => {
     const result = await db.query(
       `SELECT p.id_persona AS "idPersona",
               p.primer_nombre AS "primerNombre",
+              p.segundo_nombre AS "segundoNombre",
               p.primer_apellido AS "primerApellido",
+              p.segundo_apellido AS "segundoApellido",
               p.correo,
+              p.telefono,
+              p.num_identificacion AS identificacion,
+              ag.codigo_agente AS "codigoAgente",
+              ci.nombre AS ciudad,
+              d.nombre AS departamento,
+              pa.nombre AS pais,
               p.password_hash,
               CASE
                 WHEN ag.id_agente IS NOT NULL THEN 'agente'
@@ -417,6 +539,9 @@ app.post('/api/auth/login', async (req, res, next) => {
                 WHEN ad.id_administrador IS NOT NULL THEN 'administrador'
               END AS rol
        FROM persona p
+       JOIN ciudad ci ON ci.id_ciudad = p.id_ciudad
+       JOIN departamento d ON d.id_departamento = ci.id_departamento
+       JOIN pais pa ON pa.id_pais = d.id_pais
        LEFT JOIN agente ag ON ag.id_agente = p.id_persona
        LEFT JOIN cliente cl ON cl.id_cliente = p.id_persona
        LEFT JOIN administrador ad ON ad.id_administrador = p.id_persona
@@ -515,9 +640,9 @@ app.get('/api/reservas/agente', authenticate, requireRole('agente'), async (req,
               e.id_evento AS "idEvento",
               e.nombre AS evento,
               to_char(e.fecha_inicio, 'YYYY-MM-DD"T"HH24:MI:SS') AS "fechaInicio",
+              ci.nombre AS ciudad,
               e.precio,
-              e.capacidad,
-              ci.nombre AS ciudad
+              e.capacidad
        FROM reserva r
        JOIN cliente cl ON cl.id_cliente = r.id_cliente
        JOIN persona p ON p.id_persona = cl.id_cliente
@@ -542,7 +667,8 @@ app.get('/api/reservas/mias', authenticate, requireRole('cliente'), async (req, 
               e.id_evento AS "idEvento",
               e.nombre AS evento,
               to_char(e.fecha_inicio, 'YYYY-MM-DD"T"HH24:MI:SS') AS "fechaInicio",
-              ci.nombre AS ciudad
+              ci.nombre AS ciudad,
+              e.precio
        FROM reserva r
        JOIN evento e ON e.id_evento = r.id_evento
        JOIN ciudad ci ON ci.id_ciudad = e.id_ciudad

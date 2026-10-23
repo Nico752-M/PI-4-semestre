@@ -6,6 +6,8 @@
   <title>Panel del organizador | EventStage</title>
   <link rel="stylesheet" href="agente.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="../../api.js" defer></script>
+  <script src="dashboard.js" defer></script>
 </head>
 <body class="agent-page workspace-page">
   <div class="agent-app">
@@ -15,8 +17,8 @@
         <div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div>
       </div>
       <div class="profile-card">
-        <div class="avatar">AP</div>
-        <div><strong>Aurora<br>Producciones</strong><small>Agente /<br>Organizador</small></div>
+      <div class="avatar">—</div>
+      <div><strong>Cargando cuenta...</strong><small>Agente</small></div>
       </div>
       <nav aria-label="Navegación del agente">
         <p class="nav-title">ADMINISTRACIÓN</p>
@@ -44,23 +46,23 @@
           <div>
             <span class="workspace-eyebrow">RESUMEN GENERAL</span>
             <h1>Panel del organizador</h1>
-            <p>Consulta el estado de tus eventos, ventas y asistentes desde un solo lugar.</p>
+            <p>Consulta tus eventos, capacidad y reservas registradas en la base de datos.</p>
           </div>
-          <span class="workspace-date">Actualizado hoy</span>
         </div>
+        <p data-agent-dashboard-status role="status" aria-live="polite"></p>
 
         <div class="workspace-metrics">
           <article class="workspace-card metric">
-            <span>Eventos activos</span><strong>8</strong><small>3 próximos este mes</small>
+            <span>Eventos registrados</span><strong data-agent-metric="eventos">—</strong><small>Eventos asociados a tu cuenta</small>
           </article>
           <article class="workspace-card metric">
-            <span>Entradas vendidas</span><strong>12.486</strong><small class="trend">↑ 12,8% este mes</small>
+            <span>Reservas (entradas)</span><strong data-agent-metric="reservas">—</strong><small>Una reserva por entrada</small>
           </article>
           <article class="workspace-card metric">
-            <span>Ingresos del período</span><strong>$486,2M</strong><small class="trend">↑ 18,8% frente al período anterior</small>
+            <span>Entradas disponibles</span><strong data-agent-metric="disponibles">—</strong><small>Capacidad menos reservas activas</small>
           </article>
           <article class="workspace-card metric">
-            <span>Reservas pendientes</span><strong>442</strong><small>Requieren seguimiento</small>
+            <span>Reservas pendientes</span><strong data-agent-metric="pendientes">—</strong><small>Estado PENDIENTE</small>
           </article>
         </div>
 
@@ -70,20 +72,16 @@
               <div><h2>Próximos eventos</h2><p>Los eventos con fecha más cercana.</p></div>
               <a href="mis-eventos.html">Ver todos</a>
             </div>
-            <div class="workspace-list">
-              <article><span class="workspace-event-icon">✦</span><div><strong>Festival Aurora 2026</strong><small>12–14 Nov · Tuluá</small></div><b>87% vendido</b></article>
-              <article><span class="workspace-event-icon">◉</span><div><strong>Noche de Comedia</strong><small>21 Oct · Cali</small></div><b>76% vendido</b></article>
-              <article><span class="workspace-event-icon">◇</span><div><strong>ExpoArte Colombia</strong><small>03 Dic · Medellín</small></div><b>75% vendido</b></article>
-            </div>
+            <div class="workspace-list" data-agent-upcoming></div>
           </section>
 
           <section class="workspace-card">
             <div class="workspace-card-heading"><div><h2>Accesos rápidos</h2><p>Continúa con tareas frecuentes.</p></div></div>
             <div class="workspace-quick-links">
               <a href="crear-evento.html"><strong>＋ Crear un evento</strong><small>Publica una nueva experiencia.</small></a>
-              <a href="reservas.html"><strong>▣ Revisar reservas</strong><small>Consulta pagos y estados.</small></a>
-              <a href="reportes.html"><strong>◒ Abrir reportes</strong><small>Revisa ventas y rendimiento.</small></a>
-              <a href="asistentes.html"><strong>♙ Gestionar asistentes</strong><small>Busca registros y check-ins.</small></a>
+              <a href="reservas.html"><strong>▣ Revisar reservas</strong><small>Consulta los estados almacenados.</small></a>
+              <a href="reportes.html"><strong>◒ Abrir reportes</strong><small>Revisa los conteos de eventos y reservas.</small></a>
+              <a href="asistentes.html"><strong>♙ Consultar asistentes</strong><small>Busca personas asociadas a tus reservas.</small></a>
             </div>
           </section>
         </div>
