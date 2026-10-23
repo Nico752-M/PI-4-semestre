@@ -24,11 +24,11 @@
         <a class="menu-item" href="perfil.html"><span class="icon">●</span>Mi perfil</a>
         <a class="menu-item active" href="configuracion-cliente.html" aria-current="page"><span class="icon">⚙</span>Configuración</a>
       </nav>
-      <div class="customer-sidebar-user"><span>JD</span><div><strong>Juan David</strong><small>Cliente</small></div></div>
+      <div class="customer-sidebar-user"><span>—</span><div><strong>Cuenta autenticada</strong><small>Cliente</small></div></div>
     </aside>
 
     <main class="customer-main">
-      <header class="customer-topbar"><p>Panel / <strong>Configuración</strong></p><a class="customer-avatar" href="perfil.html" aria-label="Ir a mi perfil">JD</a></header>
+      <header class="customer-topbar"><p>Panel / <strong>Configuración</strong></p><a class="customer-avatar" href="perfil.html" aria-label="Ir a mi perfil">—</a></header>
       <section class="customer-content">
         <div class="customer-heading"><div><span class="customer-eyebrow">PREFERENCIAS DE CUENTA</span><h1>Configuración</h1><p>Personaliza cómo te enteras de los eventos y novedades.</p></div></div>
         <form class="settings-card" id="customer-settings">
@@ -44,11 +44,13 @@
           </section>
           <div class="settings-actions"><p class="customer-status" id="settings-status" role="status" aria-live="polite"></p><button class="customer-button primary" type="submit">Guardar preferencias</button></div>
         </form>
-        <section class="settings-help"><span>i</span><p>Estas preferencias se guardan en este navegador para esta demostración. Puedes cambiarlas cuando quieras.</p></section>
+        <section class="settings-help"><span>i</span><p>Estas preferencias solo se guardan en este navegador. El esquema de Neon no incluye una tabla para sincronizarlas entre dispositivos.</p></section>
       </section>
     </main>
   </div>
   <script src="cliente-cuenta.js"></script>
+  <script src="../../api.js"></script>
+  <script src="sesion-cliente.js"></script>
   <script src="../../components/cambiar-cuenta.js"></script>
 </body>
 </html>

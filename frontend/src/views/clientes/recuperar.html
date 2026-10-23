@@ -32,34 +32,15 @@
         </h1>
 
         <p class="lead">
-          Recupera el acceso a tu cuenta de EventStage de forma rápida y segura.
-          Te enviaremos las instrucciones al correo electrónico asociado a tu cuenta.
+          La recuperación de contraseña todavía no está disponible en esta versión.
         </p>
       </div>
 
-      <section class="benefits" aria-label="Beneficios del proceso de recuperación">
+      <section class="benefits" aria-label="Estado del servicio de recuperación">
         <article class="benefit-card">
-          <div class="benefit-icon">✦</div>
-          <h2>Proceso seguro</h2>
-          <p>Protegemos tus datos durante todo el proceso de recuperación.</p>
-        </article>
-
-        <article class="benefit-card">
-          <div class="benefit-icon">✓</div>
-          <h2>Enlace temporal</h2>
-          <p>El enlace de recuperación tendrá una duración limitada.</p>
-        </article>
-
-        <article class="benefit-card">
-          <div class="benefit-icon">⌁</div>
-          <h2>Sin perder tus reservas</h2>
-          <p>Tus entradas, favoritos y reservas permanecen asociados a tu cuenta.</p>
-        </article>
-
-        <article class="benefit-card">
-          <div class="benefit-icon">◇</div>
-          <h2>Soporte disponible</h2>
-          <p>Nuestro equipo puede ayudarte si tienes algún inconveniente.</p>
+          <div class="benefit-icon">i</div>
+          <h2>Función no configurada</h2>
+          <p>La base de datos no tiene tokens de recuperación y el proyecto no tiene un servicio de correo para restablecer contraseñas.</p>
         </article>
       </section>
 
@@ -94,43 +75,12 @@
 
         <header class="card-heading">
           <h2>Recupera tu contraseña</h2>
-          <p>
-            Ingresa el correo electrónico que utilizaste para crear tu cuenta.
-            Te enviaremos un enlace para establecer una nueva contraseña.
-          </p>
+          <p>El restablecimiento no está habilitado porque no hay un flujo seguro de recuperación configurado.</p>
         </header>
-
-        <form class="recovery-form" action="#" method="post">
-          <div class="field">
-            <div class="field-label-row">
-              <label for="email">Correo electrónico</label>
-              <span>Obligatorio</span>
-            </div>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              autocomplete="email"
-              required
-              aria-describedby="email-help"
-            >
-          </div>
-
-          <div class="notice" id="email-help">
-            <span class="notice-icon">i</span>
-            <p>
-              Si encontramos una cuenta asociada a este correo, recibirás las
-              instrucciones de recuperación en unos minutos. Revisa también tu
-              carpeta de spam.
-            </p>
-          </div>
-
-          <button class="primary-button" type="submit">
-            <span>Enviar enlace de recuperación</span>
-            <span aria-hidden="true">→</span>
-          </button>
-        </form>
+        <div class="notice" id="email-help">
+          <span class="notice-icon">i</span>
+          <p>No se envió ningún correo ni se modificó la contraseña.</p>
+        </div>
 
         <div class="separator" aria-hidden="true">
           <span></span>
