@@ -12,7 +12,7 @@
         .forEach(element => { element.textContent = initials; });
     })
     .catch(error => {
-      const status = document.querySelector('#reservation-status, #history-status, #favorite-status, #settings-status');
+      const status = document.querySelector('#reservation-status, #history-status');
       if (status) status.textContent = error.message;
       console.error('No se pudo verificar la cuenta del cliente.', error);
     });

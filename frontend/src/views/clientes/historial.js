@@ -32,10 +32,15 @@
     const title = document.createElement('div');
     title.className = 'event-name';
     title.textContent = reservation.evento;
+    const ticketCode = document.createElement('div');
+    ticketCode.className = 'event-location';
+    ticketCode.textContent = reservation.estado === 'CONFIRMADA'
+      ? `Entrada confirmada · Código #${reservation.id}`
+      : `Código de reserva #${reservation.id} · ${reservation.estado}`;
     const location = document.createElement('div');
     location.className = 'event-location';
     location.textContent = `${reservation.ciudad} · ${date.format(new Date(`${reservation.fechaInicio}-05:00`))}`;
-    details.append(title, location);
+    details.append(title, ticketCode, location);
 
     const reservationDate = document.createElement('div');
     reservationDate.append(
@@ -44,7 +49,7 @@
     );
     const value = document.createElement('div');
     value.append(
-      Object.assign(document.createElement('div'), { className: 'purchase-label', textContent: 'Valor referencial' }),
+      Object.assign(document.createElement('div'), { className: 'purchase-label', textContent: 'Precio actual del evento' }),
       Object.assign(document.createElement('div'), {
         className: 'purchase-data price',
         textContent: Number(reservation.precio) === 0 ? 'Gratis' : currency.format(reservation.precio)
@@ -88,24 +93,23 @@
       reservations = result;
       list.replaceChildren(...reservations.map(renderReservation));
       document.getElementById('totalCompras').textContent = String(reservations.length);
-      document.getElementById('completadas').textContent = String(
-        reservations.filter(item => item.estado === 'CONFIRMADA').length
-      );
+      const confirmed = reservations.filter(item => item.estado === 'CONFIRMADA');
+      document.getElementById('completadas').textContent = String(confirmed.length);
       document.querySelector('.summary-value.gold').textContent = currency.format(
-        reservations
-          .filter(item => item.estado !== 'CANCELADA')
-          .reduce((total, item) => total + Number(item.precio), 0)
+        confirmed.reduce((total, item) => total + Number(item.precio), 0)
       );
-      const latest = reservations[0];
+      const latest = confirmed[0];
       const latestCard = document.querySelector('.summary-grid .summary-card:last-child');
       latestCard.querySelector('.summary-value').textContent =
         latest ? date.format(new Date(latest.fechaReserva)) : '—';
       latestCard.querySelector('.summary-extra').textContent =
-        latest ? latest.evento : 'Sin reservas registradas';
+        latest ? latest.evento : 'Sin compras confirmadas';
       document.getElementById('purchaseCount').textContent = `${reservations.length} reserva(s)`;
-      status.textContent = reservations.length
-        ? 'El valor es referencial y no representa un pago; la base de datos no guarda transacciones.'
-        : 'No tienes reservas registradas.';
+      status.textContent = confirmed.length
+        ? 'Los códigos de las entradas confirmadas identifican tus compras. Los pagos de este sitio son simulados y no generan cargos.'
+        : reservations.length
+          ? 'No tienes entradas compradas. Las reservas pendientes de versiones anteriores no se consideran compras.'
+          : 'No tienes entradas compradas.';
       applyFilters();
     })
     .catch(error => {

@@ -62,6 +62,27 @@ function positiveInteger(value, label) {
   return number;
 }
 
+function validateEventInput(body) {
+  const name = requiredText(body.nombre, 'El nombre', 150);
+  const description = typeof body.descripcion === 'string' ? body.descripcion.trim() : '';
+  const cityId = positiveInteger(body.idCiudad, 'La ciudad');
+  const capacity = positiveInteger(body.capacidad, 'La capacidad');
+  const price = Number(body.precio);
+  if (!Number.isFinite(price) || price < 0 || price > 9999999999.99) {
+    throw new ApiError(400, 'El precio debe ser un valor igual o mayor que cero.');
+  }
+  const startsAt = requiredText(body.fechaInicio, 'La fecha de inicio', 19);
+  const endsAt = requiredText(body.fechaFin, 'La fecha de finalización', 19);
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(startsAt) ||
+      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(endsAt) ||
+      !Number.isFinite(new Date(startsAt).getTime()) ||
+      !Number.isFinite(new Date(endsAt).getTime()) ||
+      new Date(startsAt).getTime() >= new Date(endsAt).getTime()) {
+    throw new ApiError(400, 'La fecha de finalización debe ser posterior al inicio.');
+  }
+  return [name, description, startsAt, endsAt, capacity, price, cityId];
+}
+
 function sessionToken(personId, durationSeconds) {
   const expiresAt = Math.floor(Date.now() / 1000) + durationSeconds;
   const payload = `${personId}.${expiresAt}`;
@@ -298,7 +319,7 @@ const eventSelect = `
              SELECT count(*)::int
              FROM reserva r
              WHERE r.id_evento = e.id_evento
-               AND upper(r.estado) <> 'CANCELADA'
+              AND upper(r.estado) = 'CONFIRMADA'
            ),
            0
          ) AS disponibles,
@@ -519,6 +540,10 @@ app.post('/api/auth/login', async (req, res, next) => {
     const body = req.body || {};
     const email = requiredText(body.correo, 'El correo', 100).toLowerCase();
     const password = requiredPassword(body.password);
+    const requiredRole = body.requiredRole;
+    if (requiredRole !== undefined && requiredRole !== 'administrador') {
+      throw new ApiError(400, 'El rol solicitado no es válido.');
+    }
     const result = await db.query(
       `SELECT p.id_persona AS "idPersona",
               p.primer_nombre AS "primerNombre",
@@ -552,6 +577,9 @@ app.post('/api/auth/login', async (req, res, next) => {
     if (!person || !person.rol || !await verifyPassword(password, person.password_hash)) {
       throw new ApiError(401, 'Correo o contraseña incorrectos.');
     }
+    if (requiredRole && person.rol !== requiredRole) {
+      throw new ApiError(403, 'Esta página es exclusiva para cuentas de administrador.');
+    }
     await createSession(person.idPersona, res, body.recordarme === true);
     res.json({ user: publicUser(person) });
   } catch (error) {
@@ -583,32 +611,65 @@ app.post('/api/auth/logout', async (req, res, next) => {
 app.post('/api/eventos', authenticate, requireRole('agente'), async (req, res, next) => {
   try {
     const body = req.body || {};
-    const name = requiredText(body.nombre, 'El nombre', 150);
-    const description = typeof body.descripcion === 'string' ? body.descripcion.trim() : '';
-    const cityId = positiveInteger(body.idCiudad, 'La ciudad');
-    const capacity = positiveInteger(body.capacidad, 'La capacidad');
-    const price = Number(body.precio);
-    if (!Number.isFinite(price) || price < 0 || price > 9999999999.99) {
-      throw new ApiError(400, 'El precio debe ser un valor igual o mayor que cero.');
-    }
-    const startsAt = requiredText(body.fechaInicio, 'La fecha de inicio', 19);
-    const endsAt = requiredText(body.fechaFin, 'La fecha de finalización', 19);
-    if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(startsAt) ||
-        !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(endsAt) ||
-        !Number.isFinite(new Date(startsAt).getTime()) ||
-        !Number.isFinite(new Date(endsAt).getTime()) ||
-        new Date(startsAt).getTime() >= new Date(endsAt).getTime()) {
-      throw new ApiError(400, 'La fecha de finalización debe ser posterior al inicio.');
-    }
+    const event = validateEventInput(body);
 
     const result = await db.query(
       `INSERT INTO evento
          (nombre, descripcion, fecha_inicio, fecha_fin, capacidad, precio, id_ciudad, id_agente)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
        RETURNING id_evento AS id`,
-      [name, description || null, startsAt, endsAt, capacity, price, cityId, req.user.idPersona]
+      [...event, req.user.idPersona]
     );
     res.status(201).json({ id: result.rows[0].id });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.put('/api/eventos/:id', authenticate, async (req, res, next) => {
+  try {
+    if (!['agente', 'administrador'].includes(req.user.rol)) {
+      throw new ApiError(403, 'Solo agentes y administradores pueden modificar eventos.');
+    }
+    const eventId = positiveInteger(req.params.id, 'El evento');
+    const [name, description, startsAt, endsAt, capacity, price, cityId] =
+      validateEventInput(req.body || {});
+    const values = [name, description || null, startsAt, endsAt, capacity, price, cityId, eventId];
+    const ownershipCondition = req.user.rol === 'agente'
+      ? 'AND id_agente = $9'
+      : '';
+    if (req.user.rol === 'agente') values.push(req.user.idPersona);
+
+    const result = await db.query(
+      `UPDATE evento
+       SET nombre = $1,
+           descripcion = $2,
+           fecha_inicio = $3,
+           fecha_fin = $4,
+           capacidad = $5,
+           precio = $6,
+           id_ciudad = $7
+       WHERE id_evento = $8 ${ownershipCondition}
+         AND capacidad >= (
+           SELECT count(*)::int
+           FROM reserva
+           WHERE id_evento = $8 AND upper(estado) = 'CONFIRMADA'
+         )
+       RETURNING id_evento AS id`,
+      values
+    );
+    if (!result.rowCount) {
+      const exists = await db.query(
+        'SELECT id_agente AS "idAgente" FROM evento WHERE id_evento = $1',
+        [eventId]
+      );
+      if (!exists.rowCount ||
+          (req.user.rol === 'agente' && exists.rows[0].idAgente !== req.user.idPersona)) {
+        throw new ApiError(404, 'No encontramos un evento que puedas modificar.');
+      }
+      throw new ApiError(409, 'La capacidad no puede ser menor que las entradas ya compradas.');
+    }
+    res.json({ id: result.rows[0].id });
   } catch (error) {
     next(error);
   }
@@ -649,6 +710,7 @@ app.get('/api/reservas/agente', authenticate, requireRole('agente'), async (req,
        JOIN evento e ON e.id_evento = r.id_evento
        JOIN ciudad ci ON ci.id_ciudad = e.id_ciudad
        WHERE e.id_agente = $1
+         AND upper(r.estado) = 'CONFIRMADA'
        ORDER BY r.fecha_reserva DESC`,
       [req.user.idPersona]
     );
@@ -683,28 +745,41 @@ app.get('/api/reservas/mias', authenticate, requireRole('cliente'), async (req, 
 });
 
 app.post('/api/reservas', authenticate, requireRole('cliente'), async (req, res, next) => {
+  res.status(410).json({
+    error: 'Las reservas directas están deshabilitadas. Completa el pago simulado para comprar tus entradas.'
+  });
+});
+
+app.post('/api/compras/simular', authenticate, requireRole('cliente'), async (req, res, next) => {
   let client;
   try {
     const body = req.body || {};
     const eventId = positiveInteger(body.idEvento, 'El evento');
     const quantity = positiveInteger(body.cantidad, 'La cantidad');
+    const expectedPrice = Number(body.precioEsperado);
     if (quantity > 6) {
       throw new ApiError(400, 'Puedes reservar hasta 6 entradas por solicitud.');
+    }
+    if (!Number.isFinite(expectedPrice) || expectedPrice < 0) {
+      throw new ApiError(400, 'El precio mostrado no es válido.');
     }
 
     client = await db.connect();
     await client.query('BEGIN');
     const eventResult = await client.query(
-      'SELECT capacidad FROM evento WHERE id_evento = $1 FOR UPDATE',
+      'SELECT capacidad, precio FROM evento WHERE id_evento = $1 FOR UPDATE',
       [eventId]
     );
     if (!eventResult.rowCount) {
       throw new ApiError(404, 'No encontramos ese evento.');
     }
+    if (Number(eventResult.rows[0].precio) !== expectedPrice) {
+      throw new ApiError(409, 'El precio del evento cambió. Actualiza la página y revisa el total.');
+    }
     const reservationCount = await client.query(
       `SELECT count(*)::int AS cantidad
        FROM reserva
-       WHERE id_evento = $1 AND upper(estado) <> 'CANCELADA'`,
+       WHERE id_evento = $1 AND upper(estado) = 'CONFIRMADA'`,
       [eventId]
     );
     const available = eventResult.rows[0].capacidad - reservationCount.rows[0].cantidad;
@@ -712,15 +787,30 @@ app.post('/api/reservas', authenticate, requireRole('cliente'), async (req, res,
       throw new ApiError(409, `Solo quedan ${Math.max(available, 0)} entradas disponibles.`);
     }
     const result = await client.query(
-      `INSERT INTO reserva (id_cliente, id_evento)
-       SELECT $1, $2 FROM generate_series(1, $3::integer)
-       RETURNING id_reserva AS id`,
+      `INSERT INTO reserva (id_cliente, id_evento, estado)
+       SELECT $1, $2, 'CONFIRMADA' FROM generate_series(1, $3::integer)
+       RETURNING id_reserva AS id, estado`,
       [req.user.idPersona, eventId, quantity]
     );
+    const totalResult = await client.query(
+      'SELECT ($1::numeric * $2::numeric)::text AS total',
+      [eventResult.rows[0].precio, quantity]
+    );
     await client.query('COMMIT');
-    res.status(201).json({ reservas: result.rows, estado: 'PENDIENTE' });
+    res.status(201).json({
+      entradas: result.rows.map(row => ({ id: row.id, estado: row.estado })),
+      total: totalResult.rows[0].total,
+      pago: 'SIMULADO'
+    });
   } catch (error) {
-    if (client) await client.query('ROLLBACK').catch(rollbackError => next(rollbackError));
+    if (client) {
+      try {
+        await client.query('ROLLBACK');
+      } catch (rollbackError) {
+        next(rollbackError);
+        return;
+      }
+    }
     next(error);
   } finally {
     client?.release();

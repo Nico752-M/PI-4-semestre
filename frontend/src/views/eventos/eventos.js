@@ -24,6 +24,7 @@
         lugar: `${row.ciudad}, ${row.departamento}`,
         ciudad: row.ciudad,
         direccion: `${row.departamento}, ${row.pais} · Capacidad: ${row.capacidad}`,
+        disponibles: Number(row.disponibles),
         descripcion: row.descripcion || 'El organizador no agregó una descripción.',
         portada: cover,
         galeria: [{ src: cover, alt: `Ilustración genérica para ${row.nombre}` }],

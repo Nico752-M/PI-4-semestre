@@ -48,11 +48,12 @@
     location.textContent = `● ${reservation.ciudad}, Colombia`;
     const meta = document.createElement('div');
     meta.className = 'event-meta';
-    const ticketCount = document.createElement('span');
-    ticketCount.append('Entradas: ', Object.assign(document.createElement('strong'), { textContent: '1' }));
-    const reservationNumber = document.createElement('span');
-    reservationNumber.append('Reserva: ', Object.assign(document.createElement('strong'), { textContent: `#${reservation.id}` }));
-    meta.append(ticketCount, reservationNumber);
+    const ticketNumber = document.createElement('span');
+    ticketNumber.append(
+      state === 'confirmed' ? 'Entrada: ' : 'Código de reserva: ',
+      Object.assign(document.createElement('strong'), { textContent: `#${reservation.id}` })
+    );
+    meta.append(ticketNumber);
     info.append(name, location, meta);
 
     const dateBlock = document.createElement('div');
@@ -72,7 +73,11 @@
     actions.className = 'reservation-right';
     const badge = document.createElement('div');
     badge.className = `status ${state}`;
-    badge.textContent = `● ${reservation.estado}`;
+    badge.textContent = state === 'confirmed'
+      ? '● ENTRADA CONFIRMADA'
+      : state === 'reserved'
+        ? '● SIN COMPRA'
+        : '● CANCELADA';
     const link = document.createElement('a');
     link.className = 'detail-button';
     link.href = `../eventos/detalle.html?id=${encodeURIComponent(reservation.idEvento)}`;
@@ -87,6 +92,7 @@
     const confirmed = reservations.filter(item => item.estado === 'CONFIRMADA').length;
     const cancelled = reservations.filter(item => item.estado === 'CANCELADA').length;
     const upcoming = reservations
+      .filter(item => item.estado === 'CONFIRMADA')
       .map(item => new Date(`${item.fechaInicio}-05:00`))
       .filter(date => date.getTime() >= now)
       .sort((a, b) => a - b)[0];

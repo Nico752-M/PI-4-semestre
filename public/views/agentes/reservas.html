@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="agente.css">
     <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
 </head>
-<body class="dark-theme agent-analytics agent-page">
+<body class="dark-theme agent-analytics agent-page" data-required-role="agente">
     <div class="app-container agent-app">
         <aside class="sidebar">
             <div class="brand">
@@ -33,7 +33,6 @@
                 <a href="crear-evento.html">＋ <span>Crear evento</span></a>
                 <a href="reservas.html" class="active">▣ <span>Reservas</span></a>
                 <a href="asistentes.html">♙ <span>Asistentes</span></a>
-                <a href="reportes.html">◒ <span>Reportes</span></a>
                 <a href="estadisticas.html">▥ <span>Estadísticas</span></a>
                 <a href="configuracion.html">⚙ <span>Configuración</span></a>
                 <p class="nav-title">SOPORTE</p>
@@ -106,6 +105,7 @@
         </main>
     </div>
     <script src="../../api.js"></script>
+    <script src="../../components/role-guard.js"></script>
     <script src="reservas.js"></script>
 </body>
 </html>

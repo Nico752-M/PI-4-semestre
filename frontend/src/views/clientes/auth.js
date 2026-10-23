@@ -3,6 +3,27 @@
   const registerForm = document.getElementById('register-form');
   const loginForm = document.getElementById('login-form');
 
+  function destinationForRole(role) {
+    if (role === 'agente') return '../agentes/dashboard.html';
+    if (role === 'administrador') return '../admins/dashboard.html';
+    return '../clientes/index.html';
+  }
+
+  if (loginForm) {
+    window.EventStageApi.request('/auth/me')
+      .then(({ user }) => {
+        const requiredRole = document.body.dataset.loginRole;
+        if (requiredRole && user.rol !== requiredRole) return;
+        location.replace(destinationForRole(user.rol));
+      })
+      .catch(error => {
+        if (error.status !== 401) {
+          status.textContent = error.message;
+          console.error('No se pudo verificar la sesión existente.', error);
+        }
+      });
+  }
+
   if (registerForm) {
     const country = document.getElementById('pais');
     const department = document.getElementById('departamento');
@@ -58,23 +79,25 @@
           body: {
             correo: loginForm.elements.namedItem('email').value,
             password: loginForm.elements.namedItem('password').value,
-            recordarme: loginForm.elements.namedItem('recordarme').checked
+            recordarme: loginForm.elements.namedItem('recordarme').checked,
+            requiredRole: document.body.dataset.loginRole || undefined
           }
         });
-        const defaultDestination = result.user.rol === 'agente'
-          ? '../agentes/dashboard.html'
-          : result.user.rol === 'administrador'
-            ? '../admins/dashboard.html'
-            : 'index.html';
+        const requiredRole = document.body.dataset.loginRole;
+        if (requiredRole && result.user.rol !== requiredRole) {
+          throw new Error('Esta página es exclusiva para cuentas de administrador.');
+        }
         const returnUrl = new URLSearchParams(location.search).get('returnUrl');
         if (returnUrl) {
           const destination = new URL(returnUrl, location.origin);
-          if (destination.origin === location.origin) {
+          const isAllowedReturnUrl = destination.origin === location.origin &&
+            (requiredRole !== 'administrador' || destination.pathname.startsWith('/views/admins/'));
+          if (isAllowedReturnUrl) {
             location.href = destination.href;
             return;
           }
         }
-        location.href = defaultDestination;
+        location.href = destinationForRole(result.user.rol);
       } catch (error) {
         status.textContent = error.message;
         submitButton.disabled = false;

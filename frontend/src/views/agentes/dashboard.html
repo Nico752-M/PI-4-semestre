@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="agente.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
   <script src="../../api.js" defer></script>
+  <script src="../../components/role-guard.js" defer></script>
   <script src="dashboard.js" defer></script>
 </head>
-<body class="agent-page workspace-page">
+<body class="agent-page workspace-page" data-required-role="agente">
   <div class="agent-app">
     <aside class="sidebar">
       <div class="brand">
@@ -27,7 +28,6 @@
         <a href="crear-evento.html">＋ <span>Crear evento</span></a>
         <a href="reservas.html">▣ <span>Reservas</span></a>
         <a href="asistentes.html">♙ <span>Asistentes</span></a>
-        <a href="reportes.html">◒ <span>Reportes</span></a>
         <a href="estadisticas.html">▥ <span>Estadísticas</span></a>
         <a href="configuracion.html">⚙ <span>Configuración</span></a>
         <p class="nav-title">SOPORTE</p>
@@ -80,7 +80,7 @@
             <div class="workspace-quick-links">
               <a href="crear-evento.html"><strong>＋ Crear un evento</strong><small>Publica una nueva experiencia.</small></a>
               <a href="reservas.html"><strong>▣ Revisar reservas</strong><small>Consulta los estados almacenados.</small></a>
-              <a href="reportes.html"><strong>◒ Abrir reportes</strong><small>Revisa los conteos de eventos y reservas.</small></a>
+              <a href="estadisticas.html"><strong>▥ Abrir estadísticas</strong><small>Revisa los conteos de eventos y reservas.</small></a>
               <a href="asistentes.html"><strong>♙ Consultar asistentes</strong><small>Busca personas asociadas a tus reservas.</small></a>
             </div>
           </section>

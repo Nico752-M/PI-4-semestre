@@ -16,11 +16,16 @@ El proyecto está preparado para desplegar el frontend y la API bajo el mismo do
 ## Integraciones
 
 - Registro e inicio de sesión para clientes y agentes; las sesiones usan una cookie `HttpOnly`.
+- Acceso administrativo desde `views/admins/login.html`; requiere una cuenta de administrador provisionada de forma confiable en Neon. El registro público no permite crear administradores.
 - Lectura de países, departamentos, ciudades y eventos.
 - Creación de eventos por agentes autenticados.
-- Creación de reservas pendientes y consulta de las reservas del cliente autenticado.
+- Compra simulada de entradas, consulta de sus códigos y visualización de reservas antiguas con su estado.
 - Los paneles administrativos consultan cuentas, agentes, eventos y reservas desde Neon. Los paneles de agente muestran sus eventos y reservas desde las mismas tablas.
 
-El esquema actual guarda una fila en `reserva` por cada entrada. Las reservas quedan como `PENDIENTE`; el esquema no incluye pagos, categorías, imágenes ni localidades con precios independientes.
+El esquema actual guarda una fila en `reserva` por cada entrada comprada. El checkout disponible es una simulación: confirma la compra como `CONFIRMADA`, calcula el total desde el precio vigente del evento y no procesa cargos reales ni guarda datos de tarjeta. Solo las entradas confirmadas ocupan capacidad. El esquema no incluye pagos reales, categorías, imágenes ni localidades con precios independientes. Agentes pueden editar sus eventos y administradores cualquier evento; la capacidad no se puede reducir por debajo de las entradas confirmadas.
 
-Las vistas de pagos, soporte, favoritos, check-in y preferencias no se presentan como información real porque el esquema no tiene entidades para persistir esos datos. Las preferencias del cliente que aún ofrece la interfaz se guardan solo en el navegador. Los importes de reservas son referenciales y no equivalen a pagos procesados.
+Las vistas de favoritos y preferencias se retiraron porque el esquema no tiene entidades para persistir esos datos. La administración de solicitudes de soporte tampoco está implementada; la página de ayuda de agentes conserva únicamente el contacto informativo. Las reservas pendientes creadas por versiones anteriores no son entradas compradas ni descuentan capacidad.
+
+## Inventario de archivos
+
+Consulta `INVENTARIO_ARCHIVOS.txt` para conocer el propósito de los archivos del proyecto. `public/` contiene las copias generadas para Vercel a partir de `frontend/src/`; edita los archivos fuente y vuelve a ejecutar `npm run build`.
