@@ -113,19 +113,18 @@
         <p id="payment-event-name" class="payment-event-name"></p>
         <div class="payment-total"><span>Total a pagar</span><strong id="payment-total"></strong></div>
         <div class="payment-simulation-note">
-          Simulación únicamente: no se realizará ningún cargo ni guardaremos datos bancarios.
-          No ingreses datos de una tarjeta real. Usa la tarjeta de prueba indicada abajo.
+          Simulación únicamente: puedes escribir datos ficticios; no se realizará ningún cargo,
+          no verificaremos la tarjeta ni enviaremos o guardaremos sus datos. No ingreses una tarjeta real.
         </div>
         <div id="payment-card-fields">
           <label for="payment-cardholder">Nombre del titular</label>
           <input id="payment-cardholder" name="cardholder" autocomplete="off" required>
-          <label for="payment-card-number">Tarjeta de prueba</label>
+          <label for="payment-card-number">Número de tarjeta (simulado)</label>
           <input id="payment-card-number" name="cardNumber" inputmode="numeric" autocomplete="off"
-            maxlength="19" placeholder="4242 4242 4242 4242" required>
-          <p class="payment-hint">Tarjeta aprobada de prueba: 4242 4242 4242 4242 · cualquier fecha futura · CVC 123</p>
+            maxlength="19" required>
           <div class="payment-card-row">
             <div><label for="payment-expiry">Vencimiento</label><input id="payment-expiry" name="expiry" type="month" required></div>
-            <div><label for="payment-cvc">CVC de prueba</label><input id="payment-cvc" name="cvc" inputmode="numeric"
+            <div><label for="payment-cvc">CVC (simulado)</label><input id="payment-cvc" name="cvc" inputmode="numeric"
               autocomplete="off" maxlength="3" pattern="[0-9]{3}" required></div>
           </div>
         </div>
