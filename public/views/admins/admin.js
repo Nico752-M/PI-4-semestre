@@ -57,18 +57,23 @@
         : 'Finalizado';
     const stateCell = addCell(row, state);
     row.dataset.status = state.toLocaleLowerCase('es');
+    const actionsCell = document.createElement('td');
+    const editLink = document.createElement('a');
+    editLink.className = 'workspace-button';
+    editLink.href = `../agentes/crear-evento.html?editar=${encodeURIComponent(event.id)}&origen=admin`;
+    editLink.textContent = 'Editar';
+    actionsCell.append(editLink);
+    row.append(actionsCell);
   }
 
   async function loadAdminPage() {
     if (!page) return;
     try {
-      const [{ user }, summary] = await Promise.all([
-        window.EventStageApi.request('/auth/me'),
-        window.EventStageApi.request('/admin/resumen')
-      ]);
+      const { user } = await window.EventStageApi.request('/auth/me');
       if (user.rol !== 'administrador') {
         throw new Error('Esta página solo está disponible para administradores.');
       }
+      const summary = await window.EventStageApi.request('/admin/resumen');
       const accountName = fullName(user);
       const profile = document.querySelector('.profile-card');
       if (profile) {
@@ -142,8 +147,18 @@
       document.querySelectorAll('[data-admin-total]').forEach(element => {
         element.textContent = `${result.length} registro(s)`;
       });
-      if (status) status.textContent = result.length ? '' : 'No hay registros en la base de datos.';
+      if (status) {
+        const updatedEvent = new URLSearchParams(location.search).get('actualizado');
+        status.textContent = updatedEvent && page === 'eventos'
+          ? 'Los cambios del evento se guardaron correctamente.'
+          : result.length ? '' : 'No hay registros en la base de datos.';
+      }
     } catch (error) {
+      if (error.status === 401) {
+        const returnUrl = encodeURIComponent(location.href);
+        location.replace(`/views/admins/login.html?returnUrl=${returnUrl}`);
+        return;
+      }
       if (status) status.textContent = error.message;
       console.error('No se pudo cargar la información administrativa.', error);
     }

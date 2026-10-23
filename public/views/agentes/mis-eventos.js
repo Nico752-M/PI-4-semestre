@@ -51,7 +51,10 @@
     const link = document.createElement('a');
     link.href = `../eventos/detalle.html?id=${encodeURIComponent(event.id)}`;
     link.textContent = 'Ver';
-    actions.append(link);
+    const editLink = document.createElement('a');
+    editLink.href = `crear-evento.html?editar=${encodeURIComponent(event.id)}`;
+    editLink.textContent = 'Editar';
+    actions.append(link, editLink);
     actionsCell.append(actions);
     row.append(eventCell, dateCell, capacityCell, priceCell, statusCell, actionsCell);
     return row;

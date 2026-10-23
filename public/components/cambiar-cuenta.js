@@ -3,6 +3,25 @@
     document.documentElement.classList.add('panel-shell');
   }
 
+  const isCustomerPanel = [
+    'customer-page',
+    'perfil-page',
+    'misreservas-page',
+    'historialdecompras-page'
+  ].some(className => document.body.classList.contains(className));
+  const isWorkspace = document.body.classList.contains('agent-page') ||
+    document.body.classList.contains('workspace-page');
+  const header = document.querySelector(
+    '.customer-topbar, .workspace-topbar, .top-header, .topbar'
+  );
+  if ((isCustomerPanel || isWorkspace) && header) {
+    const homeLink = document.createElement('a');
+    homeLink.className = 'workspace-home-link';
+    homeLink.href = '/views/clientes/index.html';
+    homeLink.textContent = '← Volver al inicio';
+    header.prepend(homeLink);
+  }
+
   const sidebar = document.querySelector('.sidebar');
   if (sidebar) {
     const toggle = document.createElement('button');

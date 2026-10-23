@@ -85,18 +85,27 @@
   const quantityInput = document.getElementById('ticket-quantity');
   const subtotal = document.getElementById('ticket-subtotal');
   const form = document.getElementById('ticket-form');
+  const paymentDialog = document.getElementById('payment-dialog');
+  const paymentForm = document.getElementById('payment-form');
+  const paymentStatus = document.getElementById('payment-status');
+  const paymentCardFields = document.getElementById('payment-card-fields');
+  const paymentSubmit = paymentForm.querySelector('[type="submit"]');
+  const paymentCompleteLink = document.querySelector('.payment-complete-link');
 
   function getQuantity() {
     const quantity = Number.parseInt(quantityInput.value, 10);
     return Number.isNaN(quantity) ? 1 : Math.max(1, Math.min(6, quantity));
   }
 
-  function updateSubtotal() {
+  function selectedPrice() {
     const selected = ticketOptions.querySelector('input[name="localidad"]:checked');
-    if (!selected) return;
-    const localidad = event.localidades[Number(selected.value)];
+    return selected ? event.localidades[Number(selected.value)].precio : 0;
+  }
+
+  function updateSubtotal() {
+    if (!ticketOptions.querySelector('input[name="localidad"]:checked')) return;
     quantityInput.value = String(getQuantity());
-    subtotal.textContent = formatPrice(localidad.precio * getQuantity());
+    subtotal.textContent = formatPrice(selectedPrice() * getQuantity());
   }
 
   ticketOptions.addEventListener('change', updateSubtotal);
@@ -114,22 +123,98 @@
     event.preventDefault();
     const submit = form.querySelector('[type="submit"]');
     submit.disabled = true;
-    message.textContent = 'Creando tu reserva...';
+    message.textContent = 'Verificando tu cuenta...';
     try {
-      const result = await window.EventStageApi.request('/reservas', {
-        method: 'POST',
-        body: { idEvento: eventId, cantidad: getQuantity() }
+      const { user } = await window.EventStageApi.request('/auth/me');
+      if (user.rol !== 'cliente') {
+        throw new Error('Solo los clientes pueden comprar entradas.');
+      }
+      document.getElementById('payment-event-name').textContent =
+        `${event.nombre} · ${getQuantity()} entrada(s)`;
+      document.getElementById('payment-total').textContent =
+        formatPrice(selectedPrice() * getQuantity());
+      paymentStatus.textContent = '';
+      paymentSubmit.hidden = false;
+      paymentSubmit.disabled = false;
+      paymentCompleteLink.hidden = true;
+      paymentCardFields.hidden = selectedPrice() === 0;
+      paymentCardFields.querySelectorAll('input').forEach(input => {
+        input.required = selectedPrice() !== 0;
+        input.value = '';
       });
-      message.textContent = `Reserva creada y pendiente de pago. Número(s): ${result.reservas.map(item => item.id).join(', ')}.`;
+      paymentForm.reset();
+      paymentCardFields.hidden = selectedPrice() === 0;
+      paymentDialog.showModal();
+      message.textContent = '';
     } catch (error) {
       message.textContent = error.message;
-      if (error.message === 'Inicia sesión para continuar.') {
+      if (error.status === 401) {
         const link = document.createElement('a');
         link.href = `../clientes/login.html?returnUrl=${encodeURIComponent(location.href)}`;
         link.textContent = ' Inicia sesión para continuar.';
         message.append(link);
       }
+    } finally {
       submit.disabled = false;
+    }
+  });
+
+  paymentDialog.querySelectorAll('[data-payment-close]').forEach(button => {
+    button.addEventListener('click', () => paymentDialog.close());
+  });
+
+  paymentForm.addEventListener('submit', async submitEvent => {
+    submitEvent.preventDefault();
+    if (!paymentForm.reportValidity()) return;
+    if (selectedPrice() > 0) {
+      const cardNumber = paymentForm.elements.namedItem('cardNumber').value.replace(/\D/g, '');
+      const expiry = paymentForm.elements.namedItem('expiry').value;
+      const securityCode = paymentForm.elements.namedItem('cvc').value;
+      const now = new Date();
+      const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+      if (cardNumber !== '4242424242424242' || securityCode !== '123' || expiry < currentMonth) {
+        paymentStatus.textContent =
+          'El pago de prueba fue rechazado. Usa la tarjeta de prueba, CVC 123 y una fecha futura.';
+        return;
+      }
+    }
+
+    paymentSubmit.disabled = true;
+    paymentStatus.textContent = 'Procesando pago de prueba...';
+    try {
+      const result = await window.EventStageApi.request('/compras/simular', {
+        method: 'POST',
+        body: {
+          idEvento: eventId,
+          cantidad: getQuantity(),
+          precioEsperado: selectedPrice()
+        }
+      });
+      const ticketNumbers = result.entradas.map(ticket => `#${ticket.id}`).join(', ');
+      paymentStatus.textContent =
+        `Pago de prueba aprobado por ${formatPrice(result.total)}. Tus entradas están confirmadas: ${ticketNumbers}. No se realizó ningún cargo.`;
+      paymentCardFields.hidden = true;
+      paymentSubmit.hidden = true;
+      paymentCompleteLink.hidden = false;
+      paymentForm.querySelectorAll('input').forEach(input => {
+        input.required = false;
+        input.value = '';
+      });
+      message.textContent = `Compra simulada confirmada. Entradas: ${ticketNumbers}.`;
+      const available = Math.max(0, event.disponibles - getQuantity());
+      event.disponibles = available;
+      event.localidades[0].detalle = `Precio único · ${available} disponibles`;
+      ticketOptions.querySelector('.ticket-option-details small').textContent =
+        event.localidades[0].detalle;
+    } catch (error) {
+      paymentStatus.textContent = error.message;
+      paymentSubmit.disabled = false;
+      if (error.status === 401) {
+        const link = document.createElement('a');
+        link.href = `../clientes/login.html?returnUrl=${encodeURIComponent(location.href)}`;
+        link.textContent = ' Inicia sesión y vuelve para comprar.';
+        paymentStatus.append(link);
+      }
     }
   });
 
