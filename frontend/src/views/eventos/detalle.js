@@ -119,8 +119,8 @@
     quantityInput.value = String(getQuantity() + 1);
     updateSubtotal();
   });
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
+  form.addEventListener('submit', async submitEvent => {
+    submitEvent.preventDefault();
     const submit = form.querySelector('[type="submit"]');
     submit.disabled = true;
     message.textContent = 'Verificando tu cuenta...';
@@ -166,19 +166,6 @@
   paymentForm.addEventListener('submit', async submitEvent => {
     submitEvent.preventDefault();
     if (!paymentForm.reportValidity()) return;
-    if (selectedPrice() > 0) {
-      const cardNumber = paymentForm.elements.namedItem('cardNumber').value.replace(/\D/g, '');
-      const expiry = paymentForm.elements.namedItem('expiry').value;
-      const securityCode = paymentForm.elements.namedItem('cvc').value;
-      const now = new Date();
-      const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
-      if (cardNumber !== '4242424242424242' || securityCode !== '123' || expiry < currentMonth) {
-        paymentStatus.textContent =
-          'El pago de prueba fue rechazado. Usa la tarjeta de prueba, CVC 123 y una fecha futura.';
-        return;
-      }
-    }
-
     paymentSubmit.disabled = true;
     paymentStatus.textContent = 'Procesando pago de prueba...';
     try {
