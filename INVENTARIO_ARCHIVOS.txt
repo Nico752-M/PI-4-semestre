@@ -243,3 +243,4 @@ public\views\clientes\styles.css — Copia de los estilos de portada.
 public\views\eventos\detalle.html — Copia del detalle y reserva de evento.
 public\views\eventos\detalle.js — Copia de la logica del detalle de evento.
 public\views\eventos\eventos.js — Copia de la consulta del catalogo.
+Alejo estuvo aqui
