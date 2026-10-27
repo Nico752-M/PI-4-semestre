@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <linearGradient id="sky" x2="1" y2="1"><stop stop-color="#f8b956"/><stop offset=".52" stop-color="#e56e66"/><stop offset="1" stop-color="#48306f"/></linearGradient>
+    <linearGradient id="beam" x2="0" y2="1"><stop stop-color="#ffe99a" stop-opacity=".72"/><stop offset="1" stop-color="#ffe99a" stop-opacity="0"/></linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h800v420H0z"/>
+  <circle cx="400" cy="130" r="74" fill="#ffd875" fill-opacity=".72"/>
+  <path d="M235 0 365 285H278L188 0m379 0L450 285h88L680 0" fill="url(#beam)" opacity=".75"/>
+  <path fill="#251b3d" d="M0 300h800v120H0z"/>
+  <path fill="#38254f" d="M90 245h28v55H90zm64 20h24v35h-24zm482-33h30v68h-30zm70 23h24v45h-24z"/>
+  <path fill="#20182f" d="M0 342q37-38 73 0 30-55 64 0 35-47 69 0 40-64 82 0 30-46 59 0 35-60 70 0 40-48 80 0 36-70 72 0 37-47 74 0 38-61 77 0 36-50 80 0v78H0z"/>
+  <path fill="#ffcf70" d="M170 126h12v12h-12zm445 35h9v9h-9zM254 65h8v8h-8zm286 49h10v10h-10z"/>
+</svg>

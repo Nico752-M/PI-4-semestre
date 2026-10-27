@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <linearGradient id="stadium" x2="0" y2="1"><stop stop-color="#2463a8"/><stop offset=".56" stop-color="#65a9e6"/><stop offset="1" stop-color="#183967"/></linearGradient>
+    <linearGradient id="field" x2="0" y2="1"><stop stop-color="#4f9b61"/><stop offset="1" stop-color="#17452f"/></linearGradient>
+  </defs>
+  <path fill="url(#stadium)" d="M0 0h800v420H0z"/>
+  <path fill="#e6f5ff" fill-opacity=".52" d="M90 0h33l143 238h-44zm620 0h-33L534 238h44z"/>
+  <path fill="#d9edff" fill-opacity=".24" d="M0 95q400-175 800 0v134H0z"/>
+  <path fill="#244a79" d="M0 128q400-145 800 0v112H0z"/>
+  <path stroke="#d8ecff" stroke-opacity=".55" stroke-width="5" d="M0 171q400-112 800 0M0 203q400-78 800 0"/>
+  <path fill="url(#field)" d="M0 234h800v186H0z"/>
+  <path stroke="#efffe4" stroke-opacity=".74" stroke-width="4" d="M400 234v186M0 324h800"/>
+  <ellipse cx="400" cy="324" rx="70" ry="58" stroke="#efffe4" stroke-opacity=".74" stroke-width="4"/>
+  <path stroke="#efffe4" stroke-opacity=".7" stroke-width="4" d="M32 260h108v128H32zm628 0h108v128H660z"/>
+  <circle cx="535" cy="302" r="34" fill="#f7f4e9"/><path stroke="#243552" stroke-width="5" d="m535 281 13 9-5 15h-16l-5-15zm-13 9-14 2m35-2 14 1m-30 13-8 14m18-14 9 14"/>
+</svg>

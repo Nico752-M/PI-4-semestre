@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistentes | EventStage</title>
+  <link rel="stylesheet" href="agente.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="../../api.js" defer></script>
+  <script src="../../components/role-guard.js" defer></script>
+  <script src="asistentes.js" defer></script>
+</head>
+<body class="agent-page workspace-page" data-required-role="agente">
+  <div class="agent-app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div></div>
+      <div class="profile-card"><div class="avatar">—</div><div><strong>Cuenta autenticada</strong><small>Agente / Organizador</small></div></div>
+      <nav aria-label="Navegación del agente">
+        <p class="nav-title">ADMINISTRACIÓN</p>
+        <a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
+        <a href="crear-evento.html">＋ <span>Crear evento</span></a><a href="reservas.html">▣ <span>Reservas</span></a>
+        <a href="asistentes.html" class="active">♙ <span>Asistentes</span></a>
+        <a href="estadisticas.html">▥ <span>Estadísticas</span></a><a href="configuracion.html">⚙ <span>Configuración</span></a>
+        <p class="nav-title">SOPORTE</p><a href="ayuda.html">? <span>Centro de ayuda</span></a>
+      </nav>
+    </aside>
+    <main class="workspace-main">
+      <header class="workspace-topbar"><p>Panel / <strong>Asistentes</strong></p><a class="workspace-button" href="reservas.html">Ver reservas</a></header>
+      <section class="workspace-content">
+        <div class="workspace-heading"><div><span class="workspace-eyebrow">GESTIÓN DE PÚBLICO</span><h1>Asistentes</h1><p>Consulta los asistentes registrados y el estado de sus entradas.</p></div></div>
+        <div class="workspace-metrics compact">
+          <article class="workspace-card metric"><span>Reservas en tus eventos</span><strong data-attendee-count>—</strong><small>Una fila por reserva/entrada</small></article>
+        </div>
+        <p data-attendees-status role="status" aria-live="polite"></p>
+        <section class="workspace-card">
+          <div class="workspace-card-heading"><div><h2>Listado de asistentes</h2><p>Datos derivados de las reservas registradas.</p></div></div>
+          <div class="workspace-table-wrap">
+            <table class="workspace-table">
+              <thead><tr><th>ASISTENTE</th><th>EVENTO</th><th>RESERVA</th><th>FECHA</th></tr></thead>
+              <tbody data-attendees-rows></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="../../components/cambiar-cuenta.js"></script>
+</body>
+</html>

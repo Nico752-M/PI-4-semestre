@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis reservas | EventStage</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+</head>
+<body class="historialdecompras-page">
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo"><div class="logo-mark">E</div><div class="logo-text">Event<span>Stage</span></div></div>
+      <div class="section-title">Principal</div>
+      <nav class="menu">
+        <a class="menu-item" href="index.html"><span class="icon">⌂</span><span>Inicio</span></a>
+        <a class="menu-item" href="misreservas.html"><span class="icon">▣</span><span>Mis reservas</span></a>
+        <a class="menu-item active" href="historialdecompras.html" aria-current="page"><span class="icon">◷</span><span>Historial</span></a>
+      </nav>
+      <div class="account-section">
+        <div class="section-title">Cuenta</div>
+        <nav class="menu">
+          <a class="menu-item" href="perfil.html"><span class="icon">●</span><span>Mi perfil</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-user"><div class="avatar-small">—</div><div><div class="user-name">Cuenta autenticada</div><div class="user-role">Cliente</div></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="breadcrumb">Inicio / Historial / <span>Reservas</span></div><h1 class="page-title">Historial de reservas</h1></div>
+        <div class="top-actions"><div class="top-user"><div class="avatar-top">—</div><div class="top-user-text"><strong>Cuenta autenticada</strong><span>Cuenta personal</span></div></div></div>
+      </header>
+
+      <section class="summary-grid">
+        <div class="summary-card"><div class="summary-label">Reservas realizadas</div><div class="summary-value" id="totalCompras">—</div><div class="summary-extra">Una fila por entrada</div></div>
+        <div class="summary-card"><div class="summary-label">Precio actual de entradas confirmadas</div><div class="summary-value gold">—</div><div class="summary-extra">No es un recibo ni un cobro</div></div>
+        <div class="summary-card"><div class="summary-label">Entradas confirmadas</div><div class="summary-value green" id="completadas">—</div><div class="summary-extra">Compra de prueba confirmada</div></div>
+        <div class="summary-card"><div class="summary-label">Compra más reciente</div><div class="summary-value">—</div><div class="summary-extra">Sin compras confirmadas</div></div>
+      </section>
+
+      <section class="toolbar">
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all" onclick="filtrar('all',this)">Todas</button>
+          <button class="filter-btn" data-filter="completed" onclick="filtrar('completed',this)">Confirmadas</button>
+          <button class="filter-btn" data-filter="pending" onclick="filtrar('pending',this)">Pendientes</button>
+          <button class="filter-btn" data-filter="cancelled" onclick="filtrar('cancelled',this)">Canceladas</button>
+        </div>
+        <div class="search-box"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Buscar reserva..." oninput="buscar()"></div>
+      </section>
+
+      <section class="purchases-card">
+        <div class="purchases-header"><div><div class="card-title">Mis entradas</div><div class="card-subtitle">Cada entrada tiene un código individual; los pagos son simulados.</div></div><div class="purchase-count" id="purchaseCount">Cargando...</div></div>
+        <p id="history-status" role="status" aria-live="polite">Cargando reservas...</p>
+        <div class="purchase-list" id="purchaseList"></div>
+        <div class="empty" id="empty" style="display:none"><div class="empty-icon">▣</div><div class="empty-title">No hay reservas para mostrar</div><div class="empty-text">Prueba otro filtro o consulta los eventos disponibles.</div><a class="details-btn" href="index.html#eventos">Explorar eventos</a></div>
+      </section>
+    </main>
+  </div>
+  <script src="../../api.js"></script>
+  <script src="historial.js"></script>
+  <script src="sesion-cliente.js"></script>
+  <script src="../../components/cambiar-cuenta.js"></script>
+</body>
+</html>

@@ -6,17 +6,20 @@
   <title>Configuración | EventStage</title>
   <link rel="stylesheet" href="agente.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="../../api.js" defer></script>
+  <script src="../../components/role-guard.js" defer></script>
+  <script src="configuracion.js" defer></script>
 </head>
-<body class="agent-page workspace-page">
+<body class="agent-page workspace-page" data-required-role="agente">
   <div class="agent-app">
     <aside class="sidebar">
       <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div></div>
-      <div class="profile-card"><div class="avatar">AP</div><div><strong>Aurora<br>Producciones</strong><small>Agente /<br>Organizador</small></div></div>
+      <div class="profile-card"><div class="avatar">—</div><div><strong>Cuenta autenticada</strong><small>Agente / Organizador</small></div></div>
       <nav aria-label="Navegación del agente">
         <p class="nav-title">ADMINISTRACIÓN</p>
         <a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
         <a href="crear-evento.html">＋ <span>Crear evento</span></a><a href="reservas.html">▣ <span>Reservas</span></a>
-        <a href="asistentes.html">♙ <span>Asistentes</span></a><a href="reportes.html">◒ <span>Reportes</span></a>
+        <a href="asistentes.html">♙ <span>Asistentes</span></a>
         <a href="estadisticas.html">▥ <span>Estadísticas</span></a><a href="configuracion.html" class="active">⚙ <span>Configuración</span></a>
         <p class="nav-title">SOPORTE</p><a href="ayuda.html">? <span>Centro de ayuda</span></a>
       </nav>
@@ -24,28 +27,16 @@
     <main class="workspace-main">
       <header class="workspace-topbar"><p>Panel / <strong>Configuración</strong></p></header>
       <section class="workspace-content">
-        <div class="workspace-heading"><div><span class="workspace-eyebrow">PREFERENCIAS DE CUENTA</span><h1>Configuración</h1><p>Administra la información de tu organización y las preferencias de notificación.</p></div></div>
+        <div class="workspace-heading"><div><span class="workspace-eyebrow">DATOS DE CUENTA</span><h1>Configuración</h1><p>Información de persona y agente registrada en la base de datos.</p></div></div>
+        <p data-agent-account-status role="status" aria-live="polite"></p>
         <div class="workspace-columns">
           <section class="workspace-card">
-            <div class="workspace-card-heading"><div><h2>Datos de la organización</h2><p>Información que verán los asistentes en tus eventos.</p></div></div>
-            <form class="workspace-form">
-              <label>Nombre de la organización<input type="text" value="Aurora Producciones"></label>
-              <div class="workspace-form-grid">
-                <label>Correo de contacto<input type="email" value="contacto@auroraproducciones.co"></label>
-                <label>Teléfono<input type="tel" value="+57 300 000 0000"></label>
-              </div>
-              <label>Descripción<textarea rows="4">Organización y producción de experiencias culturales y musicales.</textarea></label>
-              <div class="workspace-form-actions"><button class="workspace-button primary" type="button">Guardar cambios</button></div>
-            </form>
+            <div class="workspace-card-heading"><div><h2>Perfil de agente</h2><p>Los datos se consultan desde persona y agente.</p></div></div>
+            <dl><dt>Nombre</dt><dd data-agent-account-name>Cargando...</dd><dt>Correo</dt><dd data-agent-account-email>—</dd><dt>Teléfono</dt><dd data-agent-account-phone>—</dd><dt>Ubicación</dt><dd data-agent-account-location>—</dd><dt>Código de agente</dt><dd data-agent-account-code>—</dd></dl>
           </section>
           <section class="workspace-card">
-            <div class="workspace-card-heading"><div><h2>Notificaciones</h2><p>Elige qué novedades quieres recibir.</p></div></div>
-            <div class="workspace-preferences">
-              <label><span><strong>Actividad de reservas</strong><small>Pagos, compras y cancelaciones.</small></span><input type="checkbox" checked></label>
-              <label><span><strong>Rendimiento de eventos</strong><small>Resúmenes de ventas y asistencia.</small></span><input type="checkbox" checked></label>
-              <label><span><strong>Novedades de EventStage</strong><small>Actualizaciones y consejos para organizadores.</small></span><input type="checkbox"></label>
-            </div>
-            <button class="workspace-button primary" type="button">Guardar preferencias</button>
+            <div class="workspace-card-heading"><div><h2>Preferencias</h2><p>No hay preferencias de organización almacenadas.</p></div></div>
+            <p>El esquema actual no tiene campos para nombre de organización, descripción ni notificaciones. No se muestran valores ficticios.</p>
           </section>
         </div>
       </section>

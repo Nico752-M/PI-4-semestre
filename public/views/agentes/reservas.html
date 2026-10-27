@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventStage - Reservas y asistentes</title>
+    <link rel="stylesheet" href="agente.css">
+    <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+</head>
+<body class="dark-theme agent-analytics agent-page" data-required-role="agente">
+    <div class="app-container agent-app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">E</div>
+                <div>
+                    <h2>Event<span>Stage</span></h2>
+                    <p>GESTIÓN DE EVENTOS</p>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="avatar">—</div>
+                <div>
+                    <strong>Cuenta autenticada</strong>
+                    <small>Agente / Organizador</small>
+                </div>
+            </div>
+
+            <nav aria-label="Navegación del agente">
+                <p class="nav-title">ADMINISTRACIÓN</p>
+                <a href="dashboard.html">⌂ <span>Dashboard</span></a>
+                <a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
+                <a href="crear-evento.html">＋ <span>Crear evento</span></a>
+                <a href="reservas.html" class="active">▣ <span>Reservas</span></a>
+                <a href="asistentes.html">♙ <span>Asistentes</span></a>
+                <a href="estadisticas.html">▥ <span>Estadísticas</span></a>
+                <a href="configuracion.html">⚙ <span>Configuración</span></a>
+                <p class="nav-title">SOPORTE</p>
+                <a href="ayuda.html">? <span>Centro de ayuda</span></a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <span class="breadcrumb">Panel / <strong>Reservas y asistentes</strong></span>
+                <div class="header-actions">
+                    <button class="btn-secondary">Importar</button>
+                    <button class="btn-secondary">Exportar CSV</button>
+                    <button class="btn-primary accent">+ Registrar asistente</button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="section-tag">CONTROL DE ASISTENTES</div>
+                <h1>Reservas y asistentes</h1>
+                    <p class="subtitle">Consulta las reservas pendientes y confirmadas de tus eventos.</p>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid four-cols">
+                    <div class="card metric-card">
+                        <span class="metric-label">Reservas totales</span>
+                        <h2 class="metric-value" data-reservations-total>0</h2>
+                        <span class="metric-trend positive">Reservas registradas</span>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="metric-label">Confirmados</span>
+                        <h2 class="metric-value" data-reservations-confirmed>0</h2>
+                        <span class="metric-trend muted">Confirmadas</span>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="metric-label">Pendientes</span>
+                        <h2 class="metric-value" data-reservations-pending>0</h2>
+                        <span class="metric-trend warning">Estado de reserva PENDIENTE</span>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="metric-label">Check-ins</span>
+                        <h2 class="metric-value">—</h2>
+                        <span class="metric-trend muted">No disponible en el esquema</span>
+                    </div>
+                </div>
+
+                <!-- Table Section -->
+                <div class="card table-container-card">
+                    <div class="table-header-bar">
+                        <h3>Reservas registradas <small data-reservations-count>· Cargando...</small></h3>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ASISTENTE</th>
+                                    <th>EVENTO</th>
+                                    <th>VALOR</th>
+                                    <th>ESTADO</th>
+                                    <th>FECHA DE RESERVA</th>
+                                </tr>
+                            </thead>
+                            <tbody data-agent-reservations></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p data-agent-reservations-status role="status" aria-live="polite"></p>
+            </div>
+        </main>
+    </div>
+    <script src="../../api.js"></script>
+    <script src="../../components/role-guard.js"></script>
+    <script src="reservas.js"></script>
+</body>
+</html>

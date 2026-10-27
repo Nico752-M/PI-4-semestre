@@ -6,48 +6,27 @@
   <title>Estadísticas | EventStage</title>
   <link rel="stylesheet" href="agente.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="../../api.js" defer></script>
+  <script src="../../components/role-guard.js" defer></script>
+  <script src="resumen.js" defer></script>
 </head>
-<body class="agent-page workspace-page">
+<body class="agent-page workspace-page" data-required-role="agente" data-agent-view="resumen">
   <div class="agent-app">
     <aside class="sidebar">
       <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div></div>
-      <div class="profile-card"><div class="avatar">AP</div><div><strong>Aurora<br>Producciones</strong><small>Agente /<br>Organizador</small></div></div>
+      <div class="profile-card"><div class="avatar">—</div><div><strong>Cuenta autenticada</strong><small>Agente</small></div></div>
       <nav aria-label="Navegación del agente">
         <p class="nav-title">ADMINISTRACIÓN</p>
         <a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
         <a href="crear-evento.html">＋ <span>Crear evento</span></a><a href="reservas.html">▣ <span>Reservas</span></a>
-        <a href="asistentes.html">♙ <span>Asistentes</span></a><a href="reportes.html">◒ <span>Reportes</span></a>
+        <a href="asistentes.html">♙ <span>Asistentes</span></a>
         <a href="estadisticas.html" class="active">▥ <span>Estadísticas</span></a><a href="configuracion.html">⚙ <span>Configuración</span></a>
         <p class="nav-title">SOPORTE</p><a href="ayuda.html">? <span>Centro de ayuda</span></a>
       </nav>
     </aside>
     <main class="workspace-main">
-      <header class="workspace-topbar"><p>Panel / <strong>Estadísticas</strong></p><a class="workspace-button" href="reportes.html">Ver reportes</a></header>
-      <section class="workspace-content">
-        <div class="workspace-heading"><div><span class="workspace-eyebrow">ANÁLISIS DE RENDIMIENTO</span><h1>Estadísticas</h1><p>Una vista rápida del rendimiento de tus eventos y tus ventas.</p></div><label class="workspace-select-label">Período<select><option>Últimos 30 días</option><option>Este mes</option><option>Este año</option></select></label></div>
-        <div class="workspace-metrics">
-          <article class="workspace-card metric"><span>Ingresos totales</span><strong>$486,2M</strong><small class="trend">↑ 18,8% frente al período anterior</small></article>
-          <article class="workspace-card metric"><span>Entradas vendidas</span><strong>12.486</strong><small class="trend">↑ 12,8% frente al período anterior</small></article>
-          <article class="workspace-card metric"><span>Asistencia promedio</span><strong>87,6%</strong><small class="trend">↑ 4,3 puntos porcentuales</small></article>
-          <article class="workspace-card metric"><span>Valor promedio</span><strong>$38.920</strong><small class="trend">↑ 8,2% por entrada</small></article>
-        </div>
-        <div class="workspace-columns">
-          <section class="workspace-card"><div class="workspace-card-heading"><div><h2>Ventas por semana</h2><p>Entradas vendidas durante el período seleccionado.</p></div></div>
-            <div class="workspace-chart" role="img" aria-label="Gráfico de ventas semanales">
-              <div style="height:42%"><span>Sem. 1</span></div><div style="height:64%"><span>Sem. 2</span></div><div style="height:53%"><span>Sem. 3</span></div><div style="height:78%"><span>Sem. 4</span></div><div style="height:92%"><span>Sem. 5</span></div><div style="height:70%"><span>Sem. 6</span></div>
-            </div>
-          </section>
-          <section class="workspace-card"><div class="workspace-card-heading"><div><h2>Ventas por categoría</h2><p>Distribución de ingresos.</p></div></div>
-            <div class="workspace-bars">
-              <div><span>Música</span><strong>46%</strong><i><b style="width:46%"></b></i></div>
-              <div><span>Cultura</span><strong>20%</strong><i><b style="width:20%"></b></i></div>
-              <div><span>Entretenimiento</span><strong>17%</strong><i><b style="width:17%"></b></i></div>
-              <div><span>Otros</span><strong>9%</strong><i><b style="width:9%"></b></i></div>
-            </div>
-          </section>
-        </div>
-        <p class="workspace-footnote">Para comparar eventos o descargar información detallada, visita <a href="reportes.html">Reportes</a>.</p>
-      </section>
+      <header class="workspace-topbar"><p>Panel / <strong>Estadísticas</strong></p></header>
+      <section class="workspace-content"></section>
     </main>
   </div>
   <script src="../../components/cambiar-cuenta.js"></script>

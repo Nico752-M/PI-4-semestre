@@ -6,17 +6,19 @@
   <title>Centro de ayuda | EventStage</title>
   <link rel="stylesheet" href="agente.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="../../api.js" defer></script>
+  <script src="../../components/role-guard.js" defer></script>
 </head>
-<body class="agent-page workspace-page">
+<body class="agent-page workspace-page" data-required-role="agente">
   <div class="agent-app">
     <aside class="sidebar">
       <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>GESTIÓN DE EVENTOS</p></div></div>
-      <div class="profile-card"><div class="avatar">AP</div><div><strong>Aurora<br>Producciones</strong><small>Agente /<br>Organizador</small></div></div>
+      <div class="profile-card"><div class="avatar">—</div><div><strong>Cuenta autenticada</strong><small>Agente</small></div></div>
       <nav aria-label="Navegación del agente">
         <p class="nav-title">ADMINISTRACIÓN</p>
         <a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="mis-eventos.html">◉ <span>Mis eventos</span></a>
         <a href="crear-evento.html">＋ <span>Crear evento</span></a><a href="reservas.html">▣ <span>Reservas</span></a>
-        <a href="asistentes.html">♙ <span>Asistentes</span></a><a href="reportes.html">◒ <span>Reportes</span></a>
+        <a href="asistentes.html">♙ <span>Asistentes</span></a>
         <a href="estadisticas.html">▥ <span>Estadísticas</span></a><a href="configuracion.html">⚙ <span>Configuración</span></a>
         <p class="nav-title">SOPORTE</p><a href="ayuda.html" class="active">? <span>Centro de ayuda</span></a>
       </nav>
@@ -29,10 +31,10 @@
           <section class="workspace-card">
             <div class="workspace-card-heading"><div><h2>Preguntas frecuentes</h2><p>Guías para las tareas más comunes.</p></div></div>
             <div class="workspace-faq">
-              <details><summary>¿Cómo creo y publico un evento?</summary><p>Abre “Crear evento”, completa la información, agrega entradas y programación, y luego guarda el borrador o publica.</p></details>
-              <details><summary>¿Dónde consulto las reservas y pagos?</summary><p>En “Reservas” encontrarás los registros, el estado del pago y la información de las entradas.</p></details>
-              <details><summary>¿Cómo valido la entrada de un asistente?</summary><p>Busca al asistente en “Asistentes” o abre la reserva para revisar el estado del check-in.</p></details>
-              <details><summary>¿Puedo editar un evento publicado?</summary><p>Desde “Mis eventos”, selecciona el evento y usa la opción de edición para actualizar sus datos.</p></details>
+              <details><summary>¿Cómo creo un evento?</summary><p>Abre “Crear evento” y guarda nombre, descripción, fechas, capacidad, precio y ciudad. Esos datos quedan almacenados en la base de datos.</p></details>
+              <details><summary>¿Dónde consulto las reservas?</summary><p>En “Reservas” verás los registros asociados a tus eventos y el estado almacenado para cada reserva. El sistema no registra pagos.</p></details>
+              <details><summary>¿Cómo valido la entrada de un asistente?</summary><p>El esquema actual no tiene entradas digitales ni check-ins; la vista de asistentes muestra la información de cada reserva.</p></details>
+              <details><summary>¿Puedo editar un evento publicado?</summary><p>El esquema y la API actuales permiten crear y consultar eventos; todavía no permiten editarlos ni eliminarlos.</p></details>
             </div>
           </section>
           <section class="workspace-card help-contact">
