@@ -1,0 +1,246 @@
+EVENTSTAGE - INVENTARIO DE ARCHIVOS
+===================================
+
+Este inventario describe los archivos versionados relevantes del proyecto.
+Las rutas de frontend/src son el codigo fuente del sitio. Las rutas equivalentes
+en public se regeneran con "npm run build" y no se deben editar directamente.
+
+RAIZ DEL PROYECTO
+-----------------
+.env.example — Variables de entorno de ejemplo para Neon, sesiones y servidor.
+.gitattributes — Reglas de Git para normalizar archivos de texto.
+.gitignore — Archivos locales y secretos que Git debe ignorar.
+desktop.ini — Metadatos de visualizacion de carpetas de Windows.
+README.md — Instrucciones para Neon, ejecucion local, Vercel e integraciones.
+index.js — Entrada de Express para Vercel; dirige la raiz al sitio y monta la API.
+package.json — Dependencias, comandos de inicio, compilacion y pruebas.
+package-lock.json — Versiones exactas de dependencias de npm.
+vercel.json — Configuracion declarativa de Vercel.
+scripts\build-frontend.js — Copia frontend/src a public para el despliegue.
+INVENTARIO_ARCHIVOS.txt — Este resumen de archivos del proyecto.
+
+BACKEND
+-------
+backend\src\db.js — Pool de PostgreSQL para Neon y validacion de DATABASE_URL.
+backend\src\server.js — API Express: autenticacion, sesiones, ubicaciones,
+  eventos, compra simulada, entradas y consultas protegidas por rol.
+backend\src\.gitkeep — Conserva el directorio backend/src en Git.
+backend\src\controllers\.gitkeep — Conserva el directorio de controladores.
+backend\src\models\.gitkeep — Conserva el directorio de modelos.
+backend\src\routes\.gitkeep — Conserva el directorio de rutas.
+
+BASE DE DATOS
+-------------
+database\.gitkeep — Conserva el directorio de scripts de base de datos.
+database\migrations\001_add_password_hash.sql — Agrega el hash de contrasena
+  requerido por el inicio de sesion.
+database\migrations\002_seed_colombia_locations.sql — Inserta Colombia y
+  ubicaciones iniciales si aun no existen.
+database\migrations\003_create_sessions.sql — Crea la tabla e indices de sesiones.
+
+FRONTEND - BASE Y COMPONENTES
+-----------------------------
+frontend\src\api.js — Cliente HTTP para la API y selectores de ubicacion.
+frontend\src\index.html — Redireccion a la portada de EventStage.
+frontend\src\components\.gitkeep — Conserva el directorio de componentes.
+frontend\src\components\cambiar-cuenta.css — Estilos del menu movil y boton
+  para volver a la portada desde los paneles.
+frontend\src\components\cambiar-cuenta.js — Menu movil y navegacion de regreso
+  a la pagina principal.
+frontend\src\components\role-guard.js — Verifica el rol requerido y dirige a
+  iniciar sesion cuando no existe una sesion valida.
+
+IMAGENES DEL FRONTEND
+---------------------
+frontend\src\assets\img\categorias\conferencias.svg — Ilustracion de categoria
+  de conferencias.
+frontend\src\assets\img\categorias\cultura.svg — Ilustracion de categoria
+  cultural.
+frontend\src\assets\img\categorias\deportes.svg — Ilustracion de categoria
+  deportiva.
+frontend\src\assets\img\categorias\gastronomia.svg — Ilustracion de categoria
+  gastronomica.
+frontend\src\assets\img\categorias\infantil.svg — Ilustracion de categoria
+  infantil.
+frontend\src\assets\img\categorias\musica.svg — Ilustracion de categoria
+  musical.
+frontend\src\assets\img\categorias\teatro.svg — Ilustracion de categoria
+  de teatro.
+frontend\src\assets\img\categorias\tecnologia.svg — Ilustracion de categoria
+  de tecnologia.
+frontend\src\assets\img\eventos\comic-con.svg — Imagen ilustrativa de Comic Con.
+frontend\src\assets\img\eventos\conciertos.svg — Imagen ilustrativa de conciertos.
+frontend\src\assets\img\eventos\estereo-picnic.svg — Imagen ilustrativa de
+  Estereo Picnic.
+frontend\src\assets\img\eventos\feria-de-cali.svg — Imagen ilustrativa de la
+  Feria de Cali.
+frontend\src\assets\img\eventos\feria-del-libro.svg — Imagen ilustrativa de la
+  Feria del Libro.
+frontend\src\assets\img\eventos\liga-betplay.svg — Imagen ilustrativa de futbol.
+frontend\src\assets\img\eventos\salsa-al-parque.svg — Imagen ilustrativa de
+  Salsa al Parque.
+frontend\src\assets\img\eventos\world-tour.svg — Imagen ilustrativa de un
+  concierto internacional.
+frontend\src\assets\img\secciones\como-funciona.svg — Ilustracion de la seccion
+  explicativa del sitio.
+frontend\src\assets\img\secciones\proximos-eventos.svg — Ilustracion de la
+  seccion de proximos eventos.
+
+VISTAS DE ADMINISTRACION
+------------------------
+frontend\src\views\admins\admin.css — Estilos especificos del panel administrativo.
+frontend\src\views\admins\admin.js — Carga y renderiza datos administrativos de
+  Neon en las vistas del panel.
+frontend\src\views\admins\agentes.html — Directorio de agentes registrados.
+frontend\src\views\admins\dashboard.html — Resumen administrativo de cuentas,
+  eventos y reservas.
+frontend\src\views\admins\eventos.html — Tabla administrativa de eventos.
+frontend\src\views\admins\login.html — Inicio de sesion exclusivo para
+  administradores provisionados en Neon.
+frontend\src\views\admins\reportes.html — Conteos actuales de entidades de la
+  base de datos.
+frontend\src\views\admins\usuarios.html — Directorio de clientes y sus reservas.
+
+VISTAS DE AGENTES
+-----------------
+frontend\src\views\agentes\agente.css — Estilos compartidos del panel de agentes.
+frontend\src\views\agentes\asistentes.html — Lista de asistentes derivados de
+  las reservas.
+frontend\src\views\agentes\asistentes.js — Consulta y renderizado de asistentes
+  y reservas del agente.
+frontend\src\views\agentes\ayuda.html — Informacion de ayuda y contacto para
+  agentes.
+frontend\src\views\agentes\configuracion.html — Datos de la cuenta del agente
+  consultados desde la API.
+frontend\src\views\agentes\configuracion.js — Carga el perfil real del agente.
+frontend\src\views\agentes\crear-evento.html — Formulario para publicar o editar
+  eventos de agente o administrador.
+frontend\src\views\agentes\crear-evento.js — Carga y actualiza eventos por API;
+  agentes editan sus eventos y administradores cualquier evento.
+frontend\src\views\agentes\dashboard.html — Resumen del agente y accesos a tareas.
+frontend\src\views\agentes\dashboard.js — Carga eventos, reservas y metricas del
+  agente desde Neon.
+frontend\src\views\agentes\estadisticas.html — Vista de estadisticas del agente.
+frontend\src\views\agentes\mis-eventos.html — Tabla de eventos publicados por
+  el agente.
+frontend\src\views\agentes\mis-eventos.js — Carga, filtra y presenta los eventos
+  del agente.
+frontend\src\views\agentes\reservas.html — Vista de reservas y asistentes de
+  eventos del agente.
+frontend\src\views\agentes\reservas.js — Carga y filtra las reservas del agente.
+frontend\src\views\agentes\resumen.js — Construye el resumen de eventos,
+  capacidad y reservas del agente.
+
+VISTAS DE CLIENTES
+------------------
+frontend\src\views\clientes\account-nav.js — Actualiza los enlaces de cuenta,
+  inicio y cierre de sesion segun la sesion activa.
+frontend\src\views\clientes\auth.css — Estilos de inicio de sesion y registro.
+frontend\src\views\clientes\auth.js — Envia registro e inicio de sesion a la API
+  y redirige segun el rol autenticado.
+frontend\src\views\clientes\catalogo.js — Filtros y renderizado del catalogo de
+  eventos consultados.
+frontend\src\views\clientes\categorias-carousel.js — Interaccion del carrusel
+  visual de categorias.
+frontend\src\views\clientes\customer-pages.css — Estilos de las pantallas de
+  cuenta del cliente.
+frontend\src\views\clientes\historial.js — Carga el historial y calcula compras
+  confirmadas usando los datos reales del cliente.
+frontend\src\views\clientes\historialdecompras.html — Historial de entradas y
+  compras simuladas, identificadas por codigo.
+frontend\src\views\clientes\index.html — Portada, busqueda y catalogo de eventos.
+frontend\src\views\clientes\login.html — Inicio de sesion para clientes y agentes.
+frontend\src\views\clientes\misreservas.html — Lista de entradas del cliente.
+frontend\src\views\clientes\perfil.html — Perfil del cliente autenticado.
+frontend\src\views\clientes\perfil.js — Carga y actualiza los datos del perfil.
+frontend\src\views\clientes\registro.html — Formulario de registro publico para
+  clientes y agentes.
+frontend\src\views\clientes\reservas.js — Carga las entradas del cliente y muestra
+  sus codigos y estados de compra.
+frontend\src\views\clientes\sesion-cliente.js — Valida la sesion y muestra los
+  datos de la cuenta cliente.
+frontend\src\views\clientes\styles.css — Estilos de la portada y catalogo.
+
+VISTAS DE EVENTOS
+-----------------
+frontend\src\views\eventos\detalle.html — Detalle del evento y checkout de pago
+  simulado para comprar entradas.
+frontend\src\views\eventos\detalle.js — Carga el evento, ejecuta el checkout de
+  prueba y confirma entradas mediante la API.
+frontend\src\views\eventos\eventos.js — Consulta los eventos publicados para
+  el catalogo.
+
+ARCHIVOS GENERADOS PARA VERCEL
+------------------------------
+Todos los siguientes archivos se generan como copias de las rutas indicadas en
+frontend\src mediante scripts\build-frontend.js. Cumplen la misma funcion
+descrita para su archivo fuente y no se deben editar directamente.
+public\api.js — Copia de frontend\src\api.js.
+public\index.html — Copia de frontend\src\index.html.
+public\assets\img\categorias\conferencias.svg — Copia de la ilustracion fuente.
+public\assets\img\categorias\cultura.svg — Copia de la ilustracion fuente.
+public\assets\img\categorias\deportes.svg — Copia de la ilustracion fuente.
+public\assets\img\categorias\gastronomia.svg — Copia de la ilustracion fuente.
+public\assets\img\categorias\infantil.svg — Copia de la ilustracion fuente.
+public\assets\img\categorias\musica.svg — Copia de la ilustracion fuente.
+public\assets\img\categorias\teatro.svg — Copia de la ilustracion fuente.
+public\assets\img\categorias\tecnologia.svg — Copia de la ilustracion fuente.
+public\assets\img\eventos\comic-con.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\eventos\conciertos.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\eventos\estereo-picnic.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\eventos\feria-de-cali.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\eventos\feria-del-libro.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\eventos\liga-betplay.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\eventos\salsa-al-parque.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\eventos\world-tour.svg — Copia de la imagen ilustrativa fuente.
+public\assets\img\secciones\como-funciona.svg — Copia de la ilustracion fuente.
+public\assets\img\secciones\proximos-eventos.svg — Copia de la ilustracion fuente.
+public\components\.gitkeep — Copia del marcador de directorio fuente.
+public\components\cambiar-cuenta.css — Copia de los estilos fuente de navegacion.
+public\components\cambiar-cuenta.js — Copia del componente de navegacion.
+public\components\role-guard.js — Copia del control de acceso por rol.
+public\views\admins\admin.css — Copia de los estilos del panel administrativo.
+public\views\admins\admin.js — Copia de la carga de datos del panel administrativo.
+public\views\admins\agentes.html — Copia del directorio de agentes.
+public\views\admins\dashboard.html — Copia del resumen administrativo.
+public\views\admins\eventos.html — Copia de la tabla administrativa de eventos.
+public\views\admins\login.html — Copia del acceso administrativo.
+public\views\admins\reportes.html — Copia de los reportes de la base de datos.
+public\views\admins\usuarios.html — Copia del directorio de clientes.
+public\views\agentes\agente.css — Copia de los estilos del panel de agentes.
+public\views\agentes\asistentes.html — Copia de la lista de asistentes.
+public\views\agentes\asistentes.js — Copia del cargador de asistentes.
+public\views\agentes\ayuda.html — Copia de la pagina informativa de ayuda.
+public\views\agentes\configuracion.html — Copia de los datos de cuenta del agente.
+public\views\agentes\configuracion.js — Copia del cargador del perfil de agente.
+public\views\agentes\crear-evento.html — Copia del formulario de eventos.
+public\views\agentes\crear-evento.js — Copia del envio de eventos a la API.
+public\views\agentes\dashboard.html — Copia del panel principal del agente.
+public\views\agentes\dashboard.js — Copia de las metricas del agente.
+public\views\agentes\estadisticas.html — Copia de la vista de estadisticas.
+public\views\agentes\mis-eventos.html — Copia de la tabla de eventos del agente.
+public\views\agentes\mis-eventos.js — Copia del cargador y filtro de eventos.
+public\views\agentes\reservas.html — Copia de la vista de reservas del agente.
+public\views\agentes\reservas.js — Copia del cargador y filtro de reservas.
+public\views\agentes\resumen.js — Copia del resumen de eventos y reservas.
+public\views\clientes\account-nav.js — Copia de la navegacion segun la sesion.
+public\views\clientes\auth.css — Copia de los estilos de autenticacion.
+public\views\clientes\auth.js — Copia del registro e inicio de sesion.
+public\views\clientes\catalogo.js — Copia del catalogo y sus filtros.
+public\views\clientes\categorias-carousel.js — Copia del carrusel de categorias.
+public\views\clientes\customer-pages.css — Copia de los estilos de cuenta cliente.
+public\views\clientes\historial.js — Copia del historial de reservas.
+public\views\clientes\historialdecompras.html — Copia de la vista de historial.
+public\views\clientes\index.html — Copia de la portada y catalogo.
+public\views\clientes\login.html — Copia del inicio de sesion general.
+public\views\clientes\misreservas.html — Copia de las reservas del cliente.
+public\views\clientes\perfil.html — Copia del perfil del cliente.
+public\views\clientes\perfil.js — Copia del cargador de perfil.
+public\views\clientes\registro.html — Copia del formulario de registro.
+public\views\clientes\reservas.js — Copia de la interfaz de reservas cliente.
+public\views\clientes\sesion-cliente.js — Copia de la validacion de sesion cliente.
+public\views\clientes\styles.css — Copia de los estilos de portada.
+public\views\eventos\detalle.html — Copia del detalle y reserva de evento.
+public\views\eventos\detalle.js — Copia de la logica del detalle de evento.
+public\views\eventos\eventos.js — Copia de la consulta del catalogo.
+Alejo estuvo aqui.

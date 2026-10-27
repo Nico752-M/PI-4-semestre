@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EventStage — Mis reservas</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+</head>
+
+<body class="misreservas-page">
+
+<div class="app">
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-mark">E</div>
+
+        <div class="logo-text">
+            Event<span>Stage</span>
+        </div>
+    </div>
+
+    <div class="section-title">
+        Principal
+    </div>
+
+    <nav class="menu">
+
+        <a class="menu-item" href="index.html">
+
+            <span class="icon">⌂</span>
+            <span>Inicio</span>
+
+        </a>
+
+        <a class="menu-item active" href="misreservas.html" aria-current="page">
+
+            <span class="icon">▣</span>
+            <span>Mis reservas</span>
+
+        </a>
+
+        <a class="menu-item" href="historialdecompras.html">
+
+            <span class="icon">◷</span>
+            <span>Historial</span>
+
+        </a>
+
+    </nav>
+
+    <div class="account-section">
+
+        <div class="section-title">
+            Cuenta
+        </div>
+
+        <nav class="menu">
+
+            <a class="menu-item" href="perfil.html">
+
+                <span class="icon">●</span>
+                <span>Mi perfil</span>
+
+            </a>
+
+        </nav>
+
+    </div>
+
+    <div class="sidebar-user">
+
+        <div class="avatar-small">
+            JD
+        </div>
+
+        <div>
+
+            <div class="user-name">
+                Cuenta autenticada
+            </div>
+
+            <div class="user-role">
+                Cliente
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main class="main">
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="breadcrumb">
+                Inicio / <span>Mis reservas</span>
+            </div>
+
+            <h1 class="page-title">
+                Mis reservas
+            </h1>
+
+        </div>
+
+        <div class="top-actions">
+
+            <div
+                class="top-icon"
+                onclick="mostrarMensaje('No tienes nuevas notificaciones')">
+                ♧
+            </div>
+
+            <div class="top-user">
+
+                <div class="avatar-top">
+                    —
+                </div>
+
+                <div class="top-user-text">
+
+                    <strong>
+                        Cuenta autenticada
+                    </strong>
+
+                    <span>
+                        Cuenta personal
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- INTRO -->
+
+    <section class="page-intro">
+
+        <div>
+
+            <div class="intro-title">
+                Tus reservas
+            </div>
+
+            <div class="intro-text">
+                Consulta y administra todos los eventos que has reservado.
+            </div>
+
+        </div>
+
+        <a class="new-reservation" href="index.html#eventos">
+
+            + Explorar eventos
+
+        </a>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Total de reservas
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    —
+                </div>
+
+                <div class="summary-status">
+                    Reservas
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Confirmadas
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    —
+                </div>
+
+                <div class="summary-status green">
+                    Activas
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Próximo evento
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    —
+                </div>
+
+                <div class="summary-status gold">
+                    —
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Canceladas
+            </div>
+
+            <div class="summary-bottom">
+
+                <div class="summary-number">
+                    —
+                </div>
+
+                <div class="summary-status red">
+                    Histórico
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FILTERS -->
+
+    <section class="filter-card">
+
+        <span class="filter-label">
+            Filtrar
+        </span>
+
+        <button
+            class="filter-button active"
+            data-filter="all"
+            onclick="filtrarReservas('all',this)">
+            Todas
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="confirmed"
+            onclick="filtrarReservas('confirmed',this)">
+            Confirmadas
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="reserved"
+            onclick="filtrarReservas('reserved',this)">
+            Reservadas
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="cancelled"
+            onclick="filtrarReservas('cancelled',this)">
+            Canceladas
+        </button>
+
+    </section>
+
+
+    <!-- RESERVATIONS -->
+
+    <section class="reservations-card">
+
+        <div class="reservations-header">
+
+            <div>
+
+                <div class="card-title">
+                    Historial de reservas
+                </div>
+
+                <div class="card-subtitle">
+                    Eventos asociados a tu cuenta.
+                </div>
+
+            </div>
+
+            <div
+                id="resultsCount"
+                class="results-count">
+                    Cargando...
+            </div>
+
+        </div>
+
+
+        <p id="reservation-status" role="status" aria-live="polite"></p>
+        <div id="reservationList" class="reservation-list"></div>
+
+
+        <!-- EMPTY -->
+
+        <div id="emptyState" class="empty-state">
+
+            <div class="empty-icon">
+                ◷
+            </div>
+
+            <div class="empty-title">
+                No hay reservas
+            </div>
+
+            <div class="empty-text">
+                No encontramos reservas con este filtro.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="main-footer">
+        EventStage · Plataforma de gestión y reserva de eventos · 2026
+    </footer>
+
+</main>
+
+</div>
+
+
+<script>
+function filtrarReservas(filtro, boton){
+
+    document
+        .querySelectorAll(".filter-button")
+        .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+    boton.classList.add("active");
+
+    const reservas =
+        document.querySelectorAll(".reservation");
+
+    let visibles = 0;
+
+    reservas.forEach(function(reserva){
+
+        const estado =
+            reserva.dataset.status;
+
+        if(
+            filtro === "all" ||
+            estado === filtro
+        ){
+
+            reserva.style.display = "grid";
+
+            visibles++;
+
+        }else{
+
+            reserva.style.display = "none";
+
+        }
+
+    });
+
+    document
+        .getElementById("resultsCount")
+        .textContent =
+        visibles + (visibles === 1 ? " reserva" : " reservas");
+
+    const empty =
+        document.getElementById("emptyState");
+
+    if(visibles === 0){
+
+        empty.style.display = "block";
+
+    }else{
+
+        empty.style.display = "none";
+
+    }
+
+}
+
+</script>
+<script src="../../api.js"></script>
+<script src="reservas.js"></script>
+<script src="sesion-cliente.js"></script>
+
+</body>
+</html>

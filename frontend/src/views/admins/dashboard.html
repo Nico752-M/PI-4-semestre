@@ -8,8 +8,10 @@
   <link rel="stylesheet" href="../agentes/agente.css">
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="../../api.js" defer></script>
+  <script src="admin.js" defer></script>
 </head>
-<body class="workspace-page admin-page">
+<body class="workspace-page admin-page" data-admin-view="dashboard">
   <div class="agent-app">
     <aside class="sidebar">
       <div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>ADMINISTRACIÓN</p></div></div>
@@ -20,31 +22,28 @@
         <a href="eventos.html">◉ <span>Eventos</span></a>
         <a href="agentes.html">♙ <span>Agentes</span></a>
         <a href="usuarios.html">◎ <span>Usuarios</span></a>
-        <a href="finanzas.html">＄ <span>Finanzas</span></a>
         <a href="reportes.html">▥ <span>Reportes</span></a>
-        <a href="configuracion.html">⚙ <span>Configuración</span></a>
-        <p class="nav-title">ATENCIÓN</p>
-        <a href="soporte.html">? <span>Soporte</span></a>
         <a href="../clientes/index.html">↗ <span>Ir al sitio</span></a>
       </nav>
     </aside>
     <main class="workspace-main">
       <header class="workspace-topbar"><p>Admin / <strong>Dashboard</strong></p><a class="workspace-button primary" href="eventos.html">Revisar eventos</a></header>
       <section class="workspace-content">
-        <div class="workspace-heading"><div><span class="workspace-eyebrow">CENTRO DE CONTROL</span><h1>Panel de administración</h1><p>Supervisa la operación general y las cuentas de EventStage.</p></div><span class="workspace-date">Vista general · Octubre 2026</span></div>
+        <div class="workspace-heading"><div><span class="workspace-eyebrow">CENTRO DE CONTROL</span><h1>Panel de administración</h1><p>Supervisa la operación general y las cuentas de EventStage.</p></div></div>
         <div class="workspace-metrics">
-          <article class="workspace-card metric"><span>Eventos publicados</span><strong>284</strong><small>18 en revisión</small></article>
-          <article class="workspace-card metric"><span>Agentes activos</span><strong>96</strong><small>7 solicitudes nuevas</small></article>
-          <article class="workspace-card metric"><span>Usuarios registrados</span><strong>18.420</strong><small class="trend">↑ 8,4% este mes</small></article>
-          <article class="workspace-card metric"><span>Ventas procesadas</span><strong>$2.840M</strong><small>Periodo actual</small></article>
+          <article class="workspace-card metric"><span>Eventos</span><strong data-admin-metric="eventos">—</strong><small>Registrados en la base de datos</small></article>
+          <article class="workspace-card metric"><span>Agentes</span><strong data-admin-metric="agentes">—</strong><small>Cuentas de agentes</small></article>
+          <article class="workspace-card metric"><span>Clientes</span><strong data-admin-metric="clientes">—</strong><small>Cuentas de clientes</small></article>
+          <article class="workspace-card metric"><span>Reservas</span><strong data-admin-metric="reservas">—</strong><small data-admin-reservation-count>Consultando estados...</small></article>
         </div>
+        <p data-admin-status-message role="status" aria-live="polite"></p>
         <div class="workspace-columns">
           <section class="workspace-card">
             <div class="workspace-card-heading"><div><h2>Pendientes de revisión</h2><p>Elementos que necesitan atención administrativa.</p></div><a href="eventos.html">Ver eventos</a></div>
             <div class="admin-review-list">
-              <article><div><strong>Eventos por aprobar</strong><small>Publicación y cumplimiento de requisitos</small></div><span class="workspace-badge pending">18 pendientes</span></article>
-              <article><div><strong>Solicitudes de agente</strong><small>Validación de organizadores nuevos</small></div><span class="workspace-badge alert">7 nuevas</span></article>
-              <article><div><strong>Casos de soporte abiertos</strong><small>Solicitudes que esperan respuesta</small></div><span class="workspace-badge neutral">12 abiertos</span></article>
+              <article><div><strong>Reservas pendientes</strong><small>Estado registrado en la base de datos</small></div><span class="workspace-badge pending" data-admin-reservation-count>Consultando...</span></article>
+              <article><div><strong>Eventos registrados</strong><small>Eventos asociados a agentes</small></div><span class="workspace-badge neutral" data-admin-metric="eventos">—</span></article>
+              <article><div><strong>Cuentas de clientes</strong><small>Clientes registrados</small></div><span class="workspace-badge neutral" data-admin-metric="clientes">—</span></article>
             </div>
           </section>
           <section class="workspace-card">
@@ -52,8 +51,7 @@
             <div class="workspace-quick-links">
               <a href="agentes.html"><strong>♙ Revisar agentes</strong><small>Validar y supervisar organizadores.</small></a>
               <a href="usuarios.html"><strong>◎ Gestionar usuarios</strong><small>Consultar cuentas registradas.</small></a>
-              <a href="finanzas.html"><strong>＄ Supervisar finanzas</strong><small>Revisar transacciones y pagos.</small></a>
-              <a href="soporte.html"><strong>? Abrir soporte</strong><small>Atender solicitudes de la plataforma.</small></a>
+              <a href="reportes.html"><strong>▥ Consultar actividad</strong><small>Revisar eventos y reservas registradas.</small></a>
             </div>
           </section>
         </div>

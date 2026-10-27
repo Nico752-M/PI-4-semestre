@@ -44,7 +44,7 @@
           <p>Ingresa a tu cuenta para gestionar tus entradas</p>
         </header>
 
-        <form action="#" method="post" class="auth-form">
+        <form class="auth-form" id="login-form">
           <div class="field">
             <label for="login-email">Correo electrónico</label>
             <input type="email" id="login-email" name="email"
@@ -62,41 +62,24 @@
               <input type="checkbox" name="recordarme">
               <span>Recordarme</span>
             </label>
-            <a href="recuperar.html" class="accent-link">
-            ¿Olvidaste tu contraseña?
-            </a>
           </div>
 
           <button type="submit" class="primary-button">Iniciar sesión</button>
         </form>
 
-        <section class="demo-login" aria-labelledby="demo-login-title">
-          <h3 id="demo-login-title">Acceso rápido de demostración</h3>
-          <p>Entra a cada perfil sin ingresar credenciales.</p>
-          <div class="demo-login-options">
-            <button type="button" data-demo-account="cliente"><strong>Cliente</strong><small>Explorar eventos</small></button>
-            <button type="button" data-demo-account="agente"><strong>Agente</strong><small>Gestionar eventos</small></button>
-            <button type="button" data-demo-account="admin"><strong>Admin</strong><small>Administrar plataforma</small></button>
-          </div>
-          <small class="demo-login-note">Modo de demostración; no valida una cuenta real.</small>
-        </section>
-
-        <div class="separator">
-          <span></span><p>O CONTINÚA CON</p><span></span>
-        </div>
-
-        <div class="social-buttons">
-          <a href="#" class="social-button">Google</a>
-          <a href="#" class="social-button">Facebook</a>
-        </div>
+        <p id="auth-status" class="auth-status" role="status" aria-live="polite"></p>
 
         <p class="switch-message">
           ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+        </p>
+        <p class="switch-message">
+          ¿Eres administrador? <a href="../admins/login.html">Accede al panel de administración</a>
         </p>
       </div>
     </section>
   </main>
 
-<script src="../../components/cambiar-cuenta.js"></script>
+<script src="../../api.js"></script>
+<script src="auth.js"></script>
 </body>
 </html>

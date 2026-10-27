@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EventStage - Plataforma de eventos en Colombia">
+  <title>EventStage | Tu próximo plan empieza aquí</title>
+  <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="cliente-home">
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="EventStage inicio">
+        <span class="brand-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <strong>EventStage</strong>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#eventos">Eventos</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span class="link-muted" data-nav-greeting>Visita: Invitado</span>
+        <a href="login.html" class="btn btn-outline" data-nav-guest>Iniciar sesión</a>
+        <a href="registro.html" class="btn btn-gold" data-nav-guest>Regístrate</a>
+        <a href="misreservas.html" class="btn btn-outline" data-nav-account hidden>Mi cuenta</a>
+        <button type="button" class="btn btn-gold" data-nav-logout hidden>Cerrar sesión</button>
+        <span class="link-muted" data-nav-status role="status" aria-live="polite" hidden></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div class="container hero-content">
+        <p class="eyebrow">TU PLATAFORMA DE EVENTOS EN COLOMBIA</p>
+        <h1 id="titulo-hero">Tu próximo plan<br>empieza aquí</h1>
+        <p class="hero-copy">Consulta eventos, fechas, ciudades, capacidad y precios registrados en EventStage.</p>
+
+        <form class="search-box" id="event-search" role="search" aria-label="Buscar eventos">
+          <label>
+            <span>Nombre del evento</span>
+            <input type="text" name="evento" placeholder="Buscar evento...">
+          </label>
+
+          <label>
+            <span>Ciudad</span>
+            <select name="ciudad">
+              <option value="">Todas las ciudades</option>
+            </select>
+          </label>
+
+          <button class="btn btn-gold search-btn" type="submit">Buscar</button>
+        </form>
+
+        <div class="reservation-bar" data-guest-reservation-bar>
+          <p>Inicia sesión para consultar tus reservas.</p>
+          <a href="login.html" class="btn btn-small btn-outline">Iniciar sesión</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="section how-it-works-section" aria-labelledby="titulo-como-funciona">
+      <div class="container">
+        <p class="section-kicker">SIMPLE Y RÁPIDO</p>
+        <h2 id="titulo-como-funciona">Cómo funciona</h2>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number" aria-hidden="true">1</span>
+            <h3>1. Busca tu evento</h3>
+            <p>Busca los eventos registrados por nombre o filtra por ciudad.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number" aria-hidden="true">2</span>
+            <h3>2. Crea tu reserva</h3>
+            <p>El precio y la capacidad se consultan desde el evento. La reserva queda pendiente; aún no se procesan pagos.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number" aria-hidden="true">3</span>
+            <h3>3. Consulta tu reserva</h3>
+            <p>Revisa las reservas asociadas a tu cuenta desde la sección “Mis reservas”.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTACADOS -->
+    <section class="section" id="eventos" aria-labelledby="titulo-destacados">
+      <div class="container">
+        <p class="section-kicker">EVENTOS REGISTRADOS</p>
+        <h2 id="titulo-destacados">Destacados</h2>
+
+        <div class="featured-grid" data-featured-events></div>
+      </div>
+    </section>
+
+    <!-- DISPONIBLES -->
+    <section class="section" aria-labelledby="titulo-disponibles">
+      <div class="container">
+        <p class="section-kicker">CONSULTA LA BASE DE DATOS</p>
+        <h2 id="titulo-disponibles">Eventos disponibles</h2>
+
+        <p id="events-status" role="status" aria-live="polite"></p>
+        <div class="events-grid" data-events-grid></div>
+      </div>
+    </section>
+
+    <!-- PRÓXIMOS -->
+    <section class="section upcoming-events-section" id="proximos" aria-labelledby="titulo-proximos">
+      <div class="container">
+        <p class="section-kicker">NO TE LO PIERDAS</p>
+        <h2 id="titulo-proximos">Próximos eventos</h2>
+
+        <div class="upcoming-list" data-upcoming-events></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="ciudades">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="brand footer-brand" aria-label="EventStage inicio">
+          <span class="brand-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <strong>EventStage</strong>
+        </a>
+        <p>Eventos publicados por agentes y consultados desde la base de datos de EventStage.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Ubicaciones</h3>
+        <p>Las ciudades disponibles se consultan desde la base de datos al crear una cuenta o filtrar eventos.</p>
+      </div>
+
+      <nav class="footer-col" aria-labelledby="footer-enlaces">
+        <h3 id="footer-enlaces">Enlaces</h3>
+        <a href="../admins/login.html" data-nav-guest>Acceso de administración</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Políticas de privacidad</a>
+        <a href="#">Política de cookies</a>
+      </nav>
+
+      <nav class="footer-col" aria-labelledby="footer-nosotros">
+        <h3 id="footer-nosotros">Sobre nosotros</h3>
+        <a href="#">Trabaja con nosotros</a>
+        <a href="#">Prensa</a>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 EventStage. Todos los derechos reservados.</p>
+      <p>Hecho en Colombia</p>
+    </div>
+  </footer>
+
+  <script src="../../components/cambiar-cuenta.js"></script>
+  <script src="../../api.js"></script>
+  <script src="account-nav.js"></script>
+  <script src="catalogo.js"></script>
+</body>
+</html>

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="agente.css" />
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css" />
 </head>
-<body class="agent-create agent-page">
+<body class="agent-create agent-page" data-required-role="agente,administrador">
   <div class="app">
     <aside class="sidebar">
       <div class="brand">
@@ -19,10 +19,10 @@
       </div>
 
       <div class="profile-card">
-        <div class="avatar">AP</div>
+        <div class="avatar">—</div>
         <div>
-          <strong>Aurora<br>Producciones</strong>
-          <small>Agente /<br>Organizador</small>
+          <strong>Cuenta autenticada</strong>
+          <small>Agente / Organizador</small>
         </div>
       </div>
 
@@ -33,7 +33,6 @@
         <a href="crear-evento.html" class="active">＋ <span>Crear evento</span></a>
         <a href="reservas.html">▣ <span>Reservas</span></a>
         <a href="asistentes.html">♙ <span>Asistentes</span></a>
-        <a href="reportes.html">◒ <span>Reportes</span></a>
         <a href="estadisticas.html">▥ <span>Estadísticas</span></a>
         <a href="configuracion.html">⚙ <span>Configuración</span></a>
 
@@ -58,11 +57,10 @@
           <div>
             <span class="eyebrow">NUEVO EVENTO</span>
             <h2>Crear evento</h2>
-            <p>Completa la información para publicar una nueva experiencia en EventStage.</p>
+            <p>Completa los datos que se guardarán en la base de datos.</p>
           </div>
           <div class="heading-actions">
-            <button class="btn secondary" onclick="location.href='mis-eventos.html'">Guardar borrador</button>
-            <button class="btn primary" onclick="location.href='mis-eventos.html'">Publicar evento</button>
+            <button class="btn primary" type="submit" form="create-event-form">Publicar evento</button>
           </div>
         </div>
 
@@ -72,143 +70,61 @@
               <span>1</span>
               <div>
                 <strong>Información básica</strong>
-                <small>Nombre y categoría</small>
+                <small>Nombre del evento</small>
               </div>
             </div>
             <div class="step"><span>2</span><div><strong>Fecha y ubicación</strong><small>Cuándo y dónde</small></div></div>
             <div class="step"><span>3</span><div><strong>Descripción</strong><small>Contenido del evento</small></div></div>
-            <div class="step"><span>4</span><div><strong>Entradas</strong><small>Precios y capacidad</small></div></div>
-            <div class="step"><span>5</span><div><strong>Programación</strong><small>Agenda y actividades</small></div></div>
-            <div class="step"><span>6</span><div><strong>Publicación</strong><small>Visibilidad y políticas</small></div></div>
+            <div class="step"><span>4</span><div><strong>Entradas</strong><small>Precio y capacidad</small></div></div>
           </aside>
 
-          <div class="form-stack">
+          <form class="form-stack" id="create-event-form">
             <section class="card">
               <h3>Información básica</h3>
-              <p class="section-help">Introduce los datos principales que aparecerán en la tarjeta y página de detalle del evento.</p>
-
-              <div class="grid two">
-                <label>Nombre del evento *<input type="text"></label>
-                <label>Categoría *<input type="text"></label>
-                <label>Subcategoría<input type="text"></label>
-                <label>Organizador<input type="text"></label>
-              </div>
-
-              <label class="upload-label">Imagen principal del evento</label>
-              <div class="upload">
-                <div class="upload-icon">▧</div>
-                <strong>Arrastra una imagen aquí</strong>
-                <small>PNG, JPG o WEBP · recomendado 1600 × 900 px</small>
-              </div>
+              <p class="section-help">El nombre se guarda aquí; la descripción se completa en su apartado.</p>
+              <label>Nombre del evento *<input name="nombre" type="text" maxlength="150" required></label>
             </section>
 
             <section class="card">
               <h3>Fecha y ubicación</h3>
-              <p class="section-help">Define el lugar, fecha y horario en el que se realizará la experiencia.</p>
+              <p class="section-help">Selecciona el periodo y la ciudad del evento.</p>
 
               <div class="grid two">
-                <label>Fecha de inicio *<input type="date"></label>
-                <label>Fecha de finalización<input type="date"></label>
-                <label>Hora de apertura *<input type="time"></label>
-                <label>Hora de inicio *<input type="time"></label>
-                <label>Ciudad *<input type="text"></label>
-                <label>Departamento *<input type="text"></label>
+                <label>Fecha y hora de inicio *<input name="fechaInicio" type="datetime-local" required></label>
+                <label>Fecha y hora de finalización *<input name="fechaFin" type="datetime-local" required></label>
+                <label>País *
+                  <select id="event-pais" required><option value="">Cargando países...</option></select>
+                </label>
+                <label>Departamento *
+                  <select id="event-departamento" required disabled><option value="">Selecciona un departamento</option></select>
+                </label>
+                <label>Ciudad *
+                  <select name="idCiudad" id="event-ciudad" required disabled><option value="">Selecciona una ciudad</option></select>
+                </label>
               </div>
-
-              <label>Dirección del recinto *<input type="text"></label>
-              <label>Referencia o indicaciones de llegada<textarea></textarea></label>
             </section>
 
             <section class="card">
               <h3>Descripción del evento</h3>
-              <p class="section-help">Esta información aparecerá en la página pública del evento y ayudará a los asistentes a conocer la experiencia antes de comprar.</p>
+              <p class="section-help">Describe la experiencia para quienes consulten el evento.</p>
+              <label>Descripción<textarea class="big" name="descripcion"></textarea></label>
+            </section>
 
-              <label>Descripción principal *<textarea class="big"></textarea></label>
-
+            <section class="card">
+              <h3>Entradas</h3>
+              <p class="section-help">La base de datos asigna un único precio y una capacidad total a cada evento.</p>
               <div class="grid two">
-                <label>Edad mínima<input type="number" min="0"></label>
-                <label>Duración aproximada<input type="text"></label>
+                <label>Precio por entrada (COP) *<input name="precio" type="number" min="0" step="0.01" value="0" required></label>
+                <label>Capacidad total *<input name="capacidad" type="number" min="1" step="1" required></label>
               </div>
             </section>
 
-            <section class="card">
-              <h3>Tipos de entrada</h3>
-              <p class="section-help">Define los tipos de acceso, precio y cantidad disponible.</p>
-
-              <div id="tickets">
-                <div class="ticket-row">
-                  <label>Nombre<input type="text"></label>
-                  <label>Precio<input type="number"></label>
-                  <label>Capacidad<input type="number"></label>
-                  <button class="remove" type="button">×</button>
-                </div>
-                <div class="ticket-row">
-                  <label>Nombre<input type="text"></label>
-                  <label>Precio<input type="number"></label>
-                  <label>Capacidad<input type="number"></label>
-                  <button class="remove" type="button">×</button>
-                </div>
-                <div class="ticket-row">
-                  <label>Nombre<input type="text"></label>
-                  <label>Precio<input type="number"></label>
-                  <label>Capacidad<input type="number"></label>
-                  <button class="remove" type="button">×</button>
-                </div>
-              </div>
-
-              <button class="outline-action" type="button">＋ Agregar tipo de entrada</button>
-            </section>
-
-            <section class="card">
-              <h3>Programación</h3>
-              <p class="section-help">Agrega las principales actividades que los asistentes podrán consultar en el evento.</p>
-
-              <div class="program-row">
-                <label>Hora<input type="time"></label>
-                <label>Actividad<input type="text"></label>
-                <label>Escenario<input type="text"></label>
-              </div>
-              <div class="program-row">
-                <label>Hora<input type="time"></label>
-                <label>Actividad<input type="text"></label>
-                <label>Escenario<input type="text"></label>
-              </div>
-              <div class="program-row">
-                <label>Hora<input type="time"></label>
-                <label>Actividad<input type="text"></label>
-                <label>Escenario<input type="text"></label>
-              </div>
-
-              <button class="outline-action" type="button">＋ Agregar actividad</button>
-            </section>
-
-            <section class="card">
-              <h3>Políticas y publicación</h3>
-              <p class="section-help">Configura las condiciones que estarán visibles para los compradores.</p>
-
-              <div class="switch-row">
-                <div><strong>Evento público</strong><small>Permite que cualquier usuario encuentre el evento.</small></div>
-                <label class="switch"><input type="checkbox" checked><span></span></label>
-              </div>
-              <div class="switch-row">
-                <div><strong>Permitir transferencias</strong><small>Los compradores podrán transferir entradas.</small></div>
-                <label class="switch"><input type="checkbox" checked><span></span></label>
-              </div>
-              <div class="switch-row">
-                <div><strong>Mostrar cantidad disponible</strong><small>Muestra información de disponibilidad.</small></div>
-                <label class="switch"><input type="checkbox" checked><span></span></label>
-              </div>
-
-              <label>Política de cancelación<textarea></textarea></label>
-
-              <div class="notice">Revisa todos los datos antes de publicar. Una vez publicado, el evento será visible para los usuarios según la configuración seleccionada.</div>
-            </section>
-
+            <p id="event-form-status" role="status" aria-live="polite"></p>
             <div class="bottom-actions">
-              <button class="btn secondary" onclick="location.href='mis-eventos.html'">Guardar borrador</button>
-              <button class="btn primary" onclick="location.href='mis-eventos.html'">Publicar evento</button>
+              <a class="btn secondary" href="mis-eventos.html">Cancelar</a>
+              <button class="btn primary" type="submit">Publicar evento</button>
             </div>
-          </div>
+          </form>
         </div>
 
         <footer>EventStage · Panel profesional para organizadores y agentes.</footer>
@@ -216,6 +132,8 @@
     </main>
   </div>
 
-  <script src="../../components/cambiar-cuenta.js"></script>
+  <script src="../../api.js"></script>
+  <script src="../../components/role-guard.js"></script>
+  <script src="crear-evento.js"></script>
 </body>
 </html>

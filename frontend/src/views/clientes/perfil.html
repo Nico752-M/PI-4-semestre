@@ -7,6 +7,8 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
+  <script src="../../api.js" defer></script>
+  <script src="perfil.js" defer></script>
 </head>
 
 <body class="perfil-page">
@@ -41,11 +43,6 @@
             <span>Mis reservas</span>
         </a>
 
-        <a class="menu-item" href="favoritos.html">
-            <span class="icon">♡</span>
-            <span>Eventos favoritos</span>
-        </a>
-
         <a class="menu-item" href="historialdecompras.html">
             <span class="icon">◷</span>
             <span>Historial</span>
@@ -66,11 +63,6 @@
                 <span>Mi perfil</span>
             </a>
 
-            <a class="menu-item" href="configuracion-cliente.html">
-                <span class="icon">⚙</span>
-                <span>Configuración</span>
-            </a>
-
         </nav>
 
     </div>
@@ -78,12 +70,12 @@
     <div class="sidebar-user">
 
         <div class="avatar-small">
-            JD
+            —
         </div>
 
         <div>
             <div class="user-name">
-                Juan David
+                Cuenta autenticada
             </div>
 
             <div class="user-role">
@@ -123,11 +115,11 @@
             <div class="top-user">
 
                 <div class="avatar-top">
-                    JD
+                    —
                 </div>
 
                 <div class="top-user-text">
-                    <strong>Juan David</strong>
+                    <strong>Cuenta autenticada</strong>
                     <span>Cuenta personal</span>
                 </div>
 
@@ -150,27 +142,19 @@
 
             <div>
 
-                <div class="profile-name">
-                    Juan David Martínez
-                </div>
+                <div class="profile-name">Cargando perfil...</div>
 
                 <div class="profile-email">
-                    juandavid@gmail.com
+                    —
                 </div>
 
                 <div class="profile-badge">
-                    ● CLIENTE DESDE SEPTIEMBRE DE 2026
+                    ● DATOS DE TU CUENTA
                 </div>
 
             </div>
 
         </div>
-
-        <button
-            class="edit-button"
-            onclick="activarEdicion()">
-            Editar información
-        </button>
 
     </section>
 
@@ -194,7 +178,7 @@
                     </div>
 
                     <div class="card-subtitle">
-                        Administra tus datos personales y de contacto.
+                        Información guardada en tu cuenta.
                     </div>
 
                 </div>
@@ -212,7 +196,7 @@
                             <input
                                 id="nombre"
                                 class="form-input"
-                                value="Juan David"
+                                value=""
                                 disabled>
 
                         </div>
@@ -226,7 +210,7 @@
                             <input
                                 id="apellido"
                                 class="form-input"
-                                value="Martínez"
+                                value=""
                                 disabled>
 
                         </div>
@@ -240,7 +224,7 @@
                             <input
                                 id="correo"
                                 class="form-input"
-                                value="juandavid@gmail.com"
+                                value=""
                                 disabled>
 
                         </div>
@@ -254,7 +238,7 @@
                             <input
                                 id="telefono"
                                 class="form-input"
-                                value="+57 300 000 0000"
+                                value=""
                                 disabled>
 
                         </div>
@@ -268,7 +252,7 @@
                             <input
                                 id="ciudad"
                                 class="form-input"
-                                value="Tuluá"
+                                value=""
                                 disabled>
 
                         </div>
@@ -282,7 +266,7 @@
                             <input
                                 id="pais"
                                 class="form-input"
-                                value="Colombia"
+                                value=""
                                 disabled>
 
                         </div>
@@ -290,32 +274,21 @@
                         <div class="form-group full">
 
                             <label class="form-label">
-                                Dirección
+                                Departamento
                             </label>
 
                             <input
                                 id="direccion"
                                 class="form-input"
-                                value="Carrera 00 #00-00"
+                                value=""
                                 disabled>
 
                         </div>
-
-                    </div>
-
-                    <div class="personal-actions">
-
-                        <button
-                            class="cancel-btn"
-                            onclick="cancelarCambios()">
-                            Cancelar
-                        </button>
-
-                        <button
-                            class="save-btn"
-                            onclick="guardarCambios()">
-                            Guardar cambios
-                        </button>
+                        <div class="form-group">
+                            <label class="form-label" for="identificacion">Número de identificación</label>
+                            <input id="identificacion" class="form-input" value="" disabled>
+                        </div>
+                        <p data-profile-status role="status" aria-live="polite"></p>
 
                     </div>
 
@@ -696,156 +669,6 @@
 
 </div>
 
-
-<script>
-
-const campos = [
-    "nombre",
-    "apellido",
-    "correo",
-    "telefono",
-    "ciudad",
-    "pais",
-    "direccion"
-];
-
-let valoresOriginales = {};
-
-function activarEdicion(){
-
-    campos.forEach(id => {
-
-        const input = document.getElementById(id);
-
-        valoresOriginales[id] = input.value;
-
-        input.disabled = false;
-
-    });
-
-    document.getElementById("nombre").focus();
-
-    mostrarMensaje("Modo edición activado");
-
-}
-
-function guardarCambios(){
-
-    campos.forEach(id => {
-
-        document.getElementById(id).disabled = true;
-
-    });
-
-    const nombre =
-        document.getElementById("nombre").value;
-
-    const apellido =
-        document.getElementById("apellido").value;
-
-    document.querySelector(".profile-name").textContent =
-        nombre + " " + apellido;
-
-    mostrarMensaje("Cambios guardados correctamente");
-
-}
-
-function cancelarCambios(){
-
-    campos.forEach(id => {
-
-        const input = document.getElementById(id);
-
-        if(valoresOriginales[id] !== undefined){
-            input.value = valoresOriginales[id];
-        }
-
-        input.disabled = true;
-
-    });
-
-    mostrarMensaje("Cambios cancelados");
-
-}
-
-document.querySelectorAll(".toggle").forEach(toggle => {
-
-    toggle.addEventListener("click", function(){
-
-        this.classList.toggle("off");
-
-        if(this.classList.contains("off")){
-            mostrarMensaje("Preferencia desactivada");
-        }else{
-            mostrarMensaje("Preferencia activada");
-        }
-
-    });
-
-});
-
-
-function mostrarMensaje(texto){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent = texto;
-
-    toast.classList.add("show");
-
-    clearTimeout(window.toastTimer);
-
-    window.toastTimer =
-        setTimeout(() => {
-
-            toast.classList.remove("show");
-
-        }, 2200);
-
-}
-
-
-function abrirModal(){
-
-    document
-        .getElementById("modal")
-        .classList.add("show");
-
-}
-
-
-function cerrarModal(){
-
-    document
-        .getElementById("modal")
-        .classList.remove("show");
-
-}
-
-
-function confirmarEliminacion(){
-
-    cerrarModal();
-
-    mostrarMensaje(
-        "Solicitud registrada. No se eliminó ninguna cuenta."
-    );
-
-}
-
-
-document
-    .getElementById("modal")
-    .addEventListener("click", function(e){
-
-        if(e.target === this){
-            cerrarModal();
-        }
-
-    });
-
-</script>
 
 <script src="../../components/cambiar-cuenta.js"></script>
 </body>

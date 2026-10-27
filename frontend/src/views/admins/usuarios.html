@@ -10,23 +10,20 @@
   <link rel="stylesheet" href="../../components/cambiar-cuenta.css">
   <script src="admin.js" defer></script>
 </head>
-<body class="workspace-page admin-page">
+<body class="workspace-page admin-page" data-admin-view="usuarios">
   <div class="agent-app"><aside class="sidebar"><div class="brand"><div class="brand-icon">E</div><div><h2>Event<span>Stage</span></h2><p>ADMINISTRACIÓN</p></div></div><div class="profile-card"><div class="avatar">AD</div><div><strong>Administrador</strong><small>Control de plataforma</small></div></div>
-    <nav aria-label="Navegación de administración"><p class="nav-title">PLATAFORMA</p><a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="eventos.html">◉ <span>Eventos</span></a><a href="agentes.html">♙ <span>Agentes</span></a><a class="active" href="usuarios.html">◎ <span>Usuarios</span></a><a href="finanzas.html">＄ <span>Finanzas</span></a><a href="reportes.html">▥ <span>Reportes</span></a><a href="configuracion.html">⚙ <span>Configuración</span></a><p class="nav-title">ATENCIÓN</p><a href="soporte.html">? <span>Soporte</span></a><a href="../clientes/index.html">↗ <span>Ir al sitio</span></a></nav>
-  </aside><main class="workspace-main"><header class="workspace-topbar"><p>Admin / <strong>Usuarios</strong></p><a class="workspace-button" href="soporte.html">Atender solicitudes</a></header>
+    <nav aria-label="Navegación de administración"><p class="nav-title">PLATAFORMA</p><a href="dashboard.html">⌂ <span>Dashboard</span></a><a href="eventos.html">◉ <span>Eventos</span></a><a href="agentes.html">♙ <span>Agentes</span></a><a class="active" href="usuarios.html">◎ <span>Usuarios</span></a><a href="reportes.html">▥ <span>Reportes</span></a><a href="../clientes/index.html">↗ <span>Ir al sitio</span></a></nav>
+  </aside><main class="workspace-main"><header class="workspace-topbar"><p>Admin / <strong>Usuarios</strong></p><a class="workspace-button" href="reportes.html">Ver actividad</a></header>
     <section class="workspace-content"><div class="workspace-heading"><div><span class="workspace-eyebrow">CUENTAS DE LA PLATAFORMA</span><h1>Usuarios</h1><p>Consulta cuentas de clientes y su actividad en EventStage.</p></div></div>
-      <div class="workspace-metrics compact"><article class="workspace-card metric"><span>Usuarios registrados</span><strong>18.420</strong><small>Cuentas de clientes</small></article><article class="workspace-card metric"><span>Nuevos este mes</span><strong>1.286</strong><small>Altas del periodo</small></article><article class="workspace-card metric"><span>Casos abiertos</span><strong>12</strong><small>Requieren seguimiento</small></article></div>
+      <div class="workspace-metrics compact"><article class="workspace-card metric"><span>Clientes registrados</span><strong data-admin-total>—</strong><small>Personas con rol de cliente</small></article></div>
+      <p data-admin-status-message role="status" aria-live="polite"></p>
       <section class="workspace-card admin-table-card" data-admin-table><div class="workspace-card-heading"><div><h2>Directorio de usuarios</h2><p>Cuentas de clientes y actividad de la plataforma.</p></div></div>
-        <div class="admin-toolbar"><label>Buscar usuario<input type="search" placeholder="Nombre o correo" data-admin-search></label><label>Estado<select data-admin-status><option value="">Todos los estados</option><option value="activo">Activo</option><option value="pendiente">Pendiente</option><option value="bloqueado">Restringido</option></select></label></div>
-        <div class="workspace-table-wrap"><table class="workspace-table"><thead><tr><th>USUARIO</th><th>REGISTRO</th><th>RESERVAS</th><th>ESTADO</th><th>SEGUIMIENTO</th></tr></thead><tbody>
-          <tr data-admin-row data-status="activo"><td><div class="admin-person"><span class="avatar">ML</span><span><strong>María López</strong><small>maria.lopez@email.com</small></span></div></td><td>05 oct 2026</td><td>8</td><td><span class="workspace-badge success">Activo</span></td><td><a class="workspace-button" href="soporte.html">Ver actividad</a></td></tr>
-          <tr data-admin-row data-status="activo"><td><div class="admin-person"><span class="avatar">JC</span><span><strong>Juan Camilo Ruiz</strong><small>jcruiz@email.com</small></span></div></td><td>28 sep 2026</td><td>3</td><td><span class="workspace-badge success">Activo</span></td><td><a class="workspace-button" href="soporte.html">Ver actividad</a></td></tr>
-          <tr data-admin-row data-status="pendiente"><td><div class="admin-person"><span class="avatar">SP</span><span><strong>Sofía Pérez</strong><small>sofia.perez@email.com</small></span></div></td><td>08 oct 2026</td><td>0</td><td><span class="workspace-badge pending">Verificación pendiente</span></td><td><a class="workspace-button" href="soporte.html">Ver solicitud</a></td></tr>
-          <tr data-admin-row data-status="bloqueado"><td><div class="admin-person"><span class="avatar">AR</span><span><strong>Andrés Ramírez</strong><small>andres.r@email.com</small></span></div></td><td>14 jun 2026</td><td>2</td><td><span class="workspace-badge alert">Restringido</span></td><td><a class="workspace-button" href="soporte.html">Ver caso</a></td></tr>
-        </tbody></table></div>
+        <div class="admin-toolbar"><label>Buscar usuario<input type="search" placeholder="Nombre o correo" data-admin-search></label></div>
+        <div class="workspace-table-wrap"><table class="workspace-table"><thead><tr><th>USUARIO</th><th>UBICACIÓN</th><th>RESERVAS</th><th>CUENTA</th></tr></thead><tbody data-admin-rows></tbody></table></div>
       </section>
     </section>
   </main></div>
   <script src="../../components/cambiar-cuenta.js"></script>
+  <script src="../../api.js"></script>
 </body>
 </html>

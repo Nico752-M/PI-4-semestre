@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" fill="none">
+  <defs>
+    <linearGradient id="beam" x2="0" y2="1"><stop stop-color="#d7b26b" stop-opacity=".46"/><stop offset="1" stop-color="#d7b26b" stop-opacity="0"/></linearGradient>
+    <linearGradient id="stage" x2="0" y2="1"><stop stop-color="#9b6bb3" stop-opacity=".42"/><stop offset="1" stop-color="#9b6bb3" stop-opacity="0"/></linearGradient>
+  </defs>
+  <path d="m180 0 245 430H310L104 0m609 0L486 430h-113L579 0" fill="url(#beam)"/>
+  <path d="M310 282h280v154H310z" fill="url(#stage)"/>
+  <path stroke="#d7b26b" stroke-opacity=".44" stroke-width="3" d="M110 282h680M145 299h610"/>
+  <path fill="#d7b26b" fill-opacity=".48" d="M151 278h12v28h-12zm76 0h12v28h-12zm76 0h12v28h-12zm76 0h12v28h-12zm76 0h12v28h-12zm76 0h12v28h-12zm76 0h12v28h-12zm76 0h12v28h-12z"/>
+  <path fill="#b99aca" fill-opacity=".35" d="M0 416q37-62 74 0 36-75 72 0 37-52 74 0 43-86 86 0 39-67 78 0 42-72 83 0 42-57 84 0 41-83 82 0 43-64 86 0 40-72 80 0 42-57 83 0 42-86 84 0v104H0z"/>
+  <path fill="#d7b26b" fill-opacity=".55" d="M321 156h11v11h-11zm360 71h9v9h-9zM245 81h8v8h-8zm432-28h10v10h-10z"/>
+  <circle cx="448" cy="154" r="62" fill="#d7b26b" fill-opacity=".16"/>
+  <circle cx="448" cy="154" r="82" stroke="#d7b26b" stroke-opacity=".21" stroke-width="2"/>
+</svg>

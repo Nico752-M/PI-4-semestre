@@ -1,0 +1,235 @@
+.demo-account-switcher{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  max-width:calc(100vw - 32px);
+  padding:10px 12px;
+  border:1px solid #55445f;
+  border-radius:12px;
+  background:#17111f;
+  box-shadow:0 8px 28px #0006;
+  color:#f5eff8;
+  font:600 13px/1.3 Inter,"Segoe UI",Arial,sans-serif;
+}
+
+.demo-account-switcher label{
+  color:#d8cedd;
+}
+
+.demo-account-switcher select{
+  min-height:36px;
+  max-width:190px;
+  padding:6px 28px 6px 9px;
+  border:1px solid #51415b;
+  border-radius:7px;
+  background:#241b2d;
+  color:#f5eff8;
+  font:inherit;
+}
+
+.demo-account-switcher button{
+  min-height:36px;
+  padding:7px 12px;
+  border:1px solid #e2ad57;
+  border-radius:7px;
+  background:#e2ad57;
+  color:#201821;
+  font:700 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
+  cursor:pointer;
+}
+
+.demo-account-switcher :focus-visible{
+  outline:3px solid #f3d186;
+  outline-offset:2px;
+}
+
+.workspace-home-link{
+  display:inline-flex;
+  align-items:center;
+  min-height:38px;
+  padding:8px 12px;
+  border:1px solid #51415b;
+  border-radius:8px;
+  color:inherit;
+  font:600 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+.workspace-home-link:hover{
+  border-color:#e2ad57;
+  color:#f3d186;
+}
+
+.workspace-home-link:focus-visible{
+  outline:3px solid #f3d186;
+  outline-offset:2px;
+}
+
+.mobile-sidebar-toggle,
+.mobile-sidebar-backdrop{
+  display:none;
+}
+
+@media(max-width:480px){
+  .demo-account-switcher{
+    right:10px;
+    bottom:10px;
+    left:10px;
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    align-items:center;
+    max-width:none;
+    gap:6px;
+    padding:8px;
+  }
+
+  .demo-account-switcher label{
+    width:auto;
+  }
+
+  .demo-account-switcher select{
+    width:100%;
+    min-width:0;
+    max-width:none;
+  }
+}
+
+@media(max-width:760px){
+  .mobile-sidebar-toggle{
+    position:fixed;
+    top:12px;
+    left:12px;
+    z-index:10002;
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    border:1px solid #51415b;
+    border-radius:11px;
+    background:#201827;
+    color:#f5eff8;
+    box-shadow:0 6px 18px #0005;
+    font:700 23px/1 Inter,"Segoe UI",Arial,sans-serif;
+    cursor:pointer;
+  }
+
+  .mobile-sidebar-toggle:focus-visible,
+  .mobile-sidebar-backdrop:focus-visible{
+    outline:3px solid #f3d186;
+    outline-offset:2px;
+  }
+
+  .mobile-sidebar-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    display:block;
+    width:100%;
+    height:100%;
+    padding:0;
+    border:0;
+    background:rgba(8,6,12,.68);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .2s ease,visibility .2s ease;
+  }
+
+  body.perfil-page .sidebar,
+  body.misreservas-page .sidebar,
+  body.historialdecompras-page .sidebar,
+  body.agent-page .sidebar,
+  body.workspace-page .sidebar,
+  body.customer-page .sidebar{
+    position:fixed;
+    inset:0 auto 0 0;
+    z-index:10001;
+    width:min(320px,88vw);
+    min-width:0;
+    min-height:100vh;
+    max-height:100vh;
+    overflow-y:auto;
+    padding:68px 18px 24px;
+    border-right:1px solid #3a3047;
+    border-bottom:0;
+    transform:translateX(-105%);
+    visibility:hidden;
+    transition:transform .22s ease,visibility .22s ease;
+  }
+
+  body.mobile-sidebar-open .sidebar{
+    transform:translateX(0);
+    visibility:visible;
+  }
+
+  body.mobile-sidebar-open{
+    overflow:hidden;
+  }
+
+  body.mobile-sidebar-open .mobile-sidebar-backdrop{
+    opacity:1;
+    visibility:visible;
+  }
+
+  body.perfil-page .app,
+  body.misreservas-page .app,
+  body.historialdecompras-page .app{
+    overflow:visible;
+  }
+
+  body.agent-page .app,
+  body.agent-page .app-container,
+  body.agent-page .agent-app,
+  body.workspace-page .agent-app{
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  body.agent-page .main,
+  body.agent-page .main-content,
+  body.agent-page .workspace-main,
+  body.workspace-page .workspace-main{
+    grid-column:1;
+  }
+
+  body.perfil-page .main,
+  body.misreservas-page .main,
+  body.historialdecompras-page .main{
+    width:100%;
+    min-width:0;
+  }
+
+  body.agent-page .topbar,
+  body.agent-page .top-header,
+  body.agent-page .workspace-topbar,
+  body.workspace-page .workspace-topbar,
+  body.customer-page .customer-topbar,
+  body.perfil-page .topbar,
+  body.misreservas-page .topbar,
+  body.historialdecompras-page .topbar{
+    padding-left:68px;
+  }
+
+  body.perfil-page .main,
+  body.misreservas-page .main,
+  body.historialdecompras-page .main{
+    padding-top:68px;
+  }
+
+  body.perfil-page .menu,
+  body.misreservas-page .menu,
+  body.historialdecompras-page .menu,
+  body.customer-page .menu,
+  body.agent-page .sidebar nav,
+  body.workspace-page .sidebar nav{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    overflow:visible;
+  }
+
+}

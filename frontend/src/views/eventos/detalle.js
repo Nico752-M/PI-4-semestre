@@ -1,8 +1,19 @@
-(function () {
-  const events = window.EVENTOS || {};
-  const event = events[new URLSearchParams(window.location.search).get('id')];
+(async function () {
   const content = document.getElementById('event-content');
   const notFound = document.getElementById('event-not-found');
+  const message = document.getElementById('ticket-message');
+  let events;
+  try {
+    events = await window.EVENTOS_READY;
+  } catch (error) {
+    notFound.hidden = false;
+    notFound.querySelector('p:last-of-type').textContent = error.message;
+    document.title = 'Error al cargar el evento | EventStage';
+    return;
+  }
+
+  const eventId = new URLSearchParams(window.location.search).get('id');
+  const event = events[eventId];
 
   if (!event) {
     notFound.hidden = false;
@@ -15,12 +26,12 @@
   document.getElementById('event-breadcrumb-name').textContent = event.nombre;
   document.getElementById('event-category').textContent = event.categoria;
   document.getElementById('event-title').textContent = event.nombre;
-  document.getElementById('event-meta').textContent = `${event.lugar} · ${event.ciudad} · ${event.fecha}`;
+  document.getElementById('event-meta').textContent = `${event.ciudad}, ${event.departamento} · ${event.fecha}`;
   document.getElementById('event-time').textContent = event.hora;
   document.getElementById('event-description').textContent = event.descripcion;
   const cover = document.getElementById('event-cover');
   cover.src = event.portada;
-  cover.alt = `Imagen de ${event.nombre}`;
+  cover.alt = `Ilustración genérica para ${event.nombre}`;
 
   const gallery = document.getElementById('event-gallery');
   event.galeria.forEach((image, index) => {
@@ -73,20 +84,28 @@
 
   const quantityInput = document.getElementById('ticket-quantity');
   const subtotal = document.getElementById('ticket-subtotal');
-  const message = document.getElementById('ticket-message');
   const form = document.getElementById('ticket-form');
+  const paymentDialog = document.getElementById('payment-dialog');
+  const paymentForm = document.getElementById('payment-form');
+  const paymentStatus = document.getElementById('payment-status');
+  const paymentCardFields = document.getElementById('payment-card-fields');
+  const paymentSubmit = paymentForm.querySelector('[type="submit"]');
+  const paymentCompleteLink = document.querySelector('.payment-complete-link');
 
   function getQuantity() {
     const quantity = Number.parseInt(quantityInput.value, 10);
     return Number.isNaN(quantity) ? 1 : Math.max(1, Math.min(6, quantity));
   }
 
-  function updateSubtotal() {
+  function selectedPrice() {
     const selected = ticketOptions.querySelector('input[name="localidad"]:checked');
-    const localidad = event.localidades[Number(selected.value)];
+    return selected ? event.localidades[Number(selected.value)].precio : 0;
+  }
+
+  function updateSubtotal() {
+    if (!ticketOptions.querySelector('input[name="localidad"]:checked')) return;
     quantityInput.value = String(getQuantity());
-    subtotal.textContent = formatPrice(localidad.precio * getQuantity());
-    message.textContent = 'La compra y el pago estarán disponibles cuando se conecte la pasarela de pagos.';
+    subtotal.textContent = formatPrice(selectedPrice() * getQuantity());
   }
 
   ticketOptions.addEventListener('change', updateSubtotal);
@@ -100,16 +119,97 @@
     quantityInput.value = String(getQuantity() + 1);
     updateSubtotal();
   });
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    message.textContent = 'Tus boletas están seleccionadas, pero aún no podemos procesar el pago. La pasarela de pagos no está conectada.';
+  form.addEventListener('submit', async submitEvent => {
+    submitEvent.preventDefault();
+    const submit = form.querySelector('[type="submit"]');
+    submit.disabled = true;
+    message.textContent = 'Verificando tu cuenta...';
+    try {
+      const { user } = await window.EventStageApi.request('/auth/me');
+      if (user.rol !== 'cliente') {
+        throw new Error('Solo los clientes pueden comprar entradas.');
+      }
+      document.getElementById('payment-event-name').textContent =
+        `${event.nombre} · ${getQuantity()} entrada(s)`;
+      document.getElementById('payment-total').textContent =
+        formatPrice(selectedPrice() * getQuantity());
+      paymentStatus.textContent = '';
+      paymentSubmit.hidden = false;
+      paymentSubmit.disabled = false;
+      paymentCompleteLink.hidden = true;
+      paymentCardFields.hidden = selectedPrice() === 0;
+      paymentCardFields.querySelectorAll('input').forEach(input => {
+        input.required = selectedPrice() !== 0;
+        input.value = '';
+      });
+      paymentForm.reset();
+      paymentCardFields.hidden = selectedPrice() === 0;
+      paymentDialog.showModal();
+      message.textContent = '';
+    } catch (error) {
+      message.textContent = error.message;
+      if (error.status === 401) {
+        const link = document.createElement('a');
+        link.href = `../clientes/login.html?returnUrl=${encodeURIComponent(location.href)}`;
+        link.textContent = ' Inicia sesión para continuar.';
+        message.append(link);
+      }
+    } finally {
+      submit.disabled = false;
+    }
+  });
+
+  paymentDialog.querySelectorAll('[data-payment-close]').forEach(button => {
+    button.addEventListener('click', () => paymentDialog.close());
+  });
+
+  paymentForm.addEventListener('submit', async submitEvent => {
+    submitEvent.preventDefault();
+    if (!paymentForm.reportValidity()) return;
+    paymentSubmit.disabled = true;
+    paymentStatus.textContent = 'Procesando pago de prueba...';
+    try {
+      const result = await window.EventStageApi.request('/compras/simular', {
+        method: 'POST',
+        body: {
+          idEvento: eventId,
+          cantidad: getQuantity(),
+          precioEsperado: selectedPrice()
+        }
+      });
+      const ticketNumbers = result.entradas.map(ticket => `#${ticket.id}`).join(', ');
+      paymentStatus.textContent =
+        `Pago de prueba aprobado por ${formatPrice(result.total)}. Tus entradas están confirmadas: ${ticketNumbers}. No se realizó ningún cargo.`;
+      paymentCardFields.hidden = true;
+      paymentSubmit.hidden = true;
+      paymentCompleteLink.hidden = false;
+      paymentForm.querySelectorAll('input').forEach(input => {
+        input.required = false;
+        input.value = '';
+      });
+      message.textContent = `Compra simulada confirmada. Entradas: ${ticketNumbers}.`;
+      const available = Math.max(0, event.disponibles - getQuantity());
+      event.disponibles = available;
+      event.localidades[0].detalle = `Precio único · ${available} disponibles`;
+      ticketOptions.querySelector('.ticket-option-details small').textContent =
+        event.localidades[0].detalle;
+    } catch (error) {
+      paymentStatus.textContent = error.message;
+      paymentSubmit.disabled = false;
+      if (error.status === 401) {
+        const link = document.createElement('a');
+        link.href = `../clientes/login.html?returnUrl=${encodeURIComponent(location.href)}`;
+        link.textContent = ' Inicia sesión y vuelve para comprar.';
+        paymentStatus.append(link);
+      }
+    }
   });
 
   updateSubtotal();
 
   const related = document.getElementById('related-events');
   Object.entries(events)
-    .filter(([id]) => id !== new URLSearchParams(window.location.search).get('id'))
+    .filter(([id]) => id !== eventId)
     .slice(0, 4)
     .forEach(([id, relatedEvent]) => {
       const card = document.createElement('a');

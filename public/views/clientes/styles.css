@@ -1,0 +1,4907 @@
+/* =========================================================
+   EVENTSTAGE - MOBILE FIRST
+   HTML5 + CSS3
+   ========================================================= */
+
+html{
+    touch-action:manipulation;
+}
+
+body.cliente-home{
+  --bg: #100b1d;
+  --bg-2: #151025;
+  --card: #1d1532;
+  --card-2: #221943;
+  --border: #342750;
+  --text: #f8f6ff;
+  --muted: #a59bb8;
+  --gold: #dfa86d;
+  --gold-dark: #c58a4e;
+  --pink: #c93a63;
+  --green: #82c5a6;
+  --radius: 14px;
+  --container: 1180px;
+  --bg-alt: #1a1330;
+}
+
+body.cliente-home, body.cliente-home *, body.cliente-home, body.cliente-home *::before, body.cliente-home, body.cliente-home *::after{
+  box-sizing: border-box;
+}
+
+body.cliente-home{
+  scroll-behavior: smooth;
+  scroll-padding-top: 130px;
+}
+
+body.cliente-home{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+body.cliente-home a{
+  color: inherit;
+  text-decoration: none;
+}
+
+body.cliente-home img{
+  max-width: 100%;
+  display: block;
+}
+
+body.cliente-home button, body.cliente-home input, body.cliente-home select{
+  font: inherit;
+}
+
+body.cliente-home button{
+  cursor: pointer;
+}
+
+/* ---------- ACCESIBILIDAD: FOCO VISIBLE ---------- */body.cliente-home a:focus-visible, body.cliente-home button:focus-visible, body.cliente-home input:focus-visible, body.cliente-home select:focus-visible{
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+body.cliente-home main:focus{
+  outline: none;
+}
+
+body.cliente-home .skip-link{
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #1c1209;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+body.cliente-home .skip-link:focus{
+  top: 12px;
+}
+
+body.cliente-home .sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.cliente-home{
+    scroll-behavior: auto;
+  }
+
+  body.cliente-home, body.cliente-home *, body.cliente-home, body.cliente-home *::before, body.cliente-home, body.cliente-home *::after{
+    transition: none !important;
+  }
+}
+
+body.cliente-home .container{
+  width: min(100% - 32px, var(--container));
+  margin-inline: auto;
+}
+
+/* ---------- HEADER ---------- */body.cliente-home .site-header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(16, 11, 29, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+body.cliente-home .nav{
+  min-height: 72px;
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+body.cliente-home .brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+body.cliente-home .brand-dots{
+  display: inline-flex;
+  gap: 3px;
+}
+
+body.cliente-home .brand-dots span{
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9f82ff;
+}
+
+body.cliente-home .brand-dots span:nth-child(2){
+  background: #e5bf76;
+}
+
+body.cliente-home .brand-dots span:nth-child(3){
+  background: #77bd9a;
+}
+
+body.cliente-home .main-nav, body.cliente-home .nav-actions{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+}
+
+body.cliente-home .nav-actions [hidden]{
+  display: none;
+}
+
+body.cliente-home .main-nav a, body.cliente-home .link-muted{
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+body.cliente-home .profile-pill{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.74rem;
+}
+
+body.cliente-home .avatar{
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green);
+  color: #0e271c;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+/* ---------- HERO ---------- */body.cliente-home .hero{
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 88px 0 64px;
+  border-bottom: 1px solid rgba(223, 168, 109, 0.12);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(97, 70, 146, 0.28), transparent 48%),
+    radial-gradient(ellipse at 12% 48%, rgba(201, 58, 99, 0.12), transparent 32%),
+    linear-gradient(125deg, #151025 8%, #1b142b 52%, #151025 100%);
+}
+
+body.cliente-home .hero::before, body.cliente-home .hero::after{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(223, 168, 109, 0.14);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+body.cliente-home .hero::before{
+  width: 500px;
+  height: 500px;
+  top: -280px;
+  right: -110px;
+  box-shadow:
+    0 0 0 34px rgba(223, 168, 109, 0.035),
+    0 0 0 78px rgba(223, 168, 109, 0.025);
+}
+
+body.cliente-home .hero::after{
+  width: 340px;
+  height: 340px;
+  bottom: -245px;
+  left: -115px;
+  background: radial-gradient(circle, rgba(110, 67, 143, 0.22), transparent 70%);
+  box-shadow: 0 0 0 42px rgba(110, 67, 143, 0.035);
+}
+
+body.cliente-home .hero-content{
+  position: relative;
+  z-index: 0;
+  text-align: center;
+}
+
+body.cliente-home .eyebrow, body.cliente-home .section-kicker{
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.67rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+body.cliente-home .hero h1{
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 12vw, 4.6rem);
+  line-height: 0.95;
+}
+
+body.cliente-home .hero-copy{
+  max-width: 680px;
+  margin: 24px auto 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+body.cliente-home .search-box{
+  max-width: 1000px;
+  margin: 36px auto 0;
+  background: rgba(34, 25, 67, 0.92);
+  border: 1px solid rgba(223, 168, 109, 0.24);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+body.cliente-home .search-box label{
+  display: block;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+body.cliente-home .search-box label span{
+  display: block;
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+body.cliente-home .search-box input, body.cliente-home .search-box select{
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: var(--text);
+  background: transparent;
+}
+
+body.cliente-home .search-box input::placeholder{
+  color: #ddd7eb;
+}
+
+body.cliente-home .search-box label:focus-within{
+  outline: 3px solid var(--gold);
+  outline-offset: -3px;
+}
+
+body.cliente-home .search-box select{
+  appearance: none;
+}
+
+body.cliente-home .search-btn{
+  width: 100%;
+  border-radius: 0;
+  min-height: 56px;
+}
+
+body.cliente-home .reservation-bar{
+  max-width: 1000px;
+  margin: 18px auto 0;
+  padding: 15px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(34, 25, 67, 0.72);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+body.cliente-home .reservation-bar p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- BUTTONS ---------- */body.cliente-home .btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  transition: 0.2s ease;
+}
+
+body.cliente-home .btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+body.cliente-home .btn-gold{
+  background: var(--gold);
+  color: #1c1209;
+}
+
+body.cliente-home .btn-outline{
+  color: var(--text);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+body.cliente-home .btn-pink{
+  background: var(--pink);
+  color: white;
+}
+
+body.cliente-home .btn-dark{
+  background: #1d1426;
+  color: white;
+}
+
+body.cliente-home .btn-small{
+  min-height: 34px;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+}
+
+/* ---------- SECTIONS ---------- */body.cliente-home .section{
+  position: relative;
+  isolation: isolate;
+  padding: 36px 0;
+  background:
+    radial-gradient(ellipse at 92% 0%, rgba(110, 67, 143, 0.07), transparent 34%),
+    var(--bg);
+}
+
+body.cliente-home .section h2{
+  margin: 0 0 22px;
+  font-size: clamp(1.45rem, 6vw, 2rem);
+}
+
+body.cliente-home .how-it-works-section::before,
+body.cliente-home .upcoming-events-section::before{
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: min(72%, 900px) auto;
+  content: "";
+  opacity: 0.2;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at 72% 50%, #000 10%, rgba(0, 0, 0, 0.75) 46%, transparent 82%);
+}
+
+body.cliente-home .how-it-works-section::before{
+  background-image: url("../../assets/img/secciones/como-funciona.svg");
+}
+
+body.cliente-home .upcoming-events-section::before{
+  background-image: url("../../assets/img/secciones/proximos-eventos.svg");
+  background-position: right 44%;
+}
+
+/* Alterna el fondo: Cómo funciona, Eventos disponibles y Testimonios */body.cliente-home main > .section:nth-of-type(odd){
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(201, 58, 99, 0.07), transparent 36%),
+    radial-gradient(ellipse at 92% 100%, rgba(110, 67, 143, 0.08), transparent 38%),
+    var(--bg-alt);
+  border-top: 1px solid rgba(223, 168, 109, 0.09);
+  border-bottom: 1px solid rgba(223, 168, 109, 0.09);
+}
+
+body.cliente-home .category-carousel{
+  --carousel-gap: 16px;
+}
+
+body.cliente-home .category-carousel-controls{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+body.cliente-home .category-carousel-hint{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+body.cliente-home .category-carousel-buttons{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.cliente-home .carousel-control{
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid rgba(223, 168, 109, 0.2);
+  border-radius: 999px;
+  background: rgba(29, 21, 50, 0.76);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+body.cliente-home .carousel-control:hover{
+  transform: translateY(-1px);
+  border-color: rgba(223, 168, 109, 0.52);
+  background: #2a203d;
+}
+
+body.cliente-home .carousel-toggle{
+  min-width: 88px;
+  font-size: 0.76rem;
+}
+
+body.cliente-home .category-carousel-viewport{
+  overflow: hidden;
+  border-radius: var(--radius);
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+}
+
+body.cliente-home .category-carousel-viewport.is-dragging{
+  cursor: grabbing;
+  user-select: none;
+}
+
+body.cliente-home .category-carousel-track{
+  position: relative;
+  display: flex;
+  gap: var(--carousel-gap);
+  will-change: transform;
+  transition: transform 560ms cubic-bezier(0.22, 0.68, 0, 1);
+}
+
+body.cliente-home .category-card{
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex: 0 0 84%;
+  min-height: 230px;
+  align-items: flex-end;
+  overflow: hidden;
+  border: 1px solid rgba(223, 168, 109, 0.18);
+  border-radius: var(--radius);
+  background: #211936;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+body.cliente-home .category-card::after{
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(16, 11, 29, 0.02) 8%, rgba(16, 11, 29, 0.28) 43%, rgba(16, 11, 29, 0.94) 100%);
+  content: "";
+}
+
+body.cliente-home .category-card-image{
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 450ms ease;
+}
+
+body.cliente-home .category-card:hover .category-card-image{
+  transform: scale(1.045);
+}
+
+body.cliente-home .category-card-content{
+  padding: 20px;
+}
+
+body.cliente-home .category-card-kicker{
+  color: #f1c982;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+body.cliente-home .category-card h3{
+  margin: 6px 0;
+  color: #fff;
+  font-size: 1.18rem;
+}
+
+body.cliente-home .category-card p{
+  max-width: 32ch;
+  margin: 0;
+  color: rgba(248, 246, 255, 0.82);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+/* ---------- STEPS ---------- */body.cliente-home .steps-grid{
+  display: grid;
+  gap: 16px;
+}
+
+body.cliente-home .step-card{
+  min-height: 0;
+  padding: 22px;
+  border: 1px solid rgba(223, 168, 109, 0.12);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(110, 67, 143, 0.12), transparent 48%),
+    linear-gradient(145deg, rgba(29, 21, 50, 0.96), rgba(24, 18, 40, 0.96));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+body.cliente-home .step-number{
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #2b2144;
+  border: 1px solid #473663;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+body.cliente-home .step-card h3{
+  margin: 18px 0 8px;
+  font-size: 1rem;
+}
+
+body.cliente-home .step-card p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* ---------- FEATURED ---------- */body.cliente-home .featured-grid, body.cliente-home .events-grid, body.cliente-home .testimonials-grid{
+  display: grid;
+  gap: 18px;
+}
+
+body.cliente-home .featured-card, body.cliente-home .event-card{
+  border: 1px solid rgba(223, 168, 109, 0.14);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(110, 67, 143, 0.11), transparent 55%),
+    var(--card);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+body.cliente-home .event-image, body.cliente-home .event-photo{
+  position: relative;
+  isolation: isolate;
+  min-height: 155px;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.18);
+}
+
+body.cliente-home .event-art{
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.cliente-home .event-image > span, body.cliente-home .event-photo > span{
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(16, 11, 29, 0.42);
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+body.cliente-home .image-yellow{
+  background:
+    radial-gradient(ellipse at 18% 12%, rgba(255, 245, 175, 0.65), transparent 36%),
+    linear-gradient(135deg, #ffd95e, #ef7d4d);
+  color: #3d2310;
+}
+
+body.cliente-home .image-orange{
+  background:
+    radial-gradient(ellipse at 82% 18%, rgba(255, 225, 151, 0.48), transparent 40%),
+    linear-gradient(135deg, #ffbb4e, #f06445);
+  color: #401d11;
+}
+
+body.cliente-home .image-white{
+  background:
+    radial-gradient(ellipse at 28% 20%, rgba(255, 255, 255, 0.96), transparent 44%),
+    linear-gradient(135deg, #f4f1f7, #d9d5df);
+  color: #111;
+  font-size: 1.4rem;
+}
+
+body.cliente-home .image-sunset{
+  background:
+    radial-gradient(ellipse at 78% 15%, rgba(255, 234, 158, 0.5), transparent 42%),
+    linear-gradient(135deg, #ffcb61, #db734f);
+  color: #452617;
+}
+
+body.cliente-home .featured-body, body.cliente-home .event-card-body{
+  padding: 14px;
+}
+
+body.cliente-home .featured-body h3, body.cliente-home .event-card h3{
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+body.cliente-home .featured-body p, body.cliente-home .event-card p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+/* ---------- EVENT CARDS ---------- */body.cliente-home .photo-blue{
+  background:
+    radial-gradient(ellipse at 78% 18%, rgba(106, 156, 255, 0.52), transparent 40%),
+    linear-gradient(135deg, #080e42, #2244a8);
+}
+
+body.cliente-home .photo-market{
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(255, 241, 202, 0.56), transparent 42%),
+    linear-gradient(135deg, #cf9458, #f0d6a7);
+  color: #2b1b10;
+}
+
+body.cliente-home .photo-sport{
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(171, 212, 255, 0.42), transparent 40%),
+    linear-gradient(135deg, #1d4e95, #66a6f2);
+}
+
+body.cliente-home .photo-park{
+  background:
+    radial-gradient(ellipse at 20% 18%, rgba(255, 255, 204, 0.48), transparent 42%),
+    linear-gradient(135deg, #a7c57c, #efd59d);
+  color: #23310c;
+}
+
+body.cliente-home .event-card-footer{
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+body.cliente-home .event-card-footer strong{
+  font-size: 0.9rem;
+}
+
+/* ---------- UPCOMING ---------- */body.cliente-home .upcoming-list{
+  border: 1px solid rgba(223, 168, 109, 0.14);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+body.cliente-home .upcoming-row{
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+body.cliente-home .upcoming-row:last-child{
+  border-bottom: 0;
+}
+
+body.cliente-home .date-box{
+  text-align: center;
+}
+
+body.cliente-home .date-box strong{
+  display: block;
+  font-size: 1.1rem;
+}
+
+body.cliente-home .date-box span{
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+body.cliente-home .upcoming-info h3{
+  margin: 0 0 2px;
+  font-size: 0.86rem;
+}
+
+body.cliente-home .upcoming-info p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+body.cliente-home .upcoming-row .tag, body.cliente-home .upcoming-row .btn{
+  margin-top: 10px;
+  justify-self: start;
+  grid-column: 2;
+}
+
+body.cliente-home .tag{
+  display: inline-flex;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+/* ---------- TESTIMONIALS ---------- */body.cliente-home .testimonials-heading{
+  text-align: left;
+}
+
+body.cliente-home .testimonial-card{
+  padding: 22px;
+  border: 1px solid rgba(223, 168, 109, 0.12);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(110, 67, 143, 0.12), transparent 50%),
+    var(--card);
+}
+
+body.cliente-home .stars{
+  margin: 0 0 14px;
+  color: #e9bc67;
+  letter-spacing: 0.08em;
+}
+
+body.cliente-home blockquote{
+  margin: 0;
+  color: #ddd6e9;
+  font-size: 0.86rem;
+}
+
+body.cliente-home .author{
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+/* ---------- NEWSLETTER ---------- */body.cliente-home .newsletter{
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 235, 191, 0.36);
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(255, 244, 194, 0.38), transparent 38%),
+    linear-gradient(120deg, #d99b5d, #e4b36e 58%, #d69a5b);
+  color: #24160b;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.18);
+}
+
+body.cliente-home .newsletter h2{
+  margin-bottom: 6px;
+  font-size: 1.15rem;
+}
+
+body.cliente-home .newsletter p{
+  margin: 0;
+  font-size: 0.78rem;
+  color: #5e3e21;
+}
+
+body.cliente-home .newsletter-form{
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+body.cliente-home .newsletter-form input{
+  width: 100%;
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+body.cliente-home .newsletter-form input:focus-visible, body.cliente-home .newsletter-form button:focus-visible{
+  outline: 3px solid #24160b;
+  outline-offset: 2px;
+}
+
+/* ---------- FOOTER ---------- */body.cliente-home .site-footer{
+  padding: 50px 0 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0e0918;
+}
+
+body.cliente-home .footer-grid{
+  display: grid;
+  gap: 34px;
+}
+
+body.cliente-home .footer-brand{
+  margin-bottom: 14px;
+}
+
+body.cliente-home .site-footer h3{
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+}
+
+body.cliente-home .site-footer p, body.cliente-home .site-footer a{
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+body.cliente-home .site-footer .footer-col > a:not(.brand){
+  display: block;
+  margin-bottom: 6px;
+}
+
+body.cliente-home .footer-bottom{
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body.cliente-home .footer-bottom p{
+  margin: 0;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 768px) {
+  body.cliente-home .container{
+    width: min(100% - 48px, var(--container));
+  }
+
+  body.cliente-home .hero{
+    padding: 80px 0 58px;
+  }
+
+  body.cliente-home .search-box{
+    display: grid;
+    grid-template-columns: 1fr 0.9fr 0.9fr auto;
+    align-items: stretch;
+  }
+
+  body.cliente-home .search-box label{
+    border-bottom: 0;
+    border-right: 1px solid var(--border);
+  }
+
+  body.cliente-home .search-btn{
+    width: auto;
+    min-width: 120px;
+  }
+
+  body.cliente-home .reservation-bar{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  body.cliente-home .category-carousel{
+    --carousel-gap: 18px;
+  }
+
+  body.cliente-home .category-card{
+    flex-basis: calc((100% - var(--carousel-gap)) / 2);
+    min-height: 250px;
+  }
+
+  body.cliente-home .steps-grid, body.cliente-home .testimonials-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  body.cliente-home .featured-grid, body.cliente-home .events-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body.cliente-home .upcoming-row{
+    grid-template-columns: 54px 1fr auto auto;
+    align-items: center;
+  }
+
+  body.cliente-home .upcoming-row .tag, body.cliente-home .upcoming-row .btn{
+    margin-top: 0;
+    grid-column: auto;
+    justify-self: auto;
+  }
+
+  body.cliente-home .newsletter{
+    padding: 28px 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  body.cliente-home .newsletter-form{
+    margin-top: 0;
+    min-width: 360px;
+    grid-template-columns: 1fr auto;
+  }
+
+  body.cliente-home .footer-grid{
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+
+  body.cliente-home .footer-bottom{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 1024px) {
+  body.cliente-home{
+    scroll-padding-top: 90px;
+  }
+
+  body.cliente-home .nav{
+    min-height: 74px;
+    flex-wrap: nowrap;
+    padding: 0;
+  }
+
+  body.cliente-home .main-nav{
+    gap: 34px;
+    margin-left: auto;
+    margin-right: 24px;
+  }
+
+  body.cliente-home .nav-actions{
+    gap: 10px;
+  }
+
+  body.cliente-home .section{
+    padding: 48px 0;
+  }
+
+  body.cliente-home .category-card{
+    flex-basis: calc((100% - (var(--carousel-gap) * 3)) / 4);
+    min-height: 270px;
+  }
+
+  body.cliente-home .featured-grid, body.cliente-home .events-grid{
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  body.cliente-home .testimonials-heading{
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: end;
+    gap: 30px;
+  }
+
+  body.cliente-home .testimonials-heading .section-kicker{
+    align-self: start;
+    margin-top: 8px;
+  }
+
+  body.cliente-home .event-image, body.cliente-home .event-photo{
+    min-height: 138px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.cliente-home .category-carousel-track{
+    transition: none;
+  }
+
+  body.cliente-home .category-card-image{
+    transition: none;
+  }
+}
+
+@media (max-width: 767px) {
+  body.cliente-home .how-it-works-section::before,
+  body.cliente-home .upcoming-events-section::before{
+    background-size: 120% auto;
+    background-position: center;
+    opacity: 0.12;
+  }
+}
+
+
+
+
+/* Account pages */
+
+/* perfil.html */
+body.perfil-page, body.perfil-page *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body.perfil-page{
+    --bg:#100e14;
+    --sidebar:#15131b;
+    --panel:#1b1820;
+    --input:#15131a;
+    --border:#302b36;
+
+    --gold:#d7b46a;
+    --gold-light:#e6ca8e;
+
+    --text:#f2edf4;
+    --text2:#c1bac7;
+    --muted:#817985;
+
+    --green:#67b58a;
+    --red:#a96c6c;
+}
+
+body.perfil-page, body.perfil-page{
+    width:100%;
+    min-height:100%;
+}
+
+body.perfil-page{
+    background:var(--bg);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+}
+
+/* APP */body.perfil-page .app{
+    width:100%;
+    min-height:100vh;
+    margin:0 auto;
+    background:var(--bg);
+    display:flex;
+    overflow:hidden;
+}
+
+/* SIDEBAR */body.perfil-page .sidebar{
+    width:250px;
+    min-width:250px;
+    min-height:100vh;
+    background:var(--sidebar);
+    border-right:1px solid #25212b;
+    display:flex;
+    flex-direction:column;
+    padding:28px 18px 20px;
+}
+
+body.perfil-page .logo{
+    height:45px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 10px;
+    margin-bottom:34px;
+}
+
+body.perfil-page .logo-mark{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:linear-gradient(145deg,#e8d29a,#ad8b51);
+    color:#201b20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:17px;
+    box-shadow:0 5px 18px rgba(215,180,106,.12);
+}
+
+body.perfil-page .logo-text{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+body.perfil-page .logo-text span{
+    color:var(--gold);
+}
+
+body.perfil-page .section-title{
+    font-size:13px;
+    color:#69626e;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-weight:700;
+    padding:0 12px;
+    margin-bottom:9px;
+}
+
+body.perfil-page .menu{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+body.perfil-page .menu-item{
+    text-decoration:none;
+    height:39px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:0 12px;
+    color:#8e8793;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.2s;
+}
+
+body.perfil-page .menu-item .icon{
+    width:16px;
+    text-align:center;
+    color:#77707c;
+    font-size:14px;
+}
+
+body.perfil-page .menu-item.active{
+    color:#e9e2ec;
+    background:#2b2632;
+}
+
+body.perfil-page .menu-item.active .icon{
+    color:var(--gold);
+}
+
+body.perfil-page .menu-item:hover{
+    background:#211d27;
+    color:#eee7ef;
+}
+
+body.perfil-page .account-section{
+    margin-top:24px;
+}
+
+body.perfil-page .sidebar-user{
+    margin-top:auto;
+    padding:16px 12px 5px;
+    border-top:1px solid #28232d;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+body.perfil-page .avatar-small, body.perfil-page .avatar-top, body.perfil-page .avatar-large{
+    background:linear-gradient(145deg,#82758a,#c7b79a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#27222a;
+    font-weight:800;
+}
+
+body.perfil-page .avatar-small{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:13px;
+}
+
+body.perfil-page .user-name{
+    font-size:13px;
+    color:#d6cfd9;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+body.perfil-page .user-role{
+    font-size:12px;
+    color:#6e6873;
+}
+
+/* MAIN */body.perfil-page .main{
+    grid-column:2;
+    min-width:0;
+    padding:31px 32px 22px;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(104,77,125,.035),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+/* HEADER */body.perfil-page .topbar{
+    min-height:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+body.perfil-page .breadcrumb{
+    color:#665f6b;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+body.perfil-page .breadcrumb span{
+    color:#817985;
+}
+
+body.perfil-page .page-title{
+    font-size:21px;
+    line-height:1;
+    font-weight:750;
+    letter-spacing:-.6px;
+}
+
+body.perfil-page .top-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+body.perfil-page .top-icon{
+    width:31px;
+    height:31px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8d8592;
+    font-size:14px;
+    cursor:pointer;
+}
+
+body.perfil-page .top-icon:hover{
+    border-color:#625644;
+    color:var(--gold);
+}
+
+body.perfil-page .top-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+body.perfil-page .avatar-top{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    font-size:13px;
+}
+
+body.perfil-page .top-user-text strong{
+    display:block;
+    font-size:13px;
+    color:#ddd6df;
+    margin-bottom:2px;
+}
+
+body.perfil-page .top-user-text span{
+    display:block;
+    font-size:11px;
+    color:#68616d;
+}
+
+/* PROFILE HERO */body.perfil-page .profile-hero{
+    min-height:103px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    background:
+        linear-gradient(
+            110deg,
+            rgba(104,77,125,.12),
+            rgba(255,255,255,.008)
+        ),
+        var(--panel);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    margin-bottom:15px;
+}
+
+body.perfil-page .profile-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+body.perfil-page .avatar-large{
+    width:61px;
+    height:61px;
+    border-radius:50%;
+    font-size:17px;
+    box-shadow:0 7px 20px rgba(0,0,0,.18);
+}
+
+body.perfil-page .profile-name{
+    font-size:16px;
+    font-weight:750;
+    margin-bottom:5px;
+}
+
+body.perfil-page .profile-email{
+    color:#766e7a;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+body.perfil-page .profile-badge{
+    color:var(--gold);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    font-weight:700;
+}
+
+body.perfil-page button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+body.perfil-page .edit-button{
+    height:32px;
+    padding:0 13px;
+    border-radius:7px;
+    border:1px solid #51473b;
+    background:transparent;
+    color:#cbbd9d;
+    font-size:13px;
+    font-weight:600;
+    transition:.2s;
+}
+
+body.perfil-page .edit-button:hover{
+    background:#29231d;
+    border-color:var(--gold);
+}
+
+/* CONTENT */body.perfil-page .content-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.72fr) minmax(300px,.88fr);
+    gap:15px;
+}
+
+body.perfil-page .left-column, body.perfil-page .right-column{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* CARDS */body.perfil-page .card{
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    overflow:hidden;
+}
+
+body.perfil-page .card-header{
+    min-height:49px;
+    padding:13px 18px;
+    border-bottom:1px solid #2a2630;
+}
+
+body.perfil-page .card-title{
+    font-size:14px;
+    font-weight:750;
+    color:#e3dce6;
+    margin-bottom:4px;
+}
+
+body.perfil-page .card-subtitle{
+    font-size:12px;
+    color:#716a76;
+}
+
+/* PERSONAL */body.perfil-page .personal-card{
+    min-height:276px;
+}
+
+body.perfil-page .personal-body{
+    padding:15px 18px 13px;
+}
+
+body.perfil-page .form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+body.perfil-page .form-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+body.perfil-page .form-group.full{
+    grid-column:1/-1;
+}
+
+body.perfil-page .form-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.65px;
+    color:#77707c;
+    font-weight:700;
+}
+
+body.perfil-page .form-input{
+    height:31px;
+    width:100%;
+    border-radius:6px;
+    border:1px solid #2d2832;
+    background:var(--input);
+    color:#aaa2ae;
+    padding:0 10px;
+    font-size:12px;
+    outline:none;
+    transition:.2s;
+}
+
+body.perfil-page .form-input:focus{
+    border-color:#8c754c;
+    color:#eee8ef;
+}
+
+body.perfil-page .personal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    padding-top:12px;
+    margin-top:12px;
+    border-top:1px solid #2a2630;
+}
+
+body.perfil-page .cancel-btn, body.perfil-page .save-btn{
+    height:30px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:650;
+}
+
+body.perfil-page .cancel-btn{
+    color:#77707c;
+    background:transparent;
+    border:1px solid #302b34;
+}
+
+body.perfil-page .cancel-btn:hover{
+    background:#242029;
+    color:#aaa2ae;
+}
+
+body.perfil-page .save-btn{
+    color:#29221a;
+    background:var(--gold);
+    border:1px solid var(--gold);
+}
+
+body.perfil-page .save-btn:hover{
+    background:var(--gold-light);
+}
+
+/* SECURITY */body.perfil-page .security-card{
+    min-height:182px;
+}
+
+body.perfil-page .security-body{
+    padding:7px 18px;
+}
+
+body.perfil-page .security-row{
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #29252e;
+}
+
+body.perfil-page .security-row:last-child{
+    border-bottom:none;
+}
+
+body.perfil-page .security-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+body.perfil-page .security-symbol{
+    width:25px;
+    height:25px;
+    border-radius:7px;
+    background:#25212b;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+}
+
+body.perfil-page .security-name{
+    font-size:12px;
+    font-weight:700;
+    color:#d2cad5;
+    margin-bottom:3px;
+}
+
+body.perfil-page .security-desc{
+    font-size:11px;
+    color:#6d6671;
+}
+
+body.perfil-page .security-action{
+    color:#a89770;
+    font-size:11px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+body.perfil-page .security-action:hover{
+    color:var(--gold-light);
+}
+
+/* PREFERENCES */body.perfil-page .preferences-card{
+    min-height:219px;
+}
+
+body.perfil-page .preference-list{
+    padding:5px 18px 9px;
+}
+
+body.perfil-page .preference{
+    min-height:43px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #29252e;
+}
+
+body.perfil-page .preference:last-child{
+    border-bottom:none;
+}
+
+body.perfil-page .preference-title{
+    font-size:12px;
+    font-weight:700;
+    color:#d1cad5;
+    margin-bottom:3px;
+}
+
+body.perfil-page .preference-desc{
+    color:#706975;
+    font-size:11px;
+}
+
+body.perfil-page .toggle{
+    width:28px;
+    height:15px;
+    border-radius:20px;
+    background:#3d3447;
+    position:relative;
+    cursor:pointer;
+    transition:.2s;
+    flex-shrink:0;
+}
+
+body.perfil-page .toggle::after{
+    content:"";
+    width:11px;
+    height:11px;
+    position:absolute;
+    top:2px;
+    right:2px;
+    border-radius:50%;
+    background:#ddd4df;
+    transition:.2s;
+}
+
+body.perfil-page .toggle.off{
+    background:#29252d;
+}
+
+body.perfil-page .toggle.off::after{
+    left:2px;
+    right:auto;
+    background:#6f6873;
+}
+
+/* ACCOUNT */body.perfil-page .account-card{
+    min-height:164px;
+}
+
+body.perfil-page .account-body{
+    padding:9px 18px 12px;
+}
+
+body.perfil-page .account-row{
+    min-height:31px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #29252e;
+}
+
+body.perfil-page .account-row:last-child{
+    border-bottom:none;
+}
+
+body.perfil-page .account-label{
+    font-size:11px;
+    text-transform:uppercase;
+    color:#6e6772;
+    letter-spacing:.45px;
+}
+
+body.perfil-page .account-value{
+    font-size:12px;
+    color:#a8a0ac;
+}
+
+body.perfil-page .account-value.green{
+    color:var(--green);
+}
+
+/* DANGER */body.perfil-page .danger-card{
+    min-height:91px;
+    border-color:#3a2c34;
+}
+
+body.perfil-page .danger-header{
+    padding:12px 18px 7px;
+}
+
+body.perfil-page .danger-title{
+    font-size:13px;
+    font-weight:750;
+    color:#ddd4dc;
+    margin-bottom:3px;
+}
+
+body.perfil-page .danger-subtitle{
+    font-size:11px;
+    color:#706770;
+}
+
+body.perfil-page .danger-body{
+    padding:5px 18px 12px;
+}
+
+body.perfil-page .delete-btn{
+    width:100%;
+    height:27px;
+    border-radius:6px;
+    border:1px solid #4b3038;
+    background:transparent;
+    color:#a97981;
+    font-size:11px;
+    font-weight:650;
+}
+
+body.perfil-page .delete-btn:hover{
+    background:#2b1d22;
+    border-color:#74404d;
+}
+
+/* FOOTER */body.perfil-page .main-footer{
+    min-height:28px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color:#514b55;
+    font-size:11px;
+    margin-top:8px;
+}
+
+/* MENSAJE */body.perfil-page .toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25212b;
+    border:1px solid #49404f;
+    color:#ddd5df;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:.25s;
+    z-index:999;
+}
+
+body.perfil-page .toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MODAL */body.perfil-page .modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+body.perfil-page .modal.show{
+    display:flex;
+}
+
+body.perfil-page .modal-box{
+    width:360px;
+    background:#1b1820;
+    border:1px solid #393340;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+body.perfil-page .modal-title{
+    font-size:15px;
+    font-weight:750;
+    margin-bottom:8px;
+}
+
+body.perfil-page .modal-text{
+    color:#8c8490;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+body.perfil-page .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+body.perfil-page .modal-cancel, body.perfil-page .modal-confirm{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:13px;
+}
+
+body.perfil-page .modal-cancel{
+    background:transparent;
+    border:1px solid #393340;
+    color:#9b929f;
+}
+
+body.perfil-page .modal-confirm{
+    background:#6d424b;
+    border:1px solid #84505b;
+    color:#f0dfe2;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    body.perfil-page .sidebar{
+        width:210px;
+        min-width:210px;
+    }
+
+    body.perfil-page .main{
+        padding:25px 20px;
+    }
+
+    body.perfil-page .content-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:760px){
+
+    body.perfil-page .app{
+        display:block;
+    }
+
+    body.perfil-page .sidebar{
+        width:100%;
+        min-width:0;
+        min-height:auto;
+        padding:15px;
+    }
+
+    body.perfil-page .logo{
+        margin-bottom:15px;
+    }
+
+    body.perfil-page .menu{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    body.perfil-page .sidebar-user{
+        margin-top:15px;
+    }
+
+    body.perfil-page .main{
+        padding:20px 15px;
+    }
+
+    body.perfil-page .top-user-text{
+        display:none;
+    }
+
+    body.perfil-page .profile-hero{
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    body.perfil-page .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    body.perfil-page .form-group.full{
+        grid-column:auto;
+    }
+}
+
+/* misreservas.html */
+body.misreservas-page, body.misreservas-page *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body.misreservas-page{
+    --bg:#100e14;
+    --sidebar:#15131b;
+    --panel:#1b1820;
+    --panel2:#201c26;
+    --input:#15131a;
+    --border:#302b36;
+    --border2:#393340;
+
+    --gold:#d7b46a;
+    --gold-light:#e6ca8e;
+
+    --purple:#806895;
+    --purple-dark:#30283a;
+
+    --text:#f2edf4;
+    --text2:#c1bac7;
+    --muted:#817985;
+
+    --green:#67b58a;
+    --red:#a96c6c;
+    --orange:#b89560;
+}
+
+body.misreservas-page, body.misreservas-page{
+    width:100%;
+    min-height:100%;
+}
+
+body.misreservas-page{
+    background:var(--bg);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+}
+
+/* =========================================================
+   APP
+========================================================= */body.misreservas-page .app{
+    width:100%;
+    min-height:100vh;
+    margin:0 auto;
+    background:var(--bg);
+    display:flex;
+    overflow:hidden;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */body.misreservas-page .sidebar{
+    width:250px;
+    min-width:250px;
+    min-height:100vh;
+    background:var(--sidebar);
+    border-right:1px solid #25212b;
+    display:flex;
+    flex-direction:column;
+    padding:28px 18px 20px;
+}
+
+body.misreservas-page .logo{
+    height:45px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 10px;
+    margin-bottom:34px;
+}
+
+body.misreservas-page .logo-mark{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:linear-gradient(145deg,#e8d29a,#ad8b51);
+    color:#201b20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:17px;
+    box-shadow:0 5px 18px rgba(215,180,106,.12);
+}
+
+body.misreservas-page .logo-text{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+body.misreservas-page .logo-text span{
+    color:var(--gold);
+}
+
+body.misreservas-page .section-title{
+    font-size:13px;
+    color:#69626e;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-weight:700;
+    padding:0 12px;
+    margin-bottom:9px;
+}
+
+body.misreservas-page .menu{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+body.misreservas-page .menu-item{
+    text-decoration:none;
+    height:39px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:0 12px;
+    color:#8e8793;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.2s;
+}
+
+body.misreservas-page .menu-item .icon{
+    width:16px;
+    text-align:center;
+    color:#77707c;
+    font-size:14px;
+}
+
+body.misreservas-page .menu-item.active{
+    color:#e9e2ec;
+    background:#2b2632;
+}
+
+body.misreservas-page .menu-item.active .icon{
+    color:var(--gold);
+}
+
+body.misreservas-page .menu-item:hover{
+    background:#211d27;
+    color:#eee7ef;
+}
+
+body.misreservas-page .account-section{
+    margin-top:24px;
+}
+
+body.misreservas-page .sidebar-user{
+    margin-top:auto;
+    padding:16px 12px 5px;
+    border-top:1px solid #28232d;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+body.misreservas-page .avatar-small, body.misreservas-page .avatar-top{
+    background:linear-gradient(145deg,#82758a,#c7b79a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#27222a;
+    font-weight:800;
+}
+
+body.misreservas-page .avatar-small{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:13px;
+}
+
+body.misreservas-page .user-name{
+    font-size:13px;
+    color:#d6cfd9;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+body.misreservas-page .user-role{
+    font-size:12px;
+    color:#6e6873;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */body.misreservas-page .main{
+    grid-column:2;
+    min-width:0;
+    padding:31px 32px 22px;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(104,77,125,.035),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */body.misreservas-page .topbar{
+    min-height:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+body.misreservas-page .breadcrumb{
+    color:#665f6b;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+body.misreservas-page .breadcrumb span{
+    color:#817985;
+}
+
+body.misreservas-page .page-title{
+    font-size:21px;
+    line-height:1;
+    font-weight:750;
+    letter-spacing:-.6px;
+}
+
+body.misreservas-page .top-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+body.misreservas-page .top-icon{
+    width:31px;
+    height:31px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8d8592;
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+body.misreservas-page .top-icon:hover{
+    border-color:#625644;
+    color:var(--gold);
+}
+
+body.misreservas-page .top-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+body.misreservas-page .avatar-top{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    font-size:13px;
+}
+
+body.misreservas-page .top-user-text strong{
+    display:block;
+    font-size:13px;
+    color:#ddd6df;
+    margin-bottom:2px;
+}
+
+body.misreservas-page .top-user-text span{
+    display:block;
+    font-size:11px;
+    color:#68616d;
+}
+
+/* =========================================================
+   PAGE INTRO
+========================================================= */body.misreservas-page .page-intro{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:18px;
+}
+
+body.misreservas-page .intro-title{
+    font-size:13px;
+    font-weight:700;
+    color:#ddd6df;
+    margin-bottom:5px;
+}
+
+body.misreservas-page .intro-text{
+    font-size:12px;
+    color:#716a76;
+}
+
+body.misreservas-page .new-reservation{
+    height:31px;
+    padding:0 14px;
+    border-radius:7px;
+    border:1px solid var(--gold);
+    background:var(--gold);
+    color:#29221a;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+body.misreservas-page .new-reservation:hover{
+    background:var(--gold-light);
+}
+
+/* =========================================================
+   SUMMARY
+========================================================= */body.misreservas-page .summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:15px;
+}
+
+body.misreservas-page .summary-card{
+    min-height:73px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:13px 15px;
+}
+
+body.misreservas-page .summary-label{
+    color:#706975;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.65px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+body.misreservas-page .summary-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+body.misreservas-page .summary-number{
+    font-size:18px;
+    font-weight:750;
+    color:#e7dfe9;
+}
+
+body.misreservas-page .summary-status{
+    font-size:11px;
+    color:#6e6772;
+}
+
+body.misreservas-page .summary-status.green{
+    color:var(--green);
+}
+
+body.misreservas-page .summary-status.gold{
+    color:var(--gold);
+}
+
+body.misreservas-page .summary-status.red{
+    color:var(--red);
+}
+
+/* =========================================================
+   FILTERS
+========================================================= */body.misreservas-page .filter-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    min-height:54px;
+    padding:10px 13px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+body.misreservas-page .filter-label{
+    color:#69626e;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    font-weight:700;
+    margin-right:3px;
+}
+
+body.misreservas-page .filter-button{
+    height:28px;
+    padding:0 11px;
+    border-radius:6px;
+    border:1px solid #302b35;
+    background:transparent;
+    color:#807883;
+    font-size:12px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+body.misreservas-page .filter-button:hover{
+    background:#25212b;
+    color:#d9d1dc;
+}
+
+body.misreservas-page .filter-button.active{
+    background:#30283a;
+    border-color:#4a3d57;
+    color:var(--gold-light);
+}
+
+/* =========================================================
+   RESERVATIONS
+========================================================= */body.misreservas-page .reservations-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+body.misreservas-page .reservations-header{
+    min-height:50px;
+    padding:13px 18px;
+    border-bottom:1px solid #2a2630;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+body.misreservas-page .card-title{
+    font-size:14px;
+    font-weight:750;
+    color:#e3dce6;
+    margin-bottom:4px;
+}
+
+body.misreservas-page .card-subtitle{
+    font-size:12px;
+    color:#716a76;
+}
+
+body.misreservas-page .results-count{
+    font-size:11px;
+    color:#68616d;
+}
+
+/* RESERVATION ITEM */body.misreservas-page .reservation-list{
+    display:flex;
+    flex-direction:column;
+}
+
+body.misreservas-page .reservation{
+    min-height:112px;
+    padding:14px 18px;
+    display:grid;
+    grid-template-columns:74px minmax(0,1fr) 155px 115px;
+    gap:15px;
+    align-items:center;
+    border-bottom:1px solid #29252e;
+    transition:.2s;
+}
+
+body.misreservas-page .reservation:last-child{
+    border-bottom:none;
+}
+
+body.misreservas-page .reservation:hover{
+    background:#1e1a23;
+}
+
+/* EVENT IMAGE */body.misreservas-page .event-image{
+    width:74px;
+    height:74px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            145deg,
+            #3a3042,
+            #18151c
+        );
+    border:1px solid #403747;
+}
+
+body.misreservas-page .event-image::before{
+    content:"";
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:rgba(215,180,106,.12);
+    top:-18px;
+    right:-15px;
+}
+
+body.misreservas-page .event-image span{
+    position:relative;
+    font-size:22px;
+    color:var(--gold);
+}
+
+body.misreservas-page .event-image.concert{
+    background:
+        linear-gradient(
+            145deg,
+            #3c2e43,
+            #17131d
+        );
+}
+
+body.misreservas-page .event-image.theater{
+    background:
+        linear-gradient(
+            145deg,
+            #3a292e,
+            #171317
+        );
+}
+
+body.misreservas-page .event-image.festival{
+    background:
+        linear-gradient(
+            145deg,
+            #40362a,
+            #171511
+        );
+}
+
+body.misreservas-page .event-image.sport{
+    background:
+        linear-gradient(
+            145deg,
+            #28372f,
+            #131915
+        );
+}
+
+body.misreservas-page .event-category{
+    position:absolute;
+    left:7px;
+    bottom:6px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    color:#c6bdca;
+    font-weight:700;
+}
+
+/* EVENT INFO */body.misreservas-page .event-info{
+    min-width:0;
+}
+
+body.misreservas-page .event-name{
+    color:#e5dee8;
+    font-size:14px;
+    font-weight:750;
+    margin-bottom:6px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+body.misreservas-page .event-location{
+    color:#756e7a;
+    font-size:11px;
+    margin-bottom:7px;
+}
+
+body.misreservas-page .event-meta{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+body.misreservas-page .event-meta span{
+    color:#9a929e;
+    font-size:11px;
+}
+
+body.misreservas-page .event-meta strong{
+    color:#d0c8d3;
+    font-weight:600;
+}
+
+/* DATE */body.misreservas-page .event-date{
+    border-left:1px solid #302b35;
+    padding-left:15px;
+}
+
+body.misreservas-page .date-label{
+    color:#67606c;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    font-size:10px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+body.misreservas-page .date-main{
+    color:#d9d1dc;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+body.misreservas-page .date-time{
+    color:#7d7581;
+    font-size:11px;
+}
+
+/* STATUS / ACTION */body.misreservas-page .reservation-right{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:9px;
+}
+
+body.misreservas-page .status{
+    height:21px;
+    padding:0 8px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:800;
+}
+
+body.misreservas-page .status.confirmed{
+    color:#75c49a;
+    background:rgba(103,181,138,.09);
+    border:1px solid rgba(103,181,138,.18);
+}
+
+body.misreservas-page .status.reserved{
+    color:#d5b36b;
+    background:rgba(215,180,106,.08);
+    border:1px solid rgba(215,180,106,.16);
+}
+
+body.misreservas-page .status.cancelled{
+    color:#bb7b83;
+    background:rgba(169,108,108,.08);
+    border:1px solid rgba(169,108,108,.16);
+}
+
+body.misreservas-page .detail-button{
+    height:27px;
+    padding:0 11px;
+    border-radius:6px;
+    border:1px solid #39323f;
+    background:transparent;
+    color:#9e96a2;
+    font-size:11px;
+    font-weight:650;
+    cursor:pointer;
+    transition:.2s;
+}
+
+body.misreservas-page .detail-button:hover{
+    color:var(--gold-light);
+    border-color:#5a4b3b;
+    background:#25211d;
+}
+
+/* EMPTY */body.misreservas-page .empty-state{
+    display:none;
+    padding:45px 20px;
+    text-align:center;
+}
+
+body.misreservas-page .empty-icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    margin:0 auto 12px;
+    background:#25212b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#6f6875;
+    font-size:17px;
+}
+
+body.misreservas-page .empty-title{
+    color:#c8c0cc;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+body.misreservas-page .empty-text{
+    color:#6f6875;
+    font-size:12px;
+}
+
+/* FOOTER */body.misreservas-page .main-footer{
+    min-height:30px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color:#514b55;
+    font-size:11px;
+    margin-top:8px;
+}
+
+/* TOAST */body.misreservas-page .toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25212b;
+    border:1px solid #49404f;
+    color:#ddd5df;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:.25s;
+    z-index:999;
+}
+
+body.misreservas-page .toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MODAL */body.misreservas-page .modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+body.misreservas-page .modal.show{
+    display:flex;
+}
+
+body.misreservas-page .modal-box{
+    width:390px;
+    background:#1b1820;
+    border:1px solid #393340;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+body.misreservas-page .modal-title{
+    font-size:15px;
+    font-weight:750;
+    margin-bottom:8px;
+}
+
+body.misreservas-page .modal-text{
+    color:#8c8490;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+body.misreservas-page .modal-info{
+    border:1px solid #302b36;
+    background:#15131a;
+    border-radius:7px;
+    padding:11px;
+    margin-bottom:18px;
+}
+
+body.misreservas-page .modal-info-title{
+    color:#ddd5df;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:4px;
+}
+
+body.misreservas-page .modal-info-text{
+    color:#756d79;
+    font-size:12px;
+}
+
+body.misreservas-page .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+body.misreservas-page .modal-close{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:13px;
+    background:transparent;
+    border:1px solid #393340;
+    color:#9b929f;
+}
+
+body.misreservas-page .modal-primary{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:13px;
+    background:var(--gold);
+    border:1px solid var(--gold);
+    color:#29221a;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    body.misreservas-page .sidebar{
+        width:210px;
+        min-width:210px;
+    }
+
+    body.misreservas-page .main{
+        padding:25px 20px;
+    }
+
+    body.misreservas-page .reservation{
+        grid-template-columns:65px minmax(0,1fr) 130px;
+    }
+
+    body.misreservas-page .reservation-right{
+        grid-column:3;
+    }
+
+}
+
+@media(max-width:800px){
+
+    body.misreservas-page .app{
+        display:block;
+    }
+
+    body.misreservas-page .sidebar{
+        width:100%;
+        min-width:0;
+        min-height:auto;
+        padding:15px;
+    }
+
+    body.misreservas-page .logo{
+        margin-bottom:15px;
+    }
+
+    body.misreservas-page .menu{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    body.misreservas-page .sidebar-user{
+        margin-top:15px;
+    }
+
+    body.misreservas-page .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    body.misreservas-page .reservation{
+        grid-template-columns:65px 1fr;
+        gap:12px;
+    }
+
+    body.misreservas-page .event-date{
+        border-left:none;
+        border-top:1px solid #302b35;
+        padding-left:0;
+        padding-top:10px;
+        grid-column:2;
+    }
+
+    body.misreservas-page .reservation-right{
+        grid-column:2;
+        align-items:flex-start;
+    }
+
+    body.misreservas-page .page-intro{
+        align-items:flex-start;
+        gap:12px;
+    }
+
+}
+
+@media(max-width:550px){
+
+    body.misreservas-page .main{
+        padding:20px 12px;
+    }
+
+    body.misreservas-page .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    body.misreservas-page .filter-card{
+        flex-wrap:wrap;
+    }
+
+    body.misreservas-page .top-user-text{
+        display:none;
+    }
+
+    body.misreservas-page .page-intro{
+        display:block;
+    }
+
+    body.misreservas-page .new-reservation{
+        margin-top:12px;
+    }
+
+    body.misreservas-page .reservation{
+        grid-template-columns:55px 1fr;
+    }
+
+    body.misreservas-page .event-image{
+        width:55px;
+        height:65px;
+    }
+}
+
+/* historialdecompras.html */
+body.historialdecompras-page, body.historialdecompras-page *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body.historialdecompras-page{
+    --bg:#100e14;
+    --sidebar:#15131b;
+    --panel:#1b1820;
+    --panel2:#201c26;
+    --input:#15131a;
+    --border:#302b36;
+
+    --gold:#d7b46a;
+    --gold-light:#e6ca8e;
+
+    --text:#f2edf4;
+    --text2:#c1bac7;
+    --muted:#817985;
+
+    --green:#67b58a;
+    --red:#a96c6c;
+    --blue:#7893b5;
+}
+
+body.historialdecompras-page, body.historialdecompras-page{
+    width:100%;
+    min-height:100%;
+}
+
+body.historialdecompras-page{
+    background:var(--bg);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+}
+
+body.historialdecompras-page button, body.historialdecompras-page input{
+    font-family:inherit;
+}
+
+body.historialdecompras-page button{
+    cursor:pointer;
+}
+
+/* =====================================================
+   APP
+===================================================== */body.historialdecompras-page .app{
+    width:100%;
+    min-height:100vh;
+    margin:0 auto;
+    background:var(--bg);
+    display:flex;
+    overflow:hidden;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */body.historialdecompras-page .sidebar{
+    width:250px;
+    min-width:250px;
+    min-height:100vh;
+    background:var(--sidebar);
+    border-right:1px solid #25212b;
+    display:flex;
+    flex-direction:column;
+    padding:28px 18px 20px;
+}
+
+body.historialdecompras-page .logo{
+    height:45px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 10px;
+    margin-bottom:34px;
+}
+
+body.historialdecompras-page .logo-mark{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:linear-gradient(145deg,#e8d29a,#ad8b51);
+    color:#201b20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:17px;
+}
+
+body.historialdecompras-page .logo-text{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+body.historialdecompras-page .logo-text span{
+    color:var(--gold);
+}
+
+body.historialdecompras-page .section-title{
+    font-size:13px;
+    color:#69626e;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-weight:700;
+    padding:0 12px;
+    margin-bottom:9px;
+}
+
+body.historialdecompras-page .menu{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+body.historialdecompras-page .menu-item{
+    text-decoration:none;
+    height:39px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:0 12px;
+    color:#8e8793;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.2s;
+}
+
+body.historialdecompras-page .menu-item .icon{
+    width:16px;
+    text-align:center;
+    color:#77707c;
+    font-size:14px;
+}
+
+body.historialdecompras-page .menu-item.active{
+    color:#e9e2ec;
+    background:#2b2632;
+}
+
+body.historialdecompras-page .menu-item.active .icon{
+    color:var(--gold);
+}
+
+body.historialdecompras-page .menu-item:hover{
+    background:#211d27;
+    color:#eee7ef;
+}
+
+body.historialdecompras-page .account-section{
+    margin-top:24px;
+}
+
+body.historialdecompras-page .sidebar-user{
+    margin-top:auto;
+    padding:16px 12px 5px;
+    border-top:1px solid #28232d;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+body.historialdecompras-page .avatar-small, body.historialdecompras-page .avatar-top{
+    background:linear-gradient(145deg,#82758a,#c7b79a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#27222a;
+    font-weight:800;
+}
+
+body.historialdecompras-page .avatar-small{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:13px;
+}
+
+body.historialdecompras-page .user-name{
+    font-size:13px;
+    color:#d6cfd9;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+body.historialdecompras-page .user-role{
+    font-size:12px;
+    color:#6e6873;
+}
+
+/* =====================================================
+   MAIN
+===================================================== */body.historialdecompras-page .main{
+    grid-column:2;
+    min-width:0;
+    padding:31px 32px 22px;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(104,77,125,.035),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */body.historialdecompras-page .topbar{
+    min-height:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+body.historialdecompras-page .breadcrumb{
+    color:#665f6b;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+body.historialdecompras-page .breadcrumb span{
+    color:#817985;
+}
+
+body.historialdecompras-page .page-title{
+    font-size:21px;
+    line-height:1;
+    font-weight:750;
+    letter-spacing:-.6px;
+}
+
+body.historialdecompras-page .top-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+body.historialdecompras-page .top-icon{
+    width:31px;
+    height:31px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8d8592;
+    font-size:14px;
+}
+
+body.historialdecompras-page .top-icon:hover{
+    border-color:#625644;
+    color:var(--gold);
+}
+
+body.historialdecompras-page .top-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+body.historialdecompras-page .avatar-top{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    font-size:13px;
+}
+
+body.historialdecompras-page .top-user-text strong{
+    display:block;
+    font-size:13px;
+    color:#ddd6df;
+    margin-bottom:2px;
+}
+
+body.historialdecompras-page .top-user-text span{
+    display:block;
+    font-size:11px;
+    color:#68616d;
+}
+
+/* =====================================================
+   SUMMARY
+===================================================== */body.historialdecompras-page .summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:15px;
+}
+
+body.historialdecompras-page .summary-card{
+    min-height:86px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    padding:14px 16px;
+    position:relative;
+    overflow:hidden;
+}
+
+body.historialdecompras-page .summary-card::after{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    right:-25px;
+    top:-25px;
+    border-radius:50%;
+    background:rgba(215,180,106,.035);
+}
+
+body.historialdecompras-page .summary-label{
+    font-size:12px;
+    color:#77707c;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    margin-bottom:9px;
+}
+
+body.historialdecompras-page .summary-value{
+    font-size:19px;
+    font-weight:750;
+    color:#e9e2eb;
+}
+
+body.historialdecompras-page .summary-extra{
+    font-size:11px;
+    color:#625b67;
+    margin-top:3px;
+}
+
+body.historialdecompras-page .summary-value.gold{
+    color:var(--gold);
+}
+
+body.historialdecompras-page .summary-value.green{
+    color:var(--green);
+}
+
+/* =====================================================
+   TOOLBAR
+===================================================== */body.historialdecompras-page .toolbar{
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    min-height:61px;
+    padding:11px 13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+body.historialdecompras-page .filters{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+}
+
+body.historialdecompras-page .filter-btn{
+    height:28px;
+    padding:0 11px;
+    border-radius:6px;
+    border:1px solid transparent;
+    background:transparent;
+    color:#756e7b;
+    font-size:12px;
+    font-weight:650;
+    transition:.2s;
+}
+
+body.historialdecompras-page .filter-btn:hover{
+    background:#25212b;
+    color:#d0c8d4;
+}
+
+body.historialdecompras-page .filter-btn.active{
+    background:#2d2732;
+    border-color:#453b4c;
+    color:var(--gold);
+}
+
+body.historialdecompras-page .search-box{
+    width:190px;
+    height:30px;
+    border:1px solid #302b36;
+    border-radius:6px;
+    background:var(--input);
+    display:flex;
+    align-items:center;
+    padding:0 9px;
+    gap:7px;
+}
+
+body.historialdecompras-page .search-icon{
+    color:#665f6c;
+    font-size:13px;
+}
+
+body.historialdecompras-page .search-box input{
+    border:0;
+    outline:0;
+    width:100%;
+    background:transparent;
+    color:#cfc7d3;
+    font-size:12px;
+}
+
+body.historialdecompras-page .search-box input::placeholder{
+    color:#5e5764;
+}
+
+/* =====================================================
+   PURCHASES
+===================================================== */body.historialdecompras-page .purchases-card{
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    overflow:hidden;
+}
+
+body.historialdecompras-page .purchases-header{
+    min-height:51px;
+    padding:13px 18px;
+    border-bottom:1px solid #2a2630;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+body.historialdecompras-page .card-title{
+    font-size:14px;
+    font-weight:750;
+    color:#e3dce6;
+    margin-bottom:4px;
+}
+
+body.historialdecompras-page .card-subtitle{
+    font-size:12px;
+    color:#716a76;
+}
+
+body.historialdecompras-page .purchase-count{
+    color:#655e69;
+    font-size:12px;
+}
+
+body.historialdecompras-page .purchase-list{
+    width:100%;
+}
+
+/* =====================================================
+   PURCHASE ROW
+===================================================== */body.historialdecompras-page .purchase{
+    min-height:82px;
+    padding:13px 18px;
+    display:grid;
+    grid-template-columns:42px minmax(180px,1.4fr) 100px 115px 115px 85px;
+    align-items:center;
+    gap:13px;
+    border-bottom:1px solid #29252e;
+    transition:.2s;
+}
+
+body.historialdecompras-page .purchase:last-child{
+    border-bottom:none;
+}
+
+body.historialdecompras-page .purchase:hover{
+    background:#1f1b24;
+}
+
+body.historialdecompras-page .event-icon{
+    width:39px;
+    height:39px;
+    border-radius:8px;
+    background:
+        linear-gradient(
+            145deg,
+            #342d3b,
+            #211d27
+        );
+    border:1px solid #403747;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold);
+    font-size:14px;
+}
+
+body.historialdecompras-page .event-name{
+    font-size:13px;
+    font-weight:750;
+    color:#ddd6e0;
+    margin-bottom:4px;
+}
+
+body.historialdecompras-page .event-location{
+    font-size:11px;
+    color:#6e6773;
+}
+
+body.historialdecompras-page .purchase-label{
+    font-size:10px;
+    color:#615a66;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:4px;
+}
+
+body.historialdecompras-page .purchase-data{
+    font-size:12px;
+    color:#aaa2ae;
+}
+
+body.historialdecompras-page .purchase-data.price{
+    color:#d7c28e;
+    font-weight:700;
+}
+
+body.historialdecompras-page .purchase-data.method{
+    color:#908794;
+}
+
+body.historialdecompras-page .status{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:20px;
+    padding:0 8px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:700;
+    width:max-content;
+}
+
+body.historialdecompras-page .status.completed{
+    background:rgba(103,181,138,.10);
+    border:1px solid rgba(103,181,138,.22);
+    color:#75bb93;
+}
+
+body.historialdecompras-page .status.refunded{
+    background:rgba(169,108,108,.10);
+    border:1px solid rgba(169,108,108,.22);
+    color:#bb7f87;
+}
+
+body.historialdecompras-page .status.pending{
+    background:rgba(215,180,106,.08);
+    border:1px solid rgba(215,180,106,.20);
+    color:#c8aa68;
+}
+
+body.historialdecompras-page .details-btn{
+    height:27px;
+    border-radius:6px;
+    border:1px solid #3a3441;
+    background:transparent;
+    color:#958b9c;
+    font-size:11px;
+    font-weight:650;
+    transition:.2s;
+}
+
+body.historialdecompras-page .details-btn:hover{
+    border-color:#655743;
+    color:var(--gold);
+    background:#25211b;
+}
+
+/* =====================================================
+   EMPTY
+===================================================== */body.historialdecompras-page .empty{
+    display:none;
+    text-align:center;
+    padding:55px 20px;
+}
+
+body.historialdecompras-page .empty-icon{
+    font-size:27px;
+    color:#4c4552;
+    margin-bottom:12px;
+}
+
+body.historialdecompras-page .empty-title{
+    font-size:14px;
+    color:#aaa2ae;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+body.historialdecompras-page .empty-text{
+    font-size:12px;
+    color:#655e69;
+}
+
+/* =====================================================
+   MODAL
+===================================================== */body.historialdecompras-page .modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.68);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+body.historialdecompras-page .modal.show{
+    display:flex;
+}
+
+body.historialdecompras-page .modal-box{
+    width:410px;
+    max-width:calc(100% - 30px);
+    background:#1b1820;
+    border:1px solid #393340;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+body.historialdecompras-page .modal-title{
+    font-size:15px;
+    font-weight:750;
+    margin-bottom:7px;
+}
+
+body.historialdecompras-page .modal-subtitle{
+    font-size:12px;
+    color:#716a76;
+    margin-bottom:18px;
+}
+
+body.historialdecompras-page .modal-detail{
+    border:1px solid #302b36;
+    border-radius:8px;
+    background:#16131a;
+    overflow:hidden;
+    margin-bottom:17px;
+}
+
+body.historialdecompras-page .detail-row{
+    min-height:35px;
+    padding:0 11px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #29252e;
+}
+
+body.historialdecompras-page .detail-row:last-child{
+    border-bottom:none;
+}
+
+body.historialdecompras-page .detail-label{
+    color:#6f6874;
+    font-size:11px;
+}
+
+body.historialdecompras-page .detail-value{
+    color:#b9b0bd;
+    font-size:12px;
+    font-weight:600;
+}
+
+body.historialdecompras-page .detail-value.gold{
+    color:var(--gold);
+}
+
+body.historialdecompras-page .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+body.historialdecompras-page .modal-btn{
+    height:31px;
+    padding:0 13px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:650;
+}
+
+body.historialdecompras-page .modal-close{
+    background:transparent;
+    border:1px solid #393340;
+    color:#958c9a;
+}
+
+body.historialdecompras-page .modal-download{
+    background:var(--gold);
+    border:1px solid var(--gold);
+    color:#29221a;
+}
+
+body.historialdecompras-page .modal-download:hover{
+    background:var(--gold-light);
+}
+
+/* =====================================================
+   TOAST
+===================================================== */body.historialdecompras-page .toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25212b;
+    border:1px solid #49404f;
+    color:#ddd5df;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:.25s;
+    z-index:2000;
+}
+
+body.historialdecompras-page .toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */body.historialdecompras-page .main-footer{
+    min-height:31px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color:#514b55;
+    font-size:11px;
+    margin-top:8px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1200px){
+
+    body.historialdecompras-page .purchase{
+        grid-template-columns:42px minmax(160px,1fr) 90px 100px 90px;
+    }
+
+    body.historialdecompras-page .purchase .method-column{
+        display:none;
+    }
+}
+
+@media(max-width:1050px){
+
+    body.historialdecompras-page .sidebar{
+        width:210px;
+        min-width:210px;
+    }
+
+    body.historialdecompras-page .main{
+        padding:25px 20px;
+    }
+
+    body.historialdecompras-page .summary-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    body.historialdecompras-page .purchase{
+        grid-template-columns:42px minmax(170px,1fr) 100px 90px;
+    }
+
+    body.historialdecompras-page .purchase .date-column{
+        display:none;
+    }
+}
+
+@media(max-width:760px){
+
+    body.historialdecompras-page .app{
+        display:block;
+    }
+
+    body.historialdecompras-page .sidebar{
+        width:100%;
+        min-width:0;
+        min-height:auto;
+        padding:15px;
+    }
+
+    body.historialdecompras-page .logo{
+        margin-bottom:15px;
+    }
+
+    body.historialdecompras-page .menu{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    body.historialdecompras-page .sidebar-user{
+        margin-top:15px;
+    }
+
+    body.historialdecompras-page .main{
+        padding:20px 15px;
+    }
+
+    body.historialdecompras-page .top-user-text{
+        display:none;
+    }
+
+    body.historialdecompras-page .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    body.historialdecompras-page .toolbar{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    body.historialdecompras-page .search-box{
+        width:100%;
+    }
+
+    body.historialdecompras-page .purchase{
+        grid-template-columns:42px 1fr auto;
+        gap:10px;
+    }
+
+    body.historialdecompras-page .purchase .date-column, body.historialdecompras-page .purchase .method-column, body.historialdecompras-page .purchase .status-column{
+        display:none;
+    }
+
+    body.historialdecompras-page .details-btn{
+        width:65px;
+    }
+}
+
+@media(max-width:500px){
+
+    body.historialdecompras-page .summary-grid{
+        grid-template-columns:1fr;
+    }
+
+    body.historialdecompras-page .purchase{
+        padding:12px;
+    }
+
+    body.historialdecompras-page .event-icon{
+        width:34px;
+        height:34px;
+    }
+
+    body.historialdecompras-page .event-name{
+        font-size:12px;
+    }
+}
+
+@media(max-width:600px){
+    body.cliente-home .section{
+        padding:28px 0;
+    }
+
+    body.cliente-home .section h2{
+        margin-bottom:16px;
+    }
+
+    body.cliente-home .hero{
+        padding:54px 0 38px;
+    }
+
+    body.cliente-home .search-box{
+        margin-top:24px;
+    }
+
+    body.cliente-home .reservation-bar{
+        margin-top:14px;
+    }
+
+    body.cliente-home .category-card{
+        min-height:205px;
+    }
+
+    body.perfil-page .sidebar,
+    body.misreservas-page .sidebar,
+    body.historialdecompras-page .sidebar{
+        padding:12px;
+    }
+
+    body.perfil-page .logo,
+    body.misreservas-page .logo,
+    body.historialdecompras-page .logo{
+        margin-bottom:10px;
+    }
+
+    body.perfil-page .section-title,
+    body.misreservas-page .section-title,
+    body.historialdecompras-page .section-title{
+        display:none;
+    }
+
+    body.perfil-page .menu,
+    body.misreservas-page .menu,
+    body.historialdecompras-page .menu{
+        display:flex;
+        width:100%;
+        gap:6px;
+        overflow-x:auto;
+        padding-bottom:4px;
+        scrollbar-width:thin;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    body.perfil-page .menu-item,
+    body.misreservas-page .menu-item,
+    body.historialdecompras-page .menu-item{
+        flex:0 0 auto;
+        white-space:nowrap;
+    }
+
+    body.perfil-page .account-section,
+    body.misreservas-page .account-section,
+    body.historialdecompras-page .account-section{
+        margin-top:8px;
+    }
+
+    body.perfil-page .main,
+    body.misreservas-page .main,
+    body.historialdecompras-page .main{
+        padding:18px 12px 28px;
+    }
+}
+
+body.perfil-page,
+body.misreservas-page,
+body.historialdecompras-page{
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    --border:#29252e;
+}
+
+body.perfil-page a,
+body.misreservas-page a,
+body.historialdecompras-page a{
+    color:#f2edf4;
+    text-decoration:none;
+}
+
+body.perfil-page .main a,
+body.misreservas-page .main a,
+body.historialdecompras-page .main a{
+    text-decoration:none;
+}
+
+body.perfil-page .menu-item,
+body.misreservas-page .menu-item,
+body.historialdecompras-page .menu-item{font-size:16px}
+
+body.perfil-page .breadcrumb,
+body.misreservas-page .breadcrumb,
+body.historialdecompras-page .breadcrumb{font-size:14px}
+
+body.perfil-page .section-title,
+body.misreservas-page .section-title,
+body.historialdecompras-page .section-title{font-size:13px}
+
+body.perfil-page .page-title,
+body.misreservas-page .page-title,
+body.historialdecompras-page .page-title{font-size:34px}
+
+body.perfil-page .card-title,
+body.misreservas-page .card-title,
+body.historialdecompras-page .card-title{font-size:20px}
+
+body.perfil-page .card-subtitle,
+body.misreservas-page .card-subtitle,
+body.historialdecompras-page .card-subtitle,
+body.perfil-page .profile-email,
+body.perfil-page .account-label,
+body.perfil-page .account-value,
+body.perfil-page .security-action,
+body.perfil-page .profile-badge,
+body.misreservas-page .results-count,
+body.historialdecompras-page .detail-label,
+body.historialdecompras-page .detail-value{font-size:14px}
+
+@media(max-width:760px){
+    body.perfil-page .page-title,
+    body.misreservas-page .page-title,
+    body.historialdecompras-page .page-title{font-size:29px}
+}
+
+body.perfil-page .profile-name{font-size:18px}
+body.perfil-page .security-name,
+body.perfil-page .preference-title{font-size:15px}
+body.perfil-page .security-desc,
+body.perfil-page .preference-desc{font-size:14px}
+
+body.perfil-page .main small,
+body.misreservas-page .main small,
+body.historialdecompras-page .main small{font-size:14px}
+
+@media(max-width:600px){
+    body.historialdecompras-page .summary-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+body.perfil-page .profile-hero,
+body.perfil-page .card,
+body.misreservas-page .summary-card,
+body.misreservas-page .filter-card,
+body.misreservas-page .reservations-card,
+body.historialdecompras-page .summary-card,
+body.historialdecompras-page .toolbar,
+body.historialdecompras-page .purchases-card{
+    border-color:transparent;
+}
+
+body.perfil-page .sidebar,
+body.misreservas-page .sidebar,
+body.historialdecompras-page .sidebar,
+body.perfil-page .sidebar-user,
+body.misreservas-page .sidebar-user,
+body.historialdecompras-page .sidebar-user,
+body.perfil-page .card-header,
+body.misreservas-page .reservations-header,
+body.historialdecompras-page .purchases-header,
+body.perfil-page .security-row,
+body.perfil-page .preference,
+body.perfil-page .account-row,
+body.misreservas-page .reservation,
+body.misreservas-page .event-date,
+body.historialdecompras-page .purchase,
+body.historialdecompras-page .detail-row,
+body.historialdecompras-page .modal-detail{
+    border-color:transparent;
+}
+
+body.misreservas-page .modal-box,
+body.historialdecompras-page .modal-box{
+    border-color:transparent;
+}
+
+body.perfil-page .sidebar,
+body.misreservas-page .sidebar,
+body.historialdecompras-page .sidebar,
+body.perfil-page .sidebar-user,
+body.misreservas-page .sidebar-user,
+body.historialdecompras-page .sidebar-user,
+body.perfil-page .profile-hero,
+body.perfil-page .card,
+body.perfil-page .card-header,
+body.perfil-page .personal-actions,
+body.perfil-page .security-row,
+body.perfil-page .preference,
+body.perfil-page .account-row,
+body.perfil-page .modal-box,
+body.misreservas-page .summary-card,
+body.misreservas-page .filter-card,
+body.misreservas-page .reservations-card,
+body.misreservas-page .reservations-header,
+body.misreservas-page .reservation,
+body.misreservas-page .event-date,
+body.misreservas-page .modal-box,
+body.misreservas-page .modal-info,
+body.historialdecompras-page .summary-card,
+body.historialdecompras-page .toolbar,
+body.historialdecompras-page .purchases-card,
+body.historialdecompras-page .purchases-header,
+body.historialdecompras-page .purchase,
+body.historialdecompras-page .modal-box,
+body.historialdecompras-page .modal-detail,
+body.historialdecompras-page .detail-row{
+    border:0 !important;
+}
+
+body.perfil-page .top-icon,
+body.perfil-page .edit-button,
+body.perfil-page .cancel-btn,
+body.perfil-page .modal-cancel,
+body.misreservas-page .top-icon,
+body.misreservas-page .event-image,
+body.misreservas-page .detail-button,
+body.misreservas-page .modal-close,
+body.historialdecompras-page .top-icon,
+body.historialdecompras-page .event-icon,
+body.historialdecompras-page .details-btn,
+body.historialdecompras-page .search-box,
+body.historialdecompras-page .modal-close{
+    border:0 !important;
+}
+
+body.perfil-page,
+body.misreservas-page,
+body.historialdecompras-page{
+    --bg:#100d16;
+    --sidebar:#15101f;
+    --panel:#191420;
+    --input:#15101f;
+    --border:#30283d;
+}
+
+body.perfil-page .main,
+body.misreservas-page .main{
+    background:var(--bg);
+}
+
+body.perfil-page .profile-hero{
+    background:var(--panel);
+}
+
+body.perfil-page .menu-item.active,
+body.misreservas-page .menu-item.active,
+body.historialdecompras-page .menu-item.active{
+    background:#2b2435;
+}
+
+body.perfil-page .menu-item:hover,
+body.misreservas-page .menu-item:hover,
+body.historialdecompras-page .menu-item:hover{
+    background:#211a2b;
+}
+
+body.historialdecompras-page .purchase:hover{
+    background:#211a2b;
+}
+
+body.perfil-page .sidebar,
+body.misreservas-page .sidebar,
+body.historialdecompras-page .sidebar{
+    position:sticky;
+    top:0;
+    width:250px;
+    min-width:250px;
+    height:100vh;
+    min-height:100vh;
+    flex:0 0 250px;
+    align-self:flex-start;
+    padding:26px 18px 20px;
+    border-right:1px solid transparent !important;
+}
+
+body.perfil-page .app,
+body.misreservas-page .app,
+body.historialdecompras-page .app{
+    overflow:visible;
+}
+
+body.perfil-page .logo,
+body.misreservas-page .logo,
+body.historialdecompras-page .logo{
+    height:auto;
+    margin-bottom:0;
+    padding:0 8px 23px;
+}
+
+body.perfil-page .logo-mark,
+body.misreservas-page .logo-mark,
+body.historialdecompras-page .logo-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+}
+
+body.perfil-page .logo-text,
+body.misreservas-page .logo-text,
+body.historialdecompras-page .logo-text{
+    font-size:19px;
+}
+
+body.perfil-page .section-title,
+body.misreservas-page .section-title,
+body.historialdecompras-page .section-title{
+    margin:23px 12px 9px;
+    font-size:13px;
+    letter-spacing:1.3px;
+}
+
+body.perfil-page .menu-item,
+body.misreservas-page .menu-item,
+body.historialdecompras-page .menu-item{
+    height:auto;
+    min-height:44px;
+    font-size:16px;
+    line-height:normal;
+}
+
+body.perfil-page .menu-item .icon,
+body.misreservas-page .menu-item .icon,
+body.historialdecompras-page .menu-item .icon{
+    width:17px;
+}
+
+body.perfil-page .account-section,
+body.misreservas-page .account-section,
+body.historialdecompras-page .account-section{
+    margin-top:0;
+}
+
+body.perfil-page .sidebar-user,
+body.misreservas-page .sidebar-user,
+body.historialdecompras-page .sidebar-user{
+    padding:16px 8px 0;
+    border-top:0;
+}
+
+body.perfil-page .avatar-small,
+body.misreservas-page .avatar-small,
+body.historialdecompras-page .avatar-small{
+    width:36px;
+    height:36px;
+}
+
+body.perfil-page .main,
+body.misreservas-page .main,
+body.historialdecompras-page .main{
+    flex:1;
+    min-width:0;
+    padding:0 42px 64px;
+}
+
+body.perfil-page .topbar,
+body.misreservas-page .topbar,
+body.historialdecompras-page .topbar{
+    height:76px;
+    min-height:76px;
+    margin:0 -42px 40px;
+    padding:0 42px;
+}
+
+body.perfil-page .page-title,
+body.misreservas-page .page-title,
+body.historialdecompras-page .page-title{
+    font-size:34px;
+    line-height:1.2;
+    letter-spacing:0;
+}
+
+body.perfil-page .topbar,
+body.misreservas-page .topbar,
+body.historialdecompras-page .topbar,
+body.perfil-page .main,
+body.misreservas-page .main,
+body.historialdecompras-page .main{
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
+body.perfil-page .profile-hero,
+body.perfil-page .card,
+body.misreservas-page .summary-card,
+body.misreservas-page .filter-card,
+body.misreservas-page .reservations-card,
+body.historialdecompras-page .summary-card,
+body.historialdecompras-page .toolbar,
+body.historialdecompras-page .purchases-card{
+    border-radius:14px;
+}
+
+body.perfil-page .profile-hero{
+    min-height:112px;
+    padding:20px 24px;
+    margin-bottom:18px;
+}
+
+body.perfil-page .card-header,
+body.misreservas-page .reservations-header,
+body.historialdecompras-page .purchases-header{
+    padding:20px 24px;
+}
+
+body.perfil-page .personal-body,
+body.perfil-page .security-body,
+body.perfil-page .preference-list,
+body.perfil-page .account-body,
+body.perfil-page .danger-header,
+body.perfil-page .danger-body{
+    padding-right:24px;
+    padding-left:24px;
+}
+
+body.perfil-page .card-title,
+body.misreservas-page .card-title,
+body.historialdecompras-page .card-title{
+    font-size:20px;
+    line-height:1.3;
+}
+
+body.perfil-page .card-subtitle,
+body.misreservas-page .card-subtitle,
+body.historialdecompras-page .card-subtitle{
+    font-size:15px;
+    line-height:1.5;
+}
+
+body.perfil-page .profile-name{
+    font-size:18px;
+}
+
+body.perfil-page .profile-email,
+body.perfil-page .profile-badge,
+body.perfil-page .security-desc,
+body.perfil-page .preference-desc,
+body.perfil-page .account-value,
+body.perfil-page .danger-subtitle,
+body.misreservas-page .intro-text,
+body.misreservas-page .event-location,
+body.misreservas-page .event-meta span,
+body.misreservas-page .date-time,
+body.historialdecompras-page .summary-extra,
+body.historialdecompras-page .event-location,
+body.historialdecompras-page .purchase-data{
+    font-size:14px;
+    line-height:1.5;
+}
+
+body.perfil-page .security-name,
+body.perfil-page .preference-title,
+body.perfil-page .danger-title,
+body.misreservas-page .intro-title,
+body.misreservas-page .event-name,
+body.misreservas-page .date-main,
+body.historialdecompras-page .event-name{
+    font-size:16px;
+    line-height:1.4;
+}
+
+body.perfil-page .account-label,
+body.misreservas-page .summary-label,
+body.misreservas-page .filter-label,
+body.misreservas-page .date-label,
+body.misreservas-page .event-category,
+body.historialdecompras-page .summary-label,
+body.historialdecompras-page .purchase-label{
+    font-size:12px;
+}
+
+body.perfil-page .security-row,
+body.perfil-page .preference,
+body.perfil-page .account-row{
+    min-height:52px;
+    height:auto;
+}
+
+body.misreservas-page .summary-card,
+body.historialdecompras-page .summary-card{
+    min-height:86px;
+    padding:16px;
+}
+
+body.misreservas-page .summary-number,
+body.historialdecompras-page .summary-value{
+    font-size:20px;
+}
+
+body.misreservas-page .reservation{
+    min-height:120px;
+    padding:16px 24px;
+}
+
+body.historialdecompras-page .purchase{
+    min-height:92px;
+    padding:16px 24px;
+}
+
+body.perfil-page .top-icon,
+body.misreservas-page .top-icon,
+body.historialdecompras-page .top-icon{
+    width:36px;
+    height:36px;
+}
+
+body.perfil-page .edit-button,
+body.perfil-page .cancel-btn,
+body.perfil-page .save-btn,
+body.perfil-page .delete-btn,
+body.misreservas-page .new-reservation,
+body.misreservas-page .filter-button,
+body.misreservas-page .detail-button,
+body.historialdecompras-page .filter-btn,
+body.historialdecompras-page .details-btn{
+    min-height:44px;
+    height:auto;
+    padding:10px 16px;
+    border-radius:9px;
+    font-size:15px;
+    line-height:1.2;
+}
+
+body.perfil-page .edit-button,
+body.perfil-page .cancel-btn,
+body.perfil-page .save-btn,
+body.perfil-page .delete-btn,
+body.misreservas-page .new-reservation,
+body.misreservas-page .filter-button,
+body.misreservas-page .detail-button,
+body.historialdecompras-page .filter-btn,
+body.historialdecompras-page .details-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+body.misreservas-page .filter-button,
+body.historialdecompras-page .filter-btn{
+    min-height:40px;
+    padding:8px 14px;
+}
+
+body.historialdecompras-page .search-box{
+    height:44px;
+    font-size:14px;
+}
+
+body.historialdecompras-page .search-box input{
+    font-size:14px;
+}
+
+body.historialdecompras-page .purchase-label{
+    letter-spacing:.4px;
+}
+
+body.historialdecompras-page .status,
+body.misreservas-page .status{
+    min-height:26px;
+    height:auto;
+    padding:4px 10px;
+    font-size:12px;
+}
+
+@media(max-width:760px){
+    body.perfil-page .main,
+    body.misreservas-page .main,
+    body.historialdecompras-page .main{
+        padding:68px 22px 48px;
+    }
+
+    body.perfil-page .topbar,
+    body.misreservas-page .topbar,
+    body.historialdecompras-page .topbar{
+        display:grid;
+        grid-template-columns:minmax(0,1fr) auto;
+        grid-template-rows:auto auto;
+        align-content:center;
+        height:66px;
+        min-height:66px;
+        margin:0 0 28px;
+        padding:0;
+    }
+
+    body.perfil-page .topbar > div:first-child,
+    body.misreservas-page .topbar > div:first-child,
+    body.historialdecompras-page .topbar > div:first-child{
+        display:contents;
+    }
+
+    body.perfil-page .breadcrumb,
+    body.misreservas-page .breadcrumb,
+    body.historialdecompras-page .breadcrumb{
+        grid-column:1;
+        grid-row:1;
+    }
+
+    body.perfil-page .page-title,
+    body.misreservas-page .page-title,
+    body.historialdecompras-page .page-title{
+        grid-column:1;
+        grid-row:2;
+        font-size:30px;
+    }
+
+    body.perfil-page .top-actions,
+    body.misreservas-page .top-actions,
+    body.historialdecompras-page .top-actions{
+        grid-column:2;
+        grid-row:1 / span 2;
+        align-self:start;
+    }
+
+    body.perfil-page .top-icon,
+    body.misreservas-page .top-icon,
+    body.historialdecompras-page .top-icon{
+        display:none;
+    }
+}
+
+@media(max-width:520px){
+    body.perfil-page .main,
+    body.misreservas-page .main,
+    body.historialdecompras-page .main{
+        padding:68px 16px 40px;
+    }
+
+    body.perfil-page .profile-hero{
+        padding:18px;
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    body.perfil-page .edit-button{
+        align-self:flex-start;
+    }
+
+    body.misreservas-page .reservation,
+    body.historialdecompras-page .purchase{
+        padding:14px 16px;
+    }
+}
+
+body.event-page .event-main{
+  min-height: 70vh;
+  padding-block: 18px 72px;
+}
+
+body.event-page .event-navigation-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 18px;
+  margin-bottom: 16px;
+}
+
+body.event-page .event-home-link{
+  min-height: 34px;
+  padding: 7px 11px;
+  font-size: 0.74rem;
+}
+
+body.event-page .event-home-link span{
+  margin-right: 4px;
+  font-size: 1rem;
+}
+
+body.event-page .event-breadcrumb{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+body.event-page .event-breadcrumb a:hover{
+  color: var(--text);
+}
+
+body.event-page .event-hero{
+  min-height: 260px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(122, 79, 174, 0.22), transparent 65%),
+    var(--card);
+}
+
+body.event-page .event-hero-copy{
+  align-self: end;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+body.event-page .event-hero-copy .tag{
+  display: inline-flex;
+  margin-bottom: 18px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: #d7c8f0;
+  font-size: 0.7rem;
+}
+
+body.event-page .event-hero-copy h1{
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.12;
+}
+
+body.event-page .event-meta,
+body.event-page .event-time{
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+body.event-page .event-cover{
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  background: #100b1d;
+}
+
+body.event-page .event-layout{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 350px);
+  align-items: start;
+  gap: clamp(24px, 4vw, 56px);
+  margin-top: 24px;
+}
+
+body.event-page .event-information{
+  min-width: 0;
+}
+
+body.event-page .event-information section,
+body.event-page .related-events-section{
+  margin-bottom: 28px;
+}
+
+body.event-page .event-information h2,
+body.event-page .related-events-section h2{
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+body.event-page .event-description p{
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+body.event-page .event-gallery{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+body.event-page .event-gallery-item{
+  min-width: 0;
+  height: 138px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  cursor: pointer;
+}
+
+body.event-page .event-gallery-item[aria-pressed="true"]{
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+body.event-page .event-gallery-item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.event-page .event-ticket-card{
+  position: static;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+}
+
+body.event-page .event-ticket-card h2{
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+}
+
+body.event-page .ticket-options{
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body.event-page .ticket-option{
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+body.event-page .ticket-option:has(input:checked){
+  border-color: var(--gold);
+  background: rgba(223, 168, 109, 0.06);
+}
+
+body.event-page .ticket-option input{
+  accent-color: var(--pink);
+}
+
+body.event-page .ticket-option-details{
+  display: grid;
+  gap: 2px;
+}
+
+body.event-page .ticket-option-details strong,
+body.event-page .ticket-option-price{
+  font-size: 0.76rem;
+}
+
+body.event-page .ticket-option-details small{
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+body.event-page .ticket-quantity,
+body.event-page .ticket-subtotal{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 0.78rem;
+}
+
+body.event-page .ticket-quantity label span{
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+body.event-page .quantity-control{
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+body.event-page .quantity-control button{
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+body.event-page .quantity-control input{
+  width: 38px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: center;
+  appearance: textfield;
+}
+
+body.event-page .quantity-control input::-webkit-inner-spin-button,
+body.event-page .quantity-control input::-webkit-outer-spin-button{
+  margin: 0;
+  appearance: none;
+}
+
+body.event-page .ticket-subtotal{
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+body.event-page .ticket-subtotal strong{
+  font-size: 0.9rem;
+}
+
+body.event-page .ticket-submit{
+  width: 100%;
+  margin-top: 16px;
+  border: 0;
+}
+
+body.event-page .ticket-message{
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+body.event-page .payment-dialog{
+  width:min(520px, calc(100% - 28px));
+  max-height:min(92vh, 820px);
+  padding:0;
+  overflow:auto;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:var(--card);
+  color:var(--text);
+  box-shadow:0 24px 90px #0009;
+}
+
+body.event-page .payment-dialog::backdrop{
+  background:rgba(7,5,12,.78);
+  backdrop-filter:blur(4px);
+}
+
+body.event-page .payment-panel{
+  position:relative;
+  display:grid;
+  gap:9px;
+  padding:clamp(22px, 5vw, 34px);
+}
+
+body.event-page .payment-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:36px;
+  height:36px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  background:transparent;
+  color:var(--text);
+  font-size:1.35rem;
+  cursor:pointer;
+}
+
+body.event-page .payment-eyebrow{
+  color:var(--gold);
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+body.event-page .payment-panel h2{
+  margin:0;
+  font-size:1.45rem;
+}
+
+body.event-page .payment-event-name{
+  margin:0;
+  color:var(--muted);
+  font-size:.84rem;
+}
+
+body.event-page .payment-total{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin:8px 0;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg-2);
+}
+
+body.event-page .payment-total strong{
+  color:var(--gold);
+  font-size:1.15rem;
+}
+
+body.event-page .payment-simulation-note{
+  padding:12px;
+  border:1px solid rgba(223,168,109,.38);
+  border-radius:9px;
+  background:rgba(223,168,109,.08);
+  color:#e9d7bd;
+  font-size:.73rem;
+  line-height:1.5;
+}
+
+body.event-page .payment-panel label{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:.74rem;
+}
+
+body.event-page .payment-panel input{
+  width:100%;
+  min-height:42px;
+  padding:9px 11px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#100b1d;
+  color:var(--text);
+  font:inherit;
+}
+
+body.event-page .payment-panel input:focus-visible,
+body.event-page .payment-panel button:focus-visible{
+  outline:3px solid var(--gold);
+  outline-offset:2px;
+}
+
+body.event-page .payment-hint{
+  margin:0;
+  color:var(--muted);
+  font-size:.68rem;
+  line-height:1.5;
+}
+
+body.event-page .payment-card-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+body.event-page .payment-card-row>div{
+  display:grid;
+  gap:9px;
+}
+
+body.event-page .payment-status{
+  min-height:1.3em;
+  margin:3px 0 0;
+  color:var(--pink);
+  font-size:.78rem;
+}
+
+body.event-page .payment-submit,
+body.event-page .payment-cancel{
+  width:100%;
+  min-height:44px;
+  border-radius:8px;
+  font-family:inherit;
+  font-size:.82rem;
+  font-weight:700;
+  line-height:1.2;
+  cursor:pointer;
+}
+
+body.event-page .payment-complete-link{
+  display:block;
+  padding:13px;
+  border-radius:8px;
+  background:var(--gold);
+  color:#1c1209;
+  font-size:.82rem;
+  font-weight:800;
+  text-align:center;
+}
+
+body.event-page .payment-cancel{
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+}
+
+body.event-page .payment-submit:disabled{
+  cursor:wait;
+  opacity:.65;
+}
+
+body.event-page .related-events-section{
+  margin-top: 16px;
+}
+
+body.event-page .related-events{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body.event-page .related-event-card{
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+body.event-page .related-event-card:hover{
+  border-color: var(--gold);
+}
+
+body.event-page .related-event-card img{
+  width: 100%;
+  height: 112px;
+  object-fit: cover;
+  background: var(--bg-2);
+}
+
+body.event-page .related-event-info{
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+}
+
+body.event-page .related-event-info strong{
+  overflow: hidden;
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.event-page .related-event-info small{
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.65rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.event-page .event-not-found{
+  max-width: 620px;
+  margin: 72px auto;
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  text-align: center;
+}
+
+body.event-page .event-not-found h1{
+  margin: 0 0 12px;
+}
+
+body.event-page .event-not-found p:not(.section-kicker){
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+@media (max-width: 767px){
+  body.event-page .event-hero{
+    grid-template-columns: 1fr;
+  }
+
+  body.event-page .event-hero-copy{
+    order: 1;
+  }
+
+  body.event-page .event-cover{
+    min-height: 210px;
+    max-height: 290px;
+  }
+
+  body.event-page .event-layout{
+    grid-template-columns: 1fr;
+  }
+
+  body.event-page .event-ticket-card{
+    position: static;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 560px){
+  body.event-page .event-gallery{
+    gap: 7px;
+  }
+
+  body.event-page .event-gallery-item{
+    height: 94px;
+  }
+
+  body.event-page .related-events{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
