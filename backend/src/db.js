@@ -12,7 +12,7 @@ const pool = new Pool({
   idleTimeoutMillis: 10000,
   connectionTimeoutMillis: 10000,
   ssl: {
-    rejectUnauthorized: false // Requerido para la conexión SSL de Neon
+    rejectUnauthorized: false // la conexión SSL de Neon
   }
 });
 
